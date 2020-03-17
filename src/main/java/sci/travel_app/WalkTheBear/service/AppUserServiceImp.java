@@ -52,6 +52,10 @@ public class AppUserServiceImp implements AppUserService {
             throw new UsernameNotFoundException("Invalid username or password");
         }
         return new User(user.getEmail(), passwordEncoder.encode(user.getPassword()), getAuthorities());
+    }
 
+    public AppUser findById(Long id){
+        AppUser user = appUserRepository.findById(id).get();
+        return user;
     }
 }

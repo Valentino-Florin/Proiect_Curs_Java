@@ -123,4 +123,7 @@ public class Place {
         this.user = user;
     }
 
+    public String getName() {
+        return name;
+    }
 }

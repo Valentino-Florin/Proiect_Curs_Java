@@ -12,17 +12,17 @@ public class Favorite {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
     @OneToOne
-    @JoinColumn(name = "ADDED_BY")
+    @JoinColumn(name = "FK_USER_ID")
     private AppUser user;
     @OneToOne
-    @JoinColumn(name = "FAV_PLACE")
-    private Place favPlace;
+    @JoinColumn(name = "FK_PLACE_ID")
+    private Place place;
     @Column(name = "DATE_ADDED")
     private Date dateAdded;
     public Favorite(){}
     public Favorite(AppUser user, Place favPlace) {
         this.user = user;
-        this.favPlace = favPlace;
+        this.place = favPlace;
         this.dateAdded = new Date();
     }
 
@@ -40,11 +40,11 @@ public class Favorite {
         this.user = user;
     }
 
-    public Place getFavPlace() {
-        return favPlace;
+    public Place getPlace() {
+        return place;
     }
-    public void setFavPlace(Place favPlace) {
-        this.favPlace = favPlace;
+    public void setPlace(Place place) {
+        this.place = place;
     }
 
     public Date getDateAdded() {
@@ -58,7 +58,7 @@ public class Favorite {
     public String toString() {
         return "Favorite{" +
                 "user=" + user +
-                ", favPlace=" + favPlace +
+                ", favPlace=" + place +
                 ", dateAdded=" + dateAdded +
                 '}';
     }

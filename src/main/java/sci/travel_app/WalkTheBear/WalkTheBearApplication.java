@@ -19,15 +19,15 @@ public class WalkTheBearApplication {
 		SpringApplication.run(WalkTheBearApplication.class, args);
 	}
 
-	@Bean
-	public CommandLineRunner demo(AppUserRepository repository1, PlacesRepository repository2) {
-		return (args) -> {
-			repository1.deleteAll();
-			repository1.save(new AppUser("Eugene", "mypassword", "someemail@someemailprovider.com", AppUserRole.TRAVELER ));
-			repository1.save(new AppUser("Rapunzel", "myotherpassword", "someotheremail@someemailprovider.com", AppUserRole.HOST ));
-			repository2.save(new Lodging("Loc","Judet","Oras", "Adresa", "Numar", "Email", "descriere", repository1.findById(2), LodgingSubCategory.HOTEL ));
-		};
-	}
+//	@Bean
+//	public CommandLineRunner demo(AppUserRepository repository1, PlacesRepository repository2) {
+//		return (args) -> {
+//			repository1.deleteAll();
+//			repository1.save(new AppUser("Eugene", "mypassword", "someemail@someemailprovider.com", AppUserRole.TRAVELER ));
+//			//repository1.save(new AppUser("Rapunzel", "myotherpassword", "someotheremail@someemailprovider.com", AppUserRole.HOST ));
+//			repository2.save(new Lodging("Loc","Judet","Oras", "Adresa", "Numar", "Email", "descriere", repository1.findById(2), LodgingSubCategory.HOTEL ));
+//		};
+//	}
 
 
 }

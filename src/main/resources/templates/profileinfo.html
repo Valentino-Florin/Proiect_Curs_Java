@@ -1,5 +1,56 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head></head>
-<body></body>
+
+<head>
+
+    <meta charset="utf-8">
+    <title>Profile info</title>
+    <link rel="stylesheet" href="../static/CSS/profileinfo.css" th:href="@{/CSS/profileinfo.css}">
+    <link rel="stylesheet" th:href="@{https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css}">
+
+</head>
+
+<body>
+<script type="text/javascript" th:src="@{/JS/profileinfo.js}"></script>
+<div id="top_page">
+    <h1 style="font-size: 50px">WalkTheBear</h1>
+</div>
+
+<div id="my_profile">
+    <h2>MY PROFILE</h2>
+</div>
+
+<!-- Tab links -->
+<div class="tab">
+    <button class="tablinks" onclick="window.location.href = '/profileinfo';" style="background-color: #4CAF50"
+            id="profileinfo">Profile info 🔏
+    </button>
+    <button class="tablinks" onclick="window.location.href = '/profilefavorites?id=2'">My favorites ⭐</button>
+    <button class="tablinks" onclick="window.location.href = '/profileratings'">My ratings 📝</button>
+</div>
+
+<!-- Tab contents -->
+
+<div class="tabcontent" id="info">
+
+    <form>
+        <div class="field">
+            <label class="label">Username:</label>
+            <p>Albert Bursuc</p>
+        </div>
+
+        <div class="field">
+            <label class="label">Email:</label>
+            <p>email@gmail.com</p>
+        </div>
+
+        <div class="field">
+            <label class="label">Password:</label>
+            <p>***Password***</p>
+        </div>
+
+        <button type="button" name="editProfile" id="editButton" onclick="edit()" class="button">Edit</button>
+    </form>
+</div>
+</body>
 </html>
