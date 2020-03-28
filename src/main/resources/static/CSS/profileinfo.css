@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 body{padding: 15px;
   font-family: serif;
   /*background-image: url("https://images.hdqwalls.com/download/white-bear-artwork-8k-n4-1920x1080.jpg");*/
@@ -116,3 +117,123 @@ text-align: left;
 display:inline-block;
 margin-right: 30px;
 }
+=======
+body{padding: 15px;
+  font-family: serif;
+  /*background-image: url("https://images.hdqwalls.com/download/white-bear-artwork-8k-n4-1920x1080.jpg");*/
+}
+  * {box-sizing: border-box
+  }
+
+
+#site_name{
+  }
+
+#site_logo{
+  padding-bottom: 20px}
+
+#my_profile{
+  font-size: 19px;
+  color:  #4C3936;
+}
+
+.box{
+  border-radius: 5px;
+  border: 3px solid;
+  border-color: #F4D03F;
+  width: 250px;
+  height: auto;
+  margin-bottom: 20px;
+  margin-right: 20px;
+}
+
+.box p{
+
+}
+
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+}
+
+.tab button:hover {
+  background-color: #8bdd84;
+}
+
+.tab button.active {
+  background-color: #ccc;
+}
+
+.tabcontent {
+  float: left;
+  padding: 15px;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  width: 400px;
+  border-left: none;
+
+}
+
+.tablinks{
+
+}
+
+.place_name{
+  padding-left: 10px;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+
+.rating_text{
+  padding-left: 10px;
+}
+
+#ratings_box{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.form{
+  margin-top:10px;
+  margin-bottom: 10px;
+}
+
+label{
+display:inline-block;
+width:150px;
+margin-right:70px;
+text-align:left;
+}
+
+.showpassButton{
+display:inline-block;
+margin-right:70px;
+text-align: left;
+}
+
+.button{
+  margin-top: 10px;
+  margin-right: 30px;
+  margin-bottom: 20px;
+  background-color: #f1f1f1;
+  border-radius: 5px;
+
+}
+
+.passwordBox{
+display:inline-block;
+margin-right: 30px;
+}
+>>>>>>> Stashed changes

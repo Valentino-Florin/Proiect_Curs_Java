@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
@@ -105,3 +106,112 @@
     <!-- footer end -->
 
 </body></html>
+=======
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <title>
+        <!-- Insert your title here -->
+    </title>
+    <link rel="stylesheet" href="../static/CSS/placedetail.css">
+    <script></script>
+
+</head>
+
+<body>
+    <!-- header start -->
+    <header></header>
+    <!-- header end -->
+
+    <!-- main content start -->
+    <div class=container id=main_container>
+
+        <div class=container id=main_content_column>
+            <div class=container id=basic_info>
+                <div id=name>
+                    <h1>Place name</h1>
+                </div>
+                <div id=thumbnail><img id=thumbnail_img src="../static/images/placeholder.jpg"></div>
+                <div id=address>
+                    <h2>Address: jdlfkjsdlkfdshfhsdfhsifsdf</h2>
+                </div>
+            </div>
+            <div class=box id=gallery><img class=gallery src="../static/images/placeholder.jpg"><img class=gallery src="../static/images/placeholder.jpg"><img class=gallery src="../static/images/placeholder.jpg"></div>
+            <div class=box id=description>
+                <h3>Description</h3>
+                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium.</p>
+
+                <p>Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc,</p>
+            </div>
+
+        </div>
+        <div class=container id=additional_content_column>
+            <div class=box id=contact>
+                <h3>Contact</h3>
+                <p>Lorem ipsum</p>
+                <p>Lorem ipsum</p>
+                <p>Lorem ipsum</p>
+            </div>
+            <div class=box id=call_to_action>
+                <a href="">Add to trip</a>
+                <a href="">Add to Favorites</a>
+            </div>
+        </div>
+    </div>
+    <div>
+        <form id="loginForm"  th:action="@{/placedetail}" method="POST">
+                <input type="submit" value="Add to favorites"/>
+        </form>
+    </div>
+    <div class=container id=rating_container>
+        <div class=box id=rating_box>
+            <h2>Add a review</h2>
+            <div id=place_rating>
+                <div id=star_rating_aggregated>
+                    <p>star placeholder</p>
+                    <p>Rating</p>
+                </div>
+            </div>
+            <div id=your_rating>
+                <p>Your rating</p>
+                <div id=star_rating_vote>
+                    <p>star placeholder</p>
+                </div>
+            </div>
+
+        </div>
+        <div class=box id=user_rating>
+            <h2>User reviews</h2>
+            <div class=rating_list>
+                <div class=rating_list_item>
+                    <p>star placeholder</p>
+                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.</p>
+                </div>
+                <div class=rating_list_item>
+                    <p>star placeholder</p>
+                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.</p>
+                </div>
+                <div class=rating_list_item>
+                    <p>star placeholder</p>
+                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- main content end -->
+
+
+    <!-- footer start -->
+    <footer>
+        <div class="footer_nav_links"> </div>
+    </footer>
+    <!-- footer end -->
+
+</body></html>
+>>>>>>> Stashed changes
