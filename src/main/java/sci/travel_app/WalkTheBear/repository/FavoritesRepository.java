@@ -1,4 +1,5 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 package sci.travel_app.WalkTheBear.repository;
 
 import org.springframework.data.repository.CrudRepository;
@@ -10,6 +11,8 @@ public interface FavoritesRepository extends CrudRepository<Favorite, Long > {
 
 }
 =======
+=======
+>>>>>>> Stashed changes
 package sci.travel_app.WalkTheBear.repository;
 
 import org.springframework.data.repository.CrudRepository;
@@ -20,4 +23,7 @@ import java.util.List;
 public interface FavoritesRepository extends CrudRepository<Favorite, Long > {
 
 }
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes

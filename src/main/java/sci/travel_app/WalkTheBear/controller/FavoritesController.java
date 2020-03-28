@@ -1,4 +1,5 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 package sci.travel_app.WalkTheBear.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,6 +54,8 @@ public class FavoritesController {
 
 }
 =======
+=======
+>>>>>>> Stashed changes
 package sci.travel_app.WalkTheBear.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -111,5 +114,9 @@ public class FavoritesController {
         return "editprofile";
     }
 
+<<<<<<< Updated upstream
+}
+>>>>>>> Stashed changes
+=======
 }
 >>>>>>> Stashed changes

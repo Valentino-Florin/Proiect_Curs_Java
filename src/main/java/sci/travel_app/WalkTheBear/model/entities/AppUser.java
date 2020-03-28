@@ -1,4 +1,5 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 package sci.travel_app.WalkTheBear.model.entities;
 
 import sci.travel_app.WalkTheBear.model.misc.AppUserRole;
@@ -83,6 +84,8 @@ public class AppUser {
 
 }
 =======
+=======
+>>>>>>> Stashed changes
 package sci.travel_app.WalkTheBear.model.entities;
 
 import sci.travel_app.WalkTheBear.model.misc.AppUserRole;
@@ -166,4 +169,7 @@ public class AppUser {
 
 
 }
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes

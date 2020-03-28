@@ -1,4 +1,5 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 package sci.travel_app.WalkTheBear.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,6 +61,8 @@ public class AppUserServiceImp implements AppUserService {
         return user;
     }
 =======
+=======
+>>>>>>> Stashed changes
 package sci.travel_app.WalkTheBear.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -120,5 +123,8 @@ public class AppUserServiceImp implements AppUserService {
         AppUser user = appUserRepository.findById(id).get();
         return user;
     }
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 }

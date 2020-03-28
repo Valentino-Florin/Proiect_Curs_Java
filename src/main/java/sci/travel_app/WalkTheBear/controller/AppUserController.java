@@ -1,4 +1,5 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 package sci.travel_app.WalkTheBear.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,6 +59,8 @@ public class AppUserController {
 
 }
 =======
+=======
+>>>>>>> Stashed changes
 package sci.travel_app.WalkTheBear.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -116,4 +119,7 @@ public class AppUserController {
     }
 
 }
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes

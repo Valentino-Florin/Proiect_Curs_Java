@@ -1,4 +1,5 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 
 
 function showPassword() {
@@ -49,6 +50,8 @@ function openTab(evt, info) {
   evt.currentTarget.class += " active";
 }
 =======
+=======
+>>>>>>> Stashed changes
 
 
 function showPassword() {
@@ -98,4 +101,7 @@ function openTab(evt, info) {
   document.getElementById(info).style.display = "block";
   evt.currentTarget.class += " active";
 }
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes

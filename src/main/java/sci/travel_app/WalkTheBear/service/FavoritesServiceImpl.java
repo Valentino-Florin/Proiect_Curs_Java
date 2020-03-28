@@ -1,4 +1,5 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 package sci.travel_app.WalkTheBear.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,8 @@ public class FavoritesServiceImpl implements FavoritesService{
 
 }
 =======
+=======
+>>>>>>> Stashed changes
 package sci.travel_app.WalkTheBear.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,4 +59,7 @@ public class FavoritesServiceImpl implements FavoritesService{
     }
 
 }
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes

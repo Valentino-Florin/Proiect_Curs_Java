@@ -1,4 +1,5 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 package sci.travel_app.WalkTheBear.model.entities;
 
 import javax.persistence.*;
@@ -129,6 +130,8 @@ public class Place {
     }
 }
 =======
+=======
+>>>>>>> Stashed changes
 package sci.travel_app.WalkTheBear.model.entities;
 
 import javax.persistence.*;
@@ -258,4 +261,7 @@ public class Place {
         return name;
     }
 }
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes

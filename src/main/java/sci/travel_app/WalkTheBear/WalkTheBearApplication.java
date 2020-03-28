@@ -1,4 +1,5 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 package sci.travel_app.WalkTheBear;
 
 import org.springframework.boot.CommandLineRunner;
@@ -33,6 +34,8 @@ public class WalkTheBearApplication {
 
 }
 =======
+=======
+>>>>>>> Stashed changes
 package sci.travel_app.WalkTheBear;
 
 import org.springframework.boot.CommandLineRunner;
@@ -66,4 +69,7 @@ public class WalkTheBearApplication {
 
 
 }
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes

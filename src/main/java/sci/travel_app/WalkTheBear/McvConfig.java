@@ -1,4 +1,5 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 package sci.travel_app.WalkTheBear;
 
 import org.springframework.context.annotation.Configuration;
@@ -20,6 +21,8 @@ public class McvConfig implements WebMvcConfigurer {
     }
 }
 =======
+=======
+>>>>>>> Stashed changes
 package sci.travel_app.WalkTheBear;
 
 import org.springframework.context.annotation.Configuration;
@@ -40,4 +43,7 @@ public class McvConfig implements WebMvcConfigurer {
 
     }
 }
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes

@@ -1,4 +1,5 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 function showPassword() {
   var x = document.getElementById("showpass");
   if (x.type === "password") {
@@ -15,6 +16,8 @@ function edit(){
 
 
 =======
+=======
+>>>>>>> Stashed changes
 function showPassword() {
   var x = document.getElementById("showpass");
   if (x.type === "password") {
@@ -27,4 +30,7 @@ function showPassword() {
 
 
 
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes

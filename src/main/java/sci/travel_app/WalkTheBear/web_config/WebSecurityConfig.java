@@ -1,4 +1,5 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 package sci.travel_app.WalkTheBear.web_config;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,6 +62,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 }
 =======
+=======
+>>>>>>> Stashed changes
 package sci.travel_app.WalkTheBear.web_config;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -122,4 +125,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     }
 }
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
