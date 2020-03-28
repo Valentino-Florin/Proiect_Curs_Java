@@ -1,5 +1,3 @@
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -45,56 +43,4 @@
     </table>
 </div>
 </body>
-=======
-=======
->>>>>>> Stashed changes
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="utf-8">
-    <title>Profile Favorites</title>
-    <link rel="stylesheet" href="../static/CSS/profilefavorites.css" th:href="@{/CSS/profilefavorites.css}">
-    <link rel="stylesheet" th:href="@{https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css}">
-</head>
-
-<body>
-<script type="text/javascript" th:src="@{/JS/profilefavorites.js}"></script>
-<div id="top_page">
-    <h1 style="font-size: 50px">WalkTheBear</h1>
-</div>
-
-<div id="my_profile">
-    <h2>MY PROFILE</h2>
-</div>
-
-<div class="tab">
-    <button class="tablinks" onclick="window.location.href = '/profileinfo'; ">Profile info 🔏</button>
-    <button class="tablinks" onclick="window.location.href = '/profilefavorites?id=205'"
-            style="background-color: #4CAF50">My favorites ⭐
-    </button>
-    <button class="tablinks" onclick="window.location.href = '/profileratings'">My ratings 📝</button>
-</div>
-
-<div class="tabcontent">
-    <table>
-        <tr>
-            <th class="favTableHeadPadding">ID</th>
-            <th class="favTableHeadPadding">Place</th>
-            <th class="favTableHeadPadding">Address</th>
-            <th class="favTableHeadPadding">Phone</th>
-        </tr>
-
-        <tr th:each="profilefavorite : ${favoritesList}">
-            <td th:text="${profilefavorite.getId()}"></td>
-            <td th:text="${profilefavorite.getPlace().getName()}"></td>
-            <td th:text="${profilefavorite.getPlace().getAddress()}"></td>
-            <td th:text="${profilefavorite.getPlace().getPhoneNumber()}"></td>
-        </tr>
-    </table>
-</div>
-</body>
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 </html>
