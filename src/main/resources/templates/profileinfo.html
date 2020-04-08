@@ -1,22 +1,81 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <meta charset="utf-8"/>
-    <title>
-        <!-- Insert your title here -->
-    </title>
-    </head>
-<body> <!-- header start -->
-    
-    <!-- header end -->
-    
-    
-    <!-- main content start -->
-    
-    <!-- main content end -->
+
+    <meta charset="utf-8">
+    <title>Profile info</title>
+    <link rel="stylesheet" href="../static/css/profileinfo.css" th:href="@{/css/profileinfo.css}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css"
+          th:href="@{https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css}">
+
+</head>
+
+<body>
+<script type="text/javascript" th:src="@{/JS/profileinfo.js}"></script>
+<div id="top_page">
+    <h1 style="font-size: 50px">WalkTheBear</h1>
+</div>
+
+<div id="my_profile">
+    <h2 style="margin-bottom: 10px">MY PROFILE</h2>
+</div>
+
+<!-- Tab links -->
 
 
-    <!-- footer start -->
-    
-    <!-- footer end --></body>
+<div class="tabs is-toggle is-toggle-rounded">
+    <ul>
+        <li class="is-active">
+            <a>
+                <span class="icon is-medium"><i class="fas fa-image" aria-hidden="true"></i></span>
+                <span onclick="window.location.href = '/profileinfo?id=1'">Profile info 🔏</span>
+            </a>
+        </li>
+        <li>
+            <a>
+                <span class="icon is-medium"><i class="fas fa-image" aria-hidden="true"></i></span>
+                <span onclick="window.location.href = '/profilefavorites?id=1'">My favorites ⭐</span>
+            </a>
+        </li>
+        <li>
+            <a>
+                <span class="icon is-medium"><i class="fas fa-image" aria-hidden="true"></i></span>
+                <span>My ratings 📝</span>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<!-- Tab contents -->
+
+<div class="tabcontent" id="info">
+
+    <form style="margin-left: 15px" th:object="${user}">
+
+        <div class="field">
+            <label class="label">Username:</label>
+            <div class="control">
+                <input class="input" th:value="*{userName}" disabled>
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="label">Email:</label>
+            <div class="control">
+            <input class="input" th:value="*{email}" disabled>
+        </div>
+        </div>
+
+        <div class="field">
+            <label class="label">Password:</label>
+            <div class="control">
+                <input class="input" th:value="*{password}" disabled>
+            </div>
+        </div>
+
+        <button type="button" name="editProfile" id="editButton" onclick="window.location.href = '/editprofile'" class="button">Edit</button>
+    </form>
+</div>
+</body>
 </html>

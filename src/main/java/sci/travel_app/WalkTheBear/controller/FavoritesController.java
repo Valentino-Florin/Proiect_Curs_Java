@@ -3,10 +3,7 @@ package sci.travel_app.WalkTheBear.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import sci.travel_app.WalkTheBear.model.entities.Favorite;
 import sci.travel_app.WalkTheBear.service.AppUserServiceImp;
@@ -25,8 +22,8 @@ public class FavoritesController {
     private AppUserServiceImp appUserServiceImp;
 
     @RequestMapping(value = "/profileinfo", method = RequestMethod.GET)
-    public String profileinfo(@RequestParam Long userId, Model model){
-        model.addAttribute("user", appUserServiceImp.findById(userId));
+    public String profileinfo(@RequestParam Long id, Model model){
+        model.addAttribute("user", appUserServiceImp.findById(id));
         return "profileinfo";
     }
 
@@ -38,8 +35,8 @@ public class FavoritesController {
 //    }
 
     @RequestMapping(value = "/profilefavorites", method = RequestMethod.GET)
-    public ModelAndView favoritesById(@RequestParam Long id) {
-        ModelAndView mav = new ModelAndView("profilefavorites");
+    public String favoritesById(@RequestParam Long id, Model model) {
+
         List<Favorite> favoritesByUserId = new ArrayList<>();
 
         for (Favorite fav : favoritesServiceImpl.getAllFavorites()) {
@@ -47,8 +44,9 @@ public class FavoritesController {
                 favoritesByUserId.add(fav);
             }
         }
-        mav.addObject("favoritesList", favoritesByUserId);
-        return mav;
+        model.addAttribute("favorites", favoritesByUserId);
+
+        return "profilefavorites";
     }
 
     @GetMapping("/editprofile")

@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>Profile Favorites</title>
-    <link rel="stylesheet" href="../static/CSS/profilefavorites.css" th:href="@{/CSS/profilefavorites.css}">
+    <link rel="stylesheet" href="../static/css/profilefavorites.css" th:href="@{/css/profilefavorites.css}">
     <link rel="stylesheet" th:href="@{https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css}">
 </head>
 
@@ -14,29 +14,44 @@
 </div>
 
 <div id="my_profile">
-    <h2>MY PROFILE</h2>
+    <h1 style="margin-bottom: 10px">MY PROFILE</h1>
 </div>
 
-<div class="tab">
-    <button class="tablinks" onclick="window.location.href = '/profileinfo'; ">Profile info 🔏</button>
-    <button class="tablinks" onclick="window.location.href = '/profilefavorites?id=205'"
-            style="background-color: #4CAF50">My favorites ⭐
-    </button>
-    <button class="tablinks" onclick="window.location.href = '/profileratings'">My ratings 📝</button>
-</div>
 
+<div class="tabs is-toggle is-toggle-rounded">
+    <ul>
+        <li>
+            <a>
+                <span class="icon is-medium"><i class="fas fa-image" aria-hidden="true"></i></span>
+                <span onclick="window.location.href = '/profileinfo?id=1'">Profile info 🔏</span>
+            </a>
+        </li>
+        <li  class="is-active">
+            <a>
+                <span class="icon is-medium"><i class="fas fa-image" aria-hidden="true"></i></span>
+                <span onclick="window.location.href = '/profilefavorites?id=1'">My favorites ⭐</span>
+            </a>
+        </li>
+        <li>
+            <a>
+                <span class="icon is-medium"><i class="fas fa-image" aria-hidden="true"></i></span>
+                <span>My ratings 📝</span>
+            </a>
+        </li>
+    </ul>
+</div>
 <div class="tabcontent">
     <table>
         <tr>
-            <th class="favTableHeadPadding">ID</th>
-            <th class="favTableHeadPadding">Place</th>
-            <th class="favTableHeadPadding">Address</th>
-            <th class="favTableHeadPadding">Phone</th>
+            <th class="padding-right-15px">Name</th>
+            <th class="padding-right-80px">City</th>
+            <th class="padding-right-100px">Address</th>
+            <th class="padding-right-15px">Phone</th>
         </tr>
 
-        <tr th:each="profilefavorite : ${favoritesList}">
-            <td th:text="${profilefavorite.getId()}"></td>
+        <tr th:each="profilefavorite : ${favorites}">
             <td th:text="${profilefavorite.getPlace().getName()}"></td>
+            <td th:text="${profilefavorite.getPlace().getCity()}"></td>
             <td th:text="${profilefavorite.getPlace().getAddress()}"></td>
             <td th:text="${profilefavorite.getPlace().getPhoneNumber()}"></td>
         </tr>

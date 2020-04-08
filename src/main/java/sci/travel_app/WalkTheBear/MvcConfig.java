@@ -6,7 +6,7 @@ import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
-public class McvConfig implements WebMvcConfigurer {
+public class MvcConfig implements WebMvcConfigurer {
 
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/index").setViewName("index");
@@ -22,6 +22,10 @@ public class McvConfig implements WebMvcConfigurer {
         registry.addViewController("/planner").setViewName("planner");
         registry.addViewController("/placedetail").setViewName("placedetail");
         registry.addViewController("/site").setViewName("site");
+        registry.addViewController("/editprofile").setViewName("editprofile");
+        registry.addViewController("/profileinfo").setViewName("profileinfo");
+        registry.addViewController("/profilefavorites").setViewName("profilefavorites");
+        registry.addViewController("/profileratings").setViewName("profileratings");
     }
 
 //    public void addResourceHandlers(ResourceHandlerRegistry registry) {
