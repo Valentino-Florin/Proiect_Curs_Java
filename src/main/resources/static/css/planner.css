@@ -10,32 +10,35 @@ body {
 /* _______________________________ main start _________________________________ */
 
 #main_container {
-      padding: 30px;
-     margin-top: 30px;
-     margin-bottom: 30px;
+    padding: 30px;
+    margin-top: 30px;
+    margin-bottom: 30px;
     margin-left: 50px;
     margin-right: 50px;
 }
-#content{
+
+#content {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
 }
+
 #name {}
+
 h2 {
     font-size: 40px;
 }
+
 .box {
     padding: 20px;
     border: 1px solid gray;
     background-color: white;
 }
-#link_container {
-    
-}
+
+#link_container {}
 
 #form {
-   flex: 3; 
+    flex: 3;
 }
 
 form {
@@ -49,66 +52,71 @@ form {
 }
 
 .form_element {
-    
+    display: flex;
+    flex-direction: row;
 }
-#date_days{
-     display: flex;
+
+#date_days {
+    display: flex;
     flex-direction: column;
 }
 
-label {
+label {}
+
+.form_element p {
     
 }
 
-p {
+#add_button {
+    display: flex;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 10px;
+}
+#add_button img {
     
 }
 
-#schedule_container {
+#remove_button {
+    display: flex;
+     margin-left: 20px;
+    margin-right: 20px;
+     margin-top: 10px;
+}
+#remove_button img {
     
 }
 
-.schedule {
-    
-}
+#schedule_container {}
 
-h3 {
-    
-}
+.schedule {}
 
-.hour_container {
-    
-}
+h3 {}
+
+.hour_container {}
 
 .hours {
     display: flex;
     flex-direction: row;
 }
-.drop{
+
+.drop {
     background-color: darkcyan;
     height: 60px;
     width: 200px;
 }
 
-#buttons_container {
-    
-}
+#buttons_container {}
 
 #list {
-   flex: 1;  
+    flex: 1;
 }
 
-#places_list {
-    
-}
+#places_list {}
 
-.places_list_item {
-    
-}
+.places_list_item {}
 
-#controls_container {
-    
-}
+#controls_container {}
 
 /* _______________________________ main end _________________________________ */
 
@@ -117,4 +125,5 @@ footer {
     background-color: cadetblue;
     height: 100px;
 }
+
 /* _______________________________ footer end _________________________________ */

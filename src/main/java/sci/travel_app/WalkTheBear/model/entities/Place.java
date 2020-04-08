@@ -1,5 +1,6 @@
 package sci.travel_app.WalkTheBear.model.entities;
 
+import org.hibernate.annotations.Type;
 import org.springframework.format.annotation.DateTimeFormat;
 import sci.travel_app.WalkTheBear.model.misc.Category;
 import sci.travel_app.WalkTheBear.model.misc.SubCategory;
@@ -24,9 +25,9 @@ public class Place {
     private String address;
     @Column(name = "COORDINATES")
     private String coordinates;
-    @Column(name = "PHONE_NUMBER", nullable = false)
+    @Column(name = "PHONE_NUMBER")
     private String phoneNumber;
-    @Column(name = "EMAIL", nullable = false)
+    @Column(name = "EMAIL")
     private String email;
     @Column(name = "CATEGORY", nullable = false)
     @Enumerated(EnumType.STRING)
@@ -39,6 +40,9 @@ public class Place {
     @Column(name = "DESCRIPTION", nullable = false)
     private String description;
     //Place mainPic;
+//    @Lob
+//    @Type(type = "org.hibernate.type.BinaryType")
+//    private byte[] thumbnail;
     //Place galleryPic;
     @Temporal(TemporalType.TIMESTAMP)
     @DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")

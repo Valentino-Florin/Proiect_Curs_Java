@@ -30,10 +30,11 @@
                     <p>Add trip</p>
                 </div>
             </div>
+            <div id="list" th:each="trip : ${allTrips}">
             <div class=element>
                 <div class=card>
-                    <h3>Trip number 1</h3>
-                    <p>Description text</p>
+                    <h3 th:text="${trip.name}">Trip number 1</h3>
+                    <p th:text="${trip.description}">Description text</p>
                 </div>
                 <div class=links><a href="">View/Edit</a><a href="">Remove</a>
                 </div>
@@ -54,6 +55,7 @@
                 <div class=links><a href="">View/Edit</a><a href="">Remove</a>
                 </div>
             </div>
+        </div> 
         </div>
         <div class=row>
             <div class=element>

@@ -72,7 +72,7 @@
             <p>Your rating</p>
             <div id=star_rating_vote>
                 <p>****star placeholder</p>
-                </form>
+              
                 <form method="post" th:action="@{/placedetail}" th:object="${rating}" class="mt-5">
 
                     <input value="0" class="rating" data-glyphicon="0"
@@ -92,17 +92,19 @@
         </div>
 
         </div>
-        <div class=box id=user_rating>
-            <h3>User reviews</h3>
-            <div class=rating_list th:switch="${rating}">
-                <h4 th:case="null">No ratings yet!</h4>
-                <div th:case="*">
-                    <table>
-                        <tr th:each="rating : ${places}"> // add friend
-                            <td th:text="${rating.starRating}"></td>
-                            <td th:text="${rating.comment}"></td>
-                        </tr>
-                    </table>
+    <div class=box id=user_rating>
+        <h3>User reviews</h3>
+        <div class=rating_list>
+            <!--                <div class=rating_list th:switch="${rating}">-->
+            <!--                <h4 th:case="null">No ratings yet!</h4>-->
+            <!--                <div th:case="*">-->
+            <div>
+                <table>
+                    <tr th:each="ratings : ${ratingList}">
+                        <td th:text="${ratings.starRating}"></td>
+                        <td th:text="${ratings.comment}"></td>
+                    </tr>
+                </table>
 
 <!--                <div class=rating_list_item th:each="rating : ${students}">-->
 <!--                    <p>star placeholder</p>-->
@@ -121,30 +123,7 @@
                 </div>
             </div>
         </div>
-    </div>
-    </div>
-    <div class=box id=user_rating>
-        <h3>User reviews</h3>
-        <div class=rating_list>
-            <div class=rating_list_item>
-                <p>star placeholder</p>
-                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.</p>
-            </div>
-            <div class=rating_list_item>
-                <p>star placeholder</p>
-                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.</p>
-            </div>
-            <div class=rating_list_item>
-                <p>star placeholder</p>
-                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-
+  </div>
 <!-- main content end -->
 
 
@@ -153,12 +132,12 @@
 <div th:insert="fragments :: footer"></div>
 
 <!-- footer end -->
-
-    <script th:src="@{http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js}"></script>
+  <script th:src="@{http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js}"></script>
     <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js}"></script>
     <script th:src="@{https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js}"></script>
     <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.6/js/star-rating.min.js}"></script>
 
-</body>
 
+
+</body>
 </html>

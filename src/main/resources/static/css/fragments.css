@@ -1,7 +1,7 @@
 
 /* _______________________________ all headers start _________________________________ */
 
-header {
+.header {
     /*background-color: #C9F0D9;*/
 
 }
@@ -49,7 +49,10 @@ h1 {
     justify-content: center;
 }
 
-.main_nav_links {}
+.main_nav_links {
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
 
 #nav_link1 {}
 
@@ -69,9 +72,9 @@ h1 {
 
 /* _______________________________ big header start _________________________________ */
 
-.hero_image_container {
+.hero_image_container_l {
+    align-content: center;
     display: grid;
-    justify-content: center;
     /*
     grid-template-columns: 1fr 1fr 1fr 2fr;
     grid-template-rows: 1fr 1fr;
@@ -82,7 +85,7 @@ h1 {
     grid-row-gap: 0px;
 }
 
-.hero_image_container img {
+.hero_image_container_l img {
     /*    max-width: 50%;*/
     max-width: 30vw;
 }
@@ -125,14 +128,14 @@ h1 {
 
 
 
-.hero_image_container {
+.hero_image_container_m {
     display: flex;
     justify-content: center;
 }
 
-.hero_image_container img {
-    /*    max-width: 50%;*/
-    max-width: 30vw;
+.hero_image_container_m img {
+        max-width: 100%;
+/*    max-width: 30vw;*/
 }
 
 #hero {}

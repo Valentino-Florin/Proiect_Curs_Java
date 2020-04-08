@@ -7,6 +7,7 @@
         <!-- Insert your title here -->
     </title>
     <link rel="stylesheet" href="../static/css/home.css" th:href="@{/css/home.css}">
+    <link rel="stylesheet" href="../static/css/fragments.css" th:href="@{/css/fragments.css}">
 
 
     <script></script>
@@ -15,27 +16,7 @@
 
 <body>
     <!-- header start -->
-    <header>
-        <div class="top_nav">
-            <div class="searchbar"><input type="text" id="header_searchbar" placeholder="Search"></div>
-            <div class="top_nav_links">
-                 <a th:href="@{/login}">Login</a>
-                <a th:href="@{/register}">Register</a>
-            </div>
-        </div>
-        <div id="main_title">
-            <h1>Page title</h1>
-        </div>
-        <div id=img_and_title_container>
-
-            <div class="hero_image_container"> <img id="hero1" src="../static/images/placeholder.jpg" th:src="@{/images/placeholder.jpg}"> <img id="hero2" src="../static/images/placeholder.jpg" th:src="@{/images/placeholder.jpg}"><img id="hero3" src="../static/images/placeholder.jpg" th:src="@{/images/placeholder.jpg}"><img id="hero4" src="../static/images/placeholder.jpg" th:src="@{/images/placeholder.jpg}"></div>
-        </div>
-        <div class=main_navigation>
-            <div class=main_nav_links id=nav_link1><a href="">Category 1</a> </div>
-            <div class=main_nav_links id=nav_link2><a href="">Category 2</a> </div>
-            <div class=main_nav_links id=nav_link3><a href="">Category 3</a> </div>
-        </div>
-    </header>
+     <div th:insert="fragments :: home_header"></div>
     <!-- header end -->
 
     <!-- main content start -->

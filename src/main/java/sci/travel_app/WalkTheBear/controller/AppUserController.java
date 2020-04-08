@@ -41,6 +41,7 @@ public class AppUserController {
         return "login";
     }
 
+
     @GetMapping("/registration")
     public String registration(Model model) {
         model.addAttribute("register", new User());

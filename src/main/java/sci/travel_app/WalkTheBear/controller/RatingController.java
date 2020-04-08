@@ -12,7 +12,6 @@ import java.util.logging.Logger;
 
 
 @Controller
-//@RequestMapping({ "placedetail"})
 public class RatingController {
 
     @Autowired

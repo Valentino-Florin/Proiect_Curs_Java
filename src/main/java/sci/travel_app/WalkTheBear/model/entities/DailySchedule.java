@@ -55,4 +55,16 @@ public class DailySchedule {
         this.name = name;
     }
 
+    public Itinerary getItinerary() {
+        return itinerary;
+    }
+    public void setItinerary(Itinerary itinerary) {
+        this.itinerary = itinerary;
+    }
+    public Map<String, Place> getDay() {
+        return day;
+    }
+    public void setDay(Map<String, Place> day) {
+        this.day = day;
+    }
 }

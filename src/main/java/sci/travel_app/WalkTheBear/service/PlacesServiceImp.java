@@ -64,4 +64,8 @@ public class PlacesServiceImp implements PlacesService {
     public void deletePlace(long placeId) {
         placesRepository.delete(getPlaceById(placeId));
     }
+
+
+
+
 }

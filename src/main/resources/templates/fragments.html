@@ -9,8 +9,7 @@
 </head>
 <body>
  <!-- big header start -->
-<!--
- <header th:fragment="home_header">
+ <div id=header_L th:fragment="home_header">
         <div class="top_nav">
             <div class="searchbar"><input type="text" id="header_searchbar" placeholder="Search"></div>
             <div class="top_nav_links">
@@ -23,19 +22,18 @@
         </div>
         <div id=img_and_title_container>
 
-            <div class="hero_image_container"> <img id="hero1" src="../static/images/placeholder.jpg" th:src="@{/images/placeholder.jpg}"> <img id="hero2" src="../static/images/placeholder.jpg" th:src="@{/images/placeholder.jpg}"><img id="hero3" src="../static/images/placeholder.jpg" th:src="@{/images/placeholder.jpg}"><img id="hero4" src="../static/images/placeholder.jpg" th:src="@{/images/placeholder.jpg}"></div>
+            <div class="hero_image_container_l"> <img id="hero1" src="../static/images/hero1.jpg" th:src="@{/images/hero1.jpg}"> <img id="hero2" src="../static/images/hero2.jpg" th:src="@{/images/hero2.jpg}"><img id="hero3" src="../static/images/hero3.jpg" th:src="@{/images/hero3.jpg}"><img id="hero4" src="../static/images/hero4.jpg" th:src="@{/images/hero4.jpg}"></div>
         </div>
         <div class=main_navigation>
             <div class=main_nav_links id=nav_link1><a href="">Category 1</a> </div>
             <div class=main_nav_links id=nav_link2><a href="">Category 2</a> </div>
             <div class=main_nav_links id=nav_link3><a href="">Category 3</a> </div>
         </div>
-    </header>
--->
+    </div>
     <!-- big header end -->
     
      <!--regular header start -->
-<header th:fragment="header">
+<div id="header_M" th:fragment="header">
         <div class="top_nav">
             <div class="searchbar"><input type="text" id="header_searchbar" placeholder="Search"></div>
             <div class="top_nav_links">
@@ -48,14 +46,14 @@
         </div>
         <div id=img_and_title_container>
 
-            <div class="hero_image_container"> <img id="hero" src="../static/images/placeholder.jpg" th:src="@{/images/placeholder.jpg}"> </div>
+            <div class="hero_image_container_m"> <img id="hero" src="../static/images/hero_small.jpg" th:src="@{/images/phero_small.jpg}"> </div>
         </div>
         <div class=main_navigation>
             <div class=main_nav_links id=nav_link1><a href="">Category 1</a> </div>
             <div class=main_nav_links id=nav_link2><a href="">Category 2</a> </div>
             <div class=main_nav_links id=nav_link3><a href="">Category 3</a> </div>
         </div>
-    </header>
+    </div>
     <!-- rehular header end -->
     
      <!--small header start -->

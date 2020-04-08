@@ -57,4 +57,8 @@ public class ScheduleService {
        //remove from list
         unplannedPlaces.remove(place);
     }
+    public void removeFromSchedule(Place place, DailySchedule timetable, String time){
+        
+    }
+
 }

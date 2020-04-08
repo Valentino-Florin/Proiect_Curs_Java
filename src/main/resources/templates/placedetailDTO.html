@@ -81,13 +81,15 @@
         </div>
         <div class=box id=user_rating>
             <h3>User reviews</h3>
-            <div class=rating_list th:switch="${rating}">
-                <h4 th:case="null">No ratings yet!</h4>
-                <div th:case="*">
+            <div class=rating_list>
+<!--                <div class=rating_list th:switch="${rating}">-->
+<!--                <h4 th:case="null">No ratings yet!</h4>-->
+<!--                <div th:case="*">-->
+                    <div>
                     <table>
-                        <tr th:each="rating : ${places}"> // add friend
-                            <td th:text="${rating.starRating}"></td>
-                            <td th:text="${rating.comment}"></td>
+                        <tr th:each="ratings : ${ratingList}">
+                            <td th:text="${ratings.starRating}"></td>
+                            <td th:text="${ratings.comment}"></td>
                         </tr>
                     </table>
 

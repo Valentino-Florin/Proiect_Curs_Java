@@ -7,21 +7,27 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
+import sci.travel_app.WalkTheBear.data_utils.dto.PlaceDTO;
 import sci.travel_app.WalkTheBear.model.entities.Place;
+import sci.travel_app.WalkTheBear.model.entities.Rating;
 import sci.travel_app.WalkTheBear.model.misc.Category;
 import sci.travel_app.WalkTheBear.service.PlacesService;
 import sci.travel_app.WalkTheBear.service.PlacesServiceImp;
+import sci.travel_app.WalkTheBear.service.RatingServiceImpl;
 
 import javax.validation.Valid;;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Controller
 public class PlaceController {
 
     @Autowired
     private PlacesServiceImp placesService;
+//    @Autowired
+//    private RatingServiceImpl ratingService;
 
     /* @PostMapping(value = "/addplace")
       public String addNewPlace( @ModelAttribute Place place )
@@ -51,6 +57,16 @@ public class PlaceController {
         model.addAttribute("place", placesService.getPlaceByName(placeName));
         return "searchresults";
     }
+
+//    //path example: http://localhost:8080/places/1
+//    @GetMapping(value="/places/{id}")
+//    public String getPlace(@PathVariable("id") long id, Model model) {
+//        Place place = placesService.getPlaceById(id);
+//        List<Rating> ratingList = ratingService.getAllRatingsOfPlaceById(id);
+//        model.addAttribute("place", place);
+//        model.addAttribute("ratingList", ratingList);
+//        return "placedetail";
+//    }
 
     @GetMapping("/category")
     public String showPlacesByCategory(Model model, Category category) {

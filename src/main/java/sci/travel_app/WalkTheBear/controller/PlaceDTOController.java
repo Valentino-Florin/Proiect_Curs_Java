@@ -7,8 +7,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import sci.travel_app.WalkTheBear.data_utils.dto.PlaceDTO;
 import sci.travel_app.WalkTheBear.model.entities.Place;
+import sci.travel_app.WalkTheBear.model.entities.Rating;
 import sci.travel_app.WalkTheBear.service.PlacesServiceImp;
 import sci.travel_app.WalkTheBear.service.RatingService;
+import sci.travel_app.WalkTheBear.service.RatingServiceImpl;
+
+import java.util.List;
 
 @Controller
 public class PlaceDTOController {
@@ -16,7 +20,7 @@ public class PlaceDTOController {
     @Autowired
     private PlacesServiceImp placeService;
     @Autowired
-    private RatingService ratingService;
+    private RatingServiceImpl ratingService;
     @Autowired
     private ModelMapper modelMapper;
 
@@ -32,7 +36,9 @@ public class PlaceDTOController {
     @GetMapping(value="/places/{id}")
     public String getPlace(@PathVariable("id") long id, Model model) {
         PlaceDTO place = convertToDto(placeService.getPlaceById(id));
+        List<Rating> ratingList = ratingService.getAllRatingsOfPlaceById(id);
         model.addAttribute("place", place);
+        model.addAttribute("ratingList", ratingList);
         return "placedetailDTO";
     }
 
