@@ -37,7 +37,7 @@ public class Place {
     private SubCategory subcategory;
     @Column(name = "WORK_HOURS")
     private String workingHours;
-    @Column(name = "DESCRIPTION", nullable = false)
+    @Column(name = "DESCRIPTION", length=1000, nullable = false)
     private String description;
     //Place mainPic;
 //    @Lob

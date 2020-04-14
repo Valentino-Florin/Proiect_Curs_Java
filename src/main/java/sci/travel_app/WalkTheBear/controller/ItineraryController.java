@@ -6,9 +6,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import sci.travel_app.WalkTheBear.model.entities.AppUser;
 import sci.travel_app.WalkTheBear.model.entities.Itinerary;
 import sci.travel_app.WalkTheBear.service.ItineraryService;
+import sci.travel_app.WalkTheBear.service.ScheduleService;
 
 import java.util.List;
 
@@ -17,6 +19,8 @@ public class ItineraryController {
 
     @Autowired
     private ItineraryService itineraryService;
+    @Autowired
+    private ScheduleService scheduleService;
 
 //    @PostMapping("addItinerary")
 //public String addNewItinerary (Itinerary itinerary, Model model) {
@@ -32,50 +36,29 @@ public class ItineraryController {
         return "tripmanager";
     }
 
+    @GetMapping("/planner")
+    public String createTrip(Model model) {
+        model.addAttribute("itineraryForm", new Itinerary());
+        return "planner";
+    }
 
-    @PostMapping("/planner")
-    public Itinerary createTrip(Itinerary trip) {
-        return itineraryService.createItinerary();
+    @PostMapping("/planner/save")
+    public String saveTrip(){
+
+        return null;
     }
 
 
-    @GetMapping("/planner/{id}")
-    public Itinerary showTrip(@PathVariable(value = "id") Long id) {
+    @PutMapping("/planner/{id}")
+    public Itinerary showTrip(@PathVariable(value = "id") Long id, Model model) {
+
         return itineraryService.findById(id);
 //                .orElseThrow(() -> new ResourceNotFoundException("Note", "id", noteId));
     }
 
-//    @PutMapping("/planner/{id}")
-//    public Itinerary updateTrip(@PathVariable(value = "id") Long id,
-//                           @Valid @RequestBody Itinerary trip) {
-//
-//        Itinerary itinerary = itineraryService.findById(id);
-//                //.orElseThrow(() -> new ResourceNotFoundException("Note", "id", noteId));
-//
-//        itinerary.setName(trip.getName());
-//        itinerary.setDescription(trip.getDescription());
-//
-//        Itinerary updatedTrip = itineraryService.saveItinerary();
-//        return updatedTrip;
-//    }
 
-//    @DeleteMapping("/planner/{id}")
-//    public ResponseEntity<?> deleteNote(@PathVariable(value = "id") Long id) {
-//        Itinerary itinerary = itineraryService.findById(id);
-////                .orElseThrow(() -> new ResourceNotFoundException("Note", "id", noteId));
-//
-//        itineraryService.deleteItinerary();
-//
-//        return ResponseEntity.ok().build();
-//    }
 
-//    //alternate update method; update the requestmapping value!
-//    @RequestMapping(value = {id}, method = RequestMethod.PUT)
-//    public Itinerary update(@PathVariable Long id, @RequestBody Itinerary itinerary){
-//        Itinerary existingItinerary = itineraryService.findById(id);
-//        BeanUtils.copyProperties(itinerary, existingItinerary, "id");
-//        return itineraryService.saveItinerary(existingItinerary);
-//    }
+
 
 
 }

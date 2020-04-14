@@ -20,38 +20,12 @@ public class ItineraryService {
     private ItineraryRepository tripRepository;
 
     //    public List<Itinerary>
-    public List<DailySchedule> Schedule = new ArrayList<>();
+    public List<DailySchedule> schedule = new ArrayList<>();
     public List<Place> unplannedPlaces = new ArrayList<>();
 
 
-    public Itinerary createItinerary() {
-        Itinerary itinerary = new Itinerary();
-        List<DailySchedule> Schedule = new ArrayList<>();
-        DailySchedule defaultDay = new DailySchedule();
-        defaultDay.day.put("00:00", null);
-        defaultDay.day.put("01:00", null);
-        defaultDay.day.put("02:00", null);
-        defaultDay.day.put("03:00", null);
-        defaultDay.day.put("04:00", null);
-        defaultDay.day.put("05:00", null);
-        defaultDay.day.put("07:00", null);
-        defaultDay.day.put("08:00", null);
-        defaultDay.day.put("09:00", null);
-        defaultDay.day.put("10:00", null);
-        defaultDay.day.put("11:00", null);
-        defaultDay.day.put("12:00", null);
-        defaultDay.day.put("13:00", null);
-        defaultDay.day.put("14:00", null);
-        defaultDay.day.put("15:00", null);
-        defaultDay.day.put("16:00", null);
-        defaultDay.day.put("17:00", null);
-        defaultDay.day.put("18:00", null);
-        defaultDay.day.put("19:00", null);
-        defaultDay.day.put("20:00", null);
-        defaultDay.day.put("21:00", null);
-        defaultDay.day.put("22:00", null);
-        defaultDay.day.put("23:00", null);
-        Schedule.add(defaultDay);
+    public Itinerary createItinerary(String name) {
+        Itinerary itinerary = new Itinerary(name);
         return tripRepository.save(itinerary);
     }
 

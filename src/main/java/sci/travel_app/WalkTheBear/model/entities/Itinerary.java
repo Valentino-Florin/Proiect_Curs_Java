@@ -27,6 +27,12 @@ public class Itinerary {
 //    public  List<DailySchedule> Schedule = new ArrayList<>();
 
     public Itinerary(){}
+
+    //remove this constructor after test
+    public Itinerary(String name){
+        this.name = name;
+    }
+
     public Itinerary(String name, String description, AppUser user, Date startDate, Date endDate) {
         this.name = name;
         this.description = description;
