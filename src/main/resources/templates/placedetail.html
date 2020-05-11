@@ -6,8 +6,8 @@
     <title>
         <!-- Insert your title here -->
     </title>
-    <link th:rel="stylesheet" href="../static/css/placedetail.css" th:href="@{/css/placedetail.css}">
-    <link th:rel="stylesheet" href="../static/css/rating.css" th:href="@{/css/rating.css}">
+    <link rel="stylesheet" th:rel="stylesheet" href="../static/css/placedetail.css" th:href="@{/css/placedetail.css}">
+    <link rel="stylesheet" th:rel="stylesheet" href="../static/css/rating.css" th:href="@{/css/rating.css}">
     <link rel="stylesheet" href="../static/css/fragments.css" th:href="@{/css/fragments.css}">
     <link th:rel="stylesheet" th:href="@{https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css} "/>
     <link th:rel="stylesheet" th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css} "/>
@@ -105,20 +105,12 @@
                         <td th:text="${ratings.comment}"></td>
                     </tr>
                 </table>
-
-<!--                <div class=rating_list_item th:each="rating : ${students}">-->
-<!--                    <p>star placeholder</p>-->
-<!--                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.</p>-->
-<!--                </div>-->
+<!--<div class=rating_list th:each="ratings : ${ratingList}">-->
 <!--                <div class=rating_list_item>-->
-<!--                    <p>star placeholder</p>-->
-<!--                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.</p>-->
+<!--                    <p th:text="${ratings.starRating}>star placeholder</p>-->
+<!--                    <p th:text="${ratings.comment}">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.</p>-->
 <!--                </div>-->
-<!--                <div class=rating_list_item>-->
-<!--                    <p>star placeholder</p>-->
-<!--                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.</p>-->
-<!--                </div> -->
-
+<!--                </div>-->
 
                 </div>
             </div>

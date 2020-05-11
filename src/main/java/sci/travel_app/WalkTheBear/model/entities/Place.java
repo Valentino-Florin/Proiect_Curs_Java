@@ -53,11 +53,9 @@ public class Place {
     private AppUser user;
 
     public Place(){
-
     }
 
-
-    public Place(String name, String county, String city, String address, String phoneNumber, String email, Category category, SubCategory subcategory, String description, Date created, AppUser user) {
+    public Place(String name, String county, String city, String address, String phoneNumber, String email, Category category, SubCategory subcategory, String description, AppUser user) {
         this.name = name;
         this.county = county;
         this.city = city;
@@ -77,6 +75,10 @@ public class Place {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public SubCategory getSubcategory() {
+        return subcategory;
     }
 
     public void setSubcategory(SubCategory subcategory) {
@@ -166,5 +168,25 @@ public class Place {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Place{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", county='" + county + '\'' +
+                ", city='" + city + '\'' +
+                ", address='" + address + '\'' +
+                ", coordinates='" + coordinates + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", email='" + email + '\'' +
+                ", category=" + category +
+                ", subcategory=" + subcategory +
+                ", workingHours='" + workingHours + '\'' +
+                ", description='" + description + '\'' +
+                ", created=" + created +
+                ", user=" + user +
+                '}';
     }
 }

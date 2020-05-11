@@ -18,12 +18,12 @@ public class DailySchedule {
     private Itinerary itinerary;
     @Column(name = "NAME")
     private String name;
-    @ElementCollection
-    @MapKeyColumn(name = "TIME_SLOT")
-    @Column(name = "PLACE")
-    @CollectionTable(name = "DAY_MAPPING")
-    private Map<String, Place> day;
-//    public Map<String, Place> day = new HashMap<>();
+//    @ElementCollection
+//    @MapKeyColumn(name = "TIME_SLOT")
+//    @Column(name = "PLACE")
+//    @CollectionTable(name = "DAY_MAPPING")
+//    private Map<String, Place> day;
+////    public Map<String, Place> day = new HashMap<>();
 
     public DailySchedule(){}
 
@@ -33,31 +33,31 @@ public class DailySchedule {
         this.user = user;
         this.itinerary = itinerary;
         this.name = name;
-        this.day = new HashMap<>();
-        //maybe remove those later
-        day.put("00:00", null);
-        day.put("01:00", null);
-        day.put("02:00", null);
-        day.put("03:00", null);
-        day.put("04:00", null);
-        day.put("05:00", null);
-        day.put("07:00", null);
-        day.put("08:00", null);
-        day.put("09:00", null);
-        day.put("10:00", null);
-        day.put("11:00", null);
-        day.put("12:00", null);
-        day.put("13:00", null);
-        day.put("14:00", null);
-        day.put("15:00", null);
-        day.put("16:00", null);
-        day.put("17:00", null);
-        day.put("18:00", null);
-        day.put("19:00", null);
-        day.put("20:00", null);
-        day.put("21:00", null);
-        day.put("22:00", null);
-        day.put("23:00", null);
+//        this.day = new HashMap<>();
+//        //maybe remove those later
+//        day.put("00:00", null);
+//        day.put("01:00", null);
+//        day.put("02:00", null);
+//        day.put("03:00", null);
+//        day.put("04:00", null);
+//        day.put("05:00", null);
+//        day.put("07:00", null);
+//        day.put("08:00", null);
+//        day.put("09:00", null);
+//        day.put("10:00", null);
+//        day.put("11:00", null);
+//        day.put("12:00", null);
+//        day.put("13:00", null);
+//        day.put("14:00", null);
+//        day.put("15:00", null);
+//        day.put("16:00", null);
+//        day.put("17:00", null);
+//        day.put("18:00", null);
+//        day.put("19:00", null);
+//        day.put("20:00", null);
+//        day.put("21:00", null);
+//        day.put("22:00", null);
+//        day.put("23:00", null);
     }
 
 
@@ -86,10 +86,10 @@ public class DailySchedule {
     public void setItinerary(Itinerary itinerary) {
         this.itinerary = itinerary;
     }
-    public Map<String, Place> getDay() {
-        return day;
-    }
-    public void setDay(Map<String, Place> day) {
-        this.day = day;
-    }
+//    public Map<String, Place> getDay() {
+//        return day;
+//    }
+//    public void setDay(Map<String, Place> day) {
+//        this.day = day;
+//    }
 }

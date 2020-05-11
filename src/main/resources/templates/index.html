@@ -16,82 +16,78 @@
 
 <body>
     <!-- header start -->
-     <div th:insert="fragments :: home_header"></div>
+    <div th:insert="fragments :: home_header"></div>
     <!-- header end -->
 
     <!-- main content start -->
     <main>
         <div class="main_container">
             <div class="instructions">
+                <h2>Welcome</h2>
+                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.</p>
+            </div>
+            <div class="instructions">
                 <h2>Instructions</h2>
                 <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.</p>
             </div>
+            
             <div class="column_layout">
                 <div class="column">
                     <h2>Column 1</h2>
-                    <div class="column_list">
-                        <div class="list_item"><img class="list_thumbnail" src="../static/images/placeholder.jpg">
-                            <p>Nullam dictum felis eu pede mollis pretium. Integer tincidunt.
-                                Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. </p>
-                        </div>
-                        <div class="list_item"><img class="list_thumbnail" src="../static/images/placeholder.jpg">
-                            <p>Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus.</p>
-                        </div>
-                        <div class="list_item"><img class="list_thumbnail" src="../static/images/placeholder.jpg">
-                            <p>Phasellus viverra nulla ut metus varius laoreet. </p>
-                        </div>
-                        <div class="list_item"><img class="list_thumbnail" src="../static/images/placeholder.jpg">
-                            <p> Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi.</p>
-                        </div>
+                    <div class="column_list" th:each="placeone : ${widget1}">
+                        <table>
+                            <tr>
+                                <td>
+                                    <div class="list_item"><img class="list_thumbnail" src="../static/images/placeholder.jpg">
+                                        <p th:text="${placeone.name}"></p>
+                                        <p th:text="${placeone.description}"></p>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
                     </div>
                     <a href="">Download</a>
                 </div>
                 <div class="column">
                     <h2>Column 2</h2>
-                    <div class="column_list">
-                        <div class="list_item"><img class="list_thumbnail" src="../static/images/placeholder.jpg">
-                            <p>Nullam dictum felis eu pede mollis pretium. Integer tincidunt.
-                                Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. </p>
-                        </div>
-                        <div class="list_item"><img class="list_thumbnail" src="../static/images/placeholder.jpg">
-                            <p>Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus.</p>
-                        </div>
-                        <div class="list_item"><img class="list_thumbnail" src="../static/images/placeholder.jpg">
-                            <p>Phasellus viverra nulla ut metus varius laoreet. </p>
-                        </div>
-                        <div class="list_item"><img class="list_thumbnail" src="../static/images/placeholder.jpg">
-                            <p> Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi.</p>
-                        </div>
+                    <div class="column_list" th:each="placetwo : ${widget2}">
+                        <table>
+                            <tr>
+                                <td>
+                                    <div class="list_item"><img class="list_thumbnail" src="../static/images/placeholder.jpg">
+                                        <p th:text="${placetwo.name}"></p>
+                                        <p th:text="${placetwo.description}"></p>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
                     </div>
                     <a href="">Download</a>
                 </div>
                 <div class="column">
                     <h2>Column 3</h2>
-                    <div class="column_list">
-                        <div class="list_item"><img class="list_thumbnail" src="../static/images/placeholder.jpg">
-                            <p>Nullam dictum felis eu pede mollis pretium. Integer tincidunt.
-                                Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. </p>
-                        </div>
-                        <div class="list_item"><img class="list_thumbnail" src="../static/images/placeholder.jpg">
-                            <p>Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus.</p>
-                        </div>
-                        <div class="list_item"><img class="list_thumbnail" src="../static/images/placeholder.jpg">
-                            <p>Phasellus viverra nulla ut metus varius laoreet. </p>
-                        </div>
-                        <div class="list_item"><img class="list_thumbnail" src="../static/images/placeholder.jpg">
-                            <p> Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi.</p>
-                        </div>
+                    <div class="column_list" th:each="placethree : ${widget3}">
+                        <table>
+                            <tr>
+                                <td>
+                                    <div class="list_item"><img class="list_thumbnail" src="../static/images/placeholder.jpg">
+                                        <p th:text="${placethree.name}"></p>
+                                        <p th:text="${placethree.description}"></p>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
                     </div>
-                    <a href="">Download</a>
                 </div>
             </div>
         </div>
+
     </main>
     <!-- main content end -->
 
 
     <!-- footer start -->
-      <div th:insert="fragments :: footer"></div>
+    <div th:insert="fragments :: footer"></div>
     <!-- footer end -->
 
 </body>

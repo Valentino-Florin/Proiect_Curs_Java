@@ -4,6 +4,8 @@ import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.hibernate.exception.GenericJDBCException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import sci.travel_app.WalkTheBear.model.entities.Place;
 import sci.travel_app.WalkTheBear.model.misc.Category;
@@ -65,7 +67,10 @@ public class PlacesServiceImp implements PlacesService {
         placesRepository.delete(getPlaceById(placeId));
     }
 
-
+    @Override
+    public Page<Place> getPaginatedPlaceList(Pageable pageable) {
+        return placesRepository.findAll(pageable);
+    }
 
 
 }

@@ -8,49 +8,13 @@
     </title>
     <link type="text/css" href="../static/css/planner.css" th:href="@{/css/planner.css}" rel="stylesheet">
     <link rel="stylesheet" href="../static/css/fragments.css" th:href="@{/css/fragments.css}">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script>
-        //        function allowDrop(ev) {
-        //            ev.preventDefault();
-        //        }
-        //
-        //        function drag(ev) {
-        //            ev.dataTransfer.setData("text", ev.target.id);
-        //        }
-        //
-        //        function drop(ev) {
-        //            ev.preventDefault();
-        //            var data = ev.dataTransfer.getData("text");
-        //            ev.target.appendChild(document.getElementById(data));
-        //        }
-        function onDragStart(event) {
-            event
-                .dataTransfer
-                .setData('text/plain', event.target.id);
-
-            event
-                .currentTarget
-                .style
-                .backgroundColor = 'yellow';
-        }
-
-        function onDragOver(event) {
-            event.preventDefault();
-        }
-
-        function onDrop(event) {
-            const id = event
-                .dataTransfer
-                .getData('text');
-
-            const draggableElement = document.getElementById(id);
-            const dropzone = event.target;
-
-            dropzone.appendChild(draggableElement);
-
-            event
-                .dataTransfer
-                .clearData();
-        }
+        $(function() {
+            $("#startdate").datepicker();
+        });
 
     </script>
 </head>
@@ -69,78 +33,53 @@
         <div id=link_container> <a href="tripmanager.html" th:href="@{/tripmanager}">Back to trip manager</a> </div>
         <div class=container id=content>
             <div class=box id=form>
-                <form>
+                <form action="" th:object="${itinerary}" th:action="@{/planner/save}" method="post">
                     <div id=info>
                         <div class=form_element>
                             <label th:for="name">Name</label>
-                            <input type="text" maxlength="50" required></div>
+                            <input type="text" th:field="*{name}" maxlength="50" required></div>
                         <div class=form_element>
                             <label th:for="description">Description</label>
-                            <textarea rows="5" cols="50" maxlength="250"></textarea>
+                            <input type="text" th:field="*{description}" maxlength="250" rows="5" cols="50">
+
+                            <!--                            <textarea rows="5" cols="50" maxlength="250"></textarea>-->
                         </div>
                     </div>
 
                     <div id=date_days>
                         <div class=form_element>
                             <label for="startdate">Start date:</label>
-                            <input type="date" id="startdate" name="birthday"></div>
-                        <div class=form_element>
-                            <div id=add_button> <img src="../static/images/button_plus.png" th:src="@{/images/button_plus.png}" alt="add button" height="60px" width="60px" href=""></div>
-                            <p>Days</p>
-                            <div id=remove_button> <img src="../static/images/button_minus.png" th:src="@{/images/button_minus.png}" alt="remove button" height="60px" width="60x" href=""></div>
-                        </div>
+                            <input type="text" th:field="*{startDate}" id="startdate"></div>
                     </div>
-                    <div id=schedule_container>
-                        <div class=schedule>
-                            <h3>Day 1</h3>
-                            <div class=hour_container>
-                                <table>
-                                    <tr th:each=dayMap : >
-                                        <td >
-                                            <p>07:00</p>
-                                        </td>
-                                        <td>
-                                            <p>add place here</p>
-                                        </td>
-                                    </tr>
-                                </table>
-                                <!--
-                                <div class=hours>
-                                    <p>07:00</p>
-                                    <div class="drop" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-                                </div>
-                                <div class=hours>
-                                    <p>08:00</p>
-                                    <span class="drop" ondragover='onDragOver(event);' ondrop='onDrop(event);'>dropzone</span>
-                                </div>
-                                <div class=hours>
-                                    <p>09:00</p>
-                                    <div class="drop" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-                                </div>
-                                <div class=hours>
-                                    <p>08:00</p>
-                                    <div class="drop" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-                                </div>
-                                <div class=hours>
-                                    <p>08:00</p>
-                                    <div class="drop" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-                                </div>
-                                <div class=hours>
-                                    <p>08:00</p>
-                                    <div class="drop" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-                                </div>
-                                <div class=hours>
-                                    <p>08:00</p>
-                                    <div class="drop" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-                                </div>
--->
-                            </div>
-                        </div>
-                    </div>
-                    <div id=buttons_container> 
+
+                    <div id=buttons_container>
                         <button type="submit">Submit</button>
                         <button type="reset">Reset</button></div>
                 </form>
+                <div id=days>
+                    <div id=add_button>
+                        <a th:href="@{/planner/{id}/addnewday(id=${itinerary.id})}"><img src="../static/images/button_plus.png" th:src="@{/images/button_plus.png}" alt="add button" height="60px" width="60px" href=""></a>
+
+
+
+                    </div>
+                    <p>Days</p>
+                    <div class=day_container th:each="day : ${allDaysForItinerary}">
+                        <p th:text="${day?.name}"></p>
+                        <div id=links>
+                            <a th:href="@{/planner/{id}/day/{dayID}(id=${itinerary.id},dayID=${day.id})}">Edit day</a>
+                            <div id=remove_button> <a th:href="@{/planner/{id}/day/{dayID}/delete(id=${itinerary.id},dayID=${day.id})}"><img src="../static/images/button_minus.png" th:src="@{/images/button_minus.png}" alt="remove button" height="60px" width="60x" href=""></a></div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div id=schedule_container>
+                    <div class=schedule>
+
+                    </div>
+                </div>
+
 
             </div>
 

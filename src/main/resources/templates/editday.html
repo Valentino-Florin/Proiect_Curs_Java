@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+     <meta charset="utf-8"/>
+    <title>
+        <!-- Insert your title here -->
+    </title> 
+    <link type="text/css" href="../static/css/day.css" th:href="@{/css/day.css}" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/fragments.css" th:href="@{/css/fragments.css}">
+
+    </head>
+<body> 
+    <!-- header start -->
+    <!-- header end -->
+    
+    
+    <!-- main content start -->
+    
+    <div id=box>
+        <div id=form_container>
+<!--         <form action="#" th:action="@{/editday}" method="post" th:object="${dailyschedule}">-->
+            <form action="#" th:action="@{/save}" method="put" th:object="hoursDto">
+            <label>Name</label>
+             <input type="text" maxlength="50" th:field="*{name}" id="name" placeholder="Name">
+             
+            <table>
+                <tr th:each="hour : ${allHours}" >
+                    <td><p>Time:</p> <p th:text="${hour.time}"> </p>
+                    </td>
+                    <td>
+                    <label>Place</label>
+                    <select class="form-control" th:field="${hour.place}"  id="dropOperator">
+    <option value="0">select a place from the list</option>
+    <option th:each="uplace : ${unplannedPlaces}" th:value="${uplace.id}" th:text="${uplace.name}"></option>
+    </select>
+                        </td>
+                    </tr>
+            </table>
+            
+             <div id=buttons_container> 
+                        <button type="submit">Submit</button>
+                        <button type="reset">Reset</button></div>
+        </form>
+        </div>
+        <div id=list_container>
+            <table>
+                <tr>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+    
+    <!-- main content end -->
+
+
+    <!-- footer start -->
+    <!-- footer end -->
+    </body>
+</html>

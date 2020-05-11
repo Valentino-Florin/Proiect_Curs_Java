@@ -49,19 +49,29 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/css/*","/js/*","/images/*").permitAll()
                 .antMatchers("/searchresults").permitAll()
                 .antMatchers("/register").permitAll()
-                //remove the following 4 after testing:
+                //remove the following after testing:
                 .antMatchers("/tripmanager").permitAll()
+                .antMatchers("/tripmanager/*").permitAll()
+                .antMatchers("/tripmanager/*/*").permitAll()
                 .antMatchers("/placemanager").permitAll()
                 .antMatchers("/addplace").permitAll()
+                .antMatchers("/placedetail").permitAll()
                 .antMatchers("/placedetail/*").permitAll()
                 .antMatchers("/placedetail*").permitAll()
-                .antMatchers("/placedetail").permitAll()
-                .antMatchers("/places").permitAll()
-                .antMatchers("/places/*").permitAll()
+                .antMatchers("/places/**").permitAll()
                 .antMatchers("/editprofile/").permitAll()
                 .antMatchers("/profileinfo").permitAll()
                 .antMatchers("/profilefavorites").permitAll()
                 .antMatchers("/profileratings").permitAll()
+                .antMatchers("/results").permitAll()
+                .antMatchers("/results/*").permitAll()
+                .antMatchers("/categories/tourist-attractions").permitAll()
+                .antMatchers("/categories/lodging").permitAll()
+                .antMatchers("/categories/food-and-drink").permitAll()
+                .antMatchers("/planner/**").permitAll()
+
+
+
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()

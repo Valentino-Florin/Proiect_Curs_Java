@@ -13,5 +13,4 @@ public interface ItineraryRepository extends JpaRepository<Itinerary, Long> {
 
     Itinerary findById(long id);
 
-    void delete(Itinerary itinerary);
 }

@@ -23,8 +23,6 @@ public class Itinerary {
     @Temporal(TemporalType.DATE)
     @Column(name = "DATE_START")
     private Date startDate;
-//    public  List<Place> unplannedPlaces = new ArrayList<>();
-//    public  List<DailySchedule> Schedule = new ArrayList<>();
 
     public Itinerary(){}
 
@@ -33,7 +31,7 @@ public class Itinerary {
         this.name = name;
     }
 
-    public Itinerary(String name, String description, AppUser user, Date startDate, Date endDate) {
+    public Itinerary(String name, String description, AppUser user, Date startDate) {
         this.name = name;
         this.description = description;
         this.user = user;
@@ -70,6 +68,19 @@ public class Itinerary {
     }
 
 
+    public long getId() {
+        return id;
+    }
 
+    public void setId(long id) {
+        this.id = id;
+    }
 
+    public AppUser getUser() {
+        return user;
+    }
+
+    public void setUser(AppUser user) {
+        this.user = user;
+    }
 }

@@ -1,27 +1,126 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
-     <meta charset="utf-8"/>
+    <meta charset="utf-8" />
     <title>
         <!-- Insert your title here -->
-    </title> 
+    </title>
     <link type="text/css" href="../static/css/results.css" th:href="@{/css/results.css}" rel="stylesheet">
     <link rel="stylesheet" href="../static/css/fragments.css" th:href="@{/css/fragments.css}">
 
-    </head>
-<body> 
+</head>
+
+<body>
     <!-- header start -->
     <div th:insert="fragments :: header"></div>
     <!-- header end -->
-    
-    
+
+
     <!-- main content start -->
-    
+
+    <div class=container id=main_container>
+
+        <div class=container id=filter_container>
+            <p>Filter placeholder</p>
+            <p>Filter placeholder</p>
+            <p>Filter placeholder</p>
+            <p>Filter placeholder</p>
+            <p>Filter placeholder</p>
+            <p>Filter placeholder</p>
+            <p>Filter placeholder</p>
+            <p>Filter placeholder</p>
+            <p>Filter placeholder</p>
+            <p>Filter placeholder</p>
+
+        </div>
+        <div class=container id=main_content_column>
+            <div id=title>
+                <h2>Results title</h2>
+            </div>
+            <div id=sorting>
+                <p>Sort by </p><a href="">Name</a><a href="">Date</a>
+            </div>
+            <div id=list_container th:each="result : ${resultList}">
+                <div class=list-item>
+                    <div class=thumbnail><img class="list_thumbnail" src="../static/images/placeholder.jpg" th:src="@{/images/placeholder.jpg}"></div>
+                    <h4 th:text="${result.name}">Name placeholder</h4>
+                    <p th:text="${result.description}"> Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+                    <p th:text="${result.subcategory.displayValue}"></p>
+                    <p th:text="${result.city}"></p>
+                    <p th:text="${result.created}"></p>
+            
+                </div>
+
+                <!--                remove this part-->
+                
+<!--
+                <div class=list-item>
+                    <div class=thumbnail><img class="list_thumbnail" src="../static/images/placeholder.jpg" th:src="@{/images/placeholder.jpg}"></div>
+                    <h4>Name placeholder</h4>
+                    <p> Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+                      <p>Subcategory placeholder</p>
+                    <p>City</p>
+                    <p>Date</p>
+                </div>
+                <div class=list-item>
+                    <div class=thumbnail><img class="list_thumbnail" src="../static/images/placeholder.jpg" th:src="@{/images/placeholder.jpg}"></div>
+                     <h4>Name placeholder</h4>
+                    <p> Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+                      <p>Subcategory placeholder</p>
+                    <p>City</p>
+                    <p>Date</p>
+                </div>
+                  <div class=list-item>
+                    <div class=thumbnail><img class="list_thumbnail" src="../static/images/placeholder.jpg" th:src="@{/images/placeholder.jpg}"></div>
+                     <h4>Name placeholder</h4>
+                    <p> Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+                      <p>Subcategory placeholder</p>
+                    <p>City</p>
+                    <p>Date</p>
+                </div>
+                  <div class=list-item>
+                    <div class=thumbnail><img class="list_thumbnail" src="../static/images/placeholder.jpg" th:src="@{/images/placeholder.jpg}"></div>
+                     <h4>Name placeholder</h4>
+                    <p> Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+                      <p>Subcategory placeholder</p>
+                    <p>City</p>
+                    <p>Date</p>
+                </div>
+                  <div class=list-item>
+                    <div class=thumbnail><img class="list_thumbnail" src="../static/images/placeholder.jpg" th:src="@{/images/placeholder.jpg}"></div>
+                     <h4>Name placeholder</h4>
+                    <p> Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+                      <p>Subcategory placeholder</p>
+                    <p>City</p>
+                    <p>Date</p>
+                </div>
+                
+-->
+
+
+                <!--                remove this part-->
+
+            </div>
+            <div id=pagination>
+                <div class="row" >
+        <div class="col-md-8">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item" th:each="pageNumber : ${pageNumbers}" >
+                        <a class="page-link" th:href="@{|/results/${pageNumber}|}" th:text=${pageNumber}>1</a>
+                    </li>
+                </ul>
+        </div>
+    </div>
+                
+            </div>
+        </div>
+    </div>
+
     <!-- main content end -->
 
 
     <!-- footer start -->
-     <div th:insert="fragments :: footer"></div>
+    <div th:insert="fragments :: footer"></div>
     <!-- footer end -->
-    </body>
-</html>
+</body></html>

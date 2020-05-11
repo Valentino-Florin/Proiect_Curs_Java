@@ -28,7 +28,6 @@ public class AppUser {
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "DATE_CREATED")
     private Date created;
-//    public List<Place> favoritePlaces = new ArrayList<>();
 
 
     public AppUser() {

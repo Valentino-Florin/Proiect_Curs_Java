@@ -3,17 +3,18 @@
 
 <head>
     <meta charset="utf-8">
-    <title>>Title</title>
+    <title>Title</title>
     <link rel="stylesheet" href="../static/css/fragments.css" th:href="@{/css/fragments.css}">
 
 </head>
+
 <body>
- <!-- big header start -->
- <div id=header_L th:fragment="home_header">
+    <!-- big header start -->
+    <div id=header_L th:fragment="home_header">
         <div class="top_nav">
             <div class="searchbar"><input type="text" id="header_searchbar" placeholder="Search"></div>
             <div class="top_nav_links">
-                 <a th:href="@{/login}">Login</a>
+                <a th:href="@{/login}">Login</a>
                 <a th:href="@{/register}">Register</a>
             </div>
         </div>
@@ -22,45 +23,50 @@
         </div>
         <div id=img_and_title_container>
 
-            <div class="hero_image_container_l"> 
-<!--
+            <div class="hero_image_container_l">
+                <!--
                 <img id="hero1" src="../static/images/hero1.jpg" th:src="@{/images/hero1.jpg}"> 
                 <img id="hero2" src="../static/images/hero2.jpg" th:src="@{/images/hero2.jpg}">
                 <img id="hero3" src="../static/images/hero3.jpg" th:src="@{/images/hero3.jpg}">
                 <img id="hero4" src="../static/images/hero4.jpg" th:src="@{/images/hero4.jpg}">
 -->
-            <div class="slider">
-                <figure>
-                <div class="slide">
-                    <p>Slide 1</p>
-                    <img src="../static/images/slide1.jpg" th:src="@{/images/slide1.jpg}"> ></div>
-                <div class="slide">
-                        <p>Slide 2</p>
-                    <img src="../static/images/slide2.jpg" th:src="@{/images/slide2.jpg}"></div>
-                <div class="slide">
-                        <p>Slide 3</p>
-                    <img src="../static/images/slide3.jpg" th:src="@{/images/slide3.jpg}"></div>
-                <div class="slide">
-                        <p>Slide 4</p>
-                    <img src="../static/images/slide4.jpg" th:src="@{/images/slide4.jpg}"></div>
-                <div class="slide">
-                        <p>Slide 5</p>
-                    <img src="../static/images/slide5.jpg" th:src="@{/images/slide5.jpg}"></div>
+                <div class="slider">
+                    <figure>
+                        <div class="slide">
+                            <p>Slide 1</p>
+                            <img src="../static/images/slide1.jpg" th:src="@{/images/slide1.jpg}"> >
+                        </div>
+                        <div class="slide">
+                            <p>Slide 2</p>
+                            <img src="../static/images/slide2.jpg" th:src="@{/images/slide2.jpg}">
+                        </div>
+                        <div class="slide">
+                            <p>Slide 3</p>
+                            <img src="../static/images/slide3.jpg" th:src="@{/images/slide3.jpg}">
+                        </div>
+                        <div class="slide">
+                            <p>Slide 4</p>
+                            <img src="../static/images/slide4.jpg" th:src="@{/images/slide4.jpg}">
+                        </div>
+                        <div class="slide">
+                            <p>Slide 5</p>
+                            <img src="../static/images/slide5.jpg" th:src="@{/images/slide5.jpg}">
+                        </div>
                     </figure>
                 </div>
-            
-            
-            
-            
+
+
+
+
             </div>
         </div>
-        <div th:insert="fragments :: main_nav"> 
+        <div th:insert="fragments :: main_nav">
         </div>
     </div>
     <!-- big header end -->
-    
-     <!--regular header start -->
-<div id="header_M" th:fragment="header">
+
+    <!--regular header start -->
+    <div id="header_M" th:fragment="header">
         <div class="top_nav">
             <div class="searchbar"><input type="text" id="header_searchbar" placeholder="Search"></div>
             <div class="top_nav_links">
@@ -73,60 +79,61 @@
         </div>
         <div id=img_and_title_container>
 
-            <div class="hero_image_container_m"> <img id="hero" src="../static/images/hero_small.jpg" th:src="@{/images/phero_small.jpg}"> </div>
+            <div class="hero_image_container_m"> <img id="hero" src="../static/images/hero_small.jpg" th:src="@{/images/hero_small.jpg}"> </div>
         </div>
-        <div th:insert="fragments :: main_nav"> 
+        <div th:insert="fragments :: main_nav">
         </div>
     </div>
     <!-- regular header end -->
-    
-     <!--small header start -->
+
+    <!--small header start -->
 
     <!-- small header end -->
-    
-    
-    
+
+
+
     <!-- top nav start -->
-<!-- if user is not logged in -->
-            <div class="top_nav_links" th:fragment="not_logged_in_links">
-                <a th:href="@{/login}">Login</a>
-                <a th:href="@{/register}">Register</a>
-            </div>
+    <!-- if user is not logged in -->
+    <div class="top_nav_links" th:fragment="not_logged_in_links">
+        <a href="login.html" th:href="@{/login}">Login</a>
+        <a href="register.html" th:href="@{/register}">Register</a>
+    </div>
     <!-- if user is traveller -->
     <div class="top_nav_links" th:fragment="traveller_links">
-                <a href="">Login</a>
-                <a href="">Register</a>
-            </div>
+        <a href="profileinfo.html">My Profile</a>
+        <a href="tripmanager.html">Manage trips</a>
+        <a href="">Log out</a>
+    </div>
     <!-- if user is host -->
     <div class="top_nav_links" th:fragment="host_links">
-                <a href="">Login</a>
-                <a href="">Register</a>
-            </div>
+        <a href="profileinfo.html">My Profile</a>
+        <a href="placemanager.html">Manage places</a>
+        <a href="">Log out</a>
+    </div>
     <!-- if user is admin -->
-<div class="top_nav_links" th:fragment="admin_links">
-                <a href="">Login</a>
-                <a href="">Register</a>
-            </div>
-     <!-- top nav end -->
-    
-     <!-- main nav start -->
+    <div class="top_nav_links" th:fragment="admin_links">
+        <a href="">Admin panel</a>
+        <a href="">Log out</a>
+    </div>
+    <!-- top nav end -->
+
+    <!-- main nav start -->
     <div class=main_navigation th:fragment="main_nav">
-            <div class=main_nav_links id=nav_link1><a href="">Tourist attractions</a> </div>
-            <div class=main_nav_links id=nav_link2><a href="">Lodging</a> </div>
-            <div class=main_nav_links id=nav_link3><a href="">Food and drink</a> </div>
-        </div>
+        <div class=main_nav_links id=nav_link1><a href="searchresults.html" th:href="@{/categories/tourist-attractions}">Tourist attractions</a> </div>
+        <div class=main_nav_links id=nav_link2><a href="searchresults.html" th:href="@{/categories/lodging}">Lodging</a> </div>
+        <div class=main_nav_links id=nav_link3><a href="searchresults.html" th:href="@{/categories/food-and-drink}">Food and drink</a> </div>
+    </div>
     <!-- main nav end -->
-    
+
     <!-- footer start -->
     <footer th:fragment="footer">
         <div class="footer_nav_links"> </div>
     </footer>
     <!-- footer end -->
 
-    
-     <!-- start -->
-    
-    
-    
-</body>
-</html>
+
+    <!-- start -->
+
+
+
+</body></html>

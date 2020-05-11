@@ -1,5 +1,7 @@
 package sci.travel_app.WalkTheBear.service;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import sci.travel_app.WalkTheBear.model.entities.Place;
 import sci.travel_app.WalkTheBear.model.misc.Category;
 
@@ -13,4 +15,5 @@ public interface PlacesService {
     void addPlace(Place place);
     void updatePlace(Place place);
     void deletePlace(long placeId);
+    Page<Place> getPaginatedPlaceList(Pageable pageable);
 }

@@ -28,6 +28,10 @@ public class HomePageController {
 
         List<Place> widget3 = new ArrayList<>();
         widget3.add(placeService.getPlaceById(1));
+        widget3.add(placeService.getPlaceById(2));
+        widget3.add(placeService.getPlaceById(3));
+        widget3.add(placeService.getPlaceById(4));
+        widget3.add(placeService.getPlaceById(5));
         model.addAttribute("widget3", widget3);
         return "index";
     }

@@ -24,7 +24,7 @@
         </div>
         <div class=row>
             <div class=element>
-                <div id=add_button> <img src="../static/images/button.png" th:src="@{/images/button.png}" alt="add button" height="100px" width="100px" href="/planner" th:href="@{/planner}">
+                <div id=add_button> <a href=planner.html th:href="@{/planner/new}"><img src="../static/images/button.png" th:src="@{/images/button.png}" alt="add button" height="100px" width="100px" href="/planner" th:href="@{/planner}"></a>
                 </div>
                 <div id=button_text>
                     <p>Add trip</p>
@@ -34,63 +34,31 @@
             <div class=element>
                 <div class=card>
                     <h3 th:text="${trip.name}">Trip number 1</h3>
-                    <p th:text="${trip.description}">Description text</p>
+                    <p th:text="${trip.description}">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis,</p>
                 </div>
-                <div class=links><a href="">View/Edit</a><a href="">Remove</a>
-                </div>
-            </div>
-            <div class=element>
-                <div class=card>
-                    <h3>Trip number 1</h3>
-                    <p>Description text</p>
-                </div>
-                <div class=links><a href="">View/Edit</a><a href="">Remove</a>
+                <div class=links><a href="" th:href="@{/planner/view/{id}(id=${trip.id})}">View</a><a href="" th:href="@{/planner/{id}(id=${trip.id})}">Edit</a><a href="" th:href="@{/tripmanager/delete/{id}(id=${trip.id})}">Remove</a>
                 </div>
             </div>
-            <div class=element>
-                <div class=card>
-                    <h3>Trip number 1 </h3>
-                    <p>Description text</p>
-                </div>
-                <div class=links><a href="">View/Edit</a><a href="">Remove</a>
-                </div>
+
+<!--
+                <div class="pagination-div">
+    <span th:if="${page.hasPrevious()}">
+        <a th:href="@{/employees(page=${page.number-1},size=${page.size})}">Previous</a>
+    </span>
+    <th:block th:each="i: ${#numbers.sequence(0, page.totalPages - 1)}">
+        <span th:if="${page.number == i}" class="selected">[[${i}+1]]</span>
+        <span th:unless="${page.number == i}">
+             <a th:href="@{/employees(page=${i},size=${page.size})}">[[${i}+1]]</a>
+        </span>
+    </th:block>
+    <span th:if="${page.hasNext()}">
+        <a th:href="@{/employees(page=${page.number+1},size=${page.size})}">Next</a>
+    </span>
+</div>
+-->
             </div>
         </div> 
-        </div>
-        <div class=row>
-            <div class=element>
-                <div class=card>
-                    <h3>Trip number 1</h3>
-                    <p>Description text</p>
-                </div>
-                <div class=links><a href="">View/Edit</a><a href="">Remove</a>
-                </div>
-            </div>
-            <div class=element>
-                <div class=card>
-                    <h3>Trip number 1</h3>
-                    <p>Description text</p>
-                </div>
-                <div class=links><a href="">View/Edit</a><a href="">Remove</a>
-                </div>
-            </div>
-            <div class=element>
-                <div class=card>
-                    <h3>Trip number 1 </h3>
-                    <p>Description text</p>
-                </div>
-                <div class=links><a href="">View/Edit</a><a href="">Remove</a>
-                </div>
-            </div>
-            <div class=element>
-                <div class=card>
-                    <h3>Trip number 1 </h3>
-                    <p>Description text</p>
-                </div>
-                <div class=links><a href="">View/Edit</a><a href="">Remove</a>
-                </div>
-            </div>
-        </div>
+
     </div>
     <!-- main content end -->
 
