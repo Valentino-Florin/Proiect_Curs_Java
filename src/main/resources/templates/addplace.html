@@ -29,46 +29,46 @@
                     <label>Category</label>
                     <select id=category name=category>
                         <!--                        <select id=category th:field="*{category}">-->
-                        <option th:each="categoryOpt : ${T(sci.travel_app.WalkTheBear.model.misc.Category).values()}"
+                        <option th:each="categoryOpt : ${T(sci.travel_app.walkthebear.model.misc.Category).values()}"
                                 th:value="${categoryOpt}" th:text="${categoryOpt.displayValue}"></option>
                     </select>
                 </div>
                 <!--                ignore this test code-->
                 <!--                <div th:switch="${category}">-->
-                <!--    <span th:case="${T(sci.travel_app.WalkTheBear.model.misc.Category).FOODDRINK}"-->
+                <!--    <span th:case="${T(sci.travel_app.walkthebear.model.misc.Category).FOODDRINK}"-->
                 <!--      style="color: red;">Alert</span>-->
-                <!--    <span th:case="${T(sci.travel_app.WalkTheBear.model.misc.Category).ATTRACTIONS}"-->
+                <!--    <span th:case="${T(sci.travel_app.walkthebear.model.misc.Category).ATTRACTIONS}"-->
                 <!--      style="color: orange;">Warning</span>-->
-                <!--    <span th:case="${T(sci.travel_app.WalkTheBear.model.misc.Category).LODGING}"-->
+                <!--    <span th:case="${T(sci.travel_app.walkthebear.model.misc.Category).LODGING}"-->
                 <!--      style="color: yellow;">Caution</span>-->
                 <!--</div>-->
 
-                <!--<div class=form_element th:switch="${T(sci.travel_app.WalkTheBear.model.misc.Category)}">
+                <!--<div class=form_element th:switch="${T(sci.travel_app.walkthebear.model.misc.Category)}">
                     <label>Sub - Category</label>
-                    <select class=subcategory th:case="${T(sci.travel_app.WalkTheBear.model.misc.Category).FOODDRINK}" >
-                         <option th:value="${T(sci.travel_app.WalkTheBear.model.misc.SubCategory).BAR}"
-                                 th:text="${T(sci.travel_app.WalkTheBear.model.misc.SubCategory).BAR}"></option>
-                         <option th:value="${T(sci.travel_app.WalkTheBear.model.misc.SubCategory).RESTAURANT}"
-                                 th:text="${T(sci.travel_app.WalkTheBear.model.misc.SubCategory).RESTAURANT}"></option>
+                    <select class=subcategory th:case="${T(sci.travel_app.walkthebear.model.misc.Category).FOODDRINK}" >
+                         <option th:value="${T(sci.travel_app.walkthebear.model.misc.SubCategory).BAR}"
+                                 th:text="${T(sci.travel_app.walkthebear.model.misc.SubCategory).BAR}"></option>
+                         <option th:value="${T(sci.travel_app.walkthebear.model.misc.SubCategory).RESTAURANT}"
+                                 th:text="${T(sci.travel_app.walkthebear.model.misc.SubCategory).RESTAURANT}"></option>
                      </select>
-                     <select class=subcategory th:case="${T(sci.travel_app.WalkTheBear.model.misc.Category).ATTRACTIONS}">
-                         <option th:value="${T(sci.travel_app.WalkTheBear.model.misc.SubCategory).PARK}"
-                                 th:text="${T(sci.travel_app.WalkTheBear.model.misc.SubCategory).PARK}"></option>
-                         <option th:value="${T(sci.travel_app.WalkTheBear.model.misc.SubCategory).MUSEUM}"
-                                 th:text="${T(sci.travel_app.WalkTheBear.model.misc.SubCategory).MUSEUM}"></option>
+                     <select class=subcategory th:case="${T(sci.travel_app.walkthebear.model.misc.Category).ATTRACTIONS}">
+                         <option th:value="${T(sci.travel_app.walkthebear.model.misc.SubCategory).PARK}"
+                                 th:text="${T(sci.travel_app.walkthebear.model.misc.SubCategory).PARK}"></option>
+                         <option th:value="${T(sci.travel_app.walkthebear.model.misc.SubCategory).MUSEUM}"
+                                 th:text="${T(sci.travel_app.walkthebear.model.misc.SubCategory).MUSEUM}"></option>
                      </select>
 
-                     <select class=subcategory th:case="${T(sci.travel_app.WalkTheBear.model.misc.Category).LODGING}">
-                         <option th:value="${T(sci.travel_app.WalkTheBear.model.misc.SubCategory).HOTEL}"
-                                 th:text="${T(sci.travel_app.WalkTheBear.model.misc.SubCategory).HOTEL}"></option>
-                         <option th:value="${T(sci.travel_app.WalkTheBear.model.misc.SubCategory).MOTEL}"
-                                 th:text="${T(sci.travel_app.WalkTheBear.model.misc.SubCategory).MOTEL}"></option>
+                     <select class=subcategory th:case="${T(sci.travel_app.walkthebear.model.misc.Category).LODGING}">
+                         <option th:value="${T(sci.travel_app.walkthebear.model.misc.SubCategory).HOTEL}"
+                                 th:text="${T(sci.travel_app.walkthebear.model.misc.SubCategory).HOTEL}"></option>
+                         <option th:value="${T(sci.travel_app.walkthebear.model.misc.SubCategory).MOTEL}"
+                                 th:text="${T(sci.travel_app.walkthebear.model.misc.SubCategory).MOTEL}"></option>
                      </select> </div> -->
                 <div class=form_element>
                     <label>Sub-Category</label>
                     <select id=subcategory name=subcategory>
                         <!--                        <select id=category th:field="*{category}">-->
-                        <option th:each="categoryOpt : ${T(sci.travel_app.WalkTheBear.model.misc.SubCategory).values()}"
+                        <option th:each="categoryOpt : ${T(sci.travel_app.walkthebear.model.misc.SubCategory).values()}"
                                 th:value="${categoryOpt}" th:text="${categoryOpt.displayValue}"></option>
                     </select>
                 </div>

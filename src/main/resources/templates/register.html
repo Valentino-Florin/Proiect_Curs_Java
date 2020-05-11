@@ -17,8 +17,8 @@
             <p>Please fill in this form to create an account.</p>
             <hr>
              <label for="AccountType"><b>Account Type</b></label>
-            <input type="radio" name="accountType" value="Host" th:value="${T(sci.travel_app.WalkTheBear.model.misc.AppUserRole).HOST}" th:text="${T(sci.travel_app.WalkTheBear.model.misc.AppUserRole).HOST}"> Host<br>
-            <input type="radio" name="accountType" value="Traveller"th:value="${T(sci.travel_app.WalkTheBear.model.misc.AppUserRole).TRAVELER}"th:text="${T(sci.travel_app.WalkTheBear.model.misc.AppUserRole).TRAVELER}"> Traveler<br> 
+            <input type="radio" name="accountType" value="Host" th:value="${T(sci.travel_app.walkthebear.model.misc.AppUserRole).HOST}" th:text="${T(sci.travel_app.walkthebear.model.misc.AppUserRole).HOST}"> Host<br>
+            <input type="radio" name="accountType" value="Traveller" th:value="${T(sci.travel_app.walkthebear.model.misc.AppUserRole).TRAVELER}" th:text="${T(sci.travel_app.walkthebear.model.misc.AppUserRole).TRAVELER}"> Traveler<br>
 
             <label th:for="Username"><b>Username</b></label>
             <input type="text" placeholder="Enter Username" name="username" required>
