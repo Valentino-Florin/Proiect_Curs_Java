@@ -49,12 +49,12 @@ public class PlacesServiceImp implements PlacesService {
 
     @Override
     public void addPlace(Place place) {
-        List<Place> list = placesRepository.findByName(place.getName());
-            if (list.size() > 0) {
-                logger.log(Level.ERROR, "this place is already added ");
-            } else {
-                placesRepository.save(place);
-            }
+        List<Place> list = (List<Place>) placesRepository.findByName(place.getName());
+        if (list.size() > 0) {
+            logger.log(Level.ERROR, "this place is already added ");
+        } else {
+            placesRepository.save(place);
+        }
     }
     @Override
     public void updatePlace(Place place) {
@@ -66,6 +66,9 @@ public class PlacesServiceImp implements PlacesService {
         placesRepository.delete(getPlaceById(placeId));
     }
 
+    /* public List<Place> search(String keyword) {
+         return placesRepository.search(keyword);
+     } */
     @Override
     public Page<Place> getPaginatedPlaceList(Pageable pageable) {
         return placesRepository.findAll(pageable);

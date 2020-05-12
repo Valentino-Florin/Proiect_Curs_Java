@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8" />
+    <title>
+        <!-- Insert your title here -->
+    </title>
+  <!--  <link type="text/css" href="../static/css/addplace.css" th:href="@{/css/addplace.css}" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/fragments.css" th:href="@{/css/fragments.css}"> -->
+</head>
+
+<body>
+<!-- header start -->
+<!-- <div th:insert="fragments :: header"></div> -->
+<!-- header end -->
+
+
+<!-- main content start -->
+
+<div class=container id=main_container>
+    <div>
+    <h2>Search for users</h2>
+    </div>
+    <form action="#" th:action="@{/adminuser" method="get" th:object="${user}">
+        <input type="text" name="userSearch" id="search" th:value="${userSearch}"/>
+        <input type="submit" value="Search"/>
+        <div>
+        <input type="submit" value="All users"/> </div>
+        <div id=button_text>
+            <a href="adduserdmin.html" th:href="@{http://localhost:8080/adduseradmin}">
+                <p>Add User</p>
+            </a>
+        </div>
+         <div th:if="${not #lists.isEmpty(userSearch)}">
+              <h2>Users List</h2>
+              <table class="table table-striped">
+                  <tr>
+                      <th>User ID</th>
+                      <th>Name</th>
+                      <th>Password</th>
+                      <th>Email</th>
+                      <th>Role</th>
+                      <th>Date</th>
+
+
+                  </tr>
+                  <tr th:each="user : ${userSearch}">
+                      <td th:text="${user.id}">id</td>
+                      <td th:text="${user.userName}">name</td>
+                      <td th:text="${user.password}">password</td>
+                      <td th:text="${user.email}">email</td>
+                      <td th:text="${user.role}">role</td>
+                      <td th:text="${user.created}">created</td>
+                      <td><a th:href="@{/edituserdmin/{id}(id=${user.id})}">Edit</a></td>
+                      <td><a th:href="@{/deleteusseradmin/{id}(id=${user.id})}">Delete</a></td>
+                  </tr>
+              </table>
+          </div>
+      </form>
+  </div>
+  </body>
+  </html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" xmlns:form="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+  <title></title>
+  <style>
+    body {padding: 20px;}
+    h1 {font-size:34px; color: #3374dc ;}
+  </style>
+</head>
+<body>
+<div align="center">
+  <h2>Edit Place</h2>
+  <form action="#"
+        th:action="@{/editplaceadmin/{id}(id=${place.id})}"
+        th:object="${place}"
+        method="post">
+    <select id=category name=category>
+      <!--                        <select id=category th:field="*{category}">-->
+      <option th:each="categoryOpt : ${T(sci.travel_app.WalkTheBear.model.misc.Category).values()}"
+              th:value="${categoryOpt}" th:text="${categoryOpt.displayValue}"></option>
+    </select>
+<div class=form_element>
+  <label>Sub-Category</label>
+  <select id=subcategory name=subcategory>
+    <!--                        <select id=category th:field="*{category}">-->
+    <option th:each="categoryOpt : ${T(sci.travel_app.WalkTheBear.model.misc.SubCategory).values()}"
+            th:value="${categoryOpt}" th:text="${categoryOpt.displayValue}"></option>
+  </select>
+</div>
+<div class=form_element>
+  <input type= "hidden" name="created" id="created"
+         th:value="${#dates.format(#dates.createNow() , 'dd/MM/yyyy HH:mm')}" />
+</div>
+<div class=form_element>
+  <label>Name</label>
+  <input type="text" maxlength="50" th:field="*{name}" id="name" placeholder="Name">
+  <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+</div>
+<div class=form_element>
+  <label>County</label>
+  <input type="text" maxlength="50" th:field="*{county}" id="county" placeholder="County">
+  <span th:if="${#fields.hasErrors('county')}" th:errors="*{county}"></span>
+</div>
+<div class=form_element>
+  <label>City</label>
+  <input type="text" maxlength="250" th:field="*{city}" id="city" placeholder="City">
+  <span th:if="${#fields.hasErrors('city')}" th:errors="*{city}"> </span>
+</div>
+<div class=form_element>
+  <label>Address</label>
+  <input type="text" maxlength="250" th:field="*{address}" id="address" placeholder="Address">
+  <span th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></span>
+</div>
+<div class=form_element>
+  <label>GPS coordinates</label>
+  <input type="text" maxlength="250" th:field="*{coordinates}" id="coordinates"
+         placeholder="GPS coordinates">
+  <span th:if="${#fields.hasErrors('coordinates')}" th:errors="*{coordinates}"></span>
+</div>
+<div class=form_element>
+  <label>Working hours</label>
+  <input type="text" maxlength="250" th:field="*{workingHours}" id="workingHours"
+         placeholder="Working hours">
+  <span th:if="${#fields.hasErrors('workingHours')}" th:errors="*{workingHours}"></span>
+</div>
+<div class=form_element>
+  <label>Email</label>
+  <input type="text" maxlength="250" th:field="*{email}" id="email" placeholder="Email">
+  <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+</div>
+<div class=form_element>
+  <label>Telephone</label>
+  <input type="text" maxlength="250" th:field="*{phoneNumber}" id="phoneNumber" placeholder="Telephone">
+  <span th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></span>
+</div>
+
+<div class=form_element>
+  <label>Description</label>
+  <textarea rows="5" cols="50" maxlength="250" th:field="*{description}" id="description"
+            placeholder="Description"></textarea>
+  <span th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></span>
+</div>
+<!--<div class=form_element>
+  <label>Upload main picture</label>
+  <input type="file">
+</div>
+<div class=form_element>
+  <label>Upload gallery picture</label>
+  <input type="file">
+</div> -->
+<div id=buttons>
+  <button type="submit">Submit</button>
+  <button type="button">Cancel</button>
+</div>
+  </form>
+</div>
+</body>
+</html>
+
