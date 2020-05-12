@@ -42,9 +42,10 @@ public class DailyScheduleService {
     }
     public void deleteAll(Itinerary itinerary){
         List<DailySchedule> toBeDeleted = getAllDays(itinerary);
-        for (DailySchedule axed : toBeDeleted){
-            scheduleRepository.delete(axed);
-        }
+        scheduleRepository.deleteInBatch(toBeDeleted);
+//        for (DailySchedule axed : toBeDeleted){
+//            scheduleRepository.delete(axed);
+//        }
     }
 
 }

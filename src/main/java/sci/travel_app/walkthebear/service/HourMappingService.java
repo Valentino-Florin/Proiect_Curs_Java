@@ -61,8 +61,9 @@ public class HourMappingService {
 
     public void deleteAll(DailySchedule dailySchedule){
         List<HourMapping> toBeDeleted = getFullDay(dailySchedule);
-        for (HourMapping axed : toBeDeleted){
-            hourMappingRepository.delete(axed);}
+        hourMappingRepository.deleteInBatch(toBeDeleted);
+//        for (HourMapping axed : toBeDeleted){
+//            hourMappingRepository.delete(axed);}
         }
 
     public void saveAll(DailySchedule dailySchedule){

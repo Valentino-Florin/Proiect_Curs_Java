@@ -7,6 +7,8 @@ import java.util.List;
 public class HourMappingDTO {
     private List<HourMapping> hourMappingList;
 
+    public HourMappingDTO(){}
+
     public HourMappingDTO(List<HourMapping> hourMappingList) {
         this.hourMappingList = hourMappingList;
     }

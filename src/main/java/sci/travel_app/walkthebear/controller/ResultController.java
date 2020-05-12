@@ -15,6 +15,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 @Controller
+//@RequestMapping(value="/results")
 public class ResultController {
     @Autowired
     private PlacesServiceImp placesService;

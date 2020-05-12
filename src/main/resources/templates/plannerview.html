@@ -9,7 +9,7 @@
     <link type="text/css" href="../static/css/planner.css" th:href="@{/css/planner.css}" rel="stylesheet">
     <link rel="stylesheet" href="../static/css/fragments.css" th:href="@{/css/fragments.css}">
     <script>
-    
+
 
     </script>
 </head>
@@ -28,27 +28,27 @@
         <div id=link_container> <a href="tripmanager.html" th:href="@{/tripmanager}">Back to trip manager</a> </div>
         <div class=container id=content>
             <div class=box id=form>
-                
-                    <div id=info>
-                        <div class=form_element>
-                            <label th:for="name">Name</label>
-                           <p th:text="${itinerary.name}">trip name</p>                            
+
+                <div id=info>
+                    <div class=form_element>
+                        <label th:for="name">Name</label>
+                        <p th:text="${itinerary.name}">trip name</p>
                         <div class=form_element>
                             <label th:for="description">Description</label>
-                            <textarea rows="5" cols="50" maxlength="250"></textarea>
+                            <p th:text="${itinerary.description}">trip description</p>
                         </div>
+                        <div class=form_element>
+                            <label th:for="datecreated">Created date</label>
+                            <p th:text="${itinerary.created}">trip description</p>
+                        </div>
+                        <div class=form_element>
+                            <label th:for="datestart">Start date</label>
+                            <p th:text="${itinerary.startDate}">trip description</p>
+                        </div>
+
                     </div>
 
-                    <div id=date_days>
-                        <div class=form_element>
-                            <label for="startdate">Start date:</label>
-                            <input type="date" id="startdate" name="birthday"></div>
-                        <div class=form_element>
-                            <div id=add_button> <img src="../static/images/button_plus.png" th:src="@{/images/button_plus.png}" alt="add button" height="60px" width="60px" href=""></div>
-                            <p>Days</p>
-                            <div id=remove_button> <img src="../static/images/button_minus.png" th:src="@{/images/button_minus.png}" alt="remove button" height="60px" width="60x" href=""></div>
-                        </div>
-                    </div>
+
                     <div id=schedule_container>
                         <div class=schedule>
                             <div class=day_container th:each="day : ${allDaysForItinerary}">
@@ -68,17 +68,17 @@
                             </div>
                         </div>
                     </div>
-                    <div id=buttons_container> 
+                    <div id=buttons_container>
                         <button type="">Print</button>
                         <button type="">Download itinerary</button></div>
-               
+
+
+                </div>
+
+
+
 
             </div>
-
-
-
-
-            
         </div>
     </div>
 

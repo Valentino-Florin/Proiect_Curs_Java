@@ -19,20 +19,43 @@
     <div id=box>
         <div id=form_container>
 <!--         <form action="#" th:action="@{/editday}" method="post" th:object="${dailyschedule}">-->
-            <form action="#" th:action="@{/save}" method="put" th:object="hoursDto">
+            <form action="#" th:action="@{/save}" method="post" th:object="${hoursDTO}">
             <label>Name</label>
-             <input type="text" maxlength="50" th:field="*{name}" id="name" placeholder="Name">
+                <p th:text="${day.name}">
+<!--             <input type="text" maxlength="50" th:field="*{name}" id="name" placeholder="Name">-->
              
             <table>
-                <tr th:each="hour : ${allHours}" >
-                    <td><p>Time:</p> <p th:text="${hour.time}"> </p>
+                
+                 <tr th:each="hour, itemStat : ${allHours.hourObj}" >
+                    <td><p>Time:</p> <input type="text" th:name="$|hourObj[${itemStat.index}].time|" th:value="${hour.getTime()}"/>
                     </td>
                     <td>
                     <label>Place</label>
-                    <select class="form-control" th:field="${hour.place}"  id="dropOperator">
+                    <select class="form-control" th:name="$|hourObj[${itemStat.index}].place|" th:value="${hour.getPlace()}"  id="dropOperator">
     <option value="0">select a place from the list</option>
     <option th:each="uplace : ${unplannedPlaces}" th:value="${uplace.id}" th:text="${uplace.name}"></option>
     </select>
+<!--
+                <tr th:each="hour, itemStat : ${allHours.hourObj}" >
+                    <td><p>Time:</p> <input type="text" th:field="${hourObj[__${itemStat.index}__].time}">
+                    </td>
+                    <td>
+                    <label>Place</label>
+                    <select class="form-control" th:field="*{hourObj[__${itemStat.index}__].title}"  id="dropOperator">
+    <option value="0">select a place from the list</option>
+    <option th:each="uplace : ${unplannedPlaces}" th:value="${uplace.id}" th:text="${uplace.name}"></option>
+    </select>
+-->
+                        
+<!--
+                        <tr th:each="book, itemStat : ${form.books}">
+							<td><input hidden th:name="|books[${itemStat.index}].id|" th:value="${book.getId()}"/></td>
+							<td><input th:placeholder="Title + ' ' + ${itemStat.count}" th:name="|books[${itemStat.index}].title|" th:value="${book.getTitle()}"
+									   required/></td>
+							<td><input th:placeholder="Author + ' ' + ${itemStat.count}" th:name="|books[${itemStat.index}].author|"
+									   th:value="${book.getAuthor()}" required/></td>
+                        
+-->
                         </td>
                     </tr>
             </table>
