@@ -41,6 +41,7 @@ public class PlaceDTOController {
         return "placedetailDTO";
     }
 
+
     @GetMapping(value="/places/{id}/addtotrip")
     public String addToTrip(@PathVariable("id") long id, Model model) {
 
