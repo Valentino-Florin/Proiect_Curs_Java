@@ -14,7 +14,6 @@ import java.util.List;
 
 @Service
 public class ItineraryService {
-    private static org.apache.logging.log4j.Logger logger = LogManager.getLogger(ItineraryService.class);
 
     @Autowired
     private ItineraryRepository tripRepository;

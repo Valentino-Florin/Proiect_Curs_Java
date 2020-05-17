@@ -4,7 +4,9 @@ import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import sci.travel_app.walkthebear.model.entities.Place;
 import sci.travel_app.walkthebear.model.misc.Category;
@@ -70,9 +72,42 @@ public class PlacesServiceImp implements PlacesService {
          return placesRepository.search(keyword);
      } */
     @Override
-    public Page<Place> getPaginatedPlaceList(Pageable pageable) {
-        return placesRepository.findAll(pageable);
+    public Page<Place> getPaginatedPlaceList(Pageable pageable, Category category) {
+
+//        return placesRepository.findAll(pageable);
+
+        return placesRepository.findByCategory(category, pageable);
     }
+
+    public Page<Place> getPaginatedPlaceListByCategory(int pageNum, String sortField, String sortDir, Category category) {
+
+        Pageable pageable = PageRequest.of(pageNum - 1, 5,
+                sortDir.equals("asc") ? Sort.by(sortField).ascending()
+                        : Sort.by(sortField).descending()
+        );
+
+        return placesRepository.findByCategory(category, pageable);
+    }
+    public Page<Place> getPaginatedPlaceListByKeyword(int pageNum, String sortField, String sortDir, String keyword){
+        Pageable pageable = PageRequest.of(pageNum - 1, 5,
+                sortDir.equals("asc") ? Sort.by(sortField).ascending()
+                        : Sort.by(sortField).descending()
+        );
+        return placesRepository.findByNameContains(keyword,pageable);
+    }
+
+//    public Page<Place> filterResults(List<Place> initiaList, boolean A, boolean B, boolean C, boolean D){
+//        if(A==true && B==true && C==true && D==true){
+//
+//        }
+//
+//
+//
+//        Page<Place>filteredPage;
+//        return  filteredPage;
+//
+//        }
+
 
 
 }

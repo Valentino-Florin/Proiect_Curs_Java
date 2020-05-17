@@ -18,6 +18,7 @@
     
     <div id=box>
         <div id=form_container>
+            <div th:insert="fragments :: alert"></div>
 <!--         <form action="#" th:action="@{/editday}" method="post" th:object="${dailyschedule}">-->
             <form action="#" th:action="@{/save}" method="post" th:object="${hoursDTO}">
             <label>Name</label>
@@ -26,12 +27,12 @@
              
             <table>
                 
-                 <tr th:each="hour, itemStat : ${allHours.hourObj}" >
-                    <td><p>Time:</p> <input type="text" th:name="$|hourObj[${itemStat.index}].time|" th:value="${hour.getTime()}"/>
+                 <tr th:each="hour, itemStat : ${allHours.hourMappingList}" >
+                    <td><label>Time:</label> <input type="text" th:name="$|hourMappingList[${itemStat.index}].time|" th:value="${hour.getTime()}"/>
                     </td>
                     <td>
                     <label>Place</label>
-                    <select class="form-control" th:name="$|hourObj[${itemStat.index}].place|" th:value="${hour.getPlace()}"  id="dropOperator">
+                    <select class="form-control" th:name="$|hourMappingList[${itemStat.index}].place|" th:value="${hour?.getPlace()}"  id="dropOperator">
     <option value="0">select a place from the list</option>
     <option th:each="uplace : ${unplannedPlaces}" th:value="${uplace.id}" th:text="${uplace.name}"></option>
     </select>

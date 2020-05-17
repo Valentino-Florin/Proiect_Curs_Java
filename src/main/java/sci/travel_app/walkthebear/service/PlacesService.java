@@ -15,5 +15,5 @@ public interface PlacesService {
     void addPlace(Place place);
     void updatePlace(Place place);
     void deletePlace(long placeId);
-    Page<Place> getPaginatedPlaceList(Pageable pageable);
+    Page<Place> getPaginatedPlaceList(Pageable pageable, Category category);
 }

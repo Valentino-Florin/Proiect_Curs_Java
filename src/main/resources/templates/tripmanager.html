@@ -23,6 +23,8 @@
             <h2>Trips</h2>
         </div>
         <div class=row>
+     <div th:insert="fragments :: alert"></div>
+
             <div class=element>
                 <div id=add_button> <a href=planner.html th:href="@{/planner/new}"><img src="../static/images/button.png" th:src="@{/images/button.png}" alt="add button" height="100px" width="100px" href="/planner" th:href="@{/planner}"></a>
                 </div>

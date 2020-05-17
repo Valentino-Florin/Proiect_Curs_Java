@@ -1,3 +1,12 @@
+a:link, a:visited {
+    text-decoration: none;
+    color: #1F6E3A;
+}
+a:hover, a:active {
+    text-decoration: none;
+    color: #103B1F;
+}
+
 
 /* _______________________________ all headers start _________________________________ */
 
@@ -242,3 +251,15 @@ footer {
 /* _______________________________ footer end _________________________________ */
 
 
+
+#alert {
+    background-color: #F7F86B;
+    min-height: 30px;
+    max-width: 400px;
+    margin: 30px;
+    padding-top: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 10px;
+  font-size: 16px;  
+}

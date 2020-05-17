@@ -57,6 +57,7 @@
                         <button type="reset">Reset</button></div>
                 </form>
                 <div id=days>
+                    <div th:insert="fragments :: alert"></div>
                     <div id=add_button>
                         <a th:href="@{/planner/{id}/addnewday(id=${itinerary.id})}"><img src="../static/images/button_plus.png" th:src="@{/images/button_plus.png}" alt="add button" height="60px" width="60px" href=""></a>
 

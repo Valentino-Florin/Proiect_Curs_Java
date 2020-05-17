@@ -33,23 +33,23 @@
                 <div class="slider">
                     <figure>
                         <div class="slide">
-                            <p>Slide 1</p>
+<!--                            <p>Slide 1</p>-->
                             <img src="../static/images/slide1.jpg" th:src="@{/images/slide1.jpg}"> >
                         </div>
                         <div class="slide">
-                            <p>Slide 2</p>
+<!--                            <p>Slide 2</p>-->
                             <img src="../static/images/slide2.jpg" th:src="@{/images/slide2.jpg}">
                         </div>
                         <div class="slide">
-                            <p>Slide 3</p>
+<!--                            <p>Slide 3</p>-->
                             <img src="../static/images/slide3.jpg" th:src="@{/images/slide3.jpg}">
                         </div>
                         <div class="slide">
-                            <p>Slide 4</p>
+<!--                            <p>Slide 4</p>-->
                             <img src="../static/images/slide4.jpg" th:src="@{/images/slide4.jpg}">
                         </div>
                         <div class="slide">
-                            <p>Slide 5</p>
+<!--                            <p>Slide 5</p>-->
                             <img src="../static/images/slide5.jpg" th:src="@{/images/slide5.jpg}">
                         </div>
                     </figure>
@@ -68,7 +68,12 @@
     <!--regular header start -->
     <div id="header_M" th:fragment="header">
         <div class="top_nav">
-            <div class="searchbar"><input type="text" id="header_searchbar" placeholder="Search"></div>
+            <div class="searchbar">
+                <form th:action="@{/results}">
+                       <input type="text" id="header_searchbar" name=keyword placeholder="Search" requiered>
+                    <button type="submit">Search</button>
+                </form>
+            </div>
             <div class="top_nav_links">
                 <a href="">Login</a>
                 <a href="">Register</a>
@@ -132,8 +137,9 @@
     <!-- footer end -->
 
 
-    <!-- start -->
-
+    <!-- alert start -->
+    <div id=alert th:fragment="alert" th:if="${message}" th:text="${message}" />
+ <!-- alert end -->
 
 
 </body></html>
