@@ -8,6 +8,7 @@ import sci.travel_app.walkthebear.repository.PlacesRepository;
 import sci.travel_app.walkthebear.repository.RatingRepository;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -30,18 +31,22 @@ public class RatingServiceImpl implements RatingService {
     }
 
     @Override
-    public Rating create(Rating rating) {
+     public Rating create(Rating rating, Place place) {
+
+            rating.setCreated(new Date());
+            rating.setPlace(place);
+
+            return ratingRepository.save(rating);
+        }
+
+        public List<Rating> getAllRatingsOfPlace(Place place){
+            return ratingRepository.findByPlace(place);
+        }
 
 
-        return ratingRepository.save(rating);
-    }
-
-    public List<Rating> getAllRatingsOfPlace(Place place){
-        return ratingRepository.findByPlace(place);
-    }
-    public List<Rating> getAllRatingsOfPlaceById(long id){
-        return ratingRepository.findByPlace(placesRepository.findById(id));
-    }
+        public List<Rating> getAllRatingsOfPlaceById(long id){
+            return ratingRepository.findByPlace(placesRepository.findById(id));
+        }
 
 
 }
