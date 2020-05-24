@@ -15,7 +15,6 @@
         $(function() {
             $("#startdate").datepicker();
         });
-
     </script>
 </head>
 
@@ -34,58 +33,56 @@
         <div class=container id=content>
             <div class=box id=form>
                 <form action="" th:object="${itinerary}" th:action="@{/planner/save}" method="post">
-                    <div id=info>
-                        <div class=form_element>
-                            <label th:for="name">Name</label>
-                            <input type="text" th:field="*{name}" maxlength="50" required></div>
-                        <div class=form_element>
-                            <label th:for="description">Description</label>
-                            <input type="text" th:field="*{description}" maxlength="250" rows="5" cols="50">
+                    <div id=forminputs>
+                        <div id=info>
+                            <div class=form_element>
+                                <label th:for="name">Name</label>
+                                <input type="text" th:field="*{name}" maxlength="50" required></div>
+                            <div class=form_element>
+                                <label th:for="description">Description</label>
+                                <textarea th:field="*{description}" maxlength="250" rows="5" cols="50"></textarea>
 
-                            <!--                            <textarea rows="5" cols="50" maxlength="250"></textarea>-->
+                                <!--                            <textarea rows="5" cols="50" maxlength="250"></textarea>-->
+                            </div>
                         </div>
-                    </div>
 
-                    <div id=date_days>
-                        <div class=form_element>
-                            <label for="startdate">Start date:</label>
-                            <input type="text" th:field="*{startDate}" id="startdate"></div>
-                    </div>
+                        <div id=date_days>
+                            <div class=form_element>
+                                <label for="startdate">Start date:</label>
+                                <input type="text" th:field="*{startDate}" id="startdate"></div>
+                        </div>
 
+                    </div>
                     <div id=buttons_container>
-                        <button type="submit">Submit</button>
-                        <button type="reset">Reset</button></div>
+                        <button id=submit type="submit">Submit</button>
+                        <button id=reset type="reset">Reset</button></div>
                 </form>
                 <div id=days>
                     <div th:insert="fragments :: alert"></div>
-                    <div id=add_button>
-                        <a th:href="@{/planner/{id}/addnewday(id=${itinerary.id})}"><img src="../static/images/button_plus.png" th:src="@{/images/button_plus.png}" alt="add button" height="60px" width="60px" href=""></a>
-
-
-
-                    </div>
                     <p>Days</p>
+
+                    <div id=add_button>
+                        <p>Add new day</p>
+                        <a th:href="@{/planner/{id}/addnewday(id=${itinerary.itineraryId})}"><img src="../static/images/button_plus.png" th:src="@{/images/button_plus.png}" alt="add button" height="60px" width="60px" href=""></a>
+                    </div>
+
                     <div class=day_container th:each="day : ${allDaysForItinerary}">
                         <p th:text="${day?.name}"></p>
                         <div id=links>
-                            <a th:href="@{/planner/{id}/day/{dayID}(id=${itinerary.id},dayID=${day.id})}">Edit day</a>
-                            <div id=remove_button> <a th:href="@{/planner/{id}/day/{dayID}/delete(id=${itinerary.id},dayID=${day.id})}"><img src="../static/images/button_minus.png" th:src="@{/images/button_minus.png}" alt="remove button" height="60px" width="60x" href=""></a></div>
+                            <a th:href="@{/planner/{id}/day/{dayID}(id=${itinerary.itineraryId},dayID=${day.dayId})}">Edit day</a>
+                            <div id=remove_button> <a th:href="@{/planner/{id}/day/{dayID}/delete(id=${itinerary.itineraryId},dayID=${day.dayId})}"><img src="../static/images/button_minus.png" th:src="@{/images/button_minus.png}" alt="remove button" height="60px" width="60x" href=""></a></div>
                         </div>
                     </div>
-
-
                 </div>
                 <div id=schedule_container>
                     <div class=schedule>
-
                     </div>
                 </div>
 
 
             </div>
-
-
-
+            
+            
 
             <div class=box id=list>
                 <div id=places_list></div>
@@ -108,6 +105,4 @@
     <!-- footer start -->
     <div th:insert="fragments :: footer"></div>
     <!-- footer end -->
-</body>
-
-</html>
+</body></html>

@@ -6,12 +6,11 @@
     <title>
         <!-- Insert your title here -->
     </title>
-    <link th:rel="stylesheet" href="../static/css/placedetail.css" th:href="@{/css/placedetail.css}">
     <link rel="stylesheet" th:rel="stylesheet" href="../static/css/placedetail.css" th:href="@{/css/placedetail.css}">
     <link rel="stylesheet" href="../static/css/fragments.css" th:href="@{/css/fragments.css}">
-    <link th:rel="stylesheet" th:href="@{https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css} "/>
-    <link th:rel="stylesheet" th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css} "/>
-    <link th:rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.6/css/star-rating.css} "/>
+    <link rel="stylesheet" th:rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" th:href="@{https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css} "/>
+    <link rel="stylesheet" th:rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css} "/>
+    <link rel="stylesheet" th:rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.6/css/star-rating.css" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.6/css/star-rating.css} "/>
 
 </head>
 
@@ -24,10 +23,10 @@
 <!-- header end -->
 
 <!-- main content start -->
-<div class=container id=main_container>
+<div class=containerz id=main_container>
 
-    <div class=container id=main_content_column>
-        <div class=container id=basic_info>
+    <div class=containerz id=main_content_column>
+        <div class=containerz id=basic_info>
             <div id=name>
                 <h2 th:text="${place.name}">Place name</h2>
             </div>
@@ -46,7 +45,7 @@
         </div>
 
     </div>
-    <div class=container id=additional_content_column>
+    <div class=containerz id=additional_content_column>
         <div class=box id=contact>
             <h3>Contact</h3>
             <p th:text="${place.description}">Number</p>
@@ -59,8 +58,11 @@
         </div>
     </div>
 </div>
-<div class=container id=rating_container>
+<div class=containerz id=rating_container>
     <div class=box id=rating_box>
+      <style scoped>
+           @import "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css";
+        </style>
         <h3>Add a review</h3>
         <div id=place_rating>
             <div id=star_rating_aggregated>
@@ -71,7 +73,7 @@
         <div id=your_rating>
             <p>Your rating</p>
             <div id=star_rating_vote>
-                <p>****star placeholder</p>
+          
                 <form method="post" th:action="@{/placedetail/{id}/sendReview(id=${place.id})}" th:object="${rating}">
 
                     <input value="0" type="hidden" class="rating" data-glyphicon="0" data-min="0" data-max="5" data-step="1"
@@ -80,8 +82,8 @@
                     <textarea rows="5" cols="50" maxlength="250" th:field="*{comment}"></textarea>
 
                     <div id=buttons>
-                        <button class="btn btn-primary" type="submit">Submit form</button>
-                        <button type="reset">Cancel</button>
+                        <button id=submit class="btn btn-primary" type="submit">Submit form</button>
+                        <button id=reset type="reset">Cancel</button>
 
                     </div>
 

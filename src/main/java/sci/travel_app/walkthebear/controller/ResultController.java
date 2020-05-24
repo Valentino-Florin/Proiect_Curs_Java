@@ -98,27 +98,25 @@ public class ResultController {
 
     @GetMapping("/categories/tourist-attractions")
     public String categoryAttractionsPage1(Model model){
-        return categoryAttractions(model,1,"tourist-attractions","name", "asc");
+        return categoryAttractions(model,1,"name", "asc");
     }
     @GetMapping("/categories/lodging")
     public String categoryLodgingPage1(Model model){
-        return categoryLodging(model,1,"lodging", "name", "asc");
+        return categoryLodging(model,1, "name", "asc");
     }
     @GetMapping("/categories/food-and-drink")
     public String categoryFoodAndDrinkPage1(Model model){
-        return categoryFood(model,1,"food-and-drink", "name", "asc");
+        return categoryFood(model,1, "name", "asc");
     }
 
     @GetMapping("/categories/tourist-attractions/{pageNum}")
     public String categoryAttractions(Model model,
                                       @PathVariable(name = "pageNum") int pageNum,
-                                      @PathVariable(name = "category") String category,
                                       @Param("sortField") String sortField,
                                       @Param("sortDir") String sortDir){
 
          Page<Place> page = placesService.getPaginatedPlaceListByCategory(pageNum, sortField, sortDir, Category.ATTRACTIONS);
          List<Place> resultList = page.getContent();
-         model.addAttribute("category", category);
          model.addAttribute("currentPage", pageNum);
          model.addAttribute("totalPages", page.getTotalPages());
          model.addAttribute("totalItems", page.getTotalElements());
@@ -127,18 +125,16 @@ public class ResultController {
          model.addAttribute("reverseSortDir", sortDir.equals("asc") ? "desc" : "asc");
          model.addAttribute("resultList", resultList);
 
-         return "searchresults";
+         return "categoryresultsatt";
     }
 
     @GetMapping("/categories/lodging/{pageNum}")
     public String categoryLodging(Model model,
                                   @PathVariable(name = "pageNum") int pageNum,
-                                  @PathVariable(name = "category") String category,
                                   @Param("sortField") String sortField,
                                   @Param("sortDir") String sortDir){
         Page<Place> page = placesService.getPaginatedPlaceListByCategory(pageNum, sortField, sortDir, Category.LODGING);
         List<Place> resultList = page.getContent();
-        model.addAttribute("category", category);
         model.addAttribute("currentPage", pageNum);
         model.addAttribute("totalPages", page.getTotalPages());
         model.addAttribute("totalItems", page.getTotalElements());
@@ -146,17 +142,15 @@ public class ResultController {
         model.addAttribute("sortDir", sortDir);
         model.addAttribute("reverseSortDir", sortDir.equals("asc") ? "desc" : "asc");
         model.addAttribute("resultList", resultList);
-        return "searchresults";
+        return "categoryresultslg";
     }
     @GetMapping("/categories/food-and-drink/{pageNum}")
     public String categoryFood(Model model,
                                @PathVariable(name = "pageNum") int pageNum,
-                               @PathVariable(name = "category") String category,
                                @Param("sortField") String sortField,
                                @Param("sortDir") String sortDir){
         Page<Place> page = placesService.getPaginatedPlaceListByCategory(pageNum, sortField, sortDir, Category.FOODDRINK);
         List<Place> resultList = page.getContent();
-        model.addAttribute("category", category);
         model.addAttribute("currentPage", pageNum);
         model.addAttribute("totalPages", page.getTotalPages());
         model.addAttribute("totalItems", page.getTotalElements());
@@ -164,7 +158,7 @@ public class ResultController {
         model.addAttribute("sortDir", sortDir);
         model.addAttribute("reverseSortDir", sortDir.equals("asc") ? "desc" : "asc");
         model.addAttribute("resultList", resultList);
-        return "searchresults";
+        return "categoryresultsfd";
     }
 
 

@@ -33,12 +33,15 @@ h2 {
     padding: 20px;
     border: 1px solid gray;
     background-color: white;
+    display: flex;
+    flex-direction: column;
 }
 
 #link_container {}
 
 #form {
-    flex: 3;
+    width: 70%;
+    display: flex;
 }
 
 form {
@@ -49,11 +52,19 @@ form {
 #info {
     display: flex;
     flex-direction: row;
+    margin-right: 40px;
+    margin-left: 40px;
 }
 
 .form_element {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 30px;
+    min-width: 150px;
+    max-width: 300px;
 }
 
 #date_days {
@@ -61,20 +72,22 @@ form {
     flex-direction: column;
 }
 
-label {}
+label {
+    font-size: 18px;
+}
 
-.form_element p {
-    
+.form_element .label p {
+    color: #262970;
 }
 
 #add_button {
-    display: flex;
+/*    display: flex;*/
     margin-left: 20px;
     margin-right: 20px;
     margin-top: 10px;
 }
 #add_button img {
-    
+   padding: inherit;
 }
 
 #remove_button {
@@ -87,13 +100,24 @@ label {}
     
 }
 
-#schedule_container {}
+#schedule_container {
+    display: flex;
+    flex-direction: column;
+    margin-left: 30px;
+    margin-right: 30px;
+    background-color: #98D9C1;
+    
+}
 
-.schedule {}
+.schedule {
+    display: flex;
+}
 
 h3 {}
 
-.hour_container {}
+.hour_container {
+
+}
 
 .hours {
     display: flex;
@@ -106,7 +130,10 @@ h3 {}
     width: 200px;
 }
 
-#buttons_container {}
+#buttons_container {
+    margin-top: 30px;
+    margin-left: 30px;
+}
 
 #list {
     flex: 1;
@@ -127,3 +154,81 @@ footer {
 }
 
 /* _______________________________ footer end _________________________________ */
+
+.label {
+    font-size: 18px;
+    display: inline-flex;
+
+}
+
+.info {
+    display: flex;
+}
+
+.day_container {
+    margin:10px;
+    padding: 10px;
+     background-color: floralwhite;
+}
+
+button {
+    height: 30px;
+    width: 80px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    border: none;
+}
+#submit{
+    background-color: #6CBA87;
+}
+#submit:hover{
+    background-color: #34BA63;
+}
+
+#reset:hover{
+    background-color: #DEEFFA;
+}
+input {
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  padding: 6px 10px;
+}
+input:focus{
+    border: 2px solid #797BBD;
+}
+select {
+  border: 2px solid #ccc;
+ border-radius: 4px;
+  padding: 6px 10px;
+}
+select:focus{
+border: 2px solid #797BBD;
+}
+textarea {
+    resize: none;
+    width: 100%;
+    height: 150px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+     border-radius: 4px;
+     background-color: #f8f8f8;
+}
+ textarea:focus{
+ border: 2px solid #797BBD;
+ }
+
+#days {
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+#forminputs {
+    display: flex;
+    flex-direction: row;
+}

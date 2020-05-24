@@ -2,6 +2,7 @@ package sci.travel_app.walkthebear.model.entities;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Objects;
 
 @Entity
 @Table(name = "ITINERARY")
@@ -9,7 +10,7 @@ public class Itinerary {
     @Id
     @Column(name = "ITINERARY_ID")
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    long id;
+    long itineraryId;
     @Column(name = "NAME", nullable = false)
     private String name ;
     @Column(name = "DESCRIPTION")
@@ -68,12 +69,12 @@ public class Itinerary {
     }
 
 
-    public long getId() {
-        return id;
+    public long getItineraryId() {
+        return itineraryId;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setItineraryId(long itineraryId) {
+        this.itineraryId = itineraryId;
     }
 
     public AppUser getUser() {
@@ -82,5 +83,18 @@ public class Itinerary {
 
     public void setUser(AppUser user) {
         this.user = user;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Itinerary itinerary = (Itinerary) o;
+        return itineraryId == itinerary.itineraryId;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(itineraryId);
     }
 }

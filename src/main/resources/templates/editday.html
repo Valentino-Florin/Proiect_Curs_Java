@@ -17,10 +17,11 @@
     <!-- main content start -->
     
     <div id=box>
+        <a href="" th:href="@{/planner/{id}(id=${itinerary.itineraryId})}">Back</a>
         <div id=form_container>
             <div th:insert="fragments :: alert"></div>
 <!--         <form action="#" th:action="@{/editday}" method="post" th:object="${dailyschedule}">-->
-            <form action="#" th:action="@{/save}" method="post" th:object="${hoursDTO}">
+            <form action="#" th:action="@{/planner/{id}/day/{dayID}/save(id=${itinerary.itineraryId},dayID=${day.dayId})}" method="get" th:object="${allHours}">
             <label>Name</label>
                 <p th:text="${day.name}">
 <!--             <input type="text" maxlength="50" th:field="*{name}" id="name" placeholder="Name">-->
@@ -28,42 +29,25 @@
             <table>
                 
                  <tr th:each="hour, itemStat : ${allHours.hourMappingList}" >
-                    <td><label>Time:</label> <input type="text" th:name="$|hourMappingList[${itemStat.index}].time|" th:value="${hour.getTime()}"/>
+                    <td><label>Time:</label> <input type="text" th:name="|hourMappingList[${itemStat.index}].time|" th:value="${hour.getTime()}" />
                     </td>
                     <td>
                     <label>Place</label>
-                    <select class="form-control" th:name="$|hourMappingList[${itemStat.index}].place|" th:value="${hour?.getPlace()}"  id="dropOperator">
+                    <select class="form-control" th:name="|hourMappingList[${itemStat.index}].place|" th:value="${hour?.place}"  id="dropOperator">
     <option value="0">select a place from the list</option>
-    <option th:each="uplace : ${unplannedPlaces}" th:value="${uplace.id}" th:text="${uplace.name}"></option>
+<!--                        <option selected="selected"  th:value="${hour?.getPlace()}"></option>-->
+    <option th:each="uplace : ${unplannedPlaces}" th:value="${uplace?.id}" th:text="${uplace.name}"></option>
+<!--                        <option th:each="uplace : ${unplannedPlaces}" th:value="${hour?.getPlace()}" th:text="${uplace.name}"></option>-->
     </select>
-<!--
-                <tr th:each="hour, itemStat : ${allHours.hourObj}" >
-                    <td><p>Time:</p> <input type="text" th:field="${hourObj[__${itemStat.index}__].time}">
-                    </td>
-                    <td>
-                    <label>Place</label>
-                    <select class="form-control" th:field="*{hourObj[__${itemStat.index}__].title}"  id="dropOperator">
-    <option value="0">select a place from the list</option>
-    <option th:each="uplace : ${unplannedPlaces}" th:value="${uplace.id}" th:text="${uplace.name}"></option>
-    </select>
--->
-                        
-<!--
-                        <tr th:each="book, itemStat : ${form.books}">
-							<td><input hidden th:name="|books[${itemStat.index}].id|" th:value="${book.getId()}"/></td>
-							<td><input th:placeholder="Title + ' ' + ${itemStat.count}" th:name="|books[${itemStat.index}].title|" th:value="${book.getTitle()}"
-									   required/></td>
-							<td><input th:placeholder="Author + ' ' + ${itemStat.count}" th:name="|books[${itemStat.index}].author|"
-									   th:value="${book.getAuthor()}" required/></td>
-                        
--->
+                        <input type="text" th:name="|hourMappingList[${itemStat.index}].hourId|" th:value="${hour.getHourId()}" />
+
                         </td>
                     </tr>
             </table>
             
              <div id=buttons_container> 
-                        <button type="submit">Submit</button>
-                        <button type="reset">Reset</button></div>
+                        <button id=submit type="submit">Submit</button>
+                        <button id=reset type="reset">Reset</button></div>
         </form>
         </div>
         <div id=list_container>

@@ -3,32 +3,35 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Login</title>
     <link type="text/css" href="../static/css/site.css" th:href="@{/css/site.css}" rel="stylesheet">
 </head>
 <body>
-<div id="Login" >
-    <a th:href="@{/register}">Register</a>
-
+<div class="form" >
+    <a href="register.html" th:href="@{/register}">Go to registration page >></a>
+       
     <form id="loginForm"  th:action="@{/site}" method="post">
-
-        <div class="container">
+  
+        <div class="container" id=inputs>
+            <h1>Sign Up</h1>
+            <div class=inputs>
             <label th:for="username"><b>Username</b></label>
             <input type="text" placeholder="Enter Username" name="username" required>
-
+            </div>
+<div class=inputs>
             <label th:for="password"><b>Password</b></label>
             <input type="password" placeholder="Enter Password" name="password" required>
-
-            <input type="submit" value="Sign In"/>
-
-            <label>
-                <input type="checkbox" checked="checked" name="remember"> Remember me
-            </label>
+            </div>
+            <div class=inputs>
+           
+            
+            </div>
         </div>
 
-        <div class="container" style="background-color:#f1f1f1">
+        <div class="container" id=buttons>
+            <button type="submit" class="submit">Sign In</button>
             <button type="button" class="cancelbtn"><a th:href="@{/index}">Cancel</a></button>
-            <span class="psw">Forgot <a href="#">password?</a></span>
+<!--            <span class="psw">Forgot <a href="#">password?</a></span>-->
         </div>
     </form>
 

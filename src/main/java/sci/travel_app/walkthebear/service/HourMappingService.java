@@ -21,12 +21,20 @@ public class HourMappingService {
         slot.setTime(time);
         hourMappingRepository.save(slot);
     }
-    public void updateMapping(String time, Place place, HourMapping hourMapping){
-      if(hourMapping.getTime().equals(time)){
-          hourMapping.setPlace(place);
-          hourMappingRepository.save(hourMapping);
-      }
-      //else...some kind of invalid argument exception?
+    public void updateMapping(long id){
+        HourMapping saveMe = hourMappingRepository.findById(id);
+//        saveMe.setPlace(place);
+//        saveMe.setDailySchedule(dailySchedule);
+        hourMappingRepository.save(saveMe);
+
+
+
+//
+//      if(hourMapping.getTime().equals(time)){
+//          hourMapping.setPlace(place);
+//          hourMappingRepository.save(hourMapping);
+//      }
+//      //else...some kind of invalid argument exception?
     }
 
     public List<HourMapping> getFullDay(DailySchedule dailySchedule){
@@ -66,8 +74,16 @@ public class HourMappingService {
 //            hourMappingRepository.delete(axed);}
         }
 
-    public void saveAll(DailySchedule dailySchedule){
+    public void saveFullDay(DailySchedule dailySchedule){
         List<HourMapping> allHours = getFullDay(dailySchedule);
         hourMappingRepository.saveAll(allHours);
     }
+   public void saveAll(List<HourMapping> list, DailySchedule dailySchedule){
+       for (HourMapping hour : list) {
+           long id = hour.getHourId();
+           HourMapping saveMe = hourMappingRepository.findById(id);
+           saveMe.setDailySchedule(dailySchedule);
+           hourMappingRepository.save(saveMe);
+       }
+   }
 }

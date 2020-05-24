@@ -37,15 +37,15 @@
         </div>
         <div class=container id=main_content_column>
             <div id=title>
-                <h2>[[${totalItems}]] results for "[[${keyword}]]"</h2>
+                <h2>Results title</h2>
             </div>
             <div id=sorting>
-                <p>Sort by </p><a th:href="@{'/results/' + ${currentPage} + '?sortField=name&sortDir=' + ${reverseSortDir}}">Name</a>
-                <!--                <a href="">Date</a>-->
+                <p>Sort by </p><a th:href="@{'/categories/food-and-drink/' + ${currentPage} + '?sortField=name&sortDir=' + ${reverseSortDir}}">Name</a>
+             
             </div>
             <div id=list_container th:each="result : ${resultList}">
                 <div class=list-item>
-                  <a href="placedetail.html" th:href="@{/placedetail/{id}(id=${result.id})}"><div class=thumbnail><img class="list_thumbnail" src="../static/images/placeholder.jpg" th:src="@{/images/placeholder.jpg}"></div>
+                    <a href="placedetail.html" th:href="@{/placedetail/{id}(id=${result.id})}"><div class=thumbnail><img class="list_thumbnail" src="../static/images/placeholder.jpg" th:src="@{/images/placeholder.jpg}"></div>
                     <h4 th:text="${result.name}">Name placeholder</h4>
                     <p th:text="${result.description}"> Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
                     <div class=extrainfo>
@@ -65,26 +65,26 @@
                     Total Items: [[${totalItems}]]
                     &nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;
 
-                    <a th:if="${currentPage > 1}" th:href="@{'/results/1' + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">First</a>
+                    <a th:if="${currentPage > 1}" th:href="@{'/categories/food-and-drink/1' + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">First</a>
                     <span th:unless="${currentPage > 1}">First</span>
                     &nbsp;&nbsp;
 
-                    <a th:if="${currentPage > 1}" th:href="@{'/results/' + ${currentPage - 1} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Previous</a>
+                    <a th:if="${currentPage > 1}" th:href="@{'/categories/food-and-drink/' + ${currentPage - 1} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Previous</a>
                     <span th:unless="${currentPage > 1}">Previous</span>
 
                     &nbsp;&nbsp;
 
                     <span th:each="i: ${#numbers.sequence(1, totalPages)}">
-			<a th:if="${currentPage != i}" th:href="@{'/results/' + ${i} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">[[${i}]]</a>
+			<a th:if="${currentPage != i}" th:href="@{'/categories/food-and-drink/' + ${i} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">[[${i}]]</a>
 			<span th:unless="${currentPage != i}">[[${i}]]</span>
 			&nbsp;
 		</span>
 
-                    <a th:if="${currentPage < totalPages}" th:href="@{'/results/' + ${currentPage + 1} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Next</a>
+                    <a th:if="${currentPage < totalPages}" th:href="@{'/categories/food-and-drink/' + ${currentPage + 1} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Next</a>
                     <span th:unless="${currentPage < totalPages}">Next</span>
                     &nbsp;&nbsp;
 
-                    <a th:if="${currentPage < totalPages}" th:href="@{'/results/' + ${totalPages} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Last</a>
+                    <a th:if="${currentPage < totalPages}" th:href="@{'/categories/food-and-drink/' + ${totalPages} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Last</a>
                     <span th:unless="${currentPage < totalPages}">Last</span>
                 </div>
                 

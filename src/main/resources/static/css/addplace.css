@@ -39,11 +39,65 @@ form {}
 
 .form_element {
     margin-bottom: 20px;
+    display: flex;
+    flex-direction: row;
 }
 
 .form_element label {
     margin-right: 30px;
+
 }
+
+input {
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  padding: 6px 10px;
+}
+input:focus{
+    border: 2px solid #797BBD;
+}
+select {
+  border: 2px solid #ccc;
+ border-radius: 4px;
+  padding: 6px 10px;
+}
+select:focus{
+border: 2px solid #797BBD;
+}
+
+button {
+    height: 30px;
+    width: 80px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    border: none;
+}
+#submit{
+    background-color: #6CBA87;
+}
+#submit:hover{
+    background-color: #34BA63;
+}
+
+#reset:hover{
+    background-color: #DEEFFA;
+}
+
+textarea {
+    resize: none;
+    width: 100%;
+    height: 150px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+     border-radius: 4px;
+     background-color: #f8f8f8;
+}
+ textarea:focus{
+ border: 2px solid #797BBD;
+ }
+ 
 
 /* _______________________________ main end _________________________________ */
 

@@ -1,8 +1,11 @@
-a:link, a:visited {
+a:link,
+a:visited {
     text-decoration: none;
     color: #1F6E3A;
 }
-a:hover, a:active {
+
+a:hover,
+a:active {
     text-decoration: none;
     color: #103B1F;
 }
@@ -27,6 +30,32 @@ a:hover, a:active {
 .searchbar {
     padding-right: 30px;
     padding-left: 30px;
+
+}
+
+#searchform {
+    display: flex;
+    flex-direction: row;
+}
+
+.searchbar button {
+    height: 30px;
+    width: 80px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    border: none;
+
+}
+
+.searchbar input {
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    padding: 6px 10px;
+}
+
+.searchbar input:focus {
+    border: 2px solid #797BBD;
 }
 
 .top_nav_links {
@@ -123,7 +152,8 @@ h1 {
     list-style: none;
     text-decoration: none;
 }
-.hero_image_container_l p{
+
+.hero_image_container_l p {
     z-index: 10000;
     font-size: 100px;
     text-align: center;
@@ -131,12 +161,14 @@ h1 {
     width: 20%;
     padding-top: 100px;
     color: white;
-   
+
 }
+
 .slider {
     overflow: hidden;
     height: 600px;
 }
+
 .slider figure div {
     width: 20%;
     float: left;
@@ -159,51 +191,67 @@ h1 {
     0% {
         left: 0%;
     }
+
     10% {
         left: 0%;
     }
+
     12% {
         left: -100%;
     }
+
     22% {
-         left: -100%;
+        left: -100%;
     }
+
     24% {
-         left: -200%;
+        left: -200%;
     }
+
     34% {
         left: -200%;
     }
+
     36% {
         left: -300%;
     }
+
     46% {
         left: -300%;
     }
+
     48% {
         left: -400%;
     }
+
     58% {
         left: -400%;
     }
+
     60% {
         left: -300%;
     }
+
     70% {
         left: -300%;
     }
+
     72% {
         left: -200%;
     }
+
     82% {
         left: -200%;
     }
+
     84% {
         left: -100%;
     }
+
     94% {
         left: -100%;
     }
+
     96% {
         left: 0%;
     }
@@ -223,14 +271,13 @@ h1 {
 }
 
 .hero_image_container_m img {
-        max-width: 100%;
-/*    max-width: 30vw;*/
+    max-width: 100%;
+    /*    max-width: 30vw;*/
 }
 
 #hero {}
 
 .
-
 /* _______________________________regular header end _________________________________ */
 
 
@@ -261,5 +308,5 @@ footer {
     padding-left: 20px;
     padding-right: 20px;
     padding-bottom: 10px;
-  font-size: 16px;  
+    font-size: 16px;
 }

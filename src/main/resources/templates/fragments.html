@@ -12,7 +12,7 @@
     <!-- big header start -->
     <div id=header_L th:fragment="home_header">
         <div class="top_nav">
-            <div class="searchbar"><input type="text" id="header_searchbar" placeholder="Search"></div>
+            <div th:insert="fragments :: search_bar"></div>
             <div class="top_nav_links">
                 <a th:href="@{/login}">Login</a>
                 <a th:href="@{/register}">Register</a>
@@ -68,15 +68,15 @@
     <!--regular header start -->
     <div id="header_M" th:fragment="header">
         <div class="top_nav">
-            <div class="searchbar">
-                <form th:action="@{/results}">
-                       <input type="text" id="header_searchbar" name=keyword placeholder="Search" requiered>
+            <div class="searchbar" th:fragment=search_bar>
+                <form id="searchform" th:action="@{/results}">
+                       <input type="text" id="header_searchbar" name=keyword placeholder="type here to search" required>
                     <button type="submit">Search</button>
                 </form>
             </div>
             <div class="top_nav_links">
-                <a href="">Login</a>
-                <a href="">Register</a>
+                 <a th:href="@{/login}">Login</a>
+                <a th:href="@{/register}">Register</a>
             </div>
         </div>
         <div id="main_title">
@@ -132,7 +132,7 @@
 
     <!-- footer start -->
     <footer th:fragment="footer">
-        <div class="footer_nav_links"> </div>
+        <div class="footer_nav_links"> link</div>
     </footer>
     <!-- footer end -->
 

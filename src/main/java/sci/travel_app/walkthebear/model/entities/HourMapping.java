@@ -1,12 +1,14 @@
 package sci.travel_app.walkthebear.model.entities;
 
 import javax.persistence.*;
+import java.util.Objects;
+
 @Entity
 public class HourMapping {
     @Id
     @Column(name = "HOURMAPPING_ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long hourId;
     @OneToOne
     @JoinColumn(name = "SCHEDULE_ID")
     private DailySchedule dailySchedule;
@@ -26,12 +28,12 @@ public class HourMapping {
     }
 
 
-    public Long getId() {
-        return id;
+    public Long getHourId() {
+        return hourId;
     }
 
-    public void setId(Long id) {
-        id = id;
+    public void setHourId(Long hourID) {
+        hourId = hourId;
     }
 
     public DailySchedule getDailySchedule() {
@@ -56,5 +58,18 @@ public class HourMapping {
 
     public void setPlace(Place place) {
         this.place = place;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        HourMapping that = (HourMapping) o;
+        return hourId.equals(that.hourId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(hourId);
     }
 }
