@@ -1,4 +1,5 @@
-/*package sci.travel_app.WalkTheBear.web_config;
+/*
+package sci.travel_app.walkthebear.web_config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,4 +13,5 @@ public class PasswordConfig {
     public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder(10);
     }
-} */
+}
+*/

@@ -22,7 +22,7 @@
     <div>
     <h2>Search for users</h2>
     </div>
-    <form action="#" th:action="@{/adminuser" method="get" th:object="${user}">
+    <form action="#" th:action="@{/adminuser}" method="get" th:object="${user}">
         <input type="text" name="userSearch" id="search" th:value="${userSearch}"/>
         <input type="submit" value="Search"/>
         <div>
@@ -52,8 +52,8 @@
                       <td th:text="${user.email}">email</td>
                       <td th:text="${user.role}">role</td>
                       <td th:text="${user.created}">created</td>
-                      <td><a th:href="@{/edituserdmin/{id}(id=${user.id})}">Edit</a></td>
-                      <td><a th:href="@{/deleteusseradmin/{id}(id=${user.id})}">Delete</a></td>
+                      <td><a th:href="@{/edituseradmin/{id}(id=${user.id})}">Edit</a></td>
+                      <td><a th:href="@{/deleteuseradmin/{id}(id=${user.id})}">Delete</a></td>
                   </tr>
               </table>
           </div>

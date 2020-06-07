@@ -10,10 +10,15 @@ import java.util.List;
 
 @Repository
 public interface RatingRepository extends JpaRepository<Rating, Long> {
+
     List<Rating> findByPlace(Place ratedPlace);
-   List<Rating> findByUser(AppUser user);
-  List<Rating> findByUserAndPlace(AppUser user, long id);
+
+    List<Rating> findByUser(AppUser user);
+
+    List<Rating> findByUserAndPlace(AppUser user, long id);
 
     Rating findById(long id);
+
+    List<Rating> findAll();
 
 }

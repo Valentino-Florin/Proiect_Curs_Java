@@ -14,9 +14,24 @@
 <!-- Tab contents -->
 <div class="tabcontent" id="ratings">
     <h2>RATINGS 📝</h2>
+
+    <div class=box id=user_rating>
+        <h3>User reviews</h3>
+        <div class=rating_list>
+            <table>
+                <tr th:each="ratings : ${allRated}">
+                    <td th:text="${ratings.starRating}"></td>
+                    <td th:text="${ratings.comment}"></td>
+                    <td th:text="${ratings.place.getName()}"></td>
+                </tr>
+            </table>
+            <div th:insert="fragments :: alert"></div>
+        </div>
+    </div>
+
     <div id="ratings_box">
         <div class="box">
-            <p class="place_name">Place name ★★★★☆<br></p>
+            <p class="place_name" th:text="${place.name}"> Place name ★★★★☆<br></p>
             <p class="rating_text">Rating here Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
                 Aenean commodo ligula eget dolor. Aenean massa.
                 Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. </p>
@@ -64,6 +79,7 @@
                 Aenean commodo ligula eget dolor. Aenean massa.
                 Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. </p>
         </div>
+
     </div>
 </div>
 

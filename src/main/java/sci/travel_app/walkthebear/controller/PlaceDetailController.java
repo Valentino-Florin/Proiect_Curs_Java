@@ -21,7 +21,7 @@ import java.util.logging.Logger;
 
 
 @Controller
-public class RatingController {
+public class PlaceDetailController {
 
     @Autowired
     private RatingServiceImpl ratingService;
@@ -32,27 +32,33 @@ public class RatingController {
     @Autowired
     private UnplannedPlacesListService unplannedPlacesListService;
 
-    private static final Logger log = Logger.getLogger(String.valueOf(RatingController.class));
+    private static final Logger log = Logger.getLogger(String.valueOf(PlaceDetailController.class));
 
-    @GetMapping(value="/placedetail/{id}")
-    public String newRating(@PathVariable("id") long id, Model model) {
+
+    @GetMapping(value = "/placedetail/{pid}")
+    public String newRating(@PathVariable("pid") long id, Model model) {
         Place place = placeService.getPlaceById(id);
         model.addAttribute("place", place);
         Rating rating = new Rating();
         rating.setPlace(place);
         model.addAttribute("rating", rating);
+
         List<Rating> ratingList = ratingService.getAllRatingsOfPlaceById(id);
         model.addAttribute("ratingList", ratingList);
+
+        double placeAverageRating = (ratingList.stream().mapToDouble(Rating::getStarRating).sum() / ratingList.stream().count());
+        model.addAttribute("placeAverageRating", placeAverageRating);
+
         model.addAttribute("isAddedToFav", favoritesService.isAdded2(placeService.getPlaceById(id)));
         model.addAttribute("isAddedToList", unplannedPlacesListService.isAdded(placeService.getPlaceById(id), null));
         return "placedetail";
     }
 
 
-    @PostMapping(value="/placedetail/{id}/sendReview")
-    public String sendRating(@PathVariable("id") long id, @ModelAttribute("rating") Rating rating, BindingResult result,
-                             RedirectAttributes redirectAttributes)
-    {
+    @PostMapping(value = "/placedetail/{pid}/sendReview")
+    public String sendRating(@PathVariable("pid") long id, @ModelAttribute("rating") Rating rating, BindingResult result,
+                             RedirectAttributes redirectAttributes) {
+
         ratingService.create(rating, placeService.getPlaceById(id));
         redirectAttributes.addFlashAttribute("message", "Success");
         return "redirect:/placedetail/" + id;
@@ -84,4 +90,11 @@ public class RatingController {
         return "redirect:/placedetail/" + id;
     }
     }
+    @GetMapping("/profileratings")
+    public String getAllRated(Model model) {
+        List<Rating> allRated = ratingService.findAll();
+        model.addAttribute("allRated", allRated);
+        return "profileratings";
+    }
 
+}

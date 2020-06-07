@@ -12,18 +12,18 @@
 
         <a th:href="@{/login}">Go to login page >></a>
 
-        <form th:action="@{/site}" method="post">
+        <form th:action="@{/register}" method="post">
             <div class="container" id=inputs>
                 <h1>Sign Up</h1>
                 <p>Please fill in this form to create an account.</p>
                 <hr>
                 <div class=inputs>
                 <label for="AccountType"><b>Account Type</b></label>
-                <input type="radio" name="accountType" value="Host" th:value="${T(sci.travel_app.walkthebear.model.misc.AppUserRole).HOST}" th:text="${T(sci.travel_app.walkthebear.model.misc.AppUserRole).HOST}"> Host<br>
-                <input type="radio" name="accountType" value="Traveller" th:value="${T(sci.travel_app.walkthebear.model.misc.AppUserRole).TRAVELER}" th:text="${T(sci.travel_app.walkthebear.model.misc.AppUserRole).TRAVELER}"> Traveler<br>
+                    <input type="radio" th:field="*{role}" th:value="${T(sci.travel_app.walkthebear.model.misc.AppUserRole).HOST}"> Host<br>
+                    <input type="radio" th:field="*{role}" th:value="${T(sci.travel_app.walkthebear.model.misc.AppUserRole).TRAVELER}"> Traveler<br>
                 </div>
                 <div class=inputs>
-                <label th:for="Username"><b>Username</b></label>
+                <label th:for="userName"><b>Username</b></label>
                 <input type="text" placeholder="Enter Username" name="username" required>
                 </div>
                 <div class=inputs>
@@ -31,11 +31,11 @@
                 <input type="text" placeholder="Enter Email" name="email" required>
                 </div>
                 <div class=inputs>
-                <label th:for="psw"><b>Password</b></label>
+                <label th:for="password"><b>Password</b></label>
                 <input type="password" placeholder="Enter Password" name="psw" required>
                 </div>
                 <div class=inputs>
-                <label th:for="psw-repeat"><b>Repeat Password</b></label>
+                <label th:for="confirmPassword"><b>Repeat Password</b></label>
                 <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
                 </div>
             </div>
@@ -56,8 +56,9 @@
             <div class="container" id=buttons>
                 <button type="submit" class="submit">Sign Up</button>
                 <button type="button" class="cancelbtn"><a th:href="@{/home}">Cancel</a></button>
-                
+
             </div>
+            <div th:insert="fragments :: alert"></div>
 
         </form>
     </div>

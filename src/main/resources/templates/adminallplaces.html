@@ -20,16 +20,12 @@
 
 <div class=container id=main_container>
     <div>
-    <h2>Search for places</h2>
+    <h2>All Places</h2>
     </div>
-    <form action="#" th:action="@{/adminplace}" method="get" th:object="${place}">
-        <input type="text" name="placeSearch" id="search" th:value="${placeSearch}"/>
-        <input type="submit" value="Search"/>
+    <div th:switch="${places}">
+        <h2 th:case="null">No places added yet!</h2>
+        <div th:case="*">
         <div>
-         <div>
-                <a href="adminallplaces.html" th:href="@{http://localhost:8080/adminallplaces}">
-                    <p>Add Place</p>
-                </a>
         <div id=button_text>
             <a href="addplaceadmin.html" th:href="@{http://localhost:8080/addplaceadmin}">
                 <p>Add Place</p>
@@ -55,7 +51,7 @@
                       <th>Created By</th>
 
                   </tr>
-                  <tr th:each="place : ${placeSearch}">
+                  <tr th:each="place : ${places}">
                       <td th:text="${place.id}">id</td>
                       <td th:text="${place.name}">name</td>
                       <td th:text="${place.county}">county</td>
@@ -77,5 +73,5 @@
           </div>
       </form>
   </div>
-  </body>
+ </body>
   </html>

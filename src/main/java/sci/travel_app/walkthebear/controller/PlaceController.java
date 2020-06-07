@@ -1,5 +1,7 @@
 package sci.travel_app.walkthebear.controller;
 
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import sci.travel_app.walkthebear.model.entities.Place;
 import sci.travel_app.walkthebear.model.misc.Category;
 import sci.travel_app.walkthebear.service.PlacesServiceImp;
@@ -22,6 +25,7 @@ public class PlaceController {
 
     @Autowired
     private PlacesServiceImp placesService;
+    private static org.apache.logging.log4j.Logger logger = LogManager.getLogger(PlaceController.class);
 //    @Autowired
 //    private RatingServiceImpl ratingService;
 
@@ -68,21 +72,18 @@ public class PlaceController {
     }
 
     @PostMapping("/addplace")
-    public String addNewPlace(@Valid Place place, BindingResult result, Model model) {
+    public String addNewPlace(@Valid Place place, BindingResult result, Model model, RedirectAttributes redirectAttributes) {
         if (result.hasErrors()) {
             return "addplace";
         }
 
         placesService.addPlace(place);
         model.addAttribute("place", placesService.getAllPlaces());
+        redirectAttributes.addFlashAttribute("place", place);
+        redirectAttributes.addFlashAttribute("message", "Place saved!");
         return "redirect:placemanager";
     }
-    @GetMapping("/view")
-    public String showPlace(Model model, String placeName) {
-        model.addAttribute("place", placesService.getPlaceByName(placeName));
-        return "searchresults";
-    }
-    /*@GetMapping("/adminplace")
+     /*@GetMapping("/adminplace")
      public String showAdminPlace(Model model, String placeName) {
          model.addAttribute("placeSearch", placesService.getPlaceByName(placeName));
          return "adminplace";

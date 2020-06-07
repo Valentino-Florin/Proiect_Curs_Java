@@ -8,7 +8,7 @@ import java.util.Date;
 public class Rating {
     @Id
     @Column(name = "RATING_ID")
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
     @Column(name = "STAR_RATING", nullable = false)
     private int starRating;
@@ -24,7 +24,9 @@ public class Rating {
     @Column(name = "DATE_CREATED")
     private Date created;
 
-    public Rating(){}
+    public Rating() {
+    }
+
     public Rating(int starRating, String comment, AppUser user, Place place) {
         this.starRating = starRating;
         this.comment = comment;
@@ -36,6 +38,7 @@ public class Rating {
     public int getStarRating() {
         return starRating;
     }
+
     public void setStarRating(int starRating) {
         this.starRating = starRating;
     }
@@ -43,6 +46,7 @@ public class Rating {
     public String getComment() {
         return comment;
     }
+
     public void setComment(String comment) {
         this.comment = comment;
     }
@@ -50,6 +54,7 @@ public class Rating {
     public AppUser getUser() {
         return user;
     }
+
     public void setUser(AppUser user) {
         this.user = user;
     }
@@ -57,6 +62,7 @@ public class Rating {
     public Place getPlace() {
         return place;
     }
+
     public void setPlace(Place place) {
         this.place = place;
     }
@@ -64,6 +70,7 @@ public class Rating {
     public Date getCreated() {
         return created;
     }
+
     public void setCreated(Date created) {
         this.created = created;
     }
@@ -71,8 +78,9 @@ public class Rating {
     public long getId() {
         return id;
     }
+
     public void setId(long id) {
         this.id = id;
     }
-    
+
 }

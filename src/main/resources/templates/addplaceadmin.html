@@ -7,147 +7,147 @@
         <!-- Insert your title here -->
     </title>
     <link type="text/css" href="../static/css/addplace.css" th:href="@{/css/addplace.css}" rel="stylesheet">
-<link rel="stylesheet" href="../static/css/fragments.css" th:href="@{/css/fragments.css}">
+    <link rel="stylesheet" href="../static/css/fragments.css" th:href="@{/css/fragments.css}">
 </head>
 
 <body>
-    <!-- header start -->
- <div th:insert="fragments :: header"></div>
-    <!-- header end -->
+<!-- header start -->
+<div th:insert="fragments :: header"></div>
+<!-- header end -->
 
 
-    <!-- main content start -->
+<!-- main content start -->
 
-    <div class=container id=main_container>
-        <div>
-            <h2>Add place admin</h2>
-        </div>
-        <div class=container id=form_container>
-            <!--<form id=addplace > -->
-            <form action="#" th:action="@{/addplaceadmin}" method="post" th:object="${place}">
-                <div class=form_element>
-                    <label>Category</label>
-                    <select id=category name=category>
-                        <!--                        <select id=category th:field="*{category}">-->
-                        <option th:each="categoryOpt : ${T(sci.travel_app.WalkTheBear.model.misc.Category).values()}"
-                                th:value="${categoryOpt}" th:text="${categoryOpt.displayValue}"></option>
-                    </select>
-                </div>
-                <!--                ignore this test code-->
-                <!--                <div th:switch="${category}">-->
-                <!--    <span th:case="${T(sci.travel_app.WalkTheBear.model.misc.Category).FOODDRINK}"-->
-                <!--      style="color: red;">Alert</span>-->
-                <!--    <span th:case="${T(sci.travel_app.WalkTheBear.model.misc.Category).ATTRACTIONS}"-->
-                <!--      style="color: orange;">Warning</span>-->
-                <!--    <span th:case="${T(sci.travel_app.WalkTheBear.model.misc.Category).LODGING}"-->
-                <!--      style="color: yellow;">Caution</span>-->
-                <!--</div>-->
+<div class=container id=main_container>
+    <div>
+        <h2>Add Place Admin</h2>
+    </div>
+    <div class=container id=form_container>
+        <!--<form id=addplace > -->
+        <form action="#" th:action="@{/addplaceadmin}" method="post" th:object="${place}">
+            <div class=form_element>
+                <label>Category</label>
+                <select id=category name=category>
+                    <!--                        <select id=category th:field="*{category}">-->
+                    <option th:each="categoryOpt : ${T(sci.travel_app.walkthebear.model.misc.Category).values()}"
+                            th:value="${categoryOpt}" th:text="${categoryOpt.displayValue}"></option>
+                </select>
+            </div>
+            <!--                ignore this test code-->
+            <!--                <div th:switch="${category}">-->
+            <!--    <span th:case="${T(sci.travel_app.walkthebear.model.misc.Category).FOODDRINK}"-->
+            <!--      style="color: red;">Alert</span>-->
+            <!--    <span th:case="${T(sci.travel_app.walkthebear.model.misc.Category).ATTRACTIONS}"-->
+            <!--      style="color: orange;">Warning</span>-->
+            <!--    <span th:case="${T(sci.travel_app.walkthebear.model.misc.Category).LODGING}"-->
+            <!--      style="color: yellow;">Caution</span>-->
+            <!--</div>-->
 
-                <!--<div class=form_element th:switch="${T(sci.travel_app.WalkTheBear.model.misc.Category)}">
-                    <label>Sub - Category</label>
-                    <select class=subcategory th:case="${T(sci.travel_app.WalkTheBear.model.misc.Category).FOODDRINK}" >
-                         <option th:value="${T(sci.travel_app.WalkTheBear.model.misc.SubCategory).BAR}"
-                                 th:text="${T(sci.travel_app.WalkTheBear.model.misc.SubCategory).BAR}"></option>
-                         <option th:value="${T(sci.travel_app.WalkTheBear.model.misc.SubCategory).RESTAURANT}"
-                                 th:text="${T(sci.travel_app.WalkTheBear.model.misc.SubCategory).RESTAURANT}"></option>
-                     </select>
-                     <select class=subcategory th:case="${T(sci.travel_app.WalkTheBear.model.misc.Category).ATTRACTIONS}">
-                         <option th:value="${T(sci.travel_app.WalkTheBear.model.misc.SubCategory).PARK}"
-                                 th:text="${T(sci.travel_app.WalkTheBear.model.misc.SubCategory).PARK}"></option>
-                         <option th:value="${T(sci.travel_app.WalkTheBear.model.misc.SubCategory).MUSEUM}"
-                                 th:text="${T(sci.travel_app.WalkTheBear.model.misc.SubCategory).MUSEUM}"></option>
-                     </select>
+            <!--<div class=form_element th:switch="${T(sci.travel_app.walkthebear.model.misc.Category)}">
+                <label>Sub - Category</label>
+                <select class=subcategory th:case="${T(sci.travel_app.walkthebear.model.misc.Category).FOODDRINK}" >
+                     <option th:value="${T(sci.travel_app.walkthebear.model.misc.SubCategory).BAR}"
+                             th:text="${T(sci.travel_app.walkthebear.model.misc.SubCategory).BAR}"></option>
+                     <option th:value="${T(sci.travel_app.walkthebear.model.misc.SubCategory).RESTAURANT}"
+                             th:text="${T(sci.travel_app.walkthebear.model.misc.SubCategory).RESTAURANT}"></option>
+                 </select>
+                 <select class=subcategory th:case="${T(sci.travel_app.walkthebear.model.misc.Category).ATTRACTIONS}">
+                     <option th:value="${T(sci.travel_app.walkthebear.model.misc.SubCategory).PARK}"
+                             th:text="${T(sci.travel_app.walkthebear.model.misc.SubCategory).PARK}"></option>
+                     <option th:value="${T(sci.travel_app.walkthebear.model.misc.SubCategory).MUSEUM}"
+                             th:text="${T(sci.travel_app.walkthebear.model.misc.SubCategory).MUSEUM}"></option>
+                 </select>
 
-                     <select class=subcategory th:case="${T(sci.travel_app.WalkTheBear.model.misc.Category).LODGING}">
-                         <option th:value="${T(sci.travel_app.WalkTheBear.model.misc.SubCategory).HOTEL}"
-                                 th:text="${T(sci.travel_app.WalkTheBear.model.misc.SubCategory).HOTEL}"></option>
-                         <option th:value="${T(sci.travel_app.WalkTheBear.model.misc.SubCategory).MOTEL}"
-                                 th:text="${T(sci.travel_app.WalkTheBear.model.misc.SubCategory).MOTEL}"></option>
-                     </select> </div> -->
-                <div class=form_element>
-                    <label>Sub-Category</label>
-                    <select id=subcategory name=subcategory>
-                        <!--                        <select id=category th:field="*{category}">-->
-                        <option th:each="categoryOpt : ${T(sci.travel_app.WalkTheBear.model.misc.SubCategory).values()}"
-                                th:value="${categoryOpt}" th:text="${categoryOpt.displayValue}"></option>
-                    </select>
-                </div>
-                <div class=form_element>
-                    <input type= "hidden" name="created" id="created"
-                           th:value="${#dates.format(#dates.createNow() , 'dd/MM/yyyy HH:mm')}" />
-                </div>
-                <div class=form_element>
-                    <label>Name</label>
-                    <input type="text" maxlength="50" th:field="*{name}" id="name" placeholder="Name">
-                    <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
-                </div>
-                <div class=form_element>
-                    <label>County</label>
-                    <input type="text" maxlength="50" th:field="*{county}" id="county" placeholder="County">
-                    <span th:if="${#fields.hasErrors('county')}" th:errors="*{county}"></span>
-                </div>
-                <div class=form_element>
-                    <label>City</label>
-                    <input type="text" maxlength="250" th:field="*{city}" id="city" placeholder="City">
-                    <span th:if="${#fields.hasErrors('city')}" th:errors="*{city}"> </span>
-                </div>
-                <div class=form_element>
-                    <label>Address</label>
-                    <input type="text" maxlength="250" th:field="*{address}" id="address" placeholder="Address">
-                    <span th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></span>
-                </div>
-                <div class=form_element>
-                    <label>GPS coordinates</label>
-                    <input type="text" maxlength="250" th:field="*{coordinates}" id="coordinates"
-                           placeholder="GPS coordinates">
-                    <span th:if="${#fields.hasErrors('coordinates')}" th:errors="*{coordinates}"></span>
-                </div>
-                <div class=form_element>
-                    <label>Working hours</label>
-                    <input type="text" maxlength="250" th:field="*{workingHours}" id="workingHours"
-                           placeholder="Working hours">
-                    <span th:if="${#fields.hasErrors('workingHours')}" th:errors="*{workingHours}"></span>
-                </div>
-                <div class=form_element>
-                    <label>Email</label>
-                    <input type="text" maxlength="250" th:field="*{email}" id="email" placeholder="Email">
-                    <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
-                </div>
-                <div class=form_element>
-                    <label>Telephone</label>
-                    <input type="text" maxlength="250" th:field="*{phoneNumber}" id="phoneNumber" placeholder="Telephone">
-                    <span th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></span>
-                </div>
+                 <select class=subcategory th:case="${T(sci.travel_app.walkthebear.model.misc.Category).LODGING}">
+                     <option th:value="${T(sci.travel_app.walkthebear.model.misc.SubCategory).HOTEL}"
+                             th:text="${T(sci.travel_app.walkthebear.model.misc.SubCategory).HOTEL}"></option>
+                     <option th:value="${T(sci.travel_app.walkthebear.model.misc.SubCategory).MOTEL}"
+                             th:text="${T(sci.travel_app.walkthebear.model.misc.SubCategory).MOTEL}"></option>
+                 </select> </div> -->
+            <div class=form_element>
+                <label>Sub-Category</label>
+                <select id=subcategory name=subcategory>
+                    <!--                        <select id=category th:field="*{category}">-->
+                    <option th:each="categoryOpt : ${T(sci.travel_app.walkthebear.model.misc.SubCategory).values()}"
+                            th:value="${categoryOpt}" th:text="${categoryOpt.displayValue}"></option>
+                </select>
+            </div>
+            <div class=form_element>
+                <input type= "hidden" name="created" id="created"
+                       th:value="${#dates.format(#dates.createNow() , 'dd/MM/yyyy HH:mm')}" />
+            </div>
+            <div class=form_element>
+                <label>Name</label>
+                <input type="text" maxlength="50" th:field="*{name}" id="name" placeholder="Name">
+                <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+            </div>
+            <div class=form_element>
+                <label>County</label>
+                <input type="text" maxlength="50" th:field="*{county}" id="county" placeholder="County">
+                <span th:if="${#fields.hasErrors('county')}" th:errors="*{county}"></span>
+            </div>
+            <div class=form_element>
+                <label>City</label>
+                <input type="text" maxlength="250" th:field="*{city}" id="city" placeholder="City">
+                <span th:if="${#fields.hasErrors('city')}" th:errors="*{city}"></span>
+            </div>
+            <div class=form_element>
+                <label>Address</label>
+                <input type="text" maxlength="250" th:field="*{address}" id="address" placeholder="Address">
+                <span th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></span>
+            </div>
+            <div class=form_element>
+                <label>GPS coordinates</label>
+                <input type="text" maxlength="250" th:field="*{coordinates}" id="coordinates"
+                       placeholder="GPS coordinates">
+                <span th:if="${#fields.hasErrors('coordinates')}" th:errors="*{coordinates}"></span>
+            </div>
+            <div class=form_element>
+                <label>Working hours</label>
+                <input type="text" maxlength="250" th:field="*{workingHours}" id="workingHours"
+                       placeholder="Working hours">
+                <span th:if="${#fields.hasErrors('workingHours')}" th:errors="*{workingHours}"></span>
+            </div>
+            <div class=form_element>
+                <label>Email</label>
+                <input type="text" maxlength="250" th:field="*{email}" id="email" placeholder="Email">
+                <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+            </div>
+            <div class=form_element>
+                <label>Telephone</label>
+                <input type="text" maxlength="250" th:field="*{phoneNumber}" id="phoneNumber" placeholder="Telephone">
+                <span th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></span>
+            </div>
 
-                <div class=form_element>
-                    <label>Description</label>
-                    <textarea rows="5" cols="50" maxlength="250" th:field="*{description}" id="description"
-                              placeholder="Description"></textarea>
-                    <span th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></span>
-                </div>
-                <div class=form_element>
-                    <label>Upload main picture</label>
-                    <input type="file">
-                </div>
-                <div class=form_element>
-                    <label>Upload gallery picture</label>
-                    <input type="file">
-                </div>
-                <div id=buttons>
-                    <button type="submit">Submit</button>
-                    <button type="button">Cancel</button>
-                </div>
-            </form>
-        </div>
-
+            <div class=form_element>
+                <label>Description</label>
+                <textarea rows="5" cols="50" maxlength="250" th:field="*{description}" id="description"
+                          placeholder="Description"></textarea>
+                <span th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></span>
+            </div>
+            <div class=form_element>
+                <label>Upload main picture</label>
+                <input type="file">
+            </div>
+            <div class=form_element>
+                <label>Upload gallery picture</label>
+                <input type="file">
+            </div>
+            <div id=buttons>
+                <button type="submit">Submit</button>
+                <button type="cancel">Cancel</button>
+            </div>
+        </form>
     </div>
 
-    <!-- main content end -->
+</div>
+
+<!-- main content end -->
 
 
-    <!-- footer start -->
-   <div th:insert="fragments :: footer"></div>
-    <!-- footer end -->
+<!-- footer start -->
+<div th:insert="fragments :: footer"></div>
+<!-- footer end -->
 </body>
 
 </html>

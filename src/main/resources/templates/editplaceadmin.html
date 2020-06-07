@@ -18,14 +18,14 @@
         method="post">
     <select id=category name=category>
       <!--                        <select id=category th:field="*{category}">-->
-      <option th:each="categoryOpt : ${T(sci.travel_app.WalkTheBear.model.misc.Category).values()}"
+      <option th:each="categoryOpt : ${T(sci.travel_app.walkthebear.model.misc.Category).values()}"
               th:value="${categoryOpt}" th:text="${categoryOpt.displayValue}"></option>
     </select>
 <div class=form_element>
   <label>Sub-Category</label>
   <select id=subcategory name=subcategory>
     <!--                        <select id=category th:field="*{category}">-->
-    <option th:each="categoryOpt : ${T(sci.travel_app.WalkTheBear.model.misc.SubCategory).values()}"
+    <option th:each="categoryOpt : ${T(sci.travel_app.walkthebear.model.misc.SubCategory).values()}"
             th:value="${categoryOpt}" th:text="${categoryOpt.displayValue}"></option>
   </select>
 </div>
@@ -92,7 +92,7 @@
 </div> -->
 <div id=buttons>
   <button type="submit">Submit</button>
-  <button type="button">Cancel</button>
+  <button type="cancel">Cancel</button>
 </div>
   </form>
 </div>

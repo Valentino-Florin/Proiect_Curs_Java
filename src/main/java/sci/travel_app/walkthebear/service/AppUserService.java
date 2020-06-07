@@ -5,7 +5,7 @@ import sci.travel_app.walkthebear.model.entities.AppUser;
 
 public interface AppUserService extends UserDetailsService {
 
-     void save(AppUser user);
+    AppUser save(AppUser user);
 
     AppUser findByEmail(String email);
 

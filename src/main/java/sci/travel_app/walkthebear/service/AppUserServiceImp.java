@@ -14,18 +14,28 @@ import sci.travel_app.walkthebear.repository.AppUserRepository;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 @Service
 public class AppUserServiceImp implements AppUserService {
+
     @Autowired
     private AppUserRepository appUserRepository;
+
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
+
+
     @Override
-    public void save(AppUser user) {
-        appUserRepository.save(new AppUser(user.getUserName(), passwordEncoder.encode(user.getPassword()), user.getEmail(), user.getRole()));
+    public AppUser save(AppUser user) {
+        user.setCreated(new Date());
+        String passwordEncrypted = passwordEncoder.encode(user.getPassword());
+        user.setPassword(passwordEncrypted);
+
+        return appUserRepository.save(user);
     }
+
     @Override
     public AppUser findByEmail(String s) throws UsernameNotFoundException {
         AppUser appUser = appUserRepository.findByEmail(s);
@@ -34,7 +44,8 @@ public class AppUserServiceImp implements AppUserService {
         }
         return appUser;
     }
-/////don't know what's up with this method
+
+    /////don't know what's up with this method
     @Override
     public AppUser findByUsername(String userName) {
         return null;
@@ -43,23 +54,26 @@ public class AppUserServiceImp implements AppUserService {
 
     private Collection<? extends GrantedAuthority> getAuthorities() {
         List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
-        for(AppUserRole role : AppUserRole.values()){
+        for (AppUserRole role : AppUserRole.values()) {
             grantedAuthorities.add(new SimpleGrantedAuthority(role.toString()));
         }
         return grantedAuthorities;
     }
+
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-        AppUser user = appUserRepository.findByEmail(s);
-        if (user == null){
+        AppUser user = appUserRepository.findByUserName(s);
+        if (user == null) {
             throw new UsernameNotFoundException("Invalid username or password");
         }
         return new User(user.getEmail(), passwordEncoder.encode(user.getPassword()), getAuthorities());
     }
-    public AppUser findById(Long id){
+
+    public AppUser findById(Long id) {
         AppUser user = appUserRepository.findById(id).get();
         return user;
     }
+
 
 //    @Override
 //    public AppUser findByUserName(String username) throws UsernameNotFoundException {

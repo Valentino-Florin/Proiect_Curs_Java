@@ -14,7 +14,7 @@ public class AppUser {
     long id;
     @Column(name = "USER_NAME", length=50, nullable = false)
     private String userName;
-    @Column(name = "PASSWORD", length=50, nullable = false)
+    @Column(name = "PASSWORD", length=60, nullable = false)
     private String password;
 
     @Transient

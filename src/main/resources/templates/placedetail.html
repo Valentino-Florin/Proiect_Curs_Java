@@ -30,18 +30,32 @@
             <div id=name>
                 <h2 th:text="${place.name}">Place name</h2>
             </div>
-            <div id=thumbnail><img id=thumbnail_img src="../static/images/placeholder.jpg" th:src="@{/images/placeholder.jpg}"></div>
+            <div id=thumbnail><img id=thumbnail_img src="../static/images/placeholder.jpg"
+                                   th:src="@{/images/placeholder.jpg}"></div>
             <div id=address>
                 <h3 th:text="${place.address}">Address: jdlfkjsdlkfdshfhsdfhsifsdf</h3>
-                <h4> <span th:text="${place.city}">oras</span> <span th:text="${place.county}">judet</span> <span th:text="${place.coordinates}">coordonate</span> </h4>
+                <h4><span th:text="${place.city}">oras</span> <span th:text="${place.county}">judet</span> <span
+                        th:text="${place.coordinates}">coordonate</span></h4>
             </div>
         </div>
-        <div class=box id=gallery><img class=gallery src="../static/images/placeholder.jpg" th:src="@{/images/placeholder.jpg}"><img class=gallery src="../static/images/placeholder.jpg" th:src="@{/images/placeholder.jpg}"><img class=gallery src="../static/images/placeholder.jpg" th:src="@{/images/placeholder.jpg}"></div>
+        <div class=box id=gallery><img class=gallery src="../static/images/placeholder.jpg"
+                                       th:src="@{/images/placeholder.jpg}"><img class=gallery
+                                                                                src="../static/images/placeholder.jpg"
+                                                                                th:src="@{/images/placeholder.jpg}"><img
+                class=gallery src="../static/images/placeholder.jpg" th:src="@{/images/placeholder.jpg}"></div>
         <div class=box id=description>
             <h3>Description</h3>
             <!--<p th:text="${place.description}">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium.</p>
 -->
-            <p>Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc,</p>
+            <p>Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean
+                leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra
+                quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean
+                imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam
+                rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing
+                sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio
+                et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit
+                amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales
+                sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc,</p>
         </div>
 
     </div>
@@ -55,11 +69,11 @@
         <div class=box id=call_to_action>
             <div id=tripisadded th:if="${isAddedToList}"> <a th:href="@{/placedetail/{id}/removefromlist(id=${place.id})}">Remove from trip</a></div>
            <div id=tripisnotadded   th:unless="${isAddedToList}" > <a th:href="@{/placedetail/{id}/addtolist(id=${place.id})}">Add to trip</a></div>
-            
-            
+
+
             <div id=favisadded th:if="${isAddedToFav}"><a th:href="@{/placedetail/{id}/removefromfavorites(id=${place.id})}">Remove from Favorites</a></div>
             <div id=favisnotadded  th:unless="${isAddedToFav}"><a th:href="@{/placedetail/{id}/addtofavorites(id=${place.id})}">Add to Favorites</a></div>
-              
+
         </div>
     </div>
 </div>
@@ -71,17 +85,19 @@
         <h3>Add a review</h3>
         <div id=place_rating>
             <div id=star_rating_aggregated>
-                <p>****star placeholder</p>
+                <!--<p>****star placeholder</p>-->
+                <input type="number" class="rating" th:value="${placeAverageRating}"
+                       readonly="true" data-show-clear="false" data-size="sm">
                 <p>Rating</p>
             </div>
         </div>
         <div id=your_rating>
             <p>Your rating</p>
             <div id=star_rating_vote>
-          
-                <form method="post" th:action="@{/placedetail/{id}/sendReview(id=${place.id})}" th:object="${rating}">
+                <!--<p>****star placeholder</p>-->
+                <form method="post" th:action="@{/placedetail/{pid}/sendReview(pid=${place.id})}" th:object="${rating}">
 
-                    <input value="0" type="hidden" class="rating" data-glyphicon="0" data-min="0" data-max="5" data-step="1"
+                    <input type="hidden" class="rating" data-min="0" data-max="5" data-step="1"
                            th:field="*{starRating}">
 
                     <textarea rows="5" cols="50" maxlength="250" th:field="*{comment}"></textarea>
@@ -91,24 +107,27 @@
                         <button id=reset type="reset">Cancel</button>
 
                     </div>
+                    <div th:insert="fragments :: alert"></div>
 
                 </form>
             </div>
         </div>
 
-        </div>
-        <div class=box id=user_rating>
-            <h3>User reviews</h3>
-            <div class=rating_list>
-                    <table>
-                        <tr th:each="rating : ${ratingList}">
-                            <td th:text="${rating.starRating}"></td>
-                            <td th:text="${rating.comment}"></td>
-                        </tr>
-                    </table>
-            </div>
+    </div>
+    <div class=box id=user_rating>
+        <h3>User reviews</h3>
+        <div class=rating_list>
+            <table>
+                <tr th:each="rating : ${ratingList}">
+                    <td> <input type="number" class="rating" th:value="${rating.starRating}"
+                                readonly="true" data-show-clear="false" data-show-caption="false" data-size="xs">
+                    </td>
+                    <td th:text="${rating.comment}"></td>
+                </tr>
+            </table>
         </div>
     </div>
+</div>
 
 <!-- main content end -->
 
@@ -119,10 +138,10 @@
 
 <!-- footer end -->
 
-    <script th:src="@{http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js}"></script>
-    <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js}"></script>
-    <script th:src="@{https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js}"></script>
-    <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.6/js/star-rating.min.js}"></script>
+<script th:src="@{http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js}"></script>
+<script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js}"></script>
+<script th:src="@{https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js}"></script>
+<script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.6/js/star-rating.min.js}"></script>
 
 </body>
 </html>

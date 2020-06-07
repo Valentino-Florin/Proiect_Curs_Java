@@ -1,15 +1,16 @@
 package sci.travel_app.walkthebear.model.misc;
 
 public enum AppUserRole {
-    ADMIN(1), TRAVELER(2), HOST(3);
+    ADMIN("Admin"), TRAVELER("Traveler"), HOST("Host");
 
-    private int order;
-    private AppUserRole(int order) {
-    this.order=order;
+    private final String displayRole ;
+
+    AppUserRole(String displayRole) {
+        this.displayRole = displayRole;
     }
 
-    public int getOrder() {
-        return order;
+    public String getDisplayRole() {
+        return displayRole;
     }
-
 }
+

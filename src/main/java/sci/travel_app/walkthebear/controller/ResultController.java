@@ -2,7 +2,6 @@ package sci.travel_app.walkthebear.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,8 +12,6 @@ import sci.travel_app.walkthebear.model.misc.Category;
 import sci.travel_app.walkthebear.service.PlacesServiceImp;
 
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 @Controller
 //@RequestMapping(value="/results")
@@ -160,7 +157,5 @@ public class ResultController {
         model.addAttribute("resultList", resultList);
         return "categoryresultsfd";
     }
-
-
 
 }
