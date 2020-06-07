@@ -62,7 +62,7 @@ public class AppUserServiceImp implements AppUserService {
 
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-        AppUser user = appUserRepository.findByUserName(s);
+        AppUser user = appUserRepository.findByEmail(s);
         if (user == null) {
             throw new UsernameNotFoundException("Invalid username or password");
         }

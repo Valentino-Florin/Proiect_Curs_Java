@@ -69,7 +69,7 @@ public class AppUserController {
     }
 
    @PostMapping("/register")
-    public String registerUserAccount(@ModelAttribute("user") @Valid AppUser appUser,
+    public String registerUserAccount(@ModelAttribute("appuser") @Valid AppUser appUser,
                                       BindingResult result, RedirectAttributes redirectAttributes) {
 
   //      AppUserDTO existingEmail = convertToDto(appUserServiceImp.findByEmail(appUserDTO.getEmail()));
