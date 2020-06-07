@@ -1,17 +1,14 @@
 package sci.travel_app.walkthebear.controller;
 
 
-import org.apache.tomcat.jni.User;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import sci.travel_app.walkthebear.data_utils.dto.AppUserDTO;
 import sci.travel_app.walkthebear.model.entities.AppUser;
 import sci.travel_app.walkthebear.repository.AppUserRepository;
-import sci.travel_app.walkthebear.service.AppUserService;
 import sci.travel_app.walkthebear.service.AppUserServiceImp;
 
 import javax.validation.Valid;
