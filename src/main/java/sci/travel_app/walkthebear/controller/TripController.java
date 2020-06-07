@@ -8,14 +8,13 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import sci.travel_app.walkthebear.data_utils.dto.HourMappingDTO;
 import sci.travel_app.walkthebear.model.entities.*;
-import sci.travel_app.walkthebear.service.DailyScheduleService;
-import sci.travel_app.walkthebear.service.HourMappingService;
-import sci.travel_app.walkthebear.service.ItineraryService;
-import sci.travel_app.walkthebear.service.PlacesServiceImp;
+import sci.travel_app.walkthebear.service.*;
 
+import javax.validation.Valid;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class TripController {
@@ -28,6 +27,8 @@ public class TripController {
     private HourMappingService hourMappingService;
     @Autowired
     private PlacesServiceImp placesService;
+    @Autowired
+    private UnplannedPlacesListService unplannedPlacesListService;
 
     private static org.apache.logging.log4j.Logger logger = LogManager.getLogger(TripController.class);
 
@@ -41,7 +42,7 @@ public class TripController {
     //add Principal principal to argument list
     @GetMapping("/tripmanager")
     public String getAllTrips(Model model) {
-//        List<Itinerary> allTrips = itineraryService.findAll();
+
         //AppUser user = principal;
         model.addAttribute("allTrips", itineraryService.findAll());
         return "tripmanager";
@@ -50,7 +51,7 @@ public class TripController {
 
     //delete itinerary
     @GetMapping("/tripmanager/delete/{id}")
-    public String deleteTrip(@PathVariable(value = "id") Long id, RedirectAttributes redirectAttributes, Model model) {
+    public String deleteTrip(@PathVariable(value = "id") long id, RedirectAttributes redirectAttributes, Model model) {
         List<DailySchedule> allDaysForItinerary = dailyScheduleService.getAllDays(itineraryService.findById(id));
         for (DailySchedule day : allDaysForItinerary) {
             hourMappingService.deleteAll(day);
@@ -69,7 +70,7 @@ public class TripController {
     @GetMapping("/planner/new")
     public String createTrip(Model model) {
         model.addAttribute("itinerary", new Itinerary());
-        return "planner";
+        return "planneradd";
     }
 
     //save itinerary
@@ -83,30 +84,37 @@ public class TripController {
 
     //view + edit itinerary
     @GetMapping("/planner/{id}")
-    public String editTrip(@PathVariable(value = "id") Long id, Model model) {
+    public String editTrip(@PathVariable(value = "id") long id, Model model) {
         model.addAttribute("itinerary" , itineraryService.findById(id));
         model.addAttribute("allDaysForItinerary", dailyScheduleService.getAllDays(itineraryService.findById(id)));
-        return "planner";
+        List<Place> unplannedPlaces = unplannedPlacesListService.findByUser(null).getUnplannedPlacesTemp();
+        model.addAttribute("unplannedPlaces", unplannedPlaces);
+        return "planneredit";
     }
 
     @PostMapping("/planner/{id}/update")
-    public String updateTrip (@PathVariable(value = "id") Long id, Model model) {
-        itineraryService.update(itineraryService.findById(id));
-
-        return "planner";
+    public String updateTrip (@PathVariable(value = "id") long id, @Valid Itinerary itinerary, BindingResult result, Model model, RedirectAttributes redirectAttributes) {
+        if (result.hasErrors()) {
+            model.addAttribute("message", "Could not update");
+            return "planneredit";
+        }
+        model.addAttribute("itinerary" , itineraryService.findById(id));
+        itineraryService.update(itinerary, id);
+        redirectAttributes.addFlashAttribute("message", "Trip updated!");
+        return "redirect:/planner/"+id;
     }
 
     //view + print + download pdf
     @GetMapping("/planner/view/{id}")
-    public String showTrip(@PathVariable(value = "id") Long id, Model model) {
+    public String showTrip(@PathVariable(value = "id") long id, Model model) {
         model.addAttribute("itinerary" , itineraryService.findById(id));
         List<DailySchedule> allDaysForItinerary = dailyScheduleService.getAllDays(itineraryService.findById(id));
         model.addAttribute("allDaysForItinerary", allDaysForItinerary);
+        Map<String, List<HourMapping>> timeTable = new HashMap<>();
         for (DailySchedule day : allDaysForItinerary) {
-            List<HourMapping> allHours = hourMappingService.getFullDay(day);
-            model.addAttribute("allHours", allHours);
+            timeTable.put(day.getName(),hourMappingService.getFullDay(day));
         }
-
+        model.addAttribute("timetable", timeTable);
         return "plannerview";
     }
 
@@ -114,11 +122,10 @@ public class TripController {
 
 //Methods for day page
 
-    //create new day
+
     @GetMapping("/planner/{id}/addnewday")
-    public String addNewDay(@PathVariable(value = "id") Long id, RedirectAttributes redirectAttributes, Model model) {
+    public String addNewDay(@PathVariable(value = "id") long id, RedirectAttributes redirectAttributes, Model model) {
         DailySchedule newDay = dailyScheduleService.addNewDay(itineraryService.findById(id));
-        hourMappingService.createDefaultDay(newDay);
         model.addAttribute("itinerary" , itineraryService.findById(id));
         List<DailySchedule> allDaysForItinerary = dailyScheduleService.getAllDays(itineraryService.findById(id));
         model.addAttribute("allDaysForItinerary", allDaysForItinerary);
@@ -127,82 +134,97 @@ public class TripController {
         return "redirect:/planner/" + id;
     }
 
-
-
-    //edit day + all hour mappings for that day
     @GetMapping("/planner/{id}/day/{dayID}")
-    public String displayDay(@PathVariable(value = "id") Long id, @PathVariable(value = "dayID") Long dayId, Model model) {
+    public String displayDay(@PathVariable(value = "id") long id, @PathVariable(value = "dayID") long dayId, Model model) {
         model.addAttribute("itinerary", itineraryService.findById(id));
         model.addAttribute("day", dailyScheduleService.getDay(dayId));
-
-        List<HourMapping> hourObj = hourMappingService.getFullDay(dailyScheduleService.getDay(dayId));
-        HourMappingDTO allHours = new HourMappingDTO();
-        allHours.setHourMappingList(hourObj);
-
+        List<HourMapping> allHours= hourMappingService.getFullDay(dailyScheduleService.getDay(dayId));
         model.addAttribute("allHours", allHours);
-
-        //replace with an actual implementation; from here
-        List<Place> unplannedPlaces = placesService.getAllPlaces();
-        //to here
+        HourMapping objective = new HourMapping();
+        objective.setDailySchedule(dailyScheduleService.getDay(dayId));
+        model.addAttribute("objective", objective);
+//        //replace with method implementation to include current user
+        List<Place> unplannedPlaces = unplannedPlacesListService.findByUser(null).getUnplannedPlacesTemp();
         model.addAttribute("unplannedPlaces", unplannedPlaces);
 
-        return "editday";
+        return "day_add";
     }
 
 
 
-    //save edited day + all hour mappings for that day
-    @GetMapping("/planner/{id}/day/{dayID}/save")
-    public String saveDay(@PathVariable(value = "id") Long id, @PathVariable(value = "dayID") Long dayId, @ModelAttribute HourMappingDTO allHours, Model model) {
-//        if (result.hasErrors()) {
+    @PostMapping("/planner/{id}/day/{dayID}/save")
+    public String saveDay(@PathVariable(value = "id") long itineraryID, @PathVariable(value = "dayID") long dayId, @ModelAttribute("objective") HourMapping hourMapping, BindingResult result, Model model, RedirectAttributes redirectAttributes) {
+        if (result.hasErrors()) {
+            redirectAttributes.addFlashAttribute("message", "Could not save");
+            return "day_add";
+        }
+        model.addAttribute("itinerary", itineraryService.findById(itineraryID));
+        model.addAttribute("day", dailyScheduleService.getDay(dayId));
+        dailyScheduleService.saveDay(dailyScheduleService.getDay(dayId));
+        hourMappingService.saveMapping(hourMapping, dailyScheduleService.getDay(dayId));
+        redirectAttributes.addFlashAttribute("message", "Day was successfully updated");
+        logger.log(Level.INFO, "Saved hourmapping: ID "+dayId);
+        return "redirect:/planner/"+itineraryID+"/day/"+ dayId;
+    }
+
+    //edit hour mapping wip
+    @GetMapping("/planner/{id}/day/{dayID}/edit/{hourId}")
+    public String editObjective(@PathVariable(value = "id") long id, @PathVariable(value = "dayID") long dayId, @PathVariable(value = "hourId") long hourId, Model model) {
         model.addAttribute("itinerary", itineraryService.findById(id));
         model.addAttribute("day", dailyScheduleService.getDay(dayId));
-//        dailyScheduleService.saveDay(dailyScheduleService.getDay(dayId));
-//        hourMappingService.saveAll(allHours.getHourMappingList(),dailyScheduleService.getDay(dayId) );
-
-        List <HourMapping> updateList = allHours.getHourMappingList();
-        for (HourMapping hour : updateList){
-            long hid = hour.getHourId();
-            hourMappingService.updateMapping(hid);
-        }
+        List<HourMapping> allHours= hourMappingService.getFullDay(dailyScheduleService.getDay(dayId));
         model.addAttribute("allHours", allHours);
-        model.addAttribute("message", "Day was successfully updated");
-        logger.log(Level.INFO, "Updated day: ID "+dayId);
-        return "redirect:/planner/"+id+"/day/"+ dayId;
-//        return "redirect:/planner/"+id;
-//        return "editday";
+        HourMapping objective = hourMappingService.getHour(hourId);
+        model.addAttribute("objective", objective);
+        model.addAttribute("hour",hourMappingService.getHour(hourId));
+
+        //replace with an actual implementation; from here
+
+        List<Place> unplannedPlaces = unplannedPlacesListService.findByUser(null).getUnplannedPlacesTemp();
+        model.addAttribute("unplannedPlaces", unplannedPlaces);
+        return "day_update";
+    }
+    //update hour mapping wip
+    @PostMapping("/planner/{id}/day/{dayID}/update/{hoursId}")
+    public String updateHour(@PathVariable(value = "id") long itineraryID, @PathVariable(value = "dayID") long dayId, @PathVariable(value = "hoursId") long hourId, @Valid HourMapping hourMapping, BindingResult result, Model model, RedirectAttributes redirectAttributes){
+        if (result.hasErrors()) {
+            redirectAttributes.addFlashAttribute("message", "Could not update");
+            return "day_update";
+        }
+        model.addAttribute("itinerary", itineraryService.findById(itineraryID));
+        model.addAttribute("day", dailyScheduleService.getDay(dayId));
+        model.addAttribute("hour",hourMappingService.getHour(hourId));
+        hourMappingService.updateMapping(hourMapping, dailyScheduleService.getDay(dayId), hourId);
+        redirectAttributes.addFlashAttribute("message", "Day was successfully updated");
+        logger.log(Level.INFO, "Updated hourmapping: ID "+dayId);
+        return "redirect:/planner/"+itineraryID+"/day/"+ dayId;
     }
 
-//    @PostMapping("/planner/{id}/day/{dayID}/save")
-//    public String saveDay(@PathVariable(value = "id") Long itineraryID, @PathVariable(value = "dayID") Long dayId, @ModelAttribute HourMappingDTO allHours, Model model) {
-////        if (result.hasErrors()) {
-//        model.addAttribute("itinerary", itineraryService.findById(itineraryID));
-//        model.addAttribute("day", dailyScheduleService.getDay(dayId));
-//        dailyScheduleService.saveDay(dailyScheduleService.getDay(dayId));
-//        hourMappingService.saveAll(allHours.getHourMappingList(),dailyScheduleService.getDay(dayId) );
-//
-//        model.addAttribute("message", "Day was successfully updated");
-//        logger.log(Level.INFO, "Updated day: ID "+dayId);
-//        return "redirect:/planner/"+itineraryID+"/day/"+ dayId;
-////        return "redirect:/planner/"+id;
-////        return "editday";
-//    }
+    //delete hour mapping wip
+    @GetMapping("/planner/{id}/day/{dayID}/delete/{hourId}")
+    public String deleteObjective(@PathVariable(value = "id") long itineraryID, @PathVariable(value = "dayID") long dayId, @PathVariable(value = "hourId") long hourId, RedirectAttributes redirectAttributes, Model model) {
+        hourMappingService.deleteOne(hourMappingService.getHour(hourId));
+        List<HourMapping> allHours= hourMappingService.getFullDay(dailyScheduleService.getDay(dayId));
+        model.addAttribute("allHours", allHours);
+        redirectAttributes.addFlashAttribute("message", "Objective removed");
+        logger.log(Level.INFO, "Deleted : ID "+hourId);
+
+        return "redirect:/planner/"+itineraryID+"/day/"+ dayId;
+    }
 
 
 
 
 
 
-
-
-  //delete day + all hour mappings for that day
-  @GetMapping("/planner/{id}/day/{dayID}/delete")
-    public String removeDay(@PathVariable(value = "id") Long id, @PathVariable(value = "dayID") Long dayId, RedirectAttributes redirectAttributes, Model model) {
+    //delete day + all hour mappings for that day
+    @GetMapping("/planner/{id}/day/{dayID}/delete")
+    public String removeDay(@PathVariable(value = "id") long id, @PathVariable(value = "dayID") long dayId, RedirectAttributes redirectAttributes, Model model) {
 
         hourMappingService.deleteAll(dailyScheduleService.getDay(dayId));
-      dailyScheduleService.removeDay(dailyScheduleService.getDay(dayId));
-      redirectAttributes.addFlashAttribute("message", "Day was successfully removed");
-      logger.log(Level.INFO, "Deleted day: ID "+id);
-      return "redirect:/planner/" + id;
+        dailyScheduleService.removeDay(dailyScheduleService.getDay(dayId));
+        redirectAttributes.addFlashAttribute("message", "Day was successfully removed");
+        logger.log(Level.INFO, "Deleted day: ID "+id);
+        return "redirect:/planner/" + id;
     }
 }

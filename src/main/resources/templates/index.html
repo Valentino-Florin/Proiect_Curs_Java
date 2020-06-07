@@ -33,14 +33,17 @@
             
             <div class="column_layout">
                 <div class="column">
-                    <h2>Column 1</h2>
+                    <h2>Most popular</h2>
                     <div class="column_list" th:each="placeone : ${widget1}">
                         <table>
                             <tr>
                                 <td>
-                                    <div class="list_item"><img class="list_thumbnail" src="../static/images/placeholder.jpg">
+                                    <div class="list_item"><a href="placedetail.html" th:href="@{/placedetail/{id}(id=${placeone.id})}">
+                                        <div><img class="list_thumbnail" src="../static/images/placeholder.jpg" th:src="@{/images/placeholder.jpg}">
                                         <p th:text="${placeone.name}"></p>
                                         <p th:text="${placeone.description}"></p>
+                                    </div>
+                                        </a>
                                     </div>
                                 </td>
                             </tr>
@@ -49,14 +52,17 @@
                     <a href="">Download</a>
                 </div>
                 <div class="column">
-                    <h2>Column 2</h2>
+                    <h2>Latest places</h2>
                     <div class="column_list" th:each="placetwo : ${widget2}">
                         <table>
                             <tr>
                                 <td>
-                                    <div class="list_item"><img class="list_thumbnail" src="../static/images/placeholder.jpg">
+                                    <div class="list_item"><a href="placedetail.html" th:href="@{/placedetail/{id}(id=${placetwo.id})}">
+                                        <div><img class="list_thumbnail" src="../static/images/placeholder.jpg" th:src="@{/images/placeholder.jpg}">
                                         <p th:text="${placetwo.name}"></p>
                                         <p th:text="${placetwo.description}"></p>
+                                    </div>
+                                        </a>
                                     </div>
                                 </td>
                             </tr>
@@ -65,14 +71,17 @@
                     <a href="">Download</a>
                 </div>
                 <div class="column">
-                    <h2>Column 3</h2>
+                    <h2>Editor's choice</h2>
                     <div class="column_list" th:each="placethree : ${widget3}">
                         <table>
                             <tr>
                                 <td>
-                                    <div class="list_item"><img class="list_thumbnail" src="../static/images/placeholder.jpg">
+                                    <div class="list_item"><a href="placedetail.html" th:href="@{/placedetail/{id}(id=${placethree.id})}">
+                                        <div><img class="list_thumbnail" src="../static/images/placeholder.jpg" th:src="@{/images/placeholder.jpg}">
                                         <p th:text="${placethree.name}"></p>
                                         <p th:text="${placethree.description}"></p>
+                                        </div>
+                                        </a>
                                     </div>
                                 </td>
                             </tr>

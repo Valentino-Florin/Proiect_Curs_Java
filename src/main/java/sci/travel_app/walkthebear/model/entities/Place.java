@@ -169,23 +169,29 @@ public class Place {
         this.name = name;
     }
 
+//    @Override
+//    public String toString() {
+//        return "Place{" +
+//                "id=" + id +
+//                ", name='" + name + '\'' +
+//                ", county='" + county + '\'' +
+//                ", city='" + city + '\'' +
+//                ", address='" + address + '\'' +
+//                ", coordinates='" + coordinates + '\'' +
+//                ", phoneNumber='" + phoneNumber + '\'' +
+//                ", email='" + email + '\'' +
+//                ", category=" + category +
+//                ", subcategory=" + subcategory +
+//                ", workingHours='" + workingHours + '\'' +
+//                ", description='" + description + '\'' +
+//                ", created=" + created +
+//                ", user=" + user +
+//                '}';
+//    }
+
+
     @Override
     public String toString() {
-        return "Place{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", county='" + county + '\'' +
-                ", city='" + city + '\'' +
-                ", address='" + address + '\'' +
-                ", coordinates='" + coordinates + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", email='" + email + '\'' +
-                ", category=" + category +
-                ", subcategory=" + subcategory +
-                ", workingHours='" + workingHours + '\'' +
-                ", description='" + description + '\'' +
-                ", created=" + created +
-                ", user=" + user +
-                '}';
+        return name + ", " + county  + ", " + city  ;
     }
 }

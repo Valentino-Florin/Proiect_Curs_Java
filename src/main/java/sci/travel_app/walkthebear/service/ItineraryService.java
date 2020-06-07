@@ -20,8 +20,15 @@ public class ItineraryService {
         itinerary.setCreated(new Date());
         return tripRepository.save(itinerary);
     }
-public void update(Itinerary itinerary){
-    tripRepository.save(itinerary);
+public void update(Itinerary itinerary, long id){
+    Itinerary saveMe = new Itinerary();
+    saveMe.setItineraryId(id);
+    saveMe.setUser(itinerary.getUser());
+    saveMe.setName(itinerary.getName());
+    saveMe.setDescription(itinerary.getDescription());
+    saveMe.setCreated(itinerary.getCreated());
+    saveMe.setStartDate(itinerary.getStartDate());
+        tripRepository.save(saveMe);
 }
 
     public Itinerary saveItinerary(Itinerary itinerary) {

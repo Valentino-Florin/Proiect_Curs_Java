@@ -13,5 +13,5 @@ public interface DailyScheduleRepository extends JpaRepository<DailySchedule, Lo
     List<DailySchedule> findByUser(AppUser createdBy);
     DailySchedule findById(long id);
     List<DailySchedule> findByItinerary(Itinerary itinerary);
-
+    DailySchedule findByNameAndItinerary(String name, Itinerary itinerary);
 }

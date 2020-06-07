@@ -25,7 +25,9 @@
         <div id=name>
             <h2>Trip planner</h2>
         </div>
-        <div id=link_container> <a href="tripmanager.html" th:href="@{/tripmanager}">Back to trip manager</a> </div>
+        <div id=link_container> <a href="tripmanager.html" th:href="@{/tripmanager}">Back to trip manager</a> 
+        <a href="" th:href="@{/planner/{id}(id=${itinerary.itineraryId})}">Edit itinerary</a>
+        </div>
         <div class=container id=content>
             <div class=box id=form>
 
@@ -68,21 +70,36 @@
             
                 <div id=schedule_container>
                     <div class=schedule>
-                        <div class=day_container th:each="day : ${allDaysForItinerary}">
-                            <h3 th:text="${day.name}">Day 1</h3>
+                        <div class=day_container th:each="element : ${timetable}">
+                            <h3 th:text="${element.key}">Day 1</h3>
                             <div class=hour_container>
                                 <table>
-                                    <tr th:each="hour : ${allHours}">
-                                        <td>
-                                            <p th:text="${hour.time}">07:00</p>
-                                        </td>
-                                        <td>
-                                            <p th:text="${hour.place}">add place here</p>
-                                        </td>
+                                    <tr th:each="objective : ${element.value}">
+                <td th:text="${objective.time}">Some time</td>
+                <td th:text="${objective.place}">Some place</td>
                                     </tr>
                                 </table>
                             </div>
                         </div>
+                        
+                        
+<!--
+                        <table>
+    <tr th:each="element : ${timetable}">
+        <td th:text="${element.key}">keyvalue</td>
+        <table>
+            <tr th:each="objective : ${element.value}">
+                <td th:text="${objective.time}">Some time</td>
+                <td th:text="${objective.place}">Some place</td>
+            </tr>
+        </table>
+    </tr>
+</table>
+-->
+                        
+                        
+                        
+<!--
                         <div class=day_container>
                             <h3>Day 1</h3>
                             <div class=hour_container>
@@ -98,6 +115,221 @@
                                 </table>
                             </div>
                         </div>
+                          <div class=day_container>
+                            <h3>Day 1</h3>
+                            <div class=hour_container>
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <p>07:00</p>
+                                        </td>
+                                        <td>
+                                            <p>add place here</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                          <div class=day_container>
+                            <h3>Day 1</h3>
+                            <div class=hour_container>
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <p>07:00</p>
+                                        </td>
+                                        <td>
+                                            <p>add place here</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                          <div class=day_container>
+                            <h3>Day 1</h3>
+                            <div class=hour_container>
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <p>07:00</p>
+                                        </td>
+                                        <td>
+                                            <p>add place here</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                          <div class=day_container>
+                            <h3>Day 1</h3>
+                            <div class=hour_container>
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <p>07:00</p>
+                                        </td>
+                                        <td>
+                                            <p>add place here</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                          <div class=day_container>
+                            <h3>Day 1</h3>
+                            <div class=hour_container>
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <p>07:00</p>
+                                        </td>
+                                        <td>
+                                            <p>add place here</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                          <div class=day_container>
+                            <h3>Day 1</h3>
+                            <div class=hour_container>
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <p>07:00</p>
+                                        </td>
+                                        <td>
+                                            <p>add place here</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                          <div class=day_container>
+                            <h3>Day 1</h3>
+                            <div class=hour_container>
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <p>07:00</p>
+                                        </td>
+                                        <td>
+                                            <p>add place here</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                          <div class=day_container>
+                            <h3>Day 1</h3>
+                            <div class=hour_container>
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <p>07:00</p>
+                                        </td>
+                                        <td>
+                                            <p>add place here</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                          <div class=day_container>
+                            <h3>Day 1</h3>
+                            <div class=hour_container>
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <p>07:00</p>
+                                        </td>
+                                        <td>
+                                            <p>add place here</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                          <div class=day_container>
+                            <h3>Day 1</h3>
+                            <div class=hour_container>
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <p>07:00</p>
+                                        </td>
+                                        <td>
+                                            <p>add place here</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                          <div class=day_container>
+                            <h3>Day 1</h3>
+                            <div class=hour_container>
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <p>07:00</p>
+                                        </td>
+                                        <td>
+                                            <p>add place here</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                          <div class=day_container>
+                            <h3>Day 1</h3>
+                            <div class=hour_container>
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <p>07:00</p>
+                                        </td>
+                                        <td>
+                                            <p>add place here</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                          <div class=day_container>
+                            <h3>Day 1</h3>
+                            <div class=hour_container>
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <p>07:00</p>
+                                        </td>
+                                        <td>
+                                            <p>add place here</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                          <div class=day_container>
+                            <h3>Day 1</h3>
+                            <div class=hour_container>
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <p>07:00</p>
+                                        </td>
+                                        <td>
+                                            <p>add place here</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+-->
+                        
+                        
+                        
+                        
                     </div>
                 </div>
                 <div id=buttons_container>

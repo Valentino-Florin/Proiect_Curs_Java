@@ -53,8 +53,13 @@
             <p th:text="${place.workingHours}">working hours</p>
         </div>
         <div class=box id=call_to_action>
-            <a href="">Add to trip</a>
-            <a href="">Add to Favorites</a>
+            <div id=tripisadded th:if="${isAddedToList}"> <a th:href="@{/placedetail/{id}/removefromlist(id=${place.id})}">Remove from trip</a></div>
+           <div id=tripisnotadded   th:unless="${isAddedToList}" > <a th:href="@{/placedetail/{id}/addtolist(id=${place.id})}">Add to trip</a></div>
+            
+            
+            <div id=favisadded th:if="${isAddedToFav}"><a th:href="@{/placedetail/{id}/removefromfavorites(id=${place.id})}">Remove from Favorites</a></div>
+            <div id=favisnotadded  th:unless="${isAddedToFav}"><a th:href="@{/placedetail/{id}/addtofavorites(id=${place.id})}">Add to Favorites</a></div>
+              
         </div>
     </div>
 </div>

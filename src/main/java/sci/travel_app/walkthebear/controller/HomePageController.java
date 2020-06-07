@@ -16,13 +16,27 @@ public class HomePageController {
     @Autowired
     private PlacesServiceImp placeService;
 
-
     @GetMapping(value = "/")
-    public String index( Model model) {
+    public String slashRedirect( Model model){
+        return "redirect:/home";
+    }
+    @GetMapping(value = "/index")
+    public String indexRedirect( Model model){
+        return "redirect:/home";
+    }
+
+    @GetMapping(value = "/home")
+    public String home( Model model) {
         List<Place> widget1 = new ArrayList<>();
         model.addAttribute("widget1", widget1);
 
         List<Place> widget2 = new ArrayList<>();
+        List<Place> newestPlaces = placeService.latestPlaces();
+        widget2.add(newestPlaces.get(0));
+        widget2.add(newestPlaces.get(1));
+        widget2.add(newestPlaces.get(2));
+        widget2.add(newestPlaces.get(3));
+        widget2.add(newestPlaces.get(4));
         model.addAttribute("widget2", widget2);
 
         List<Place> widget3 = new ArrayList<>();

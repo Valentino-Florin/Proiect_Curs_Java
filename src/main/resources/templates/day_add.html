@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8" />
+    <title>
+        <!-- Insert your title here -->
+    </title>
+    <link type="text/css" href="../static/css/modal.css" th:href="@{/css/modal.css}" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/fragments.css" th:href="@{/css/fragments.css}">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+    <script>
+
+    </script>
+</head>
+
+<body>
+
+    <div id=main_container>
+        <div id=title><h1 th:text="${day.name}">Day name </h1>
+    
+            <a href="" th:href="@{/planner/{id}(id=${itinerary.itineraryId})}">Back</a></div>
+        <div id=content>
+            <div id=hour_list>
+            
+                <div class=hour_list_element th:each="hour : ${allHours}">
+
+                    <p>Time</p>
+                    <p th:text="${hour?.time}">time</p>
+                    <p>Place</p>
+                    <p th:text="${hour?.place}">place</p>
+
+                    <a href="" th:href="@{/planner/{id}/day/{dayID}/delete/{hourId}(id=${itinerary.itineraryId},dayID=${day.dayId},hourId=${hour.hourId})}">Remove from list</a>
+                    <a href="" th:href="@{/planner/{id}/day/{dayID}/edit/{hourId}(id=${itinerary.itineraryId},dayID=${day.dayId},hourId=${hour.hourId})}">Edit</a>
+                </div>
+            </div>
+            <div id=form_container>
+<div th:insert="fragments :: alert"></div>
+
+
+                
+                <form action="" th:object="${objective}" th:action="@{/planner/{id}/day/{dayID}/save(id=${itinerary.itineraryId},dayID=${day.dayId})}" method="post">
+                    <div id=time> <label>Time:</label><br />
+                        <input class=timepicker type="text" th:field="*{time}" /></div>
+                    <div id=place> <label>Place:</label><br />
+                        <select class="form-control" th:value="${hour?.place}" th:field="*{place}" id="dropOperator">
+                            <option value="0">select a place from the list</option>
+                            <option th:each="uplace : ${unplannedPlaces}" th:value="${uplace?.id}" th:text="${uplace.name}"></option>
+                        </select></div>
+
+                    <div id=button> <button id=submit type="submit">Add objective</button></div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</body></html>

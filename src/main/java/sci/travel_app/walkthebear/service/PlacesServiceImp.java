@@ -96,6 +96,11 @@ public class PlacesServiceImp implements PlacesService {
         return placesRepository.findByNameContains(keyword,pageable);
     }
 
+
+    public List <Place> latestPlaces(){
+        return placesRepository.findAllByOrderByCreatedDesc();
+    }
+
 //    public Page<Place> filterResults(List<Place> initiaList, boolean A, boolean B, boolean C, boolean D){
 //        if(A==true && B==true && C==true && D==true){
 //

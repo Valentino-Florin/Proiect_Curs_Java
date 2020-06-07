@@ -57,8 +57,9 @@
                         <button id=submit type="submit">Submit</button>
                         <button id=reset type="reset">Reset</button></div>
                 </form>
+                <div th:insert="fragments :: alert"></div>
                 <div id=days>
-                    <div th:insert="fragments :: alert"></div>
+                    
                     <p>Days</p>
 
                     <div id=add_button>
@@ -78,24 +79,10 @@
                     <div class=schedule>
                     </div>
                 </div>
-
+                  
 
             </div>
             
-            
-
-            <div class=box id=list>
-                <div id=places_list></div>
-                <span class="places_list_item" draggable="true" ondragstart='onDragStart(event);'>
-                    placeholder
-                </span>
-                <div class="places_list_item"></div>
-                <div class="places_list_item"></div>
-                <div id=controls_container>
-                    <div id=x_button> <img src="../static/images/xbutton.png" th:src="@{/images/xbutton.png}" alt="remove from list button" height="40px" width="40px" href=""></div>
-                </div>
-
-            </div>
         </div>
     </div>
 

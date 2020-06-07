@@ -41,7 +41,7 @@ public interface PlacesRepository extends JpaRepository<Place, Long> {
     Page<Place> findBySubcategoryAndCounty(SubCategory subCategory, String county, Pageable pageable);
     Page<Place> findBySubcategoryAndCity(SubCategory subCategory, String city, Pageable pageable);
     Page<Place> findBySubcategoryAndCountyAndCity(SubCategory subCategory,String county, String city, Pageable pageable);
-
+    List <Place> findAllByOrderByCreatedDesc();
 
     Page<Place> findAll(Pageable pageable);
 

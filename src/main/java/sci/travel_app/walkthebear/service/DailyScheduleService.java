@@ -25,6 +25,12 @@ public class DailyScheduleService {
         List<DailySchedule> allDays = scheduleRepository.findByItinerary(itinerary);
          return allDays.size();
     }
+//    public String dayName(Itinerary itinerary){
+//        String nameA = "Day " + (getNumberOfDays(itinerary));
+//        while (scheduleRepository.findByNameAndItinerary(nameA, itinerary) != null){
+//
+//        }
+//    }
 
     public DailySchedule addNewDay(Itinerary itinerary) {
         DailySchedule timetable = new DailySchedule();

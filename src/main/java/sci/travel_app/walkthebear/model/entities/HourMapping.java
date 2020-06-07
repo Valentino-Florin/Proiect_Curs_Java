@@ -8,7 +8,7 @@ public class HourMapping {
     @Id
     @Column(name = "HOURMAPPING_ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long hourId;
+    private long hourId;
     @OneToOne
     @JoinColumn(name = "SCHEDULE_ID")
     private DailySchedule dailySchedule;
@@ -28,11 +28,11 @@ public class HourMapping {
     }
 
 
-    public Long getHourId() {
+    public long getHourId() {
         return hourId;
     }
 
-    public void setHourId(Long hourID) {
+    public void setHourId(long hourID) {
         hourId = hourId;
     }
 
@@ -65,7 +65,7 @@ public class HourMapping {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         HourMapping that = (HourMapping) o;
-        return hourId.equals(that.hourId);
+        return hourId == that.hourId;
     }
 
     @Override
