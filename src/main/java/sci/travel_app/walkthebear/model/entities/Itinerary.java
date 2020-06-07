@@ -1,5 +1,7 @@
 package sci.travel_app.walkthebear.model.entities;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.Objects;
@@ -20,8 +22,10 @@ public class Itinerary {
     private AppUser user;
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "DATE_CREATED")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date created;
     @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name = "DATE_START")
     private Date startDate;
 

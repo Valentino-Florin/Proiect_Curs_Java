@@ -15,6 +15,7 @@
         $(function() {
             $("#startdate").datepicker();
         });
+
     </script>
 </head>
 
@@ -29,12 +30,12 @@
         <div id=name>
             <h2>Trip planner</h2>
         </div>
-        <div id=link_container> <a href="tripmanager.html" th:href="@{/tripmanager}">Back to trip manager</a> 
-        <a href="" th:href="@{/planner/view/{id}(id=${itinerary.itineraryId})}">View itinerary</a>
+        <div id=link_container> <a href="tripmanager.html" th:href="@{/tripmanager}">Back to trip manager</a>
+            <a href="" th:href="@{/planner/view/{id}(id=${itinerary.itineraryId})}">View itinerary</a>
         </div>
         <div class=container id=content>
             <div class=box id=form>
-                <form action="" th:object="${itinerary}" th:action="@{/planner/{id}/update(id=${itinerary.itineraryId})}" method="post">
+                <form th:object="${itinerary}" th:action="@{/planner/{id}/update(id=${itinerary.itineraryId})}" method="post">
                     <div id=forminputs>
                         <div id=info>
                             <div class=form_element>
@@ -51,7 +52,10 @@
                         <div id=date_days>
                             <div class=form_element>
                                 <label for="startdate">Start date:</label>
-                                <input type="text" th:field="*{startDate}" id="startdate"></div>
+                                <input type="text" th:field="*{startDate}" id="startdate">
+                                <input type="hidden" th:field="*{created}">
+                            </div>
+
                         </div>
 
                     </div>
@@ -61,7 +65,7 @@
                 </form>
                 <div th:insert="fragments :: alert"></div>
                 <div id=days>
-                    
+
                     <p>Days</p>
 
                     <div id=add_button>
@@ -81,10 +85,10 @@
                     <div class=schedule>
                     </div>
                 </div>
-                  
+
 
             </div>
-            
+
         </div>
     </div>
 
@@ -94,4 +98,6 @@
     <!-- footer start -->
     <div th:insert="fragments :: footer"></div>
     <!-- footer end -->
-</body></html>
+</body>
+
+</html>
