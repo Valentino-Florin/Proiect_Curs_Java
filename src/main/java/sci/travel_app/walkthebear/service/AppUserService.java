@@ -10,5 +10,6 @@ public interface AppUserService extends UserDetailsService {
     AppUser findByEmail(String email);
 
     AppUser findByUsername(String userName);
-    //List<AppUser> findByUserName(String userName);
+
+
 }

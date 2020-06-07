@@ -1,21 +1,15 @@
 package sci.travel_app.walkthebear.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import sci.travel_app.walkthebear.data_utils.dto.AppUserDetails;
 import sci.travel_app.walkthebear.model.entities.AppUser;
-import sci.travel_app.walkthebear.model.misc.AppUserRole;
 import sci.travel_app.walkthebear.repository.AppUserRepository;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Date;
-import java.util.List;
 
 @Service
 public class AppUserServiceImp implements AppUserService {
@@ -45,21 +39,26 @@ public class AppUserServiceImp implements AppUserService {
         return appUser;
     }
 
+//    @Override
+//    public AppUser findByUsername(String userName) {
+//        return null;
+//    }
+
     /////don't know what's up with this method
     @Override
     public AppUser findByUsername(String userName) {
         return null;
     }
 
-
-    private Collection<? extends GrantedAuthority> getAuthorities() {
-        List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
-        for (AppUserRole role : AppUserRole.values()) {
-            grantedAuthorities.add(new SimpleGrantedAuthority(role.toString()));
-        }
-        return grantedAuthorities;
-    }
-
+//
+//    private Collection<? extends GrantedAuthority> getAuthorities() {
+//        List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
+//        for (AppUserRole role : AppUserRole.values()) {
+//            grantedAuthorities.add(new SimpleGrantedAuthority(role.toString()));
+//        }
+//        return grantedAuthorities;
+//    }
+//
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
         AppUser user = appUserRepository.findByEmail(s);
@@ -83,4 +82,18 @@ public class AppUserServiceImp implements AppUserService {
 //        }
 //        return appUser;
 //    }
+
+//    @Override
+//    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+//        AppUser user = appUserRepository.findByUserName(username);
+//
+//        if (user == null) {
+//            throw new UsernameNotFoundException("Could not find user");
+//        }
+//
+//        return new AppUserDetails(user);
+//
+//    }
+
+
 }

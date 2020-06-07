@@ -3,8 +3,12 @@ package sci.travel_app.walkthebear.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import sci.travel_app.walkthebear.model.entities.Favorite;
+
 import sci.travel_app.walkthebear.service.AppUserServiceImp;
 import sci.travel_app.walkthebear.service.FavoritesServiceImpl;
 
