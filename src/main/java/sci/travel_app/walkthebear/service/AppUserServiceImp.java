@@ -45,10 +45,10 @@ public class AppUserServiceImp implements AppUserService {
 //    }
 
     /////don't know what's up with this method
-    @Override
-    public AppUser findByUsername(String userName) {
-        return null;
-    }
+//    @Override
+//    public AppUser findByUsername(String userName) {
+//        return null;
+//    }
 
 //
 //    private Collection<? extends GrantedAuthority> getAuthorities() {
@@ -59,21 +59,31 @@ public class AppUserServiceImp implements AppUserService {
 //        return grantedAuthorities;
 //    }
 //
-    @Override
-    public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-        AppUser user = appUserRepository.findByEmail(s);
-        if (user == null) {
-            throw new UsernameNotFoundException("Invalid username or password");
-        }
-        return new User(user.getEmail(), passwordEncoder.encode(user.getPassword()), getAuthorities());
-    }
-
+//    @Override
+//    public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
+//        AppUser user = appUserRepository.findByEmail(s);
+//        if (user == null) {
+//            throw new UsernameNotFoundException("Invalid username or password");
+//        }
+//        return new AppUser(user.getEmail(), passwordEncoder.encode(user.getPassword()), getAuthorities());
+//    }
+//
     public AppUser findById(Long id) {
         AppUser user = appUserRepository.findById(id).get();
         return user;
     }
 
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        AppUser user = appUserRepository.findByUserName(username);
 
+        if (user == null) {
+            throw new UsernameNotFoundException("Could not find user");
+        }
+
+        return new AppUserDetails(user);
+
+    }
 //    @Override
 //    public AppUser findByUserName(String username) throws UsernameNotFoundException {
 //        AppUser appUser = (AppUser) appUserRepository.findByUserName(username);

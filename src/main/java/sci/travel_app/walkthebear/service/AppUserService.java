@@ -9,7 +9,7 @@ public interface AppUserService extends UserDetailsService {
 
     AppUser findByEmail(String email);
 
-    AppUser findByUsername(String userName);
+//    AppUser findByUsername(String userName);
 
 
 }

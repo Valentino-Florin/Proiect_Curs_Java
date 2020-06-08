@@ -48,14 +48,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         this.passwordEncoder= passwordEncoder;
     } */
 
-    @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        // PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
-//        auth
-//                .userDetailsService(appUserService)
-//                .passwordEncoder(passwordEncoder());
-        auth.authenticationProvider(authenticationProvider());
-    }
+//    @Autowired
+//    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+//        // PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
+////        auth
+////                .userDetailsService(appUserService)
+////                .passwordEncoder(passwordEncoder());
+//        auth.authenticationProvider(authenticationProvider());
+//    }
+@Override
+protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+    auth.authenticationProvider(authenticationProvider());
+}
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -84,8 +88,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/edituseradmin/{id}").permitAll()
                 .antMatchers("/deleteplaceadmin/{id}").permitAll()
                 .antMatchers("/deleteuseradmin/{id}").permitAll()
-                .antMatchers("/profilefavorites").permitAll()
                 .antMatchers("/profileratings").permitAll()
+                .antMatchers("/profilefavorites").permitAll()
                 .antMatchers("/adminplace").permitAll()
                 .antMatchers("/adminuser").permitAll()
                 .antMatchers("/results/**").permitAll()
@@ -95,7 +99,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
-                .loginPage("/login")
+                .loginPage("/login.html")
+                .loginProcessingUrl("/login")
+        .defaultSuccessUrl("/home",true)
+        .failureUrl("/incorrectLogin")
                 .permitAll()
                 .and()
                 .logout()

@@ -1,6 +1,8 @@
 package sci.travel_app.walkthebear.controller;
 
 
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,6 +29,8 @@ public class AppUserController {
     @Autowired
     private ModelMapper modelMapper;
 
+    private static org.apache.logging.log4j.Logger logger = LogManager.getLogger(AppUserController.class);
+
 //    private AppUserDTO convertToDto(AppUser appUser) {
 //        return modelMapper.map(appUser, AppUserDTO.class);
 //    }
@@ -40,26 +44,30 @@ public class AppUserController {
 
     @GetMapping("/incorrectLogin")
     public String wrongLogin(Model model) {
-
-      return "incorrectLogin";
+        model.addAttribute("loginError", true);
+        return "login";
  }
-    @GetMapping("/okLoginRegister")
-    public String okLogin(Model model) {
-
-        return "okLoginRegister";
-    }
-
-    @RequestMapping( value = "/login", method = RequestMethod.POST )
-        public String performLogin(
-                @ModelAttribute( "appUser" ) AppUser appUser, BindingResult result ) {
-
-            AppUser user = appUserRepository
-                    .findByUserNameAndPassword( appUser.getUserName(), appUser.getPassword() );
-            if ( user == null ) {
-                return "redirect:/incorrectLogin";
-            }
-            return "redirect:/okLoginRegister";
-        }
+//    @GetMapping("/okLoginRegister")
+//    public String okLogin(Model model) {
+//
+//        return "okLoginRegister";
+//    }
+//
+//    @PostMapping( "/login")
+//        public String performLogin(
+//                @ModelAttribute( "appUser" ) AppUser appUser, BindingResult result, RedirectAttributes redirectAttributes ) {
+//
+//            AppUser user = appUserRepository
+//                    .findByUserNameAndPassword( appUser.getUserName(), appUser.getPassword() );
+//            if ( user == null ) {
+//                redirectAttributes.addFlashAttribute("message", "there's been an error");
+//                logger.log(Level.INFO, "could not login");
+//                return "login";
+//            }
+//        redirectAttributes.addFlashAttribute("message", "Success");
+//        logger.log(Level.INFO, "logged in");
+//            return "redirect:/home";
+//        }
 
 
     @GetMapping("/register")
