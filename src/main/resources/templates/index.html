@@ -22,73 +22,93 @@
     <!-- main content start -->
     <main>
         <div class="main_container">
-            <div class="instructions">
-                <h2>Welcome</h2>
-                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.</p>
-            </div>
-            <div class="instructions">
-                <h2>Instructions</h2>
-                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.</p>
-            </div>
-            
-            <div class="column_layout">
-                <div class="column">
-                    <h2>Most popular</h2>
-                    <div class="column_list" th:each="placeone : ${widget1}">
-                        <table>
-                            <tr>
-                                <td>
-                                    <div class="list_item"><a href="placedetail.html" th:href="@{/placedetail/{id}(id=${placeone.id})}">
+
+        </div>
+
+
+        <div th:insert="fragments :: alert"></div>
+
+        <div sec:authorize="isAuthenticated()">
+            This content is only shown to authenticated users.
+            <span sec:authentication="principal.authorities">role</span>
+        </div>
+        <div sec:authorize="hasAuthority('Admin')">
+            This content is only shown to administrators.
+        </div>
+        <div sec:authorize="hasRole('Host')">
+            This content is only shown to users.
+        </div>
+
+
+        
+
+        <div class="instructions">
+            <h2>Welcome</h2>
+            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.</p>
+        </div>
+        <div class="instructions">
+            <h2>Instructions</h2>
+            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.</p>
+        </div>
+
+        <div class="column_layout">
+            <div class="column">
+                <h2>Most popular</h2>
+                <div class="column_list" th:each="placeone : ${widget1}">
+                    <table>
+                        <tr>
+                            <td>
+                                <div class="list_item"><a href="placedetail.html" th:href="@{/placedetail/{id}(id=${placeone.id})}">
                                         <div><img class="list_thumbnail" src="../static/images/placeholder.jpg" th:src="@{/images/placeholder.jpg}">
-                                        <p th:text="${placeone.name}"></p>
-                                        <p th:text="${placeone.description}"></p>
-                                    </div>
-                                        </a>
-                                    </div>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                    <a href="">Download</a>
-                </div>
-                <div class="column">
-                    <h2>Latest places</h2>
-                    <div class="column_list" th:each="placetwo : ${widget2}">
-                        <table>
-                            <tr>
-                                <td>
-                                    <div class="list_item"><a href="placedetail.html" th:href="@{/placedetail/{id}(id=${placetwo.id})}">
-                                        <div><img class="list_thumbnail" src="../static/images/placeholder.jpg" th:src="@{/images/placeholder.jpg}">
-                                        <p th:text="${placetwo.name}"></p>
-                                        <p th:text="${placetwo.description}"></p>
-                                    </div>
-                                        </a>
-                                    </div>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                    <a href="">Download</a>
-                </div>
-                <div class="column">
-                    <h2>Editor's choice</h2>
-                    <div class="column_list" th:each="placethree : ${widget3}">
-                        <table>
-                            <tr>
-                                <td>
-                                    <div class="list_item"><a href="placedetail.html" th:href="@{/placedetail/{id}(id=${placethree.id})}">
-                                        <div><img class="list_thumbnail" src="../static/images/placeholder.jpg" th:src="@{/images/placeholder.jpg}">
-                                        <p th:text="${placethree.name}"></p>
-                                        <p th:text="${placethree.description}"></p>
+                                            <p th:text="${placeone.name}"></p>
+                                            <p th:text="${placeone.description}"></p>
                                         </div>
-                                        </a>
-                                    </div>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <a href="">Download</a>
+            </div>
+            <div class="column">
+                <h2>Latest places</h2>
+                <div class="column_list" th:each="placetwo : ${widget2}">
+                    <table>
+                        <tr>
+                            <td>
+                                <div class="list_item"><a href="placedetail.html" th:href="@{/placedetail/{id}(id=${placetwo.id})}">
+                                        <div><img class="list_thumbnail" src="../static/images/placeholder.jpg" th:src="@{/images/placeholder.jpg}">
+                                            <p th:text="${placetwo.name}"></p>
+                                            <p th:text="${placetwo.description}"></p>
+                                        </div>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <a href="">Download</a>
+            </div>
+            <div class="column">
+                <h2>Editor's choice</h2>
+                <div class="column_list" th:each="placethree : ${widget3}">
+                    <table>
+                        <tr>
+                            <td>
+                                <div class="list_item"><a href="placedetail.html" th:href="@{/placedetail/{id}(id=${placethree.id})}">
+                                        <div><img class="list_thumbnail" src="../static/images/placeholder.jpg" th:src="@{/images/placeholder.jpg}">
+                                            <p th:text="${placethree.name}"></p>
+                                            <p th:text="${placethree.description}"></p>
+                                        </div>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
             </div>
+        </div>
         </div>
 
     </main>

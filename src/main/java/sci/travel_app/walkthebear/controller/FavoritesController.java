@@ -3,11 +3,16 @@ package sci.travel_app.walkthebear.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import sci.travel_app.walkthebear.model.entities.Favorite;
+
 import sci.travel_app.walkthebear.service.AppUserServiceImp;
 import sci.travel_app.walkthebear.service.FavoritesServiceImpl;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,20 +38,25 @@ public class FavoritesController {
 //        return mav;
 //    }
 
-    @RequestMapping(value = "/profilefavorites", method = RequestMethod.GET)
-    public String favoritesById(@RequestParam Long id, Model model) {
 
-        List<Favorite> favoritesByUserId = new ArrayList<>();
 
-        for (Favorite fav : favoritesServiceImpl.getAllFavorites()) {
-            if (fav.getUser().getId() == id) {
-                favoritesByUserId.add(fav);
-            }
-        }
-        model.addAttribute("favorites", favoritesByUserId);
+    ///replace with correct implementation:
 
-        return "profilefavorites";
-    }
+//    @RequestMapping(value = "/profilefavorites", method = RequestMethod.GET)
+//    public String favoritesById(Model model, Principal principal) {
+//
+//        principal.getName();
+//        List<Favorite> favoritesByUserId = new ArrayList<>();
+//
+//        for (Favorite fav : favoritesServiceImpl.getAllFavorites()) {
+//            if (fav.getUser().getId() == id) {
+//                favoritesByUserId.add(fav);
+//            }
+//        }
+//        model.addAttribute("favorites", favoritesByUserId);
+//
+//        return "profilefavorites";
+//    }
 
     @GetMapping("/editprofile")
     public String editProfile(){

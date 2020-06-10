@@ -8,9 +8,10 @@
 </head>
 <body>
 <div class="form" >
+     <div th:insert="fragments :: alert"></div>
     <a href="register.html" th:href="@{/register}">Go to registration page >></a>
 
-    <form id="loginForm"  th:action="@{/login}" method="post">
+    <form id="loginForm"  th:action="@{/doLogin}" method="post">
 
         <div class="container" id=inputs>
             <h1>Sign Up</h1>
@@ -34,7 +35,7 @@
 <!--            <span class="psw">Forgot <a href="#">password?</a></span>-->
         </div>
     </form>
-
+<p th:if="${loginError}" class="error">Wrong user or password</p>
 </div>
 </body>
 </html>

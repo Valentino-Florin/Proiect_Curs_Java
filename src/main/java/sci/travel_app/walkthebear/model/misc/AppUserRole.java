@@ -12,5 +12,6 @@ public enum AppUserRole {
     public String getDisplayRole() {
         return displayRole;
     }
+
 }
 
