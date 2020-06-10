@@ -41,21 +41,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
 
-    /* private final PasswordEncoder passwordEncoder;
-
-    @Autowired
-    public WebSecurityConfig(PasswordEncoder passwordEncoder) {
-        this.passwordEncoder= passwordEncoder;
-    } */
-
-//    @Autowired
-//    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-//        // PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
-////        auth
-////                .userDetailsService(appUserService)
-////                .passwordEncoder(passwordEncoder());
-//        auth.authenticationProvider(authenticationProvider());
-//    }
 @Override
 protected void configure(AuthenticationManagerBuilder auth) throws Exception {
     auth.authenticationProvider(authenticationProvider());
@@ -65,19 +50,23 @@ protected void configure(AuthenticationManagerBuilder auth) throws Exception {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
+                //available to all users
                 .antMatchers("/", "/index","/home").permitAll()
                 .antMatchers("/css/*","/js/*","/images/*").permitAll()
-//                .antMatchers("/searchresults").permitAll()
-                .antMatchers("/searchresults").authenticated()
                 .antMatchers("/register/**").permitAll()
-                //remove the following after testing:
+                .antMatchers("/placedetail/**").permitAll()
+//                .antMatchers("/searchresults").permitAll()
+                .antMatchers("/results/**").permitAll()
+                .antMatchers("/categories/**").permitAll()
+                //available to role: traveller
                 .antMatchers("/tripmanager").permitAll()
                 .antMatchers("/tripmanager/*").permitAll()
                 .antMatchers("/tripmanager/*/*").permitAll()
+                .antMatchers("/planner/**").permitAll()
+                //available to role: host
                 .antMatchers("/placemanager").permitAll()
                 .antMatchers("/addplace").permitAll()
-                .antMatchers("/placedetail/**").permitAll()
-                .antMatchers("/places/**").permitAll()
+//                .antMatchers("/places/**").permitAll()
                 .antMatchers("/editprofile/").permitAll()
                 .antMatchers("/profileinfo").permitAll()
                 .antMatchers("/profilefavorites").permitAll()
@@ -92,9 +81,6 @@ protected void configure(AuthenticationManagerBuilder auth) throws Exception {
                 .antMatchers("/profilefavorites").permitAll()
                 .antMatchers("/adminplace").permitAll()
                 .antMatchers("/adminuser").permitAll()
-                .antMatchers("/results/**").permitAll()
-                .antMatchers("/categories/**").permitAll()
-                .antMatchers("/planner/**").permitAll()
                 .antMatchers("/adminallplaces/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
@@ -106,14 +92,11 @@ protected void configure(AuthenticationManagerBuilder auth) throws Exception {
                 .permitAll()
                 .and()
                 .logout()
+                .logoutUrl("/doLogout")
+                .logoutSuccessUrl("/home")
                 .permitAll();
 
     }
-
-//    @Bean
-//    public AuthenticationManager customAuthenticationManager() throws Exception {
-//        return authenticationManager();
-//    }
 
 }
 

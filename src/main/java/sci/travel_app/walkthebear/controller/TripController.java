@@ -9,9 +9,11 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import sci.travel_app.walkthebear.model.entities.*;
+import sci.travel_app.walkthebear.repository.AppUserRepository;
 import sci.travel_app.walkthebear.service.*;
 
 import javax.validation.Valid;
+import java.security.Principal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,6 +31,8 @@ public class TripController {
     private PlacesServiceImp placesService;
     @Autowired
     private UnplannedPlacesListService unplannedPlacesListService;
+    @Autowired
+    private AppUserRepository appUserRepository;
 
     private static org.apache.logging.log4j.Logger logger = LogManager.getLogger(TripController.class);
 
@@ -75,8 +79,9 @@ public class TripController {
 
     //save itinerary
     @PostMapping("/planner/save")
-    public String saveTrip(@ModelAttribute("trip") Itinerary trip,  BindingResult result, RedirectAttributes redirectAttributes) {
-        Itinerary savedItinerary = itineraryService.saveItinerary(trip);
+    public String saveTrip(@ModelAttribute("trip") Itinerary trip,  BindingResult result, RedirectAttributes redirectAttributes, Principal principal) {
+       AppUser currentUser = appUserRepository.findByUserName(principal.getName());
+        Itinerary savedItinerary = itineraryService.saveItinerary(trip, currentUser);
         logger.log(Level.INFO, "Created new itinerary: ID "+ savedItinerary.getItineraryId());
         redirectAttributes.addFlashAttribute("message", "Trip saved!");
         return "redirect:/planner/" + savedItinerary.getItineraryId();

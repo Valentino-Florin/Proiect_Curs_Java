@@ -31,8 +31,9 @@ public void update(Itinerary itinerary, long id){
         tripRepository.save(saveMe);
 }
 
-    public Itinerary saveItinerary(Itinerary itinerary) {
+    public Itinerary saveItinerary(Itinerary itinerary, AppUser user) {
             itinerary.setCreated(new Date());
+            itinerary.setUser(user);
             tripRepository.save(itinerary);
         return itinerary;
     }
