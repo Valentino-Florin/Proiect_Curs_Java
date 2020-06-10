@@ -13,10 +13,13 @@
     <div id=header_L th:fragment="home_header">
         <div class="top_nav">
             <div th:insert="fragments :: search_bar"></div>
+<!--
             <div class="top_nav_links">
                 <a th:href="@{/login}">Login</a>
                 <a th:href="@{/register}">Register</a>
             </div>
+-->
+             <div th:insert="fragments :: top_nav_links"></div>
         </div>
         <div id="main_title">
             <h1>Walk the bear</h1>
@@ -74,10 +77,13 @@
                     <button type="submit">Search</button>
                 </form>
             </div>
+<!--
             <div class="top_nav_links">
                  <a th:href="@{/login}">Login</a>
                 <a th:href="@{/register}">Register</a>
             </div>
+-->
+            <div th:insert="fragments :: top_nav_links"></div>
         </div>
         <div id="main_title">
             <h1>Walk the bear</h1>
@@ -99,27 +105,38 @@
 
     <!-- top nav start -->
     <!-- if user is not logged in -->
-    <div class="top_nav_links" th:fragment="not_logged_in_links">
+    <div class="top_nav_links" th:fragment="top_nav_links">
+        <div>
         <a href="login.html" th:href="@{/login}">Login</a>
         <a href="register.html" th:href="@{/register}">Register</a>
     </div>
     <!-- if user is traveller -->
-    <div class="top_nav_links" th:fragment="traveller_links">
+     <div sec:authorize="hasAuthority('Traveler')">
         <a href="profileinfo.html">My Profile</a>
         <a href="tripmanager.html">Manage trips</a>
-        <a href="">Log out</a>
+        <form name="logoutForm" th:hidden="true" method="post" th:action="@{/doLogout}">
+    <input type="submit" value="Logout" />
+</form>
+<a href="javascript: logoutForm.submit();">Sign Out</a>
     </div>
     <!-- if user is host -->
-    <div class="top_nav_links" th:fragment="host_links">
+     <div sec:authorize="hasAuthority('Host')">
         <a href="profileinfo.html">My Profile</a>
         <a href="placemanager.html">Manage places</a>
-        <a href="">Log out</a>
+        <form name="logoutForm" th:hidden="true" method="post" th:action="@{/doLogout}">
+    <input type="submit" value="Logout" />
+</form>
+<a href="javascript: logoutForm.submit();">Sign Out</a>
     </div>
     <!-- if user is admin -->
-    <div class="top_nav_links" th:fragment="admin_links">
+    <div sec:authorize="hasAuthority('Admin')">
         <a href="">Admin panel</a>
-        <a href="">Log out</a>
+       <form name="logoutForm" th:hidden="true" method="post" th:action="@{/doLogout}">
+    <input type="submit" value="Logout" />
+</form>
+<a href="javascript: logoutForm.submit();">Sign Out</a>
     </div>
+        </div>
     <!-- top nav end -->
 
     <!-- main nav start -->

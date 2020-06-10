@@ -59,7 +59,8 @@ protected void configure(AuthenticationManagerBuilder auth) throws Exception {
                 .antMatchers("/results/**").permitAll()
                 .antMatchers("/categories/**").permitAll()
                 //available to role: traveller
-                .antMatchers("/tripmanager").permitAll()
+//                .antMatchers("/tripmanager").permitAll()
+                .antMatchers("/tripmanager").hasAuthority("Host")
                 .antMatchers("/tripmanager/*").permitAll()
                 .antMatchers("/tripmanager/*/*").permitAll()
                 .antMatchers("/planner/**").permitAll()
