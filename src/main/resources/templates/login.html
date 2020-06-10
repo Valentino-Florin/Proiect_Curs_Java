@@ -11,17 +11,17 @@
      <div th:insert="fragments :: alert"></div>
     <a href="register.html" th:href="@{/register}">Go to registration page >></a>
 
-    <form id="loginForm"  th:action="@{/login}" method="post">
+    <form id="loginForm"  th:action="@{/doLogin}" method="post">
 
         <div class="container" id=inputs>
             <h1>Sign Up</h1>
             <div class=inputs>
             <label th:for="userName"><b>Username</b></label>
-            <input type="text" placeholder="Enter Username" name="userName" required>
+            <input type="text" placeholder="Enter Username" id="userName" name="userName" required>
             </div>
 <div class=inputs>
             <label th:for="password"><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" name="password" required>
+            <input type="password" placeholder="Enter Password" id="password" name="password" required>
             </div>
             <div class=inputs>
 

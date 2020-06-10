@@ -36,9 +36,9 @@ public class AppUserController {
 //    }
 
 
-    @GetMapping( value = "/login" )
-    public String login( Model model ) {
-        model.addAttribute( new AppUser() );
+    @GetMapping("/login" )
+    public String login( ) {
+//        model.addAttribute( new AppUser() );
         return "login";
     }
 
