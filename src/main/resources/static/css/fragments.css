@@ -1,15 +1,3 @@
-a:link,
-a:visited {
-    text-decoration: none;
-    color: #1F6E3A;
-}
-
-a:hover,
-a:active {
-    text-decoration: none;
-    color: #103B1F;
-}
-
 
 /* _______________________________ all headers start _________________________________ */
 
@@ -64,7 +52,21 @@ a:active {
     font-size: 18px;
 }
 
-.top_nav_links:hover {}
+.top_nav_links a {
+    margin-left: 20px;
+}
+.top_nav_links a:link,
+a:visited {
+    text-decoration: none;
+    color: #1F6E3A;
+}
+
+.top_nav_links a:hover,
+a:active {
+    text-decoration: none;
+    color: #103B1F;
+}
+
 
 #img_and_title_container {
     display: flex;
@@ -110,42 +112,7 @@ h1 {
 
 /* _______________________________ big header start _________________________________ */
 
-/*
-.hero_image_container_l {
-    align-content: center;
-    display: grid;
-   
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
-}
 
-.hero_image_container_l img {
-    max-width: 30vw;
-}
-
-#hero1 {
-    grid-area: 1 / 3 / 3 / 5;
-    height: 100%;
-}
-
-#hero2 {
-    grid-area: 1 / 2 / 3 / 3;
-    height: 100%;
-}
-
-#hero3 { 
-    grid-area: 1 / 1 / 2 / 2;
-    height: 100%;
-}
-
-#hero4 {
-
-    grid-area: 2 / 1 / 3 / 2;
-
-}
-*/
 .hero_image_container_l {
     margin: 0;
     padding: 0;

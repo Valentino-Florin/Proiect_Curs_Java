@@ -1,4 +1,4 @@
-package sci.travel_app.walkthebear.data_utils.dto;
+package sci.travel_app.walkthebear.data_utils;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

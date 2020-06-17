@@ -5,7 +5,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import sci.travel_app.walkthebear.data_utils.dto.AppUserDetails;
+import sci.travel_app.walkthebear.data_utils.AppUserDetails;
 import sci.travel_app.walkthebear.model.entities.AppUser;
 import sci.travel_app.walkthebear.repository.AppUserRepository;
 
@@ -39,11 +39,13 @@ public class AppUserServiceImp implements AppUserService {
         return appUser;
     }
 
-    public AppUser findById(Long id) {
-        AppUser user = appUserRepository.findById(id).get();
-        return user;
+    public AppUser findById(long id) {
+        return appUserRepository.findById(id);
     }
 
+    public AppUser findByUserName(String username) {
+        return appUserRepository.findByUserName(username);
+    }
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         AppUser user = appUserRepository.findByUserName(username);

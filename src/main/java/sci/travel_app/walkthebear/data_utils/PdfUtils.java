@@ -1,4 +1,4 @@
-package sci.travel_app.walkthebear.data_utils.dto;
+package sci.travel_app.walkthebear.data_utils;
 
 import com.itextpdf.text.DocumentException;
 import org.thymeleaf.TemplateEngine;

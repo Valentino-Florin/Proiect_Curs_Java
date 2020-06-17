@@ -98,6 +98,17 @@ textarea {
  border: 2px solid #797BBD;
  }
  
+a:link,
+a:visited {
+    text-decoration: none;
+    color: #1F6E3A;
+}
+
+a:hover,
+a:active {
+    text-decoration: none;
+    color: #103B1F;
+}
 
 /* _______________________________ main end _________________________________ */
 

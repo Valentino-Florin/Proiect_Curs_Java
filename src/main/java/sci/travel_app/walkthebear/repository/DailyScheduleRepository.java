@@ -10,7 +10,6 @@ import java.util.List;
 
 @Repository
 public interface DailyScheduleRepository extends JpaRepository<DailySchedule, Long> {
-    List<DailySchedule> findByUser(AppUser createdBy);
     DailySchedule findById(long id);
     List<DailySchedule> findByItinerary(Itinerary itinerary);
     DailySchedule findByNameAndItinerary(String name, Itinerary itinerary);

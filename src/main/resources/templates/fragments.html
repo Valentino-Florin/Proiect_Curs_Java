@@ -106,14 +106,14 @@
     <!-- top nav start -->
     <!-- if user is not logged in -->
     <div class="top_nav_links" th:fragment="top_nav_links">
-        <div>
+        <div sec:authorize="isAnonymous()">
         <a href="login.html" th:href="@{/login}">Login</a>
         <a href="register.html" th:href="@{/register}">Register</a>
     </div>
     <!-- if user is traveller -->
      <div sec:authorize="hasAuthority('Traveler')">
-        <a href="profileinfo.html">My Profile</a>
-        <a href="tripmanager.html">Manage trips</a>
+        <a href="profileinfo.html" th:href="@{/profileinfo}">My Profile</a>
+        <a href="tripmanager.html" th:href="@{/tripmanager}">Manage trips</a>
         <form name="logoutForm" th:hidden="true" method="post" th:action="@{/doLogout}">
     <input type="submit" value="Logout" />
 </form>
@@ -121,8 +121,8 @@
     </div>
     <!-- if user is host -->
      <div sec:authorize="hasAuthority('Host')">
-        <a href="profileinfo.html">My Profile</a>
-        <a href="placemanager.html">Manage places</a>
+        <a href="profileinfo.html" th:href="@{/profileinfo}">My Profile</a>
+        <a href="placemanager.html" th:href="@{/placemanager}">Manage places</a>
         <form name="logoutForm" th:hidden="true" method="post" th:action="@{/doLogout}">
     <input type="submit" value="Logout" />
 </form>

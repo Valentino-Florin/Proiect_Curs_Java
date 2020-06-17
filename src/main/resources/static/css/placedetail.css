@@ -12,7 +12,17 @@ body {
 .containerz {
     
 }
+a:link,
+a:visited {
+    text-decoration: none;
+    color: #1F6E3A;
+}
 
+a:hover,
+a:active {
+    text-decoration: none;
+    color: #103B1F;
+}
 #main_container {
     display: flex;
     flex-wrap: wrap;

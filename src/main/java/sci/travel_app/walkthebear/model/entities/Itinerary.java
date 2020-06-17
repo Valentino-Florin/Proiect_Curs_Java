@@ -25,7 +25,7 @@ public class Itinerary {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date created;
     @Temporal(TemporalType.DATE)
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "MM/dd/yyyy")
     @Column(name = "DATE_START")
     private Date startDate;
 

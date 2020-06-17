@@ -21,6 +21,11 @@ public class DailyScheduleService {
         return scheduleRepository.findByItinerary(itinerary);
     }
 
+    /**
+     *
+     * @param itinerary
+     * @return
+     */
     public int getNumberOfDays(Itinerary itinerary){
         List<DailySchedule> allDays = scheduleRepository.findByItinerary(itinerary);
          return allDays.size();
@@ -32,6 +37,11 @@ public class DailyScheduleService {
 //        }
 //    }
 
+    /**
+     *
+     * @param itinerary
+     * @return
+     */
     public DailySchedule addNewDay(Itinerary itinerary) {
         DailySchedule timetable = new DailySchedule();
         timetable.setItinerary(itinerary);
@@ -39,13 +49,26 @@ public class DailyScheduleService {
         return scheduleRepository.save(timetable);
     }
 
+    /**
+     *
+     * @param dailySchedule
+     */
     public void saveDay(DailySchedule dailySchedule){
             scheduleRepository.save(dailySchedule);
     }
 
+    /**
+     *
+     * @param dailySchedule
+     */
     public void removeDay(DailySchedule dailySchedule){
         scheduleRepository.delete(dailySchedule);
     }
+
+    /**
+     *
+     * @param itinerary
+     */
     public void deleteAll(Itinerary itinerary){
         List<DailySchedule> toBeDeleted = getAllDays(itinerary);
         scheduleRepository.deleteInBatch(toBeDeleted);

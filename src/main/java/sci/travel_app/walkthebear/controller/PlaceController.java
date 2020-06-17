@@ -26,19 +26,6 @@ public class PlaceController {
     @Autowired
     private PlacesServiceImp placesService;
     private static org.apache.logging.log4j.Logger logger = LogManager.getLogger(PlaceController.class);
-//    @Autowired
-//    private RatingServiceImpl ratingService;
-
-
-//    //path example: http://localhost:8080/places/1
-//    @GetMapping(value="/places/{id}")
-//    public String getPlace(@PathVariable("id") long id, Model model) {
-//        Place place = placesService.getPlaceById(id);
-//        List<Rating> ratingList = ratingService.getAllRatingsOfPlaceById(id);
-//        model.addAttribute("place", place);
-//        model.addAttribute("ratingList", ratingList);
-//        return "placedetail";
-//    }
 
     /* @PostMapping(value = "/addplace")
       public String addNewPlace( @ModelAttribute Place place )

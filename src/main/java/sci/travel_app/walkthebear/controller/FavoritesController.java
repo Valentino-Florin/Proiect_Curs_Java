@@ -4,17 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import sci.travel_app.walkthebear.model.entities.Favorite;
-
 import sci.travel_app.walkthebear.service.AppUserServiceImp;
 import sci.travel_app.walkthebear.service.FavoritesServiceImpl;
 
 import java.security.Principal;
-import java.util.ArrayList;
-import java.util.List;
 
 @Controller
 public class FavoritesController {
@@ -25,9 +18,9 @@ public class FavoritesController {
     @Autowired
     private AppUserServiceImp appUserServiceImp;
 
-    @RequestMapping(value = "/profileinfo", method = RequestMethod.GET)
-    public String profileinfo(@RequestParam Long id, Model model){
-        model.addAttribute("user", appUserServiceImp.findById(id));
+    @GetMapping("/profileinfo")
+    public String profileinfo(Model model, Principal principal){
+        model.addAttribute("user", appUserServiceImp.findByUserName(principal.getName()));
         return "profileinfo";
     }
 
