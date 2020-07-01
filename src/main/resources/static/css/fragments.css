@@ -305,3 +305,7 @@ footer {
         visibility:hidden;
     }
 }
+
+#logoutForm {
+    display: none;
+}

@@ -32,7 +32,7 @@
         <div id=link_container> <a href="tripmanager.html" th:href="@{/tripmanager}">Back to trip manager</a> </div>
         <div class=container id=content>
             <div class=box id=form>
-                <form action="" th:object="${itinerary}" th:action="@{/planner/save}" method="post">
+                <form id=itinerary_details action="" th:object="${itinerary}" th:action="@{/planner/save}" method="post">
                     <div id=forminputs>
                         <div id=info>
                             <div class=form_element>

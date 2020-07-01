@@ -47,10 +47,12 @@
                             <option value="0">select a place from the list</option>
                             <option th:each="uplace : ${unplannedPlaces}" th:value="${uplace?.id}" th:text="${uplace?.name}"></option>
                         </select></div>
+                    
 
                     <div id=button> <button id=submit type="submit">Add objective</button></div>
 
                 </form>
+                <div id=emptylist><p>If the drop-down list is empty, you have no places added to your list yet. Add some places from our categories: <br><a href="searchresults.html" th:href="@{/categories/tourist-attractions}">Tourist attractions</a><br><a href="searchresults.html" th:href="@{/categories/lodging}">Lodging</a><br><a href="searchresults.html" th:href="@{/categories/food-and-drink}">Food and drink</a></p></div>
             </div>
         </div>
     </div>

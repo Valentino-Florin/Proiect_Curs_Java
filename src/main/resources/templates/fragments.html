@@ -114,7 +114,7 @@
      <div sec:authorize="hasAuthority('Traveler')">
         <a href="profileinfo.html" th:href="@{/profileinfo}">My Profile</a>
         <a href="tripmanager.html" th:href="@{/tripmanager}">Manage trips</a>
-        <form name="logoutForm" th:hidden="true" method="post" th:action="@{/doLogout}">
+        <form id=logoutForm name="logoutForm" th:hidden="true" method="post" th:action="@{/doLogout}">
     <input type="submit" value="Logout" />
 </form>
 <a href="javascript: logoutForm.submit();">Sign Out</a>
@@ -123,7 +123,7 @@
      <div sec:authorize="hasAuthority('Host')">
         <a href="profileinfo.html" th:href="@{/profileinfo}">My Profile</a>
         <a href="placemanager.html" th:href="@{/placemanager}">Manage places</a>
-        <form name="logoutForm" th:hidden="true" method="post" th:action="@{/doLogout}">
+        <form id=logoutForm name="logoutForm" th:hidden="true" method="post" th:action="@{/doLogout}">
     <input type="submit" value="Logout" />
 </form>
 <a href="javascript: logoutForm.submit();">Sign Out</a>

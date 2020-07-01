@@ -33,6 +33,8 @@ public class TripController {
     private UnplannedPlacesListService unplannedPlacesListService;
     @Autowired
     private AppUserRepository appUserRepository;
+    @Autowired
+    private AppUserServiceImp appUserServiceImp;
 
     private static org.apache.logging.log4j.Logger logger = LogManager.getLogger(TripController.class);
 
@@ -46,7 +48,7 @@ public class TripController {
     //add Principal principal to argument list
     @GetMapping("/tripmanager")
     public String getAllTrips(Model model, Principal principal) {
-        model.addAttribute("allTrips", itineraryService.findByUser(appUserRepository.findByUserName(principal.getName())));
+        model.addAttribute("allTrips", itineraryService.findByUser(appUserServiceImp.findByUserName(principal.getName())));
         return "tripmanager";
     }
 
@@ -78,7 +80,7 @@ public class TripController {
     //save itinerary
     @PostMapping("/planner/save")
     public String saveTrip(@ModelAttribute("trip") Itinerary trip,  BindingResult result, RedirectAttributes redirectAttributes, Principal principal) {
-       AppUser currentUser = appUserRepository.findByUserName(principal.getName());
+       AppUser currentUser = appUserServiceImp.findByUserName(principal.getName());
         Itinerary savedItinerary = itineraryService.saveItinerary(trip, currentUser);
         logger.log(Level.INFO, "Created new itinerary: ID "+ savedItinerary.getItineraryId());
         redirectAttributes.addFlashAttribute("message", "Trip saved!");
@@ -90,7 +92,7 @@ public class TripController {
     public String editTrip(@PathVariable(value = "id") long id, Model model, Principal principal) {
         model.addAttribute("itinerary" , itineraryService.findById(id));
         model.addAttribute("allDaysForItinerary", dailyScheduleService.getAllDays(itineraryService.findById(id)));
-//        List<Place> unplannedPlaces = unplannedPlacesListService.findByUser(appUserRepository.findByUserName(principal.getName())).getUnplannedPlacesTemp();
+//        List<Place> unplannedPlaces = unplannedPlacesListService.findByUser(appUserServiceImp.findByUserName(principal.getName())).getUnplannedPlacesTemp();
 //        model.addAttribute("unplannedPlaces", unplannedPlaces);
         return "planneredit";
     }
@@ -102,7 +104,7 @@ public class TripController {
             return "planneredit";
         }
         model.addAttribute("itinerary" , itineraryService.findById(id));
-        itineraryService.update(itinerary, id, appUserRepository.findByUserName(principal.getName()));
+        itineraryService.update(itinerary, id, appUserServiceImp.findByUserName(principal.getName()));
         redirectAttributes.addFlashAttribute("message", "Trip updated!");
         return "redirect:/planner/"+id;
     }
@@ -159,9 +161,12 @@ public class TripController {
         HourMapping objective = new HourMapping();
         objective.setDailySchedule(dailyScheduleService.getDay(dayId));
         model.addAttribute("objective", objective);
-//        //replace with method implementation to include current user
-        List<Place> unplannedPlaces = unplannedPlacesListService.findByUser(appUserRepository.findByUserName(principal.getName())).getUnplannedPlacesTemp();
+        if(!unplannedPlacesListService.hasList(appUserServiceImp.findByUserName(principal.getName()))) {
+            unplannedPlacesListService.createList(appUserServiceImp.findByUserName(principal.getName()));
+        }
+        List<Place> unplannedPlaces = unplannedPlacesListService.findByUser(appUserServiceImp.findByUserName(principal.getName())).getUnplannedPlacesTemp();
         model.addAttribute("unplannedPlaces", unplannedPlaces);
+
 
         return "day_add";
     }
@@ -193,10 +198,10 @@ public class TripController {
         HourMapping objective = hourMappingService.getHour(hourId);
         model.addAttribute("objective", objective);
         model.addAttribute("hour",hourMappingService.getHour(hourId));
-
-        //replace with an actual implementation; from here
-
-        List<Place> unplannedPlaces = unplannedPlacesListService.findByUser(appUserRepository.findByUserName(principal.getName())).getUnplannedPlacesTemp();
+        if(!unplannedPlacesListService.hasList(appUserServiceImp.findByUserName(principal.getName()))) {
+            unplannedPlacesListService.createList(appUserServiceImp.findByUserName(principal.getName()));
+        }
+        List<Place> unplannedPlaces = unplannedPlacesListService.findByUser(appUserServiceImp.findByUserName(principal.getName())).getUnplannedPlacesTemp();
         model.addAttribute("unplannedPlaces", unplannedPlaces);
         return "day_update";
     }

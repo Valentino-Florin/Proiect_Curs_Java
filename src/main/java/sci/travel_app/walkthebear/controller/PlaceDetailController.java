@@ -80,7 +80,7 @@ public class PlaceDetailController {
 
     @GetMapping(value="/placedetail/{id}/addtolist")
     public String addToUnplannedPlaces(@PathVariable("id") long id, Model model, Principal principal) {
-     if(unplannedPlacesListService.getAll().isEmpty()){
+     if(!unplannedPlacesListService.hasList(appUserServiceImp.findByUserName(principal.getName()))){
          unplannedPlacesListService.createList(appUserServiceImp.findByUserName(principal.getName()));
      }
         unplannedPlacesListService.addToList(placeService.getPlaceById(id), unplannedPlacesListService.findByUser(appUserServiceImp.findByUserName(principal.getName())));

@@ -7,6 +7,7 @@ import sci.travel_app.walkthebear.model.entities.Place;
 import sci.travel_app.walkthebear.model.entities.UnplannedPlacesList;
 import sci.travel_app.walkthebear.repository.UnplannedPlacesListRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -21,6 +22,7 @@ public class UnplannedPlacesListService {
     public void createList(AppUser user){
         UnplannedPlacesList created = new UnplannedPlacesList();
         created.setUser(user);
+        created.setUnplannedPlacesTemp(new ArrayList<>());
         unplannedPlacesListRepository.save(created);
     }
 
@@ -61,10 +63,12 @@ public class UnplannedPlacesListService {
      * checks if a user has a list created and if the place is in the list
      * @param place place to check if present
      * @param user logged-in user
-     * @return returns "true" if place is already added, "false" if it's not
+     * @return returns "true" if place is already added, "false" if it's not or if the user has no list yet
      */
     public boolean isAdded(Place place, AppUser user) {
-        return unplannedPlacesListRepository.findByUser(user).getUnplannedPlacesTemp().contains(place);
+        if (hasList(user)) {
+            return unplannedPlacesListRepository.findByUser(user).getUnplannedPlacesTemp().contains(place);
+        } else return false;
     }
 
     /**

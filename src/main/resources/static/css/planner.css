@@ -56,7 +56,7 @@ h2 {
     display: flex;
 }
 
-form {
+form #itinerary_details {
     display: flex;
     flex-direction: column;
 }

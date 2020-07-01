@@ -35,7 +35,7 @@
         </div>
         <div class=container id=content>
             <div class=box id=form>
-                <form th:object="${itinerary}" th:action="@{/planner/{id}/update(id=${itinerary.itineraryId})}" method="post">
+                <form id=itinerary_details th:object="${itinerary}" th:action="@{/planner/{id}/update(id=${itinerary.itineraryId})}" method="post">
                     <div id=forminputs>
                         <div id=info>
                             <div class=form_element>
