@@ -43,6 +43,10 @@ public class Place {
 //    @Type(type = "org.hibernate.type.BinaryType")
 //    private byte[] thumbnail;
     //Place galleryPic;
+    @Column(name = "THUMBNAIL", nullable = true)
+    private String thumbnail;
+
+
     @Temporal(TemporalType.TIMESTAMP)
     @DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
     @Column(name = "date_created")
@@ -167,6 +171,15 @@ public class Place {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+
+    public String getThumbnail() {
+        return thumbnail;
+    }
+
+    public void setThumbnail(String thumbnail) {
+        this.thumbnail = thumbnail;
     }
 
 //    @Override

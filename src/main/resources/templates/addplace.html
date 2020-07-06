@@ -25,7 +25,7 @@
         </div>
         <div class=container id=form_container>
             <!--<form id=addplace > -->
-            <form action="#" th:action="@{/addplace}" method="post" th:object="${place}">
+            <form action="#" th:action="@{/addplace}" method="post" th:object="${place}" enctype="multipart/form-data">
                 <div class=form_element>
                     <label>Category</label>
 <!--                    <div th:each="categoryOpt : ${T(sci.travel_app.walkthebear.model.misc.Category).values()}">-->
@@ -38,7 +38,7 @@
                     <input type="radio" name="first" th:field="*{category}" th:value="${T(sci.travel_app.walkthebear.model.misc.Category).ATTRACTIONS}" th:onclick="choice(this)">Tourist attractions
                     <input type="radio" name="first" th:field="*{category}" th:value="${T(sci.travel_app.walkthebear.model.misc.Category).LODGING}" th:onclick="choice(this)">Lodging
                     <br>
-                <div>
+<!--                <div>-->
 
 <!--                </div>-->
 <!--                <input type="radio" name="first" th:field="*{category}" th:value="${T(sci.travel_app.walkthebear.model.misc.Category).FOODDRINK}"-->
@@ -116,8 +116,9 @@
                 </div>
                 <div class=form_element>
                     <label>Upload main picture</label>
-                    <input type="file">
+                    <input type="file" name="thumbnail" id="thumbnail" accept="image/png, image/jpeg">
                 </div>
+                    <div id="thumbnail_preview"><img id=thumbnail alt="Main image preview"></div>
                 <div class=form_element>
                     <label>Upload gallery picture</label>
                     <input type="file">
@@ -126,6 +127,7 @@
                     <button type="submit">Submit</button>
                     <button type="cancel">Cancel</button>
                 </div>
+<!--                </div>-->
             </form>
         </div>
 

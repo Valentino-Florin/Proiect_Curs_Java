@@ -50,13 +50,14 @@ public class PlacesServiceImp implements PlacesService {
     }
 
     @Override
-    public void addPlace(Place place) {
+    public Place addPlace(Place place) {
         List<Place> list = (List<Place>) placesRepository.findByName(place.getName());
         if (list.size() > 0) {
             logger.log(Level.ERROR, "this place is already added ");
         } else {
             placesRepository.save(place);
         }
+        return place;
     }
     @Override
     public void updatePlace(Place place) {

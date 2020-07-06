@@ -12,7 +12,7 @@ public interface PlacesService {
     List<Place>  getPlaceByName(String name);
     List<Place> getAllPlaces();
     List<Place> getPlaceByCategory(Category category);
-    void addPlace(Place place);
+    Place addPlace(Place place);
     void updatePlace(Place place);
     void deletePlace(long placeId);
     Page<Place> getPaginatedPlaceList(Pageable pageable, Category category);
