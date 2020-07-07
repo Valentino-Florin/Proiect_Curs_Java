@@ -1,8 +1,12 @@
 package sci.travel_app.walkthebear;
 
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 @Configuration
 public class MvcConfig implements WebMvcConfigurer {
@@ -35,9 +39,11 @@ public class MvcConfig implements WebMvcConfigurer {
         registry.addViewController("/adminallplaces").setViewName("adminallplaces");
     }
 
-//    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-//        registry
-//                .addResourceHandler("/resources/**")
-//                .addResourceLocations("/resources/");
-//    }
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        Path uploadedImagesDir = Paths.get("./user-images");
+        String uploadedImagesPath = uploadedImagesDir.toFile().getAbsolutePath();
+
+        registry.addResourceHandler("/user-images/**").addResourceLocations("file:/" + uploadedImagesPath + "/");
+    }
 }

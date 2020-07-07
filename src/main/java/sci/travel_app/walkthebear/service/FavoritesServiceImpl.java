@@ -63,10 +63,12 @@ public class FavoritesServiceImpl implements FavoritesService{
      * checks if current user already added a place to favorites
      * @param place place to check if added
      * @param user current user
-     * @return
+     * @return true if current user has added place to favorites, false if the place is not added; also returns false if user is null
      */
     public boolean isAdded(Place place, AppUser user){
-        return favoritesRepository.findByPlaceAndUser(place, user) != null;
+        if(user == null) return false;
+        else
+          return favoritesRepository.findByPlaceAndUser(place, user) != null;
     }
     //not used
     public boolean isAdded2(Place place){

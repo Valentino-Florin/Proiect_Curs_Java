@@ -8,140 +8,139 @@
     </title>
     <link rel="stylesheet" th:rel="stylesheet" href="../static/css/placedetail.css" th:href="@{/css/placedetail.css}">
     <link rel="stylesheet" href="../static/css/fragments.css" th:href="@{/css/fragments.css}">
-    <link rel="stylesheet" th:rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" th:href="@{https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css} "/>
-    <link rel="stylesheet" th:rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css} "/>
-    <link rel="stylesheet" th:rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.6/css/star-rating.css" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.6/css/star-rating.css} "/>
+    <link rel="stylesheet" th:rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" th:href="@{https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css} " />
+    <link rel="stylesheet" th:rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css} " />
+    <link rel="stylesheet" th:rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.6/css/star-rating.css" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.6/css/star-rating.css} " />
 
 </head>
 
 <body th:object="${place}">
 
-<!-- header start -->
+    <!-- header start -->
 
-<div th:insert="fragments :: header"></div>
+    <div th:insert="fragments :: header"></div>
 
-<!-- header end -->
+    <!-- header end -->
 
-<!-- main content start -->
-<div class=containerz id=main_container>
+    <!-- main content start -->
+    <div class=containerz id=main_container>
 
-    <div class=containerz id=main_content_column>
-        <div class=containerz id=basic_info>
-            <div id=name>
-                <h2 th:text="${place.name}">Place name</h2>
-            </div>
-            <div id=thumbnail><img id=thumbnail_img src="../static/images/placeholder.jpg"
-                                   th:src="@{/images/placeholder.jpg}"></div>
-            <div id=address>
-                <h3 th:text="${place.address}">Address: jdlfkjsdlkfdshfhsdfhsifsdf</h3>
-                <h4><span th:text="${place.city}">oras</span> <span th:text="${place.county}">judet</span> <span
-                        th:text="${place.coordinates}">coordonate</span></h4>
-            </div>
-        </div>
-        <div class=box id=gallery><img class=gallery src="../static/images/placeholder.jpg"
-                                       th:src="@{/images/placeholder.jpg}"><img class=gallery
-                                                                                src="../static/images/placeholder.jpg"
-                                                                                th:src="@{/images/placeholder.jpg}"><img
-                class=gallery src="../static/images/placeholder.jpg" th:src="@{/images/placeholder.jpg}"></div>
-        <div class=box id=description>
-            <h3>Description</h3>
-            <!--<p th:text="${place.description}">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium.</p>
+        <div class=containerz id=main_content_column>
+            <div class=containerz id=basic_info>
+                <div id=name>
+                    <h2 th:text="${place.name}">Place name</h2>
+                </div>
+                <div id=thumbnail>
+                    <!--
+                <img id=thumbnail_img src="../static/images/placeholder.jpg"
+                                   th:src="@{/images/placeholder.jpg}">
 -->
-            <p>Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean
-                leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra
-                quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean
-                imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam
-                rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing
-                sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio
-                et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit
-                amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales
-                sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc,</p>
-        </div>
-
-    </div>
-    <div class=containerz id=additional_content_column>
-        <div class=box id=contact>
-            <h3>Contact</h3>
-            <p th:text="${place.description}">Number</p>
-            <p th:text="${place.email}">email</p>
-            <p th:text="${place.workingHours}">working hours</p>
-        </div>
-        <div class=box id=call_to_action>
-            <div id=tripisadded th:if="${isAddedToList}"> <a th:href="@{/placedetail/{id}/removefromlist(id=${place.id})}">Remove from trip</a></div>
-           <div id=tripisnotadded   th:unless="${isAddedToList}" > <a th:href="@{/placedetail/{id}/addtolist(id=${place.id})}">Add to trip</a></div>
-
-
-            <div id=favisadded th:if="${isAddedToFav}"><a th:href="@{/placedetail/{id}/removefromfavorites(id=${place.id})}">Remove from Favorites</a></div>
-            <div id=favisnotadded  th:unless="${isAddedToFav}"><a th:href="@{/placedetail/{id}/addtofavorites(id=${place.id})}">Add to Favorites</a></div>
+                    <img id=thumbnail_img src="../static/images/placeholder.jpg" th:src="@{${place.ThumbnailImagePath}}">
+                </div>
+                <div id=address>
+                    <h3 th:text="${place.address}">Address: jdlfkjsdlkfdshfhsdfhsifsdf</h3>
+                    <h4><span th:text="${place.city}">oras</span> <span th:text="${place.county}">judet</span> <span th:text="${place.coordinates}">coordonate</span></h4>
+                </div>
+            </div>
+            <div class=box id=gallery><img class=gallery src="../static/images/placeholder.jpg" th:src="@{/images/placeholder.jpg}"><img class=gallery src="../static/images/placeholder.jpg" th:src="@{/images/placeholder.jpg}"><img class=gallery src="../static/images/placeholder.jpg" th:src="@{/images/placeholder.jpg}"></div>
+            <div class=box id=description>
+                <h3>Description</h3>
+                <!--<p th:text="${place.description}">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium.</p>
+-->
+                <p th:text="${place.description}">Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean
+                    leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra
+                    quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean
+                    imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam
+                    rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing
+                    sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio
+                    et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit
+                    amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales
+                    sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc,</p>
+            </div>
 
         </div>
-    </div>
-</div>
-<div class=containerz id=rating_container>
-    <div class=box id=rating_box>
-      <style scoped>
-           @import "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css";
-        </style>
-        <h3>Add a review</h3>
-        <div id=place_rating>
-            <div id=star_rating_aggregated>
-                <!--<p>****star placeholder</p>-->
-                <input type="number" class="rating" th:value="${placeAverageRating}"
-                       readonly="true" data-show-clear="false" data-size="sm">
-                <p>Rating</p>
+        <div class=containerz id=additional_content_column>
+            <div class=box id=contact>
+                <h3>Contact</h3>
+                <p th:text="${place.phoneNumber}">Number</p>
+                <p th:text="${place.email}">email</p>
+                <p th:text="${place.workingHours}">working hours</p>
+            </div>
+            <div class=box id=call_to_action>
+                <div id=tripisadded th:if="${isAddedToList}" sec:authorize="hasAuthority('Traveler')"> <a th:href="@{/placedetail/{id}/removefromlist(id=${place.id})}">Remove from trip</a></div>
+                <div id=tripisnotadded th:unless="${isAddedToList}" sec:authorize="hasAuthority('Traveler')"> <a th:href="@{/placedetail/{id}/addtolist(id=${place.id})}">Add to trip</a></div>
+
+
+                <div id=favisadded th:if="${isAddedToFav}"><a th:href="@{/placedetail/{id}/removefromfavorites(id=${place.id})}">Remove from Favorites</a></div>
+                <div id=favisnotadded th:unless="${isAddedToFav}"><a th:href="@{/placedetail/{id}/addtofavorites(id=${place.id})}">Add to Favorites</a></div>
+
             </div>
         </div>
-        <div id=your_rating>
-            <p>Your rating</p>
-            <div id=star_rating_vote>
-                <!--<p>****star placeholder</p>-->
-                <form method="post" th:action="@{/placedetail/{pid}/sendReview(pid=${place.id})}" th:object="${rating}">
+    </div>
+    <div class=containerz id=rating_container>
+        <div class=box id=rating_box>
+            <style scoped>
+                @import "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css";
 
-                    <input type="hidden" class="rating" data-min="0" data-max="5" data-step="1"
-                           th:field="*{starRating}">
+            </style>
+            <h3>Add a review</h3>
+            <div id=place_rating>
+                <div id=star_rating_aggregated>
+                    <!--<p>****star placeholder</p>-->
+                    <input type="number" class="rating" th:value="${placeAverageRating}" readonly="true" data-show-clear="false" data-size="sm">
+                    <p>Rating</p>
+                </div>
+            </div>
+            <div id=your_rating>
+                <p>Your rating</p>
+                <div id=star_rating_vote>
+                    <!--<p>****star placeholder</p>-->
+                    <form method="post" th:action="@{/placedetail/{pid}/sendReview(pid=${place.id})}" th:object="${rating}">
 
-                    <textarea rows="5" cols="50" maxlength="250" th:field="*{comment}"></textarea>
+                        <input type="hidden" class="rating" data-min="0" data-max="5" data-step="1" th:field="*{starRating}">
 
-                    <div id=buttons>
-                        <button id=submit class="btn btn-primary" type="submit">Submit form</button>
-                        <button id=reset type="reset">Cancel</button>
+                        <textarea rows="5" cols="50" maxlength="250" th:field="*{comment}"></textarea>
 
-                    </div>
-                    <div th:insert="fragments :: alert"></div>
+                        <div id=buttons>
+                            <button id=submit class="btn btn-primary" type="submit">Submit form</button>
+                            <button id=reset type="reset">Cancel</button>
 
-                </form>
+                        </div>
+                        <div th:insert="fragments :: alert"></div>
+
+                    </form>
+                </div>
+            </div>
+
+        </div>
+        <div class=box id=user_rating>
+            <h3>User reviews</h3>
+            <div class=rating_list>
+                <table>
+                    <tr th:each="rating : ${ratingList}">
+                        <td> <input type="number" class="rating" th:value="${rating.starRating}" readonly="true" data-show-clear="false" data-show-caption="false" data-size="xs">
+                        </td>
+                        <td th:text="${rating.comment}"></td>
+                    </tr>
+                </table>
             </div>
         </div>
-
     </div>
-    <div class=box id=user_rating>
-        <h3>User reviews</h3>
-        <div class=rating_list>
-            <table>
-                <tr th:each="rating : ${ratingList}">
-                    <td> <input type="number" class="rating" th:value="${rating.starRating}"
-                                readonly="true" data-show-clear="false" data-show-caption="false" data-size="xs">
-                    </td>
-                    <td th:text="${rating.comment}"></td>
-                </tr>
-            </table>
-        </div>
-    </div>
-</div>
 
-<!-- main content end -->
+    <!-- main content end -->
 
 
-<!-- footer start -->
+    <!-- footer start -->
 
-<div th:insert="fragments :: footer"></div>
+    <div th:insert="fragments :: footer"></div>
 
-<!-- footer end -->
+    <!-- footer end -->
 
-<script th:src="@{http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js}"></script>
-<script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js}"></script>
-<script th:src="@{https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js}"></script>
-<script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.6/js/star-rating.min.js}"></script>
+    <script th:src="@{http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js}"></script>
+    <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js}"></script>
+    <script th:src="@{https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js}"></script>
+    <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.6/js/star-rating.min.js}"></script>
 
 </body>
+
 </html>

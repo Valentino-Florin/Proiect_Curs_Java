@@ -26,6 +26,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.Objects;
 
 @Controller
 public class PlaceController {
@@ -70,11 +71,11 @@ public class PlaceController {
         if (result.hasErrors()) {
             return "addplace";
         }
-        String fileNameT = StringUtils.cleanPath(multipartFile.getOriginalFilename());
-        place.setThumbnail(fileNameT);
+        String fileNameT = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
+        place.setThumbnailPath(fileNameT);
         Place savedPlace = placesService.addPlace(place);
 
-        String uploadDir = "/images/" + savedPlace.getId();
+        String uploadDir = "./user-images/" + savedPlace.getId();
         Path uploadPath = Paths.get(uploadDir);
         if (!Files.exists(uploadPath)){
             Files.createDirectories(uploadPath);
@@ -110,11 +111,13 @@ public class PlaceController {
          mav.addObject("result", result);
          return mav;
      } */
-    @GetMapping("/category")
-    public String showPlacesByCategory(Model model, Category category) {
-        model.addAttribute("category", placesService.getPlaceByCategory(category));
-        return "categoryresults";
-    }
+
+    //not used
+//    @GetMapping("/category")
+//    public String showPlacesByCategory(Model model, Category category) {
+//        model.addAttribute("category", placesService.getPlaceByCategory(category));
+//        return "categoryresults";
+//    }
     @GetMapping("/editplaceadmin/{id}")
     public String showUpdateForm(@PathVariable("id") long id, Model model) {
         Place place = placesService.getPlaceById(id);

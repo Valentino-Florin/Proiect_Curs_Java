@@ -49,9 +49,13 @@ public class PlaceDetailController {
 
         double placeAverageRating = (ratingList.stream().mapToDouble(Rating::getStarRating).sum() / ratingList.stream().count());
         model.addAttribute("placeAverageRating", placeAverageRating);
-
-        model.addAttribute("isAddedToFav", favoritesService.isAdded(placeService.getPlaceById(id), appUserServiceImp.findByUserName(principal.getName())));
-        model.addAttribute("isAddedToList", unplannedPlacesListService.isAdded(placeService.getPlaceById(id), appUserServiceImp.findByUserName(principal.getName())));
+        if (principal == null) {
+            model.addAttribute("isAddedToFav", favoritesService.isAdded(placeService.getPlaceById(id), null));
+            model.addAttribute("isAddedToList", unplannedPlacesListService.isAdded(placeService.getPlaceById(id), null));
+        } else {
+            model.addAttribute("isAddedToFav", favoritesService.isAdded(placeService.getPlaceById(id), appUserServiceImp.findByUserName(principal.getName())));
+            model.addAttribute("isAddedToList", unplannedPlacesListService.isAdded(placeService.getPlaceById(id), appUserServiceImp.findByUserName(principal.getName())));
+        }
         return "placedetail";
     }
 
