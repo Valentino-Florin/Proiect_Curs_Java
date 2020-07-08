@@ -24,8 +24,7 @@ public class PlacesServiceImp implements PlacesService {
 
     @Override
     public Place getPlaceById(long placeId) {
-        Place place = placesRepository.findById(placeId);
-        return place;
+        return placesRepository.findById(placeId);
     }
 
     @Override
@@ -76,11 +75,9 @@ public class PlacesServiceImp implements PlacesService {
     @Override
     public Page<Place> getPaginatedPlaceList(Pageable pageable, Category category) {
 
-//        return placesRepository.findAll(pageable);
-
         return placesRepository.findByCategory(category, pageable);
     }
-
+    @Override
     public Page<Place> getPaginatedPlaceListByCategory(int pageNum, String sortField, String sortDir, Category category) {
 
         Pageable pageable = PageRequest.of(pageNum - 1, 5,
@@ -90,6 +87,7 @@ public class PlacesServiceImp implements PlacesService {
 
         return placesRepository.findByCategory(category, pageable);
     }
+    @Override
     public Page<Place> getPaginatedPlaceListByKeyword(int pageNum, String sortField, String sortDir, String keyword){
         Pageable pageable = PageRequest.of(pageNum - 1, 5,
                 sortDir.equals("asc") ? Sort.by(sortField).ascending()
@@ -98,7 +96,7 @@ public class PlacesServiceImp implements PlacesService {
         return placesRepository.findByNameContains(keyword,pageable);
     }
 
-
+    @Override
     public List <Place> latestPlaces(){
         return placesRepository.findAllByOrderByCreatedDesc();
     }

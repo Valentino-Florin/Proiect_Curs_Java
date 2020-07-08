@@ -79,7 +79,6 @@
                             <td>
                                 <div class="list_item"><a href="placedetail.html" th:href="@{/placedetail/{id}(id=${placetwo.id})}">
                                         <div>
-<!--                                            <img class="list_thumbnail" src="../static/images/placeholder.jpg" th:src="@{/images/placeholder.jpg}">-->
                                             <img id=thumbnail_img src="../static/images/placeholder.jpg"
                                    th:src="@{${placetwo.thumbnailImagePath}}">
                                             <p th:text="${placetwo.name}"></p>
@@ -100,7 +99,8 @@
                         <tr>
                             <td>
                                 <div class="list_item"><a href="placedetail.html" th:href="@{/placedetail/{id}(id=${placethree.id})}">
-                                        <div><img class="list_thumbnail" src="../static/images/placeholder.jpg" th:src="@{/images/placeholder.jpg}">
+                                        <div>
+                                            <img id=thumbnail_img src="../static/images/placeholder.jpg" th:src="@{${placethree.ThumbnailImagePath}}">
                                             <p th:text="${placethree.name}"></p>
                                             <p th:text="${placethree.description}"></p>
                                         </div>

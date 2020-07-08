@@ -45,7 +45,7 @@
             </div>
             <div id=list_container th:each="result : ${resultList}">
                 <div class=list-item>
-                    <a href="placedetail.html" th:href="@{/placedetail/{id}(id=${result.id})}"><div class=thumbnail><img class="list_thumbnail" src="../static/images/placeholder.jpg" th:src="@{/images/placeholder.jpg}"></div>
+                    <a href="placedetail.html" th:href="@{/placedetail/{id}(id=${result.id})}"><div class=thumbnail><img class="list_thumbnail" src="../static/images/placeholder.jpg" th:src="@{${result.thumbnailImagePath}}"></div>
                     <h4 th:text="${result.name}">Name placeholder</h4>
                     <p th:text="${result.description}"> Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
                     <div class=extrainfo>

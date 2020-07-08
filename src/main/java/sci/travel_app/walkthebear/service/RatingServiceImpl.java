@@ -41,21 +41,19 @@ public class RatingServiceImpl implements RatingService {
 
     @Override
     public void deleteRating(long id) {
-
         ratingRepository.delete(findById(id));
     }
-
+    @Override
     public void updateRating(long id) {
         ratingRepository.save(findById(id));
     }
 
-
+    @Override
     public List<Rating> getAllRatingsOfPlace(Place place) {
-
         return ratingRepository.findByPlace(place);
     }
 
-
+    @Override
     public List<Rating> getAllRatingsOfPlaceById(long id) {
         return ratingRepository.findByPlace(placesRepository.findById(id));
     }

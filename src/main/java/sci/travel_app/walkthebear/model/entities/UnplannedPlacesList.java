@@ -14,8 +14,12 @@ public class UnplannedPlacesList {
     @OneToOne
     @JoinColumn(name = "CREATED_BY")
     private AppUser user;
-    @OneToMany
-    @JoinColumn(name = "LIST_ID")
+
+    //    @OneToMany
+//    @JoinColumn(name = "LIST_ID")
+    @ElementCollection
+    @CollectionTable(name="PLACE_LIST", joinColumns=@JoinColumn(name="LIST_ID"))
+    @Column(name = "PLACE")
     private List<Place> unplannedPlacesTemp;
 
     public long getListId() {

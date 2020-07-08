@@ -17,5 +17,9 @@ public interface RatingService {
 
     List<Rating> findAll();
 
+    List<Rating> getAllRatingsOfPlace(Place place);
+
+    List<Rating> getAllRatingsOfPlaceById(long id);
+
 }
 

@@ -16,4 +16,8 @@ public interface PlacesService {
     void updatePlace(Place place);
     void deletePlace(long placeId);
     Page<Place> getPaginatedPlaceList(Pageable pageable, Category category);
+    Page<Place> getPaginatedPlaceListByCategory(int pageNum, String sortField, String sortDir, Category category);
+    Page<Place> getPaginatedPlaceListByKeyword(int pageNum, String sortField, String sortDir, String keyword);
+    List <Place> latestPlaces();
+
 }

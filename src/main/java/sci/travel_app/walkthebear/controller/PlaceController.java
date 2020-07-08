@@ -16,6 +16,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import sci.travel_app.walkthebear.model.entities.Place;
 import sci.travel_app.walkthebear.model.misc.Category;
 import sci.travel_app.walkthebear.service.PlacesServiceImp;
+import sci.travel_app.walkthebear.service.UploadService;
 
 
 import javax.validation.Valid;
@@ -33,6 +34,8 @@ public class PlaceController {
 
     @Autowired
     private PlacesServiceImp placesService;
+    @Autowired
+    private UploadService uploadService;
     private static org.apache.logging.log4j.Logger logger = LogManager.getLogger(PlaceController.class);
 
     /* @PostMapping(value = "/addplace")
@@ -75,19 +78,19 @@ public class PlaceController {
         place.setThumbnailPath(fileNameT);
         Place savedPlace = placesService.addPlace(place);
 
-        String uploadDir = "./user-images/" + savedPlace.getId();
-        Path uploadPath = Paths.get(uploadDir);
-        if (!Files.exists(uploadPath)){
-            Files.createDirectories(uploadPath);
-        }
-
-        try (InputStream inputStream = multipartFile.getInputStream()){
-        Path filePath = uploadPath.resolve(fileNameT);
-        Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
-        } catch (IOException e) {
-            throw new IOException("Could not save uploaded file: " + fileNameT);
-        }
-
+//        String uploadDir = "./user-images/" + savedPlace.getId();
+//        Path uploadPath = Paths.get(uploadDir);
+//        if (!Files.exists(uploadPath)){
+//            Files.createDirectories(uploadPath);
+//        }
+//
+//        try (InputStream inputStream = multipartFile.getInputStream()){
+//        Path filePath = uploadPath.resolve(fileNameT);
+//        Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
+//        } catch (IOException e) {
+//            throw new IOException("Could not save uploaded file: " + fileNameT);
+//        }
+        uploadService.uploadThumbnailFile(savedPlace, multipartFile, fileNameT);
 
         model.addAttribute("place", placesService.getAllPlaces());
         redirectAttributes.addFlashAttribute("place", place);
