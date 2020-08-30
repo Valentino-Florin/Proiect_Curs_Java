@@ -1,6 +1,5 @@
 package sci.travel_app.walkthebear.controller;
 
-import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,19 +13,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import sci.travel_app.walkthebear.model.entities.Place;
-import sci.travel_app.walkthebear.model.misc.Category;
 import sci.travel_app.walkthebear.service.PlacesServiceImp;
 import sci.travel_app.walkthebear.service.UploadService;
 
-
 import javax.validation.Valid;
-
-;import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
+import java.io.IOException;
 import java.util.Objects;
 
 @Controller
@@ -70,27 +61,32 @@ public class PlaceController {
     }
 
     @PostMapping("/addplace")
-    public String addNewPlace(@Valid Place place, BindingResult result, Model model, RedirectAttributes redirectAttributes, @RequestParam("thumbnail") MultipartFile multipartFile) throws IOException {
+    public String addNewPlace(@Valid Place place, BindingResult result, Model model, RedirectAttributes redirectAttributes,
+                              @RequestParam("thumbnail") MultipartFile multipartFile,
+                              @RequestParam("galleryImg") MultipartFile[] galleryImageFiles) throws IOException {
         if (result.hasErrors()) {
             return "addplace";
         }
         String fileNameT = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
         place.setThumbnailPath(fileNameT);
+        int count = 0;
+        for (MultipartFile galleryImage : galleryImageFiles) {
+            if (galleryImage != null){
+            String fileNameG = StringUtils.cleanPath(galleryImage.getOriginalFilename());
+            if (count == 0) place.setGalleryImage1(fileNameG);
+            if (count == 1) place.setGalleryImage2(fileNameG);
+            if (count == 2) place.setGalleryImage3(fileNameG);
+            if (count == 3) place.setGalleryImage4(fileNameG);
+            if (count == 4) place.setGalleryImage5(fileNameG);
+            count++; }
+        }
         Place savedPlace = placesService.addPlace(place);
-
-//        String uploadDir = "./user-images/" + savedPlace.getId();
-//        Path uploadPath = Paths.get(uploadDir);
-//        if (!Files.exists(uploadPath)){
-//            Files.createDirectories(uploadPath);
-//        }
-//
-//        try (InputStream inputStream = multipartFile.getInputStream()){
-//        Path filePath = uploadPath.resolve(fileNameT);
-//        Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
-//        } catch (IOException e) {
-//            throw new IOException("Could not save uploaded file: " + fileNameT);
-//        }
         uploadService.uploadThumbnailFile(savedPlace, multipartFile, fileNameT);
+        for (MultipartFile galleryImage : galleryImageFiles) {
+            if (galleryImage != null){
+            String fileNameG = StringUtils.cleanPath(galleryImage.getOriginalFilename());
+            uploadService.uploadGalleryImageFile(savedPlace, galleryImage, fileNameG);}
+            }
 
         model.addAttribute("place", placesService.getAllPlaces());
         redirectAttributes.addFlashAttribute("place", place);

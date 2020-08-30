@@ -96,11 +96,11 @@ public class PlaceDetailController {
         return "redirect:/placedetail/" + id;
     }
 
-    @GetMapping("/profileratings")
-    public String getAllRated(Model model) {
-        List<Rating> allRated = ratingService.findAll();
-        model.addAttribute("allRated", allRated);
-        return "profileratings";
-    }
+//    @GetMapping("/profileratings")
+//    public String getAllRated(Model model) {
+//        List<Rating> allRated = ratingService.findAll();
+//        model.addAttribute("allRated", allRated);
+//        return "profileratings";
+//    }
 
 }

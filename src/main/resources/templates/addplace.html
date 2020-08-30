@@ -115,14 +115,40 @@
                     <span th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></span>
                 </div>
                 <div class=form_element>
-                    <label>Upload main picture</label>
+                    <label>Upload main/thumbnail image</label>
                     <input type="file" name="thumbnail" id="thumbnail" accept="image/png, image/jpeg">
                 </div>
                     <div id="thumbnail_preview"><img id=thumbnail alt="Main image preview"></div>
                 <div class=form_element>
-                    <label>Upload gallery picture</label>
-                    <input type="file">
+                    <label>Upload gallery picture 1</label>
+                    <input type="file" name="galleryImg" id="galleryImage1" accept="image/png, image/jpeg">
                 </div>
+                 <div id="gallery_pic_1_preview"><img id=galleryImage1 alt="Gallery picture 1"></div>
+                
+                <div class=form_element>
+                    <label>Upload gallery picture 2</label>
+                    <input type="file" name="galleryImg" id="galleryImage2" accept="image/png, image/jpeg">
+                </div>
+                 <div id="gallery_pic_2_preview"><img id=galleryImage2 alt="Gallery picture 2"></div>
+                
+                <div class=form_element>
+                    <label>Upload gallery picture 3</label>
+                    <input type="file" name="galleryImg" id="galleryImage3" accept="image/png, image/jpeg">
+                </div>
+                 <div id="gallery_pic_3_preview"><img id=galleryImage3 alt="Gallery picture 3"></div>
+                
+                <div class=form_element>
+                    <label>Upload gallery picture 4</label>
+                    <input type="file" name="galleryImg" id="galleryImage4" accept="image/png, image/jpeg">
+                </div>
+                 <div id="gallery_pic_4_preview"><img id=galleryImage4 alt="Gallery picture 4"></div>
+                
+                <div class=form_element>
+                    <label>Upload gallery picture 5</label>
+                    <input type="file" name="galleryImg" id="galleryImage5" accept="image/png, image/jpeg">
+                </div>
+                 <div id="gallery_pic_5_preview"><img id=galleryImage5 alt="Gallery picture 5"></div>
+                
                 <div id=buttons>
                     <button type="submit">Submit</button>
                     <button type="cancel">Cancel</button>
