@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import sci.travel_app.walkthebear.model.entities.DailySchedule;
 import sci.travel_app.walkthebear.model.entities.HourMapping;
-import sci.travel_app.walkthebear.model.entities.Place;
 import sci.travel_app.walkthebear.repository.HourMappingRepository;
 
 import java.util.List;
@@ -21,19 +20,6 @@ public class HourMappingService {
      */
     public HourMapping getHour(long id){
         return hourMappingRepository.findById(id);
-    }
-
-    //not used
-    public List<HourMapping> getAllHours(){
-        return hourMappingRepository.findAll();
-    }
-    //not used
-    public void createMapping(DailySchedule dailySchedule, String time, Place place){
-        HourMapping slot = new HourMapping();
-        slot.setDailySchedule(dailySchedule);
-        slot.setPlace(place);
-        slot.setTime(time);
-        hourMappingRepository.save(slot);
     }
 
     /**
@@ -85,19 +71,5 @@ public class HourMappingService {
     public void deleteAll(DailySchedule dailySchedule){
         List<HourMapping> toBeDeleted = getFullDay(dailySchedule);
         hourMappingRepository.deleteInBatch(toBeDeleted);
-    }
-//not used
-    public void saveFullDay(DailySchedule dailySchedule){
-        List<HourMapping> allHours = getFullDay(dailySchedule);
-        hourMappingRepository.saveAll(allHours);
-    }
-    //not used
-    public void saveAll(List<HourMapping> list, DailySchedule dailySchedule){
-        for (HourMapping hour : list) {
-            long id = hour.getHourId();
-            HourMapping saveMe = hourMappingRepository.findById(id);
-            saveMe.setDailySchedule(dailySchedule);
-            hourMappingRepository.save(saveMe);
-        }
     }
 }

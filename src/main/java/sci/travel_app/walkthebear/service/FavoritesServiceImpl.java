@@ -62,6 +62,14 @@ public class FavoritesServiceImpl implements FavoritesService{
     }
 
     /**
+     * finds how many time a place has been added to favorites
+     * @param place place to check
+     * @return
+     */
+    @Override
+    public int placePopularity (Place place) { return getFavsForPlace(place).size();}
+
+    /**
      * checks if current user already added a place to favorites
      * @param place place to check if added
      * @param user current user
