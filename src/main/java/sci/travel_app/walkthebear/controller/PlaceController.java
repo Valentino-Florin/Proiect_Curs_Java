@@ -1,5 +1,6 @@
 package sci.travel_app.walkthebear.controller;
 
+import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -70,6 +71,7 @@ public class PlaceController {
         return "addplace";
     }
 
+    //comment out request params
     @PostMapping("/addplace")
     public String addNewPlace(@Valid Place place, BindingResult result, Model model, Principal principal, RedirectAttributes redirectAttributes,
                               @RequestParam("thumbnail") MultipartFile multipartFile,
@@ -79,6 +81,7 @@ public class PlaceController {
         }
         String fileNameT = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
         place.setThumbnailPath(fileNameT);
+        //comment  out from here
         int count = 0;
         for (MultipartFile galleryImage : galleryImageFiles) {
             if (galleryImage != null){
@@ -90,28 +93,18 @@ public class PlaceController {
             if (count == 4) place.setGalleryImage5(fileNameG);
             count++; }
         }
+        //to here
         Place savedPlace = placesService.addPlace(place);
 
         placesService.addUserPlace(place, appUserRepository.findByUserName(principal.getName()));
-//        String uploadDir = "./user-images/" + savedPlace.getId();
-//        Path uploadPath = Paths.get(uploadDir);
-//        if (!Files.exists(uploadPath)){
-//            Files.createDirectories(uploadPath);
-//        }
-//
-//        try (InputStream inputStream = multipartFile.getInputStream()){
-//        Path filePath = uploadPath.resolve(fileNameT);
-//        Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
-//        } catch (IOException e) {
-//            throw new IOException("Could not save uploaded file: " + fileNameT);
-//        }
+        //comment  out from here
         uploadService.uploadThumbnailFile(savedPlace, multipartFile, fileNameT);
         for (MultipartFile galleryImage : galleryImageFiles) {
             if (galleryImage != null){
             String fileNameG = StringUtils.cleanPath(galleryImage.getOriginalFilename());
             uploadService.uploadGalleryImageFile(savedPlace, galleryImage, fileNameG);}
             }
-
+        //to here
         model.addAttribute("place", placesService.getAllPlaces());
         redirectAttributes.addFlashAttribute("message", "Place saved!");
         logger.log(Level.INFO, "Place added : "+ place );
