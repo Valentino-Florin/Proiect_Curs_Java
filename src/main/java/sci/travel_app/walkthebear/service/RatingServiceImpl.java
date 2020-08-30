@@ -2,6 +2,7 @@ package sci.travel_app.walkthebear.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import sci.travel_app.walkthebear.model.entities.AppUser;
 import sci.travel_app.walkthebear.model.entities.Place;
 import sci.travel_app.walkthebear.model.entities.Rating;
 import sci.travel_app.walkthebear.repository.AppUserRepository;
@@ -35,8 +36,8 @@ public class RatingServiceImpl implements RatingService {
     }
 
     @Override
-    public Rating create(Rating rating, Place place) {
-
+    public Rating create(Rating rating, Place place, AppUser user) {
+        rating.setUser(user);
         rating.setCreated(new Date());
         rating.setPlace(place);
 

@@ -130,7 +130,7 @@
     </div>
     <!-- if user is admin -->
     <div sec:authorize="hasAuthority('Admin')">
-        <a href="">Admin panel</a>
+        <a href="profileinfo.html" th:href="@{/profileinfo}">Admin panel</a>
        <form name="logoutForm" th:hidden="true" method="post" th:action="@{/doLogout}">
     <input type="submit" value="Logout" />
 </form>

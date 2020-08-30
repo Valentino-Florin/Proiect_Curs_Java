@@ -4,6 +4,7 @@ package sci.travel_app.walkthebear.service;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import sci.travel_app.walkthebear.model.entities.AppUser;
 import sci.travel_app.walkthebear.model.entities.Rating;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -29,7 +30,8 @@ public class RatingServiceIntegrationTest {
 
 
         // test adding the rating
-        Rating newRating = ratingService.create(arating, placeService.getPlaceById(1));
+        AppUser user = new AppUser();
+        Rating newRating = ratingService.create(arating, placeService.getPlaceById(1), user);
 
         // verify if created
 
