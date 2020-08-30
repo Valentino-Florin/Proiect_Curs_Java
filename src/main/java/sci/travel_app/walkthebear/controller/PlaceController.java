@@ -13,12 +13,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import sci.travel_app.walkthebear.model.entities.Place;
+import sci.travel_app.walkthebear.repository.AppUserRepository;
 import sci.travel_app.walkthebear.service.PlacesServiceImp;
 import sci.travel_app.walkthebear.service.UploadService;
 
 import javax.validation.Valid;
 import java.io.IOException;
+import java.security.Principal;
+import java.io.IOException;
 import java.util.Objects;
+
+
+
 
 @Controller
 public class PlaceController {
@@ -26,34 +32,38 @@ public class PlaceController {
     @Autowired
     private PlacesServiceImp placesService;
     @Autowired
+    private AppUserRepository appUserRepository;
+
+    @Autowired
     private UploadService uploadService;
     private static org.apache.logging.log4j.Logger logger = LogManager.getLogger(PlaceController.class);
-
-    /* @PostMapping(value = "/addplace")
-      public String addNewPlace( @ModelAttribute Place place )
-      {
-      placesService.addPlace(place);
-          return "redirect:placemanager";
-      } */
+//    @Autowired
+//    private RatingServiceImpl ratingService;
 
 
+//    //path example: http://localhost:8080/places/1
+//    @GetMapping(value="/places/{id}")
+//    public String getPlace(@PathVariable("id") long id, Model model) {
+//        Place place = placesService.getPlaceById(id);
+//        List<Rating> ratingList = ratingService.getAllRatingsOfPlaceById(id);
+//        model.addAttribute("place", place);
+//        model.addAttribute("ratingList", ratingList);
+//        return "placedetail";
+//    }
 
-    @GetMapping("/addplaceadmin")
-    public String showNewPlaceFormAdmin(Model model) {
-        model.addAttribute("place", new Place());
-        return "addplaceadmin";
+    /**
+     * Method used to populate "/placemanager" with the places specific to a logged user
+     * @param model
+     * @param principal
+     * @return "placemanager"
+     */
+
+    @GetMapping("/placemanager")
+    public String showPlaceManager(Model model, Principal principal) {
+        model.addAttribute("userPlaces", placesService.findPlaceByUser(appUserRepository.findByUserName(principal.getName())));
+        return "placemanager";
     }
 
-    @PostMapping("/addplaceadmin")
-    public String addNewPlaceAdmin(@Valid Place place, BindingResult result, Model model) {
-        if (result.hasErrors()) {
-            return "addplaceadmin";
-        }
-
-        placesService.addPlace(place);
-        model.addAttribute("place", placesService.getAllPlaces());
-        return "redirect:adminplace";
-    }
     @GetMapping("/addplace")
     public String showNewPlaceForm(Model model) {
         model.addAttribute("place", new Place());
@@ -61,7 +71,7 @@ public class PlaceController {
     }
 
     @PostMapping("/addplace")
-    public String addNewPlace(@Valid Place place, BindingResult result, Model model, RedirectAttributes redirectAttributes,
+    public String addNewPlace(@Valid Place place, BindingResult result, Model model, Principal principal, RedirectAttributes redirectAttributes,
                               @RequestParam("thumbnail") MultipartFile multipartFile,
                               @RequestParam("galleryImg") MultipartFile[] galleryImageFiles) throws IOException {
         if (result.hasErrors()) {
@@ -81,6 +91,20 @@ public class PlaceController {
             count++; }
         }
         Place savedPlace = placesService.addPlace(place);
+
+        placesService.addUserPlace(place, appUserRepository.findByUserName(principal.getName()));
+//        String uploadDir = "./user-images/" + savedPlace.getId();
+//        Path uploadPath = Paths.get(uploadDir);
+//        if (!Files.exists(uploadPath)){
+//            Files.createDirectories(uploadPath);
+//        }
+//
+//        try (InputStream inputStream = multipartFile.getInputStream()){
+//        Path filePath = uploadPath.resolve(fileNameT);
+//        Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
+//        } catch (IOException e) {
+//            throw new IOException("Could not save uploaded file: " + fileNameT);
+//        }
         uploadService.uploadThumbnailFile(savedPlace, multipartFile, fileNameT);
         for (MultipartFile galleryImage : galleryImageFiles) {
             if (galleryImage != null){
@@ -89,62 +113,50 @@ public class PlaceController {
             }
 
         model.addAttribute("place", placesService.getAllPlaces());
-        redirectAttributes.addFlashAttribute("place", place);
         redirectAttributes.addFlashAttribute("message", "Place saved!");
+        logger.log(Level.INFO, "Place added : "+ place );
         return "redirect:placemanager";
     }
-     /*@GetMapping("/adminplace")000000000000
-     public String showAdminPlace(Model model, String placeName) {
-         model.addAttribute("placeSearch", placesService.getPlaceByName(placeName));
-         return "adminplace";
-     } */
-    @GetMapping("/adminplace")
-    public String showAdminPlace(@RequestParam (value = "placeSearch", required = false) String placeName, Model model) {
-        model.addAttribute("placeSearch", placesService.getPlaceByName(placeName));
-        return "adminplace";
-    }
-    /* @RequestMapping("/adminplace")
-     public ModelAndView search(@RequestParam String keyword) {
-         List<Place> result = placesService.search(keyword);
-         ModelAndView mav = new ModelAndView("search");
-         mav.addObject("result", result);
-         return mav;
-     } */
-
-    //not used
-//    @GetMapping("/category")
-//    public String showPlacesByCategory(Model model, Category category) {
-//        model.addAttribute("category", placesService.getPlaceByCategory(category));
-//        return "categoryresults";
-//    }
-    @GetMapping("/editplaceadmin/{id}")
-    public String showUpdateForm(@PathVariable("id") long id, Model model) {
+    @GetMapping("/editplace/{id}")
+    public String showEditForm(@PathVariable("id") long id, Model model) {
         Place place = placesService.getPlaceById(id);
         // .orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
 
         model.addAttribute("place", place);
-        return "editplaceadmin";
+        return "editplace";
     }
-    @PostMapping("/editplaceadmin/{id}")
-    public String changePlace(@PathVariable("id") long id, @Valid Place place,
-                              BindingResult result, Model model) {
+    @PostMapping("/editplace/{id}")
+    public String editPlace(@PathVariable("id") long id, @Valid Place place,
+                              BindingResult result, Model model, Principal principal, RedirectAttributes redirectAttributes) {
         if (result.hasErrors()) {
             place.setId(id);
-            return "editplaceadmin";
+            return "editplace";
         }
 
-        placesService.updatePlace(place);
-        model.addAttribute("place", placesService.getAllPlaces());
-        return "adminplace";
+        placesService.updateUserPlace(place, appUserRepository.findByUserName(principal.getName()));
+        model.addAttribute("userPlaces", placesService.findPlaceByUser(appUserRepository.findByUserName(principal.getName())));
+        redirectAttributes.addFlashAttribute("message", "Place was updated");
+        logger.log(Level.INFO, "Updated place: ID "+id);
+        return "placemanager";
     }
 
-    @GetMapping("/deleteplaceadmin/{id}")
-    public String erasePlace(@PathVariable("id") long id, Model model) throws IllegalArgumentException {
+    /**
+     * Method used to delete a place, specific to a logged user, by using the ID
+     * @param id - place ID
+     * @param model
+     * @param redirectAttributes
+     * @param principal
+     * @return "placemanager"
+     * @throws IllegalArgumentException
+     */
+    @GetMapping("/deleteplace/{id}")
+    public String erasePlace(@PathVariable("id") long id, Model model, RedirectAttributes redirectAttributes, Principal principal) throws IllegalArgumentException {
         Place place = placesService.getPlaceById(id);
         //   .orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
         placesService.deletePlace(id);
-        model.addAttribute("place", placesService.getAllPlaces());
-        return "adminplace";
+        model.addAttribute("userPlaces", placesService.findPlaceByUser(appUserRepository.findByUserName(principal.getName())));
+        redirectAttributes.addFlashAttribute("message", "Place was deleted");
+        logger.log(Level.INFO, "Deleted place: ID "+id);
+        return "placemanager";
     }
-
 }

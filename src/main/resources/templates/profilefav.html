@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+
+    <meta charset="utf-8">
+    <title>Profile Ratings</title>
+    <link rel="stylesheet" href="../static/css/profilefavorites.css" th:href="@{/css/profilefavorites.css}">
+    <link rel="stylesheet" href="../static/css/fragments.css" th:href="@{/css/fragments.css}">
+
+</head>
+<body>
+
+<script type="text/javascript" th:src="@{/JS/profileinfo.js}"></script>
+
+
+<!-- Tab contents -->
+
+<div th:insert="fragments :: header"></div>
+
+Authenticated username:
+<div sec:authentication="name"></div>
+Authenticated user role:
+<div sec:authentication="principal.authorities"></div>
+
+
+<div class="tabcontent" id="ratings">
+    <h2>FAVORITE 📝</h2>
+
+
+    <div class=box id=user_rating>
+        <h3> <p sec:authentication="name"></p> Favorites</h3>
+        <div class=rating_list>
+        </div>
+    </div>
+
+        <div id="ratings_box">
+            <div class="box" th:each="favorite : ${allFavorite}">
+                <p class="place_name" th:text="${favorite.dateAdded}"> Date added <br></p>
+                <p class="place_name" th:text="${favorite.place.getName()}"> Place name<br></p>
+                <p class="rating_text" th:text="${favorite.place.getDescription()}"></p>
+            </div>
+        </div>
+
+    <div>
+            <table>
+                <tr>
+                    <th class="padding-right-15px">Date added</th>
+                    <th class="padding-right-80px">User Name</th>
+                    <th class="padding-right-100px">Place Name</th>
+                    <th class="padding-right-15px">Place Description</th>
+                </tr>
+
+                <tr th:each="favorite : ${allFavorite}">
+                    <td th:text="${favorite.dateAdded}"></td>
+                    <td th:text="${favorite.user.getUserName()}"></td>
+                    <td th:text="${favorite.place.getName()}"></td>
+                    <td th:text="${favorite.place.getDescription()}"></td>
+                </tr>
+            </table>
+
+    </div>
+
+    <div th:insert="fragments :: alert"></div>
+
+</div>
+
+</body>
+</html>

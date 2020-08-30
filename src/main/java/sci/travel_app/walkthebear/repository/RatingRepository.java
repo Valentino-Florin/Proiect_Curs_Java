@@ -13,7 +13,7 @@ public interface RatingRepository extends JpaRepository<Rating, Long> {
 
     List<Rating> findByPlace(Place ratedPlace);
 
-    List<Rating> findByUser(AppUser user);
+    List<Rating> findByUser(AppUser ratedUser);
 
     List<Rating> findByUserAndPlace(AppUser user, long id);
 
@@ -21,4 +21,5 @@ public interface RatingRepository extends JpaRepository<Rating, Long> {
 
     List<Rating> findAll();
 
+   // List<Rating> findByUser(Optional<AppUser> byId);
 }

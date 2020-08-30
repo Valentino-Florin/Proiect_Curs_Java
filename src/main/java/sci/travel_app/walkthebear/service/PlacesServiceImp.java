@@ -8,6 +8,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import sci.travel_app.walkthebear.model.entities.AppUser;
+import sci.travel_app.walkthebear.model.entities.Itinerary;
 import sci.travel_app.walkthebear.model.entities.Place;
 import sci.travel_app.walkthebear.model.misc.Category;
 import sci.travel_app.walkthebear.repository.PlacesRepository;
@@ -28,6 +30,13 @@ public class PlacesServiceImp implements PlacesService {
     }
 
     @Override
+    public Place getUserPlaceById(long placeId, AppUser user) {
+        Place place = placesRepository.findById(placeId);
+        place.setUser(user);
+        return place;
+    }
+
+    @Override
     public List<Place>  getPlaceByName(String placeName) {
         List<Place> list = new ArrayList<>();
         placesRepository.findByName(placeName).forEach(list::add);
@@ -36,6 +45,11 @@ public class PlacesServiceImp implements PlacesService {
 
     @Override
     public List<Place> getAllPlaces() {
+        List<Place> list = new ArrayList<>();
+        placesRepository.findAll().forEach(list::add);
+        return list;
+    }
+    public List<Place> getAllUserPlaces(AppUser user) {
         List<Place> list = new ArrayList<>();
         placesRepository.findAll().forEach(list::add);
         return list;
@@ -59,7 +73,23 @@ public class PlacesServiceImp implements PlacesService {
         return place;
     }
     @Override
+    public void addUserPlace(Place place, AppUser user) {
+        place.setUser(user);
+        List<Place> list = (List<Place>) placesRepository.findByName(place.getName());
+        if (list.size() > 0) {
+            logger.log(Level.ERROR, "this place is already added ");
+        } else {
+            placesRepository.save(place);
+        }
+    }
+    @Override
     public void updatePlace(Place place) {
+        placesRepository.save(place);
+    }
+
+    @Override
+    public void updateUserPlace(Place place, AppUser user) {
+        place.setUser(user);
         placesRepository.save(place);
     }
 
@@ -68,10 +98,11 @@ public class PlacesServiceImp implements PlacesService {
 
         placesRepository.delete(getPlaceById(placeId));
     }
+    @Override
+    public List<Place> findPlaceByUser(AppUser user) {
+        return placesRepository.findPlaceByUser(user);
+    }
 
-    /* public List<Place> search(String keyword) {
-         return placesRepository.search(keyword);
-     } */
     @Override
     public Page<Place> getPaginatedPlaceList(Pageable pageable, Category category) {
 

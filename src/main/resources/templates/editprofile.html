@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
@@ -10,33 +11,42 @@
   </style>
 </head>
 <body>
+
+</div>
+Authenticated username:
+<div sec:authentication="name"></div>
+Authenticated user role:
+<div sec:authentication="principal.authorities"></div>
+
 <h1>EDIT PROFILE</h1>
 
+<form th:object="${appUser}" th:action="@{/editprofile}" method="post">
+
 <div class="field">
-  <label class="label">Username</label>
+  <label class="label" th:for="userName"><b>Username</b></label>
   <div class="control">
-    <input class="input" type="text" placeholder="Username">
+    <input class="input" type="text" placeholder="Username" name="userName">
   </div>
 </div>
 
 <div class="field">
-  <label class="label">Old password</label>
+  <label class="label" th:for="password"><b>Old password</b></label>
   <div class="control">
-    <input class="input" type="password" placeholder="Old password">
+    <input class="input" type="password" placeholder="Old password" name="password">
   </div>
 </div>
 
 <div class="field">
-  <label class="label">New password</label>
+  <label class="label" th:for="password"><b>New password</b></label>
   <div class="control">
-    <input class="input" type="password" placeholder="New password">
+    <input class="input" type="password" placeholder="New password" name="password">
   </div>
 </div>
 
 <div class="field">
-  <label class="label">Confirm new password</label>
+  <label class="label" th:for="confirmPassword"><b>Confirm new password</b></label>
   <div class="control">
-    <input class="input" type="password" placeholder="Confirm new password">
+    <input class="input" type="password" placeholder="Confirm new password" name="passwordConfirm" required>
   </div>
 </div>
 

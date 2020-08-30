@@ -1,7 +1,6 @@
 package sci.travel_app.walkthebear.controller;
 
 
-import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,16 +38,16 @@ public class AppUserController {
     public String wrongLogin(Model model) {
         model.addAttribute("loginError", true);
         return "login";
- }
+    }
 
 
     @GetMapping("/register")
     public String showRegistrationForm(Model model) {
-        model.addAttribute( new AppUser() );
+        model.addAttribute(new AppUser());
         return "register";
     }
 
-   @PostMapping("/register")
+    @PostMapping("/register")
     public String registerUserAccount(@ModelAttribute("appuser") @Valid AppUser appUser,
                                       BindingResult result, RedirectAttributes redirectAttributes) {
         if (result.hasErrors()) {
@@ -60,11 +59,13 @@ public class AppUserController {
         return "redirect:/register";
 
     }
+
     @GetMapping("/adminuser")
     public String showAdminUser(@RequestParam(value = "userSearch", required = false) String userName, Model model) {
         model.addAttribute("userSearch", appUserRepository.findByUserName(userName));
         return "adminuser";
     }
+
     @GetMapping("/edituseradmin/{id}")
     public String showUpdateUserForm(@PathVariable("id") long id, Model model) {
         AppUser user = appUserRepository.findById(id);
@@ -73,6 +74,7 @@ public class AppUserController {
         model.addAttribute("user", user);
         return "edituseradmin";
     }
+
     @PostMapping("/edituseradmin/{id}")
     public String changeUser(@PathVariable("id") long id, @Valid AppUser user,
                              BindingResult result, Model model) {
@@ -82,21 +84,10 @@ public class AppUserController {
         }
 
         appUserRepository.save(user);
-        model.addAttribute("user",  appUserRepository.findAll());
+        model.addAttribute("user", appUserRepository.findAll());
         return "adminuser";
 
     }
 
 
-    }
-
-
-
-
-
-
-
-
-
-
-
+}

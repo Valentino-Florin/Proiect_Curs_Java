@@ -1,86 +1,77 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
 
     <meta charset="utf-8">
     <title>Profile Ratings</title>
-    <link rel="stylesheet" href="../static/css/profileinfo.css" th:href="@{/css/profileinfo.css}">
+    <link rel="stylesheet" href="../static/css/profilefavorites.css" th:href="@{/css/profilefavorites.css}">
+    <link rel="stylesheet" href="../static/css/fragments.css" th:href="@{/css/fragments.css}">
+    <link rel="stylesheet" th:rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" th:href="@{https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css} "/>
+    <link rel="stylesheet" th:rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css} "/>
+    <link rel="stylesheet" th:rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.6/css/star-rating.css" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.6/css/star-rating.css} "/>
+
 
 </head>
 <body>
 
 <script type="text/javascript" th:src="@{/JS/profileinfo.js}"></script>
+<script th:src="@{http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js}"></script>
+<script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js}"></script>
+<script th:src="@{https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js}"></script>
+<script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.6/js/star-rating.min.js}"></script>
 
 <!-- Tab contents -->
+
+<div th:insert="fragments :: header"></div>
+
+Authenticated username:
+<div sec:authentication="name"></div>
+Authenticated user role:
+<div sec:authentication="principal.authorities"></div>
+
 <div class="tabcontent" id="ratings">
     <h2>RATINGS 📝</h2>
 
     <div class=box id=user_rating>
-        <h3>User reviews</h3>
+        <h3><p sec:authentication="name"></p> Reviews</h3>
         <div class=rating_list>
-            <table>
-                <tr th:each="ratings : ${allRated}">
-                    <td th:text="${ratings.starRating}"></td>
-                    <td th:text="${ratings.comment}"></td>
-                    <td th:text="${ratings.place.getName()}"></td>
-                </tr>
-            </table>
-            <div th:insert="fragments :: alert"></div>
         </div>
     </div>
 
-    <div id="ratings_box">
-        <div class="box">
-            <p class="place_name" th:text="${place.name}"> Place name ★★★★☆<br></p>
-            <p class="rating_text">Rating here Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-                Aenean commodo ligula eget dolor. Aenean massa.
-                Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. </p>
+        <div id="ratings_box">
+            <div class="box" th:each="ratings : ${allRated}">
+                <p class="place_name" th:text="${ratings.place.getName()}"> Place name<br></p>
+                <input type="number" class="rating" th:value="${ratings.starRating}"
+                       readonly="true" data-show-clear="false" data-show-caption="false" data-size="xs"><br>
+                <p class="rating_text" th:text="${ratings.comment}"></p>
+            </div>
         </div>
 
 
-        <!-- Review boxes -->
-        <div class="box">
-            <p class="place_name">Place name ★★★☆☆<br></p>
-            <p class="rating_text">Rating here Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-                , nascetur ridiculus mus. </p>
-        </div>
+     <div>
+         <table>
+             <tr>
+                 <th class="padding-right-15px">Rating</th>
+                 <th class="padding-right-80px">Comment</th>
+                 <th class="padding-right-100px">Place Name</th>
+                 <th class="padding-right-15px">Place Description</th>
+             </tr>
 
-        <div class="box">
-            <p class="place_name">Place name ★★★☆☆<br></p>
-            <p class="rating_text">Rating here Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-                Aenean commodo ligula eget dolor. Aenean massa.
-                Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. </p>
-        </div>
+             <tr th:each="ratings : ${allRated}">
+                 <td> <input type="number" class="rating" th:value="${ratings.starRating}"
+                             readonly="true" data-show-clear="false" data-show-caption="false" data-size="xs">
+                 </td>
+                 <td th:text="${ratings.comment}"></td>
+                 <td th:text="${ratings.place.getName()}"></td>
+                 <td th:text="${ratings.place.getDescription()}"></td>
+             </tr>
+         </table>
 
-        <div class="box">
-            <p class="place_name">Place name ★★★☆☆<br></p>
-            <p class="rating_text">Rating here Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-                Aenean commodo ligula eget dolor. Aenean massa.
-                Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. </p>
-        </div>
+     </div>
 
-        <div class="box">
-            <p class="place_name">Place name ★★★☆☆<br></p>
-            <p class="rating_text">Rating here Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-                Aenean commodo ligula eget dolor. Aenean massa.
-                Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. </p>
-        </div>
+    <div th:insert="fragments :: alert"></div>
 
-        <div class="box">
-            <p class="place_name">Place name ★★★☆☆<br></p>
-            <p class="rating_text">Rating here Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-                Aenean commodo ligula eget dolor. Aenean massa.
-                Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. </p>
-        </div>
-
-        <div class="box">
-            <p class="place_name">Place name ★★★☆☆<br></p>
-            <p class="rating_text">Rating here Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-                Aenean commodo ligula eget dolor. Aenean massa.
-                Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. </p>
-        </div>
-
-    </div>
 </div>
 
 </body>

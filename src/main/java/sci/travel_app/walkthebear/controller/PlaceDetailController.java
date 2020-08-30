@@ -42,6 +42,7 @@ public class PlaceDetailController {
         model.addAttribute("place", place);
         Rating rating = new Rating();
         rating.setPlace(place);
+        rating.setUser(appUserServiceImp.findByUserName(principal.getName()));
         model.addAttribute("rating", rating);
 
         List<Rating> ratingList = ratingService.getAllRatingsOfPlaceById(id);
@@ -61,10 +62,10 @@ public class PlaceDetailController {
 
 
     @PostMapping(value = "/placedetail/{pid}/sendReview")
-    public String sendRating(@PathVariable("pid") long id, @ModelAttribute("rating") Rating rating, BindingResult result,
+    public String sendRating(@PathVariable("pid") long id, @ModelAttribute("rating") Rating rating, Principal principal, BindingResult result,
                              RedirectAttributes redirectAttributes) {
 
-        ratingService.create(rating, placeService.getPlaceById(id));
+        ratingService.create(rating, placeService.getPlaceById(id), appUserServiceImp.findByUserName(principal.getName()) );
         redirectAttributes.addFlashAttribute("message", "Success");
         return "redirect:/placedetail/" + id;
     }

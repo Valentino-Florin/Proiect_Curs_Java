@@ -253,10 +253,6 @@ public class TripController {
     }
 
 
-
-
-
-
     //delete day + all hour mappings for that day
     @GetMapping("/planner/{id}/day/{dayID}/delete")
     public String removeDay(@PathVariable(value = "id") long id, @PathVariable(value = "dayID") long dayId, RedirectAttributes redirectAttributes, Model model) {

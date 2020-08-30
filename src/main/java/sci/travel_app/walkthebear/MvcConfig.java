@@ -29,6 +29,7 @@ public class MvcConfig implements WebMvcConfigurer {
         registry.addViewController("/editprofile").setViewName("editprofile");
         registry.addViewController("/profileinfo").setViewName("profileinfo");
         registry.addViewController("/profilefavorites").setViewName("profilefavorites");
+        registry.addViewController("/profilefav").setViewName("profilefav");
         registry.addViewController("/profileratings").setViewName("profileratings");
         registry.addViewController("/adminplace").setViewName("adminplace");
         registry.addViewController("/editplaceadmin/{id}").setViewName("editplaceadmin");
@@ -37,6 +38,7 @@ public class MvcConfig implements WebMvcConfigurer {
         registry.addViewController("/edituseradmin/{id}").setViewName("edituseradmin");
         registry.addViewController("/deleteplaceadmin/{id}").setViewName("deleteplaceadmin");
         registry.addViewController("/adminallplaces").setViewName("adminallplaces");
+        registry.addViewController("/editplace/{id}").setViewName("editplace");
     }
 
     @Override

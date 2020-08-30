@@ -2,8 +2,10 @@ package sci.travel_app.walkthebear.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import sci.travel_app.walkthebear.model.entities.AppUser;
 import sci.travel_app.walkthebear.model.entities.Place;
 import sci.travel_app.walkthebear.model.entities.Rating;
+import sci.travel_app.walkthebear.repository.AppUserRepository;
 import sci.travel_app.walkthebear.repository.PlacesRepository;
 import sci.travel_app.walkthebear.repository.RatingRepository;
 
@@ -17,12 +19,15 @@ public class RatingServiceImpl implements RatingService {
     private RatingRepository ratingRepository;
     @Autowired
     private PlacesRepository placesRepository;
+    @Autowired
+    private AppUserRepository userRepository;
 
     @Override
     public List<Rating> findAll() {
 
         return ratingRepository.findAll();
     }
+
 
     @Override
     public Rating findById(long id) {
@@ -31,8 +36,8 @@ public class RatingServiceImpl implements RatingService {
     }
 
     @Override
-    public Rating create(Rating rating, Place place) {
-
+    public Rating create(Rating rating, Place place, AppUser user) {
+        rating.setUser(user);
         rating.setCreated(new Date());
         rating.setPlace(place);
 
@@ -56,6 +61,11 @@ public class RatingServiceImpl implements RatingService {
     @Override
     public List<Rating> getAllRatingsOfPlaceById(long id) {
         return ratingRepository.findByPlace(placesRepository.findById(id));
+    }
+
+    public List<Rating> findByUser(long id) {
+
+        return ratingRepository.findByUser(userRepository.findById(id));
     }
 
 }

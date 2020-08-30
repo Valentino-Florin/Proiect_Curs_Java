@@ -2,80 +2,53 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <title>Profile info</title>
+
     <link rel="stylesheet" href="../static/css/profileinfo.css" th:href="@{/css/profileinfo.css}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css"
           th:href="@{https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css}">
+    <link rel="stylesheet" href="../static/css/fragments.css" th:href="@{/css/fragments.css}">
 
 </head>
 
-<body>
-<script type="text/javascript" th:src="@{/JS/profileinfo.js}"></script>
-<div id="top_page">
-    <h1 style="font-size: 50px">WalkTheBear</h1>
-</div>
+<body th:object="${currentUser}">
+<!-- header start -->
 
-<div id="my_profile">
-    <h2 style="margin-bottom: 10px">MY PROFILE</h2>
-</div>
-
-<!-- Tab links -->
+<div th:insert="fragments :: header"></div>
+<!-- header end -->
 
 
-<div class="tabs is-toggle is-toggle-rounded">
-    <ul>
-        <li class="is-active">
-            <a>
-                <span class="icon is-medium"><i class="fas fa-image" aria-hidden="true"></i></span>
-                <span onclick="window.location.href = '/profileinfo?id=1'">Profile info 🔏</span>
-            </a>
-        </li>
-        <li>
-            <a>
-                <span class="icon is-medium"><i class="fas fa-image" aria-hidden="true"></i></span>
-                <span onclick="window.location.href = '/profilefavorites?id=1'">My favorites ⭐</span>
-            </a>
-        </li>
-        <li>
-            <a>
-                <span class="icon is-medium"><i class="fas fa-image" aria-hidden="true"></i></span>
-                <span>My ratings 📝</span>
-            </a>
-        </li>
-    </ul>
-</div>
+<!-- main content start -->
 
-<!-- Tab contents -->
+<div class=container id=main_container>
 
-<div class="tabcontent" id="info">
+    <div class=container id=filter_container>
+        <div id=filters>
+            <a th:href="@{/editprofile}">Edit profile</a><br>
+            <a th:href="@{/profilefav}">Profile favorites</a><br>
+            <a th:href="@{/profileratings}">Profile ratings</a>
 
-    <form style="margin-left: 15px" th:object="${user}">
+        </div>
+    </div>
 
-        <div class="field">
-            <label class="label">Username:</label>
-            <div class="control">
-                <input class="input" th:value="*{userName}" disabled>
+
+    <div class=containerz id=additional_content_column>
+        <div id=name>
+            <p th:text="${currentUser.userName}">Username</p>
+            <p th:text="${currentUser.email}">email</p>
+            <p th:text="${currentUser.role}">Role</p>
+            <p th:text="${currentUser.created}">Date created</p>
             </div>
-        </div>
+    </div>
 
-        <div class="field">
-            <label class="label">Email:</label>
-            <div class="control">
-            <input class="input" th:value="*{email}" disabled>
-        </div>
-        </div>
 
-        <div class="field">
-            <label class="label">Password:</label>
-            <div class="control">
-                <input class="input" th:value="*{password}" disabled>
-            </div>
-        </div>
-
-        <button type="button" name="editProfile" id="editButton" onclick="window.location.href = '/editprofile'" class="button">Edit</button>
-    </form>
+<!-- main content end -->
 </div>
-</body>
-</html>
+
+<!-- footer start -->
+<div th:insert="fragments :: footer"></div>
+<!-- footer end -->
+
+
+</body></html>

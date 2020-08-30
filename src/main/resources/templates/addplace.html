@@ -8,8 +8,8 @@
     </title>
     <link type="text/css" href="../static/css/manager.css" th:href="@{/css/manager.css}" rel="stylesheet">
     <link rel="stylesheet" href="../static/css/fragments.css" th:href="@{/css/fragments.css}">
-<!--    <script type="text/javascript" th:src="@{resources/static/js/dropdownmenu.js}">-->
-<!--    </script>-->
+    <script type="text/javascript" th:inline="javascript" th:src="@{/js/dropdownmenu.js}">
+    </script>
 </head>
 
 <body>
@@ -49,9 +49,9 @@
 <!--                       th:onclick='change(["Hotel", "Motel", "Hostel", "Guesthouse", "Camping", "Cabin"])'>Lodging-->
 <!--                <br>-->
                 <div>
-                      <select id='second' th:field="*{subcategory}">
+                      <select id='dropdown' th:field="*{subcategory}" th:value="${subcategory}">
                       </select>
-<!--                    <select id="drop-down" th:field="*{subcategory}"></select>-->
+<!--                   <select id="drop-down" th:field="*{subcategory}"></select>-->
                  </div>
 
 <!--               <div class=form_element>-->
@@ -67,22 +67,22 @@
                 </div>
                 <div class=form_element>
                     <label>Name</label>
-                    <input type="text" maxlength="50" th:field="*{name}" id="name" placeholder="Name">
+                    <input type="text" maxlength="50" th:field="*{name}" id="name" placeholder="Name" required>
                     <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
                 </div>
                 <div class=form_element>
                     <label>County</label>
-                    <input type="text" maxlength="50" th:field="*{county}" id="county" placeholder="County">
+                    <input type="text" maxlength="50" th:field="*{county}" id="county" placeholder="County" required>
                     <span th:if="${#fields.hasErrors('county')}" th:errors="*{county}"></span>
                 </div>
                 <div class=form_element>
                     <label>City</label>
-                    <input type="text" maxlength="250" th:field="*{city}" id="city" placeholder="City">
+                    <input type="text" maxlength="250" th:field="*{city}" id="city" placeholder="City" required>
                     <span th:if="${#fields.hasErrors('city')}" th:errors="*{city}"></span>
                 </div>
                 <div class=form_element>
                     <label>Address</label>
-                    <input type="text" maxlength="250" th:field="*{address}" id="address" placeholder="Address">
+                    <input type="text" maxlength="250" th:field="*{address}" id="address" placeholder="Address" required>
                     <span th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></span>
                 </div>
                 <div class=form_element>
@@ -111,7 +111,7 @@
                 <div class=form_element>
                     <label>Description</label>
                     <textarea rows="5" cols="50" maxlength="250" th:field="*{description}" id="description"
-                              placeholder="Description"></textarea>
+                              placeholder="Description" required></textarea>
                     <span th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></span>
                 </div>
                 <div class=form_element>
@@ -124,36 +124,35 @@
                     <input type="file" name="galleryImg" id="galleryImage1" accept="image/png, image/jpeg">
                 </div>
                  <div id="gallery_pic_1_preview"><img id=galleryImage1 alt="Gallery picture 1"></div>
-                
+
                 <div class=form_element>
                     <label>Upload gallery picture 2</label>
                     <input type="file" name="galleryImg" id="galleryImage2" accept="image/png, image/jpeg">
                 </div>
                  <div id="gallery_pic_2_preview"><img id=galleryImage2 alt="Gallery picture 2"></div>
-                
+
                 <div class=form_element>
                     <label>Upload gallery picture 3</label>
                     <input type="file" name="galleryImg" id="galleryImage3" accept="image/png, image/jpeg">
                 </div>
                  <div id="gallery_pic_3_preview"><img id=galleryImage3 alt="Gallery picture 3"></div>
-                
+
                 <div class=form_element>
                     <label>Upload gallery picture 4</label>
                     <input type="file" name="galleryImg" id="galleryImage4" accept="image/png, image/jpeg">
                 </div>
                  <div id="gallery_pic_4_preview"><img id=galleryImage4 alt="Gallery picture 4"></div>
-                
+
                 <div class=form_element>
                     <label>Upload gallery picture 5</label>
                     <input type="file" name="galleryImg" id="galleryImage5" accept="image/png, image/jpeg">
                 </div>
                  <div id="gallery_pic_5_preview"><img id=galleryImage5 alt="Gallery picture 5"></div>
-                
+
                 <div id=buttons>
                     <button type="submit">Submit</button>
                     <button type="cancel">Cancel</button>
                 </div>
-<!--                </div>-->
             </form>
         </div>
 
@@ -161,40 +160,9 @@
 
     <!-- main content end -->
 
-<script type="text/javascript" th:inline="javascript">
+<!--<script type="text/javascript" th:inline="javascript" th:src="@{/JS/dropdownmenu.js}">-->
 
-function choice(t){
-	var a = ["BAR", "RESTAURANT", "CAFE", "FAST FOOD", "PASTRY_DESSERTS"];
-	var b = ["PARK", "MUSEUM", "ZOO", "HISTORICAL LANDMARKS", "NATURAL LANDMARKS"];
-	var c = ["HOTEL", "MOTEL", "HOSTEL", "GUEST HOUSE", "CAMPING", "CABIN"];
-<!--    var a= [${T(sci.travel_app.walkthebear.model.misc.SubCategory).BAR.displayValue},-->
-<!--    ${T(sci.travel_app.walkthebear.model.misc.SubCategory).RESTAURANT.displayValue}];-->
-<!--    var b= [${T(sci.travel_app.walkthebear.model.misc.SubCategory).PARK},-->
-<!--    ${T(sci.travel_app.walkthebear.model.misc.SubCategory).MUSEUM}];-->
-<!--    var c= [${T(sci.travel_app.walkthebear.model.misc.SubCategory).HOTEL},-->
-<!--    ${T(sci.travel_app.walkthebear.model.misc.SubCategory).MOTEL}];-->
-	 s = document.getElementById('second');
-	var sl = s.options.length;
-	for(var i = sl-1; i >= 0 ; i--) { s.options[i] = null; }
-	if(t.value != 0){
-		var z;
-		switch (t.value) {
-<!--			 case /*[[${T(sci.travel_app.walkthebear.model.misc.Category).FOODDRINK}]]*/ : z = a; break-->
-<!--			 case /*[[${T(sci.travel_app.walkthebear.model.misc.Category).ATTRACTIONS}]]*/ : z = b; break;-->
-<!--			 case /*[[${T(sci.travel_app.walkthebear.model.misc.Category).LODGING}]]*/  : z = c; break;-->
-<!--			default : alert('Invalid entry'); break;-->
-            case "FOODDRINK": z = a; break
-			case "ATTRACTIONS" : z = b; break;
-			case "LODGING" : z = c; break;
-			default : alert('Invalid entry'); break;
-		}
-
-		var l = z.length;
-		for(i = 0; i < l; i++ ) { s.options[i] = new Option(z[i],z[i],false,false); }
-	}
-}
-
-</script>
+<!--</script>-->
 
 <!--<script type="text/javascript">-->
 

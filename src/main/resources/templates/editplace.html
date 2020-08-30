@@ -15,21 +15,9 @@
 <div align="center">
   <h2>Edit Place</h2>
   <form action="#"
-        th:action="@{/editplaceadmin/{id}(id=${place.id})}"
+        th:action="@{/editplace/{id}(id=${place.id})}"
         th:object="${place}"
         method="post">
-    <div class=form_element>
-      <label>Category</label>
-    </div>
-    <input type="radio" name="first" th:field="*{category}" th:value="${T(sci.travel_app.walkthebear.model.misc.Category).FOODDRINK}" th:onclick="choice(this)">Food and drink
-    <input type="radio" name="first" th:field="*{category}" th:value="${T(sci.travel_app.walkthebear.model.misc.Category).ATTRACTIONS}" th:onclick="choice(this)">Tourist attractions
-    <input type="radio" name="first" th:field="*{category}" th:value="${T(sci.travel_app.walkthebear.model.misc.Category).LODGING}" th:onclick="choice(this)">Lodging
-    <br>
-    <div>
-
-      <div>
-        <select id='dropdown' th:field="*{subcategory}" th:value="${subcategory}">
-        </select>
 <!--    <select id=category name=category>-->
 <!--      &lt;!&ndash;                        <select id=category th:field="*{category}">&ndash;&gt;-->
 <!--      <option th:each="categoryOpt : ${T(sci.travel_app.walkthebear.model.misc.Category).values()}"-->
@@ -43,6 +31,18 @@
 <!--            th:value="${categoryOpt}" th:text="${categoryOpt.displayValue}"></option>-->
 <!--  </select>-->
 <!--</div>-->
+    <div class=form_element>
+      <label>Category</label>
+    </div>
+    <input type="radio" name="first" th:field="*{category}" th:value="${T(sci.travel_app.walkthebear.model.misc.Category).FOODDRINK}" th:onclick="choice(this)">Food and drink
+    <input type="radio" name="first" th:field="*{category}" th:value="${T(sci.travel_app.walkthebear.model.misc.Category).ATTRACTIONS}" th:onclick="choice(this)">Tourist attractions
+    <input type="radio" name="first" th:field="*{category}" th:value="${T(sci.travel_app.walkthebear.model.misc.Category).LODGING}" th:onclick="choice(this)">Lodging
+    <br>
+    <div>
+
+      <div>
+        <select id='dropdown' th:field="*{subcategory}" th:value="${subcategory}">
+        </select>
 <div class=form_element>
   <input type= "hidden" name="created" id="created"
          th:value="${#dates.format(#dates.createNow() , 'dd/MM/yyyy HH:mm')}" />
@@ -96,11 +96,11 @@
             placeholder="Description"></textarea>
   <span th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></span>
 </div>
-    <div class=form_element>
-      <label>Created By</label>
-      <input type="text" maxlength="250" th:field="*{user}" id="created_by" placeholder="CreatedBy" >
-      <span th:if="${#fields.hasErrors('user')}" th:errors="*{user}"></span>
-    </div>
+<!--<div class=form_element>-->
+<!--  <label>Created By</label>-->
+<!--  <input type="text" maxlength="250" th:field="*{user}" id="created_by" placeholder="CreatedBy" >-->
+<!--  <span th:if="${#fields.hasErrors('user')}" th:errors="*{user}"></span>-->
+<!--</div>-->
 <!--<div class=form_element>
   <label>Upload main picture</label>
   <input type="file">

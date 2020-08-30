@@ -5,8 +5,10 @@ import org.springframework.stereotype.Service;
 import sci.travel_app.walkthebear.model.entities.AppUser;
 import sci.travel_app.walkthebear.model.entities.Favorite;
 import sci.travel_app.walkthebear.model.entities.Place;
+import sci.travel_app.walkthebear.repository.AppUserRepository;
 import sci.travel_app.walkthebear.repository.FavoritesRepository;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -15,6 +17,8 @@ public class FavoritesServiceImpl implements FavoritesService{
 
     @Autowired
     FavoritesRepository favoritesRepository;
+    @Autowired
+    private AppUserRepository userRepository;
 
     //not used
     public List<Favorite> getAllFavorites(){
@@ -61,6 +65,11 @@ public class FavoritesServiceImpl implements FavoritesService{
         return favoritesRepository.findByPlace(place);
     }
 
+    public List<Favorite> findByUser(long id) {
+
+        return favoritesRepository.findByUser(userRepository.findById(id));
+    }
+
     /**
      * finds how many time a place has been added to favorites
      * @param place place to check
@@ -85,7 +94,5 @@ public class FavoritesServiceImpl implements FavoritesService{
     public boolean isAdded2(Place place){
         return favoritesRepository.findByPlace(place).size() > 0;
     }
-
-
 
 }
