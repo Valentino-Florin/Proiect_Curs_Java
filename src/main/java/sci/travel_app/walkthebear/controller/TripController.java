@@ -1,5 +1,6 @@
 package sci.travel_app.walkthebear.controller;
 
+import com.google.gson.Gson;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,8 @@ import sci.travel_app.walkthebear.repository.AppUserRepository;
 import sci.travel_app.walkthebear.service.*;
 
 import javax.validation.Valid;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.security.Principal;
 import java.util.HashMap;
 import java.util.List;
@@ -37,6 +40,9 @@ public class TripController {
     private AppUserServiceImp appUserServiceImp;
 
     private static org.apache.logging.log4j.Logger logger = LogManager.getLogger(TripController.class);
+
+//    public TripController() {
+//    }
 
 //Methods for trip manager page
 
@@ -137,6 +143,19 @@ public class TripController {
         return "plannerview_print";
     }
 
+
+    @GetMapping("/planner/view/{id}/json")
+    public String downloadJSON(@PathVariable(value = "id") long id, Model model) throws IOException {
+        List<DailySchedule> allDaysForItinerary = dailyScheduleService.getAllDays(itineraryService.findById(id));
+        Map<String, List<HourMapping>> timeTable = new HashMap<>();
+        for (DailySchedule day : allDaysForItinerary) {
+            timeTable.put(day.getName(),hourMappingService.getFullDay(day));
+        }
+        Gson gson = new Gson();
+        String filePath= "src/main/resources/static/files/json/";
+        gson.toJson(timeTable, new FileWriter(filePath));
+        return "plannerview_print";
+    }
 
 //Methods for day page
 

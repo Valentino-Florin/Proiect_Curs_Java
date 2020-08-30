@@ -88,6 +88,7 @@ protected void configure(AuthenticationManagerBuilder auth) throws Exception {
                 .antMatchers("/adminuser").permitAll()
                 .antMatchers("/adminallplaces/**").permitAll()
                 .antMatchers("/user-images/**").permitAll()
+                .antMatchers("/files/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()

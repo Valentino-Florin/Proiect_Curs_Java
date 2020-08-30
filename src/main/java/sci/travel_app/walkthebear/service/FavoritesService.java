@@ -12,6 +12,6 @@ public interface FavoritesService {
     void removeFavorite (Place place, AppUser user);
     List<Favorite> getFavsForPlace(Place place);
     boolean isAdded(Place place, AppUser user);
-
+    int placePopularity (Place place);
 
 }

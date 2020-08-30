@@ -21,9 +21,10 @@ import sci.travel_app.walkthebear.service.UploadService;
 import javax.validation.Valid;
 import java.io.IOException;
 import java.security.Principal;
+import java.io.IOException;
 import java.util.Objects;
 
-;
+
 
 
 @Controller
@@ -70,30 +71,40 @@ public class PlaceController {
         return "addplace";
     }
 
+    //comment out request params
     @PostMapping("/addplace")
-    public String addNewPlace(@Valid Place place, BindingResult result, Model model, RedirectAttributes redirectAttributes, Principal principal, @RequestParam("thumbnail") MultipartFile multipartFile) throws IOException {
+    public String addNewPlace(@Valid Place place, BindingResult result, Model model, Principal principal, RedirectAttributes redirectAttributes,
+                              @RequestParam("thumbnail") MultipartFile multipartFile,
+                              @RequestParam("galleryImg") MultipartFile[] galleryImageFiles) throws IOException {
         if (result.hasErrors()) {
             return "addplace";
         }
         String fileNameT = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
         place.setThumbnailPath(fileNameT);
+        //comment  out from here
+        int count = 0;
+        for (MultipartFile galleryImage : galleryImageFiles) {
+            if (galleryImage != null){
+            String fileNameG = StringUtils.cleanPath(galleryImage.getOriginalFilename());
+            if (count == 0) place.setGalleryImage1(fileNameG);
+            if (count == 1) place.setGalleryImage2(fileNameG);
+            if (count == 2) place.setGalleryImage3(fileNameG);
+            if (count == 3) place.setGalleryImage4(fileNameG);
+            if (count == 4) place.setGalleryImage5(fileNameG);
+            count++; }
+        }
+        //to here
         Place savedPlace = placesService.addPlace(place);
 
         placesService.addUserPlace(place, appUserRepository.findByUserName(principal.getName()));
-//        String uploadDir = "./user-images/" + savedPlace.getId();
-//        Path uploadPath = Paths.get(uploadDir);
-//        if (!Files.exists(uploadPath)){
-//            Files.createDirectories(uploadPath);
-//        }
-//
-//        try (InputStream inputStream = multipartFile.getInputStream()){
-//        Path filePath = uploadPath.resolve(fileNameT);
-//        Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
-//        } catch (IOException e) {
-//            throw new IOException("Could not save uploaded file: " + fileNameT);
-//        }
+        //comment  out from here
         uploadService.uploadThumbnailFile(savedPlace, multipartFile, fileNameT);
-
+        for (MultipartFile galleryImage : galleryImageFiles) {
+            if (galleryImage != null){
+            String fileNameG = StringUtils.cleanPath(galleryImage.getOriginalFilename());
+            uploadService.uploadGalleryImageFile(savedPlace, galleryImage, fileNameG);}
+            }
+        //to here
         model.addAttribute("place", placesService.getAllPlaces());
         redirectAttributes.addFlashAttribute("message", "Place saved!");
         logger.log(Level.INFO, "Place added : "+ place );

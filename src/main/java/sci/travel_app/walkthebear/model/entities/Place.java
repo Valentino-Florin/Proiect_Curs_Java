@@ -39,17 +39,22 @@ public class Place {
     private String workingHours;
     @Column(name = "DESCRIPTION", length=1000, nullable = false)
     private String description;
-    //Place mainPic;
-//    @Lob
-//    @Type(type = "org.hibernate.type.BinaryType")
-//    private byte[] thumbnail;
-    //Place galleryPic;
+
     @Column(name = "THUMBNAIL", nullable = true)
     private String thumbnailPath;
     @Transient
     private MultipartFile thumbnail;
-//    @Transient
-//    private String thumbnailImagePath;
+
+    @Column (name = "GALLERY_IMAGE1", nullable = true)
+    private String galleryImage1;
+    @Column (name = "GALLERY_IMAGE2", nullable = true)
+    private String galleryImage2;
+    @Column (name = "GALLERY_IMAGE3", nullable = true)
+    private String galleryImage3;
+    @Column (name = "GALLERY_IMAGE4", nullable = true)
+    private String galleryImage4;
+    @Column (name = "GALLERY_IMAGE5", nullable = true)
+    private String galleryImage5;
 
     @Temporal(TemporalType.TIMESTAMP)
     @DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
@@ -62,7 +67,7 @@ public class Place {
     public Place(){
     }
 
-    public Place(String name, String county, String city, String address, String phoneNumber, String email, Category category, SubCategory subcategory, String description, AppUser user) {
+    public Place(String name, String county, String city, String address, String phoneNumber, String email, Category category, SubCategory subcategory, String description, String galleryImage1, String galleryImage2, String galleryImage3, String galleryImage4, String galleryImage5, AppUser user) {
         this.name = name;
         this.county = county;
         this.city = city;
@@ -72,6 +77,11 @@ public class Place {
         this.category = category;
         this.subcategory = subcategory;
         this.description = description;
+        this.galleryImage1 = galleryImage1;
+        this.galleryImage2 = galleryImage2;
+        this.galleryImage3 = galleryImage3;
+        this.galleryImage4 = galleryImage4;
+        this.galleryImage5 = galleryImage5;
         this.created = new Date();
         this.user = user;
     }
@@ -193,6 +203,45 @@ public class Place {
         this.thumbnail = thumbnail;
     }
 
+    public String getGalleryImage1() {
+        return galleryImage1;
+    }
+
+    public void setGalleryImage1(String galleryImage1) {
+        this.galleryImage1 = galleryImage1;
+    }
+
+    public String getGalleryImage2() {
+        return galleryImage2;
+    }
+
+    public void setGalleryImage2(String galleryImage2) {
+        this.galleryImage2 = galleryImage2;
+    }
+
+    public String getGalleryImage3() {
+        return galleryImage3;
+    }
+
+    public void setGalleryImage3(String galleryImage3) {
+        this.galleryImage3 = galleryImage3;
+    }
+
+    public String getGalleryImage4() {
+        return galleryImage4;
+    }
+
+    public void setGalleryImage4(String galleryImage4) {
+        this.galleryImage4 = galleryImage4;
+    }
+
+    public String getGalleryImage5() {
+        return galleryImage5;
+    }
+
+    public void setGalleryImage5(String galleryImage5) {
+        this.galleryImage5 = galleryImage5;
+    }
 //    @Override
 //    public String toString() {
 //        return "Place{" +
