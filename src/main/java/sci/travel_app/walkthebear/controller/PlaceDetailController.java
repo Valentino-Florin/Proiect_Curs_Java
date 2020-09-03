@@ -14,7 +14,6 @@ import sci.travel_app.walkthebear.model.entities.AppUser;
 import sci.travel_app.walkthebear.model.entities.Place;
 import sci.travel_app.walkthebear.model.entities.Rating;
 import sci.travel_app.walkthebear.service.*;
-
 import java.security.Principal;
 import java.util.List;
 
@@ -42,7 +41,6 @@ public class PlaceDetailController {
         model.addAttribute("place", place);
         Rating rating = new Rating();
         rating.setPlace(place);
-        rating.setUser(appUserServiceImp.findByUserName(principal.getName()));
         model.addAttribute("rating", rating);
 
         List<Rating> ratingList = ratingService.getAllRatingsOfPlaceById(id);
@@ -76,6 +74,7 @@ public class PlaceDetailController {
      favoritesService.addToFavorites(placeService.getPlaceById(id), currentUser);
         return "redirect:/placedetail/" + id;
     }
+
     @GetMapping(value="/placedetail/{id}/removefromfavorites")
     public String removeFromFavorites(@PathVariable("id") long id, Model model, Principal principal) {
         favoritesService.removeFavorite(placeService.getPlaceById(id), appUserServiceImp.findByUserName(principal.getName()));
@@ -91,17 +90,11 @@ public class PlaceDetailController {
         unplannedPlacesListService.addToList(placeService.getPlaceById(id), unplannedPlacesListService.findByUser(appUserServiceImp.findByUserName(principal.getName())));
         return "redirect:/placedetail/" + id;
     }
+
     @GetMapping(value="/placedetail/{id}/removefromlist")
     public String removeFromUnplannedPlaces(@PathVariable("id") long id, Model model, Principal principal) {
        unplannedPlacesListService.removeFromList(placeService.getPlaceById(id), unplannedPlacesListService.findByUser(appUserServiceImp.findByUserName(principal.getName())));
         return "redirect:/placedetail/" + id;
     }
-
-//    @GetMapping("/profileratings")
-//    public String getAllRated(Model model) {
-//        List<Rating> allRated = ratingService.findAll();
-//        model.addAttribute("allRated", allRated);
-//        return "profileratings";
-//    }
 
 }

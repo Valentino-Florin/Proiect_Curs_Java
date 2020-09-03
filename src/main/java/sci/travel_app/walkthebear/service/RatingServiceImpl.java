@@ -22,19 +22,34 @@ public class RatingServiceImpl implements RatingService {
     @Autowired
     private AppUserRepository userRepository;
 
+    /**
+     *
+     * @return
+     */
     @Override
     public List<Rating> findAll() {
 
         return ratingRepository.findAll();
     }
 
-
+    /**
+     *
+     * @param id
+     * @return
+     */
     @Override
     public Rating findById(long id) {
 
         return ratingRepository.findById(id);
     }
 
+    /**
+     *
+     * @param rating
+     * @param place
+     * @param user
+     * @return
+     */
     @Override
     public Rating create(Rating rating, Place place, AppUser user) {
         rating.setUser(user);
@@ -44,10 +59,19 @@ public class RatingServiceImpl implements RatingService {
         return ratingRepository.save(rating);
     }
 
+    /**
+     *
+     * @param id
+     */
     @Override
     public void deleteRating(long id) {
         ratingRepository.delete(findById(id));
     }
+
+    /**
+     *
+     * @param id
+     */
     @Override
     public void updateRating(long id) {
         ratingRepository.save(findById(id));

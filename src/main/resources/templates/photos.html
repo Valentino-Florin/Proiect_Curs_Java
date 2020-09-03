@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8" />
+    <title>
+        <!-- Insert your title here -->
+    </title>
+    <link type="text/css" href="../static/css/manager.css" th:href="@{/css/manager.css}" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/fragments.css" th:href="@{/css/fragments.css}">
+    <script type="text/javascript" th:inline="javascript" th:src="@{/js/dropdownmenu.js}">
+    </script>
+</head>
+
+<body>
+<!-- header start -->
+<div th:insert="fragments :: header"></div>
+
+
+    <!-- main content start -->
+
+    <div class=container id=main_container>
+        <div>
+            <h2>Add photos for place: "[[${place.name}]]"</h2>
+        </div>
+        <div class=container id=form_container>
+            
+            <div th:insert="fragments :: alert"></div>
+            <!--<form id=addplace > -->
+            <form action="#" th:action="@{/addphotos/{id}(id=${place.id})}" method="post" th:object="${place}" enctype="multipart/form-data">
+           
+
+<!--
+                <div class=form_element>
+                    <input type= "hidden" name="created" id="created"
+                           th:value="${#dates.format(#dates.createNow() , 'dd/MM/yyyy HH:mm')}" />
+                </div>
+           
+-->
+                <div class=form_element>
+                    <label>Upload main/thumbnail image</label>
+                    <input type="file" name="thumbnail" id="thumbnail" accept="image/png, image/jpeg" required>
+                </div>
+                    <div id="thumbnail_preview"><img id=thumbnail alt="Main image preview"></div>
+                <div class=form_element>
+                    
+                    
+
+                    <label>Upload gallery picture 1</label>
+                    <input type="file" name="galleryImage1" id="galleryImage1" accept="image/png, image/jpeg">
+                </div>
+                 <div id="gallery_pic_1_preview"><img id=galleryImage1 alt="Gallery picture 1"></div>
+
+                <div class=form_element>
+                    <label>Upload gallery picture 2</label>
+                    <input type="file" name="galleryImage2" id="galleryImage2" accept="image/png, image/jpeg">
+                </div>
+                 <div id="gallery_pic_2_preview"><img id=galleryImage2 alt="Gallery picture 2"></div>
+
+                <div class=form_element>
+                    <label>Upload gallery picture 3</label>
+                    <input type="file" name="galleryImage3" id="galleryImage3" accept="image/png, image/jpeg">
+                </div>
+                 <div id="gallery_pic_3_preview"><img id=galleryImage3 alt="Gallery picture 3"></div>
+
+                <div class=form_element>
+                    <label>Upload gallery picture 4</label>
+                    <input type="file" name="galleryImage4" id="galleryImage4" accept="image/png, image/jpeg">
+                </div>
+                 <div id="gallery_pic_4_preview"><img id=galleryImage4 alt="Gallery picture 4"></div>
+
+                <div class=form_element>
+                    <label>Upload gallery picture 5</label>
+                    <input type="file" name="galleryImage5" id="galleryImage5" accept="image/png, image/jpeg">
+                </div>
+                 <div id="gallery_pic_5_preview"><img id=galleryImage5 alt="Gallery picture 5"></div>
+
+                
+                <div id=buttons>
+                    <button type="submit">Submit</button>
+                    <button type="cancel">Cancel</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+    <!-- main content end -->
+
+
+    <!-- footer start -->
+   <div th:insert="fragments :: footer"></div>
+    <!-- footer end -->
+</body>
+
+</html>

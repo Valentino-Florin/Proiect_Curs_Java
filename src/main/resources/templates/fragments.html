@@ -6,6 +6,7 @@
     <title>Title</title>
     <link rel="stylesheet" href="../static/css/fragments.css" th:href="@{/css/fragments.css}">
 
+
 </head>
 
 <body>
@@ -21,8 +22,11 @@
 -->
              <div th:insert="fragments :: top_nav_links"></div>
         </div>
+        <div id= logo_and_title_container>
+        <div id=logo><a href=index.html th:href="@{/}"><img src="../static/images/hikingbear.png" th:src="@{/images/hikingbear.png}"> </a></div>
         <div id="main_title">
             <h1>Walk the bear</h1>
+        </div>
         </div>
         <div id=img_and_title_container>
 
@@ -85,9 +89,12 @@
 -->
             <div th:insert="fragments :: top_nav_links"></div>
         </div>
+         <div id= logo_and_title_container>
+        <div id=logo><a href=index.html th:href="@{/}"><img src="../static/images/hikingbear.png" th:src="@{/images/hikingbear.png}"> </a></div>
         <div id="main_title">
             <h1>Walk the bear</h1>
         </div>
+    </div>
         <div id=img_and_title_container>
 
             <div class="hero_image_container_m"> <img id="hero" src="../static/images/hero_small.jpg" th:src="@{/images/hero_small.jpg}"> </div>

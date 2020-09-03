@@ -29,7 +29,8 @@ a:active {
     background: white;
 }
 
-.instructions h2 {}
+.instructions h2 {
+}
 
 .instructions p {}
 
@@ -57,7 +58,8 @@ a:active {
 
 }
 
-.column h2 {}
+.column h2 {
+}
 
 .column_list {
     display: flex;

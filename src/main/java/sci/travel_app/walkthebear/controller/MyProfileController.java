@@ -1,25 +1,8 @@
 package sci.travel_app.walkthebear.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import sci.travel_app.walkthebear.data_utils.AppUserDetails;
-import sci.travel_app.walkthebear.model.entities.AppUser;
-import sci.travel_app.walkthebear.model.entities.Favorite;
-import sci.travel_app.walkthebear.model.entities.Rating;
-import sci.travel_app.walkthebear.repository.AppUserRepository;
-import sci.travel_app.walkthebear.service.AppUserServiceImp;
-import sci.travel_app.walkthebear.service.FavoritesServiceImpl;
-import sci.travel_app.walkthebear.service.PlacesServiceImp;
-import sci.travel_app.walkthebear.service.RatingServiceImpl;
-
-import java.util.List;
-
 import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -27,9 +10,20 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import sci.travel_app.walkthebear.data_utils.AppUserDetails;
+import sci.travel_app.walkthebear.model.entities.AppUser;
+import sci.travel_app.walkthebear.model.entities.Favorite;
 import sci.travel_app.walkthebear.model.entities.Place;
+import sci.travel_app.walkthebear.model.entities.Rating;
+import sci.travel_app.walkthebear.repository.AppUserRepository;
+import sci.travel_app.walkthebear.service.AppUserServiceImp;
+import sci.travel_app.walkthebear.service.FavoritesServiceImpl;
 import sci.travel_app.walkthebear.service.PlacesServiceImp;
+import sci.travel_app.walkthebear.service.RatingServiceImpl;
+
 import javax.validation.Valid;
+import java.util.List;
+
 @Controller
 public class MyProfileController {
 
@@ -41,6 +35,11 @@ public class MyProfileController {
     private RatingServiceImpl ratingService;
     @Autowired
     private FavoritesServiceImpl favoritesService;
+    @Autowired
+    private PlacesServiceImp placesService;
+
+    private static org.apache.logging.log4j.Logger logger = LogManager.getLogger(MyProfileController.class);
+
 
     @GetMapping(value = "/profileinfo")
     public String userprofile(@AuthenticationPrincipal AppUserDetails currentUser, Model model){
@@ -74,10 +73,6 @@ public class MyProfileController {
         model.addAttribute("allFavorite", allFavorite);
         return "profilefav";
     }
-
-    @Autowired
-    private PlacesServiceImp placesService;
-    private static org.apache.logging.log4j.Logger logger = LogManager.getLogger(MyProfileController.class);
 
 
     @GetMapping("/addplaceadmin")
