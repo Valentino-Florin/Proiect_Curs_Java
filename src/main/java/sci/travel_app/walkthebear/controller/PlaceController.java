@@ -155,6 +155,7 @@ public class PlaceController {
             return "photos/{id}";
         }
         Place savedPlace = placesService.getPlaceById(id);
+
         String fileNameT = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
         uploadService.uploadImageFile(savedPlace, multipartFile, fileNameT);
         String fileNameG1 = galleryImageFiles1.getOriginalFilename();

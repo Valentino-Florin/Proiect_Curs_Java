@@ -185,7 +185,7 @@ public class PlacesServiceImp implements PlacesService {
         placeBis.setDescription(place.getDescription());
         placeBis.setCreated(place.getCreated());
         placeBis.setUser(place.getUser());
-        if (thumbnail != null) {
+        if (!"".equals(thumbnail)) {
             placeBis.setThumbnailFileName(thumbnail);
         } else {
             placeBis.setThumbnailFileName(place.getThumbnailFileName());
@@ -215,29 +215,7 @@ public class PlacesServiceImp implements PlacesService {
         } else {
             place.setGalleryImage5FileName(place.getGalleryImage5FileName());
         }
-//        String fileNameT = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
-//        placeBis.setThumbnailFileName(fileNameT);
-//        int count = 0;
-//        for (MultipartFile galleryImage : galleryImageFiles) {
-//            if (galleryImage != null){
-//                String fileNameG = StringUtils.cleanPath(Objects.requireNonNull(galleryImage.getOriginalFilename()));
-//                if (count == 0) {placeBis.setGalleryImage1FileName(fileNameG);}
-//                else if (count == 1) {placeBis.setGalleryImage2FileName(fileNameG);}
-//                else if (count == 2) {placeBis.setGalleryImage3FileName(fileNameG);}
-//                else if (count == 3) {placeBis.setGalleryImage4FileName(fileNameG);}
-//                else if (count == 4) {placeBis.setGalleryImage5FileName(fileNameG);}
-//
-//                uploadService.uploadImageFile(place, galleryImage, fileNameG);
-//            }
-//            else {
-//                if (count == 0) {placeBis.setGalleryImage1FileName(place.getGalleryImage1FileName());}
-//                else if (count == 1) {placeBis.setGalleryImage2FileName(place.getGalleryImage2FileName());}
-//                else if (count == 2) {placeBis.setGalleryImage3FileName(place.getGalleryImage3FileName());}
-//                else if (count == 3) {placeBis.setGalleryImage4FileName(place.getGalleryImage4FileName());}
-//                else if (count == 4) {placeBis.setGalleryImage5FileName(place.getGalleryImage5FileName());}
-//            }
-//            count++;
-//        }
+
         placesRepository.save(placeBis);
     }
 

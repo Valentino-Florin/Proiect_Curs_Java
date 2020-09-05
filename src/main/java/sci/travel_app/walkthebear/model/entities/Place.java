@@ -63,17 +63,8 @@ public class Place {
 
     @Transient
     private MultipartFile thumbnail;
-//    @Transient
-//    private MultipartFile galleryImage1;
-//    @Transient
-//    private MultipartFile galleryImage2;
-//    @Transient
-//    private MultipartFile galleryImage3;
-//    @Transient
-//    private MultipartFile galleryImage4;
-//    @Transient
-//    private MultipartFile galleryImage5;
 
+    //constructors
     public Place(){
     }
 
@@ -247,7 +238,7 @@ public class Place {
     }
 
 
-    //getters & setters for transient fields
+    //getters & setters for transient field
     public MultipartFile getThumbnail() {
         return thumbnail;
     }
@@ -256,45 +247,6 @@ public class Place {
         this.thumbnail = thumbnail;
     }
 
-//    public MultipartFile getGalleryImage1() {
-//        return galleryImage1;
-//    }
-//
-//    public void setGalleryImage1(MultipartFile galleryImage1) {
-//        this.galleryImage1 = galleryImage1;
-//    }
-//
-//    public MultipartFile getGalleryImage2() {
-//        return galleryImage2;
-//    }
-//
-//    public void setGalleryImage2(MultipartFile galleryImage2) {
-//        this.galleryImage2 = galleryImage2;
-//    }
-//
-//    public MultipartFile getGalleryImage3() {
-//        return galleryImage3;
-//    }
-//
-//    public void setGalleryImage3(MultipartFile galleryImage3) {
-//        this.galleryImage3 = galleryImage3;
-//    }
-//
-//    public MultipartFile getGalleryImage4() {
-//        return galleryImage4;
-//    }
-//
-//    public void setGalleryImage4(MultipartFile galleryImage4) {
-//        this.galleryImage4 = galleryImage4;
-//    }
-//
-//    public MultipartFile getGalleryImage5() {
-//        return galleryImage5;
-//    }
-//
-//    public void setGalleryImage5(MultipartFile galleryImage5) {
-//        this.galleryImage5 = galleryImage5;
-//    }
 
 // methods
 

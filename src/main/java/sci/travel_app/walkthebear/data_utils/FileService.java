@@ -51,7 +51,11 @@ public class FileService {
         return strings;
     }
 
-
+    /**
+     *
+     * @param id
+     * @param map
+     */
     public void mapToJson(long id, Map<String, List<HourMapping>> map) {
 
         String filePath = "src/main/resources/static/files/json/" + "itinerary" + id + ".json";
@@ -66,6 +70,12 @@ public class FileService {
         }
 
     }
+
+    /**
+     *
+     * @param name
+     * @param list
+     */
     public void listToJson(String name, List<Place> list) {
 
         String filePath = "src/main/resources/static/files/json/" + name + ".json";
