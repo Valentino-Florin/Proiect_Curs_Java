@@ -58,47 +58,21 @@ public class PlaceController {
         return "addplace";
     }
 
-    //comment out request params
     @PostMapping("/addplace")
     public String addNewPlace(@Valid Place place, BindingResult result, Model model, Principal principal, RedirectAttributes redirectAttributes)
-//                              @RequestParam("thumbnail") MultipartFile multipartFile,
-//                              @RequestParam("galleryImg") MultipartFile[] galleryImageFiles) throws IOException
                               {
         if (result.hasErrors()) {
             return "addplace";
         }
-//        String fileNameT = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
-//        place.setThumbnailPath(fileNameT);
-//        //comment  out from here
-//        int count = 0;
-//        for (MultipartFile galleryImage : galleryImageFiles) {
-//            if (galleryImage != null){
-//            String fileNameG = StringUtils.cleanPath(galleryImage.getOriginalFilename());
-//            if (count == 0) {place.setGalleryImage1(fileNameG);}
-//            else if (count == 1) {place.setGalleryImage2(fileNameG);}
-//            else if (count == 2) {place.setGalleryImage3(fileNameG);}
-//            else if (count == 3) {place.setGalleryImage4(fileNameG);}
-//            else if (count == 4) {place.setGalleryImage5(fileNameG);}
-//            count++;
-//            }
-//        }
-        //to here
         Place savedPlace = placesService.addPlace(place);
 
         placesService.addUserPlace(place, appUserRepository.findByUserName(principal.getName()));
-//        //comment  out from here
-//        uploadService.uploadThumbnailFile(savedPlace, multipartFile, fileNameT);
-//        for (MultipartFile galleryImage : galleryImageFiles) {
-//            if (galleryImage != null){
-//            String fileNameG = StringUtils.cleanPath(galleryImage.getOriginalFilename());
-//            uploadService.uploadGalleryImageFile(savedPlace, galleryImage, fileNameG);}
-//            }
-//        //to here
         model.addAttribute("place", placesService.getAllPlaces());
         redirectAttributes.addFlashAttribute("message", "Place saved!");
         logger.log(Level.INFO, "Place added : " + place );
         return "redirect:placemanager";
     }
+
     @GetMapping("/editplace/{id}")
     public String showEditForm(@PathVariable("id") long id, Model model) {
         Place place = placesService.getPlaceById(id);
@@ -144,7 +118,7 @@ public class PlaceController {
 
     @PostMapping("/addphotos/{id}")
     public String addPhotos(@PathVariable("id") long id, @Valid Place place, BindingResult result, Model model, RedirectAttributes redirectAttributes,
-                              @RequestParam("thumbnail") MultipartFile multipartFile,
+                              @RequestParam(value ="thumbnail", required = false) MultipartFile multipartFile,
                               @RequestParam(value = "galleryImage1", required = false) MultipartFile galleryImageFiles1,
                             @RequestParam(value = "galleryImage2", required = false) MultipartFile galleryImageFiles2,
                             @RequestParam(value = "galleryImage3", required = false) MultipartFile galleryImageFiles3,
@@ -155,9 +129,10 @@ public class PlaceController {
             return "photos/{id}";
         }
         Place savedPlace = placesService.getPlaceById(id);
-
-        String fileNameT = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
-        uploadService.uploadImageFile(savedPlace, multipartFile, fileNameT);
+        String fileNameT = multipartFile.getOriginalFilename();
+        if (!"".equals(fileNameT)) {
+            uploadService.uploadImageFile(savedPlace, multipartFile, StringUtils.cleanPath(multipartFile.getOriginalFilename()));
+        }
         String fileNameG1 = galleryImageFiles1.getOriginalFilename();
         if (!"".equals(fileNameG1)){
         uploadService.uploadImageFile(savedPlace, galleryImageFiles1, StringUtils.cleanPath(galleryImageFiles1.getOriginalFilename()));

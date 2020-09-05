@@ -40,17 +40,17 @@ public class Place {
     @Column(name = "DESCRIPTION", length=1000, nullable = false)
     private String description;
 
-    @Column(name = "THUMBNAIL", nullable = true)
+    @Column(name = "THUMBNAIL")
     private String thumbnailFileName;
-    @Column (name = "GALLERY_IMAGE1", nullable = true)
+    @Column (name = "GALLERY_IMAGE1")
     private String galleryImage1FileName;
-    @Column (name = "GALLERY_IMAGE2", nullable = true)
+    @Column (name = "GALLERY_IMAGE2")
     private String galleryImage2FileName;
-    @Column (name = "GALLERY_IMAGE3", nullable = true)
+    @Column (name = "GALLERY_IMAGE3")
     private String galleryImage3FileName;
-    @Column (name = "GALLERY_IMAGE4", nullable = true)
+    @Column (name = "GALLERY_IMAGE4")
     private String galleryImage4FileName;
-    @Column (name = "GALLERY_IMAGE5", nullable = true)
+    @Column (name = "GALLERY_IMAGE5")
     private String galleryImage5FileName;
 
     @Temporal(TemporalType.TIMESTAMP)
@@ -61,8 +61,8 @@ public class Place {
     @JoinColumn(name = "created_by")
     private AppUser user;
 
-    @Transient
-    private MultipartFile thumbnail;
+//    @Transient
+//    private MultipartFile thumbnail;
 
     //constructors
     public Place(){
@@ -239,14 +239,14 @@ public class Place {
 
 
     //getters & setters for transient field
-    public MultipartFile getThumbnail() {
-        return thumbnail;
-    }
-
-    public void setThumbnail(MultipartFile thumbnail) {
-        this.thumbnail = thumbnail;
-    }
-
+//    public MultipartFile getThumbnail() {
+//        return thumbnail;
+//    }
+//
+//    public void setThumbnail(MultipartFile thumbnail) {
+//        this.thumbnail = thumbnail;
+//    }
+//
 
 // methods
 

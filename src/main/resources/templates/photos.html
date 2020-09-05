@@ -26,36 +26,37 @@
         <div class=container id=form_container>
             
             <div th:insert="fragments :: alert"></div>
+            <div id=return_links>
+                <a href="placedetail.html" th:href="@{/placedetail/{id}(id=${place.id})}">Return to "[[${place.name}]]"</a>
+                <a href="placemanager.html" th:href="@{/placemanager}">Return to Place Manager</a>
+
+            </div>
             <!--<form id=addplace > -->
             <form action="#" th:action="@{/addphotos/{id}(id=${place.id})}" method="post" th:object="${place}" enctype="multipart/form-data">
            
 
-<!--
-                <div class=form_element>
-                    <input type= "hidden" name="created" id="created"
-                           th:value="${#dates.format(#dates.createNow() , 'dd/MM/yyyy HH:mm')}" />
-                </div>
-           
--->
                 <div class=form_element>
                     <label>Upload main/thumbnail image</label>
-                    <input type="file" name="thumbnail" id="thumbnail" accept="image/png, image/jpeg" required>
+                    <input type="file" name="thumbnail" id="thumbnail" accept="image/png, image/jpeg">
                 </div>
                     <div id="thumbnail_preview"><img id=thumbnail alt="Main image preview"></div>
                 <div class=form_element>
                     
                     
-
                     <label>Upload gallery picture 1</label>
                     <input type="file" name="galleryImage1" id="galleryImage1" accept="image/png, image/jpeg">
                 </div>
-                 <div id="gallery_pic_1_preview"><img id=galleryImage1 alt="Gallery picture 1"></div>
+                 <div id="gallery_pic_1_preview">
+                     <img id=galleryImage1 alt="Gallery picture 1">
+                </div>
 
                 <div class=form_element>
                     <label>Upload gallery picture 2</label>
                     <input type="file" name="galleryImage2" id="galleryImage2" accept="image/png, image/jpeg">
                 </div>
-                 <div id="gallery_pic_2_preview"><img id=galleryImage2 alt="Gallery picture 2"></div>
+                 <div id="gallery_pic_2_preview">
+                     <img id=galleryImage2 alt="Gallery picture 2">
+                </div>
 
                 <div class=form_element>
                     <label>Upload gallery picture 3</label>

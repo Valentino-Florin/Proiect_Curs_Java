@@ -198,22 +198,22 @@ public class PlacesServiceImp implements PlacesService {
         if (!"".equals(gallery2)) {
             placeBis.setGalleryImage2FileName(gallery2);
         } else {
-            place.setGalleryImage2FileName(place.getGalleryImage2FileName());
+            placeBis.setGalleryImage2FileName(place.getGalleryImage2FileName());
         }
         if (!"".equals(gallery3)) {
             placeBis.setGalleryImage3FileName(gallery3);
         } else {
-            place.setGalleryImage3FileName(place.getGalleryImage3FileName());
+            placeBis.setGalleryImage3FileName(place.getGalleryImage3FileName());
         }
         if (!"".equals(gallery4)) {
             placeBis.setGalleryImage4FileName(gallery4);
         } else {
-            place.setGalleryImage4FileName(place.getGalleryImage4FileName());
+            placeBis.setGalleryImage4FileName(place.getGalleryImage4FileName());
         }
         if (!"".equals(gallery5)) {
             placeBis.setGalleryImage5FileName(gallery5);
         } else {
-            place.setGalleryImage5FileName(place.getGalleryImage5FileName());
+            placeBis.setGalleryImage5FileName(place.getGalleryImage5FileName());
         }
 
         placesRepository.save(placeBis);
