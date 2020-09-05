@@ -145,7 +145,11 @@ public class PlaceController {
     @PostMapping("/addphotos/{id}")
     public String addPhotos(@PathVariable("id") long id, @Valid Place place, BindingResult result, Model model, RedirectAttributes redirectAttributes,
                               @RequestParam("thumbnail") MultipartFile multipartFile,
-                              @RequestParam("galleryImg") MultipartFile[] galleryImageFiles) throws IOException {
+                              @RequestParam(value = "galleryImage1", required = false) MultipartFile galleryImageFiles1,
+                            @RequestParam(value = "galleryImage2", required = false) MultipartFile galleryImageFiles2,
+                            @RequestParam(value = "galleryImage3", required = false) MultipartFile galleryImageFiles3,
+                            @RequestParam(value = "galleryImage4", required = false) MultipartFile galleryImageFiles4,
+                            @RequestParam(value = "galleryImage5", required = false) MultipartFile galleryImageFiles5) throws IOException {
         if (result.hasErrors()) {
             redirectAttributes.addFlashAttribute("message", "Could not update");
             return "photos/{id}";
@@ -153,8 +157,28 @@ public class PlaceController {
         Place savedPlace = placesService.getPlaceById(id);
         String fileNameT = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
         uploadService.uploadImageFile(savedPlace, multipartFile, fileNameT);
+        String fileNameG1 = galleryImageFiles1.getOriginalFilename();
+        if (!"".equals(fileNameG1)){
+        uploadService.uploadImageFile(savedPlace, galleryImageFiles1, StringUtils.cleanPath(galleryImageFiles1.getOriginalFilename()));
+        }
+        String fileNameG2 = galleryImageFiles2.getOriginalFilename();
+        if (!"".equals(fileNameG2)) {
+            uploadService.uploadImageFile(savedPlace, galleryImageFiles2, StringUtils.cleanPath(galleryImageFiles2.getOriginalFilename()));
+        }
+        String fileNameG3 = galleryImageFiles3.getOriginalFilename();
+        if (!"".equals(fileNameG3)) {
+            uploadService.uploadImageFile(savedPlace, galleryImageFiles3, StringUtils.cleanPath(galleryImageFiles3.getOriginalFilename()));
+        }
+        String fileNameG4 = galleryImageFiles4.getOriginalFilename();
+        if (!"".equals(fileNameG4)) {
+            uploadService.uploadImageFile(savedPlace, galleryImageFiles4, StringUtils.cleanPath(galleryImageFiles4.getOriginalFilename()));
+        }
+        String fileNameG5 = galleryImageFiles5.getOriginalFilename();
+        if (!"".equals(fileNameG5)) {
+            uploadService.uploadImageFile(savedPlace, galleryImageFiles5, StringUtils.cleanPath(galleryImageFiles5.getOriginalFilename()));
+        }
 
-        placesService.updatePhotos(savedPlace,multipartFile,galleryImageFiles);
+        placesService.updatePhotos(savedPlace, fileNameT, fileNameG1, fileNameG2, fileNameG3, fileNameG4, fileNameG5);
         model.addAttribute("place", savedPlace);
 
         redirectAttributes.addFlashAttribute("message", "Photos saved!");

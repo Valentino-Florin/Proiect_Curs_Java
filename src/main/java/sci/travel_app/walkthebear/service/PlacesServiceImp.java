@@ -8,18 +8,14 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
-import org.springframework.web.multipart.MultipartFile;
 import sci.travel_app.walkthebear.model.entities.AppUser;
 import sci.travel_app.walkthebear.model.entities.Place;
 import sci.travel_app.walkthebear.model.misc.Category;
 import sci.travel_app.walkthebear.repository.FavoritesRepository;
 import sci.travel_app.walkthebear.repository.PlacesRepository;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 @Service
 public class PlacesServiceImp implements PlacesService {
@@ -173,7 +169,7 @@ public class PlacesServiceImp implements PlacesService {
         return placesRepository.findPlaceByUser(user);
     }
 
-    public void updatePhotos (Place place, MultipartFile multipartFile, MultipartFile[] galleryImageFiles) throws IOException {
+    public void updatePhotos (Place place, String thumbnail, String gallery1, String gallery2, String gallery3, String gallery4, String gallery5) {
         Place placeBis = new Place();
         placeBis.setId(place.getId());
         placeBis.setName(place.getName());
@@ -189,31 +185,59 @@ public class PlacesServiceImp implements PlacesService {
         placeBis.setDescription(place.getDescription());
         placeBis.setCreated(place.getCreated());
         placeBis.setUser(place.getUser());
-        placeBis.setThumbnailFileName(place.getThumbnailFileName());
-
-        String fileNameT = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
-        placeBis.setThumbnailFileName(fileNameT);
-        int count = 0;
-        for (MultipartFile galleryImage : galleryImageFiles) {
-            if (galleryImage != null){
-                String fileNameG = StringUtils.cleanPath(Objects.requireNonNull(galleryImage.getOriginalFilename()));
-                if (count == 0) {placeBis.setGalleryImage1FileName(fileNameG);}
-                else if (count == 1) {placeBis.setGalleryImage2FileName(fileNameG);}
-                else if (count == 2) {placeBis.setGalleryImage3FileName(fileNameG);}
-                else if (count == 3) {placeBis.setGalleryImage4FileName(fileNameG);}
-                else if (count == 4) {placeBis.setGalleryImage5FileName(fileNameG);}
-
-                uploadService.uploadImageFile(place, galleryImage, fileNameG);
-            }
-            else {
-                if (count == 0) {placeBis.setGalleryImage1FileName(place.getGalleryImage1FileName());}
-                else if (count == 1) {placeBis.setGalleryImage2FileName(place.getGalleryImage2FileName());}
-                else if (count == 2) {placeBis.setGalleryImage3FileName(place.getGalleryImage3FileName());}
-                else if (count == 3) {placeBis.setGalleryImage4FileName(place.getGalleryImage4FileName());}
-                else if (count == 4) {placeBis.setGalleryImage5FileName(place.getGalleryImage5FileName());}
-            }
-            count++;
+        if (thumbnail != null) {
+            placeBis.setThumbnailFileName(thumbnail);
+        } else {
+            placeBis.setThumbnailFileName(place.getThumbnailFileName());
         }
+        if (!"".equals(gallery1)) {
+            placeBis.setGalleryImage1FileName(gallery1);
+        } else {
+            placeBis.setGalleryImage1FileName(place.getGalleryImage1FileName());
+        }
+        if (!"".equals(gallery2)) {
+            placeBis.setGalleryImage2FileName(gallery2);
+        } else {
+            place.setGalleryImage2FileName(place.getGalleryImage2FileName());
+        }
+        if (!"".equals(gallery3)) {
+            placeBis.setGalleryImage3FileName(gallery3);
+        } else {
+            place.setGalleryImage3FileName(place.getGalleryImage3FileName());
+        }
+        if (!"".equals(gallery4)) {
+            placeBis.setGalleryImage4FileName(gallery4);
+        } else {
+            place.setGalleryImage4FileName(place.getGalleryImage4FileName());
+        }
+        if (!"".equals(gallery5)) {
+            placeBis.setGalleryImage5FileName(gallery5);
+        } else {
+            place.setGalleryImage5FileName(place.getGalleryImage5FileName());
+        }
+//        String fileNameT = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
+//        placeBis.setThumbnailFileName(fileNameT);
+//        int count = 0;
+//        for (MultipartFile galleryImage : galleryImageFiles) {
+//            if (galleryImage != null){
+//                String fileNameG = StringUtils.cleanPath(Objects.requireNonNull(galleryImage.getOriginalFilename()));
+//                if (count == 0) {placeBis.setGalleryImage1FileName(fileNameG);}
+//                else if (count == 1) {placeBis.setGalleryImage2FileName(fileNameG);}
+//                else if (count == 2) {placeBis.setGalleryImage3FileName(fileNameG);}
+//                else if (count == 3) {placeBis.setGalleryImage4FileName(fileNameG);}
+//                else if (count == 4) {placeBis.setGalleryImage5FileName(fileNameG);}
+//
+//                uploadService.uploadImageFile(place, galleryImage, fileNameG);
+//            }
+//            else {
+//                if (count == 0) {placeBis.setGalleryImage1FileName(place.getGalleryImage1FileName());}
+//                else if (count == 1) {placeBis.setGalleryImage2FileName(place.getGalleryImage2FileName());}
+//                else if (count == 2) {placeBis.setGalleryImage3FileName(place.getGalleryImage3FileName());}
+//                else if (count == 3) {placeBis.setGalleryImage4FileName(place.getGalleryImage4FileName());}
+//                else if (count == 4) {placeBis.setGalleryImage5FileName(place.getGalleryImage5FileName());}
+//            }
+//            count++;
+//        }
         placesRepository.save(placeBis);
     }
 
