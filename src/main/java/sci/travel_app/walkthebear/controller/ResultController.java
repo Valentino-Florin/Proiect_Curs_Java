@@ -47,10 +47,10 @@ public class ResultController {
     }
     @GetMapping("/results/{pageNum}")
     public String searchResults(Model model,
-                                      @PathVariable(name = "pageNum") int pageNum,
-                                      @Param("keyword") String keyword,
-                                      @Param("sortField") String sortField,
-                                      @Param("sortDir") String sortDir){
+                                @PathVariable(name = "pageNum") int pageNum,
+                                @Param("keyword") String keyword,
+                                @Param("sortField") String sortField,
+                                @Param("sortDir") String sortDir){
 
         Page<Place> page = placesService.getPaginatedPlaceListByKeyword(pageNum,sortField,sortDir,keyword);
         List<Place> resultList = page.getContent();

@@ -4,6 +4,7 @@
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+  <link rel="stylesheet" href="../static/css/fragments.css" th:href="@{/css/fragments.css}">
   <title></title>
   <style>
     body {padding: 20px;}
@@ -20,44 +21,51 @@ Authenticated user role:
 
 <h1>EDIT PROFILE</h1>
 
-<form th:object="${appUser}" th:action="@{/editprofile}" method="post">
 
-<div class="field">
-  <label class="label" th:for="userName"><b>Username</b></label>
-  <div class="control">
-    <input class="input" type="text" placeholder="Username" name="userName">
+<form th:object="${appUser}" th:action="@{/editprofile/{id}/send(id=${appUser.id})}" method="post">
+
+  <div class="field">
+    <label class="label" th:for="username"><b>Username</b></label>
+    <div class="control">
+      <input class="input" type="text" placeholder="Name" th:field="*{userName}">
+    </div>
   </div>
-</div>
 
-<div class="field">
-  <label class="label" th:for="password"><b>Old password</b></label>
-  <div class="control">
-    <input class="input" type="password" placeholder="Old password" name="password">
+  <div class="field">
+    <label class="label" th:for="email"><b>Email</b></label>
+    <div class="control">
+      <input class="input" type="text" placeholder="Email" th:field="*{email}">
+    </div>
   </div>
-</div>
 
-<div class="field">
-  <label class="label" th:for="password"><b>New password</b></label>
-  <div class="control">
-    <input class="input" type="password" placeholder="New password" name="password">
+  <div class="field">
+    <label class="label" th:for="password"><b>New password</b></label>
+    <div class="control">
+      <input class="input" type="password" placeholder="New password" th:field="*{password}">
+    </div>
   </div>
-</div>
 
-<div class="field">
-  <label class="label" th:for="confirmPassword"><b>Confirm new password</b></label>
-  <div class="control">
-    <input class="input" type="password" placeholder="Confirm new password" name="passwordConfirm" required>
+  <div class="field">
+    <label class="label" th:for="passwordConfirm"><b>Confirm new password</b></label>
+    <div class="control">
+      <input class="input" type="password" placeholder="Confirm new password" th:field="*{passwordConfirm}" required>
+    </div>
   </div>
-</div>
 
+  <div id=buttons>
+    <button type="submit">Submit</button>
+    <button type="cancel">Cancel</button>
+  </div>
 
-<div class="field is-grouped">
+<!--<div class="field is-grouped">
   <div class="control">
     <button class="button is-link">Apply</button>
   </div>
   <div class="control">
     <button class="button is-link is-light" onclick="window.location.href = '/profileinfo'">Cancel</button>
   </div>
-</div>
+</div>-->
+</form>
+
 </body>
 </html>

@@ -60,34 +60,4 @@ public class AppUserController {
 
     }
 
-    @GetMapping("/adminuser")
-    public String showAdminUser(@RequestParam(value = "userSearch", required = false) String userName, Model model) {
-        model.addAttribute("userSearch", appUserRepository.findByUserName(userName));
-        return "adminuser";
-    }
-
-    @GetMapping("/edituseradmin/{id}")
-    public String showUpdateUserForm(@PathVariable("id") long id, Model model) {
-        AppUser user = appUserRepository.findById(id);
-        // .orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
-
-        model.addAttribute("user", user);
-        return "edituseradmin";
-    }
-
-    @PostMapping("/edituseradmin/{id}")
-    public String changeUser(@PathVariable("id") long id, @Valid AppUser user,
-                             BindingResult result, Model model) {
-        if (result.hasErrors()) {
-            user.setId(id);
-            return "edituseradmin";
-        }
-
-        appUserRepository.save(user);
-        model.addAttribute("user", appUserRepository.findAll());
-        return "adminuser";
-
-    }
-
-
 }

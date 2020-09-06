@@ -9,7 +9,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import sci.travel_app.walkthebear.model.entities.AppUser;
-import sci.travel_app.walkthebear.model.entities.Itinerary;
 import sci.travel_app.walkthebear.model.entities.Place;
 import sci.travel_app.walkthebear.model.misc.Category;
 import sci.travel_app.walkthebear.repository.PlacesRepository;
@@ -73,7 +72,7 @@ public class PlacesServiceImp implements PlacesService {
         return place;
     }
     @Override
-    public void addUserPlace(Place place, AppUser user) {
+    public Place addUserPlace(Place place, AppUser user) {
         place.setUser(user);
         List<Place> list = (List<Place>) placesRepository.findByName(place.getName());
         if (list.size() > 0) {
@@ -81,6 +80,7 @@ public class PlacesServiceImp implements PlacesService {
         } else {
             placesRepository.save(place);
         }
+        return place;
     }
     @Override
     public void updatePlace(Place place) {
@@ -120,7 +120,7 @@ public class PlacesServiceImp implements PlacesService {
     }
     @Override
     public Page<Place> getPaginatedPlaceListByKeyword(int pageNum, String sortField, String sortDir, String keyword){
-        Pageable pageable = PageRequest.of(pageNum - 1, 5,
+        Pageable pageable = PageRequest.of(pageNum - 1, 1,
                 sortDir.equals("asc") ? Sort.by(sortField).ascending()
                         : Sort.by(sortField).descending()
         );
@@ -132,7 +132,12 @@ public class PlacesServiceImp implements PlacesService {
         return placesRepository.findAllByOrderByCreatedDesc();
     }
 
-//    public Page<Place> filterResults(List<Place> initiaList, boolean A, boolean B, boolean C, boolean D){
+    @Override
+    public List<Place> findByKeyword(String keyword) {
+        return placesRepository.findByKeyword(keyword);
+    }
+
+    //    public Page<Place> filterResults(List<Place> initiaList, boolean A, boolean B, boolean C, boolean D){
 //        if(A==true && B==true && C==true && D==true){
 //
 //        }

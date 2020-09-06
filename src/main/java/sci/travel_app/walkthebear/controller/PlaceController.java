@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import sci.travel_app.walkthebear.model.entities.Place;
 import sci.travel_app.walkthebear.repository.AppUserRepository;
+import sci.travel_app.walkthebear.service.AppUserServiceImp;
 import sci.travel_app.walkthebear.service.PlacesServiceImp;
 import sci.travel_app.walkthebear.service.UploadService;
 
@@ -25,8 +26,6 @@ import java.io.IOException;
 import java.util.Objects;
 
 
-
-
 @Controller
 public class PlaceController {
 
@@ -34,6 +33,8 @@ public class PlaceController {
     private PlacesServiceImp placesService;
     @Autowired
     private AppUserRepository appUserRepository;
+    @Autowired
+    private AppUserServiceImp appUserServiceImp;
 
     @Autowired
     private UploadService uploadService;
@@ -54,6 +55,7 @@ public class PlaceController {
 
     /**
      * Method used to populate "/placemanager" with the places specific to a logged user
+     *
      * @param model
      * @param principal
      * @return "placemanager"
@@ -61,7 +63,7 @@ public class PlaceController {
 
     @GetMapping("/placemanager")
     public String showPlaceManager(Model model, Principal principal) {
-        model.addAttribute("userPlaces", placesService.findPlaceByUser(appUserRepository.findByUserName(principal.getName())));
+        model.addAttribute("userPlaces", placesService.findPlaceByUser(appUserServiceImp.findByUserName(principal.getName())));
         return "placemanager";
     }
 
@@ -84,32 +86,36 @@ public class PlaceController {
         //comment  out from here
         int count = 0;
         for (MultipartFile galleryImage : galleryImageFiles) {
-            if (galleryImage != null){
-            String fileNameG = StringUtils.cleanPath(galleryImage.getOriginalFilename());
-            if (count == 0) place.setGalleryImage1(fileNameG);
-            if (count == 1) place.setGalleryImage2(fileNameG);
-            if (count == 2) place.setGalleryImage3(fileNameG);
-            if (count == 3) place.setGalleryImage4(fileNameG);
-            if (count == 4) place.setGalleryImage5(fileNameG);
-            count++; }
+            if (galleryImage != null) {
+                String fileNameG = StringUtils.cleanPath(galleryImage.getOriginalFilename());
+                if (count == 0) place.setGalleryImage1(fileNameG);
+                if (count == 1) place.setGalleryImage2(fileNameG);
+                if (count == 2) place.setGalleryImage3(fileNameG);
+                if (count == 3) place.setGalleryImage4(fileNameG);
+                if (count == 4) place.setGalleryImage5(fileNameG);
+                count++;
+            }
         }
-        //to here
-        Place savedPlace = placesService.addPlace(place);
+//        to here
+        Place savedPlace = placesService.addUserPlace(place, appUserServiceImp.findByUserName(principal.getName()));
 
-        placesService.addUserPlace(place, appUserRepository.findByUserName(principal.getName()));
+
         //comment  out from here
         uploadService.uploadThumbnailFile(savedPlace, multipartFile, fileNameT);
         for (MultipartFile galleryImage : galleryImageFiles) {
-            if (galleryImage != null){
-            String fileNameG = StringUtils.cleanPath(galleryImage.getOriginalFilename());
-            uploadService.uploadGalleryImageFile(savedPlace, galleryImage, fileNameG);}
+            if (galleryImage != null) {
+                String fileNameG = StringUtils.cleanPath(galleryImage.getOriginalFilename());
+                uploadService.uploadGalleryImageFile(savedPlace, galleryImage, fileNameG);
             }
-        //to here
+        }
+//        to here
+
         model.addAttribute("place", placesService.getAllPlaces());
         redirectAttributes.addFlashAttribute("message", "Place saved!");
-        logger.log(Level.INFO, "Place added : "+ place );
+        logger.log(Level.INFO, "Place added : " + place);
         return "redirect:placemanager";
     }
+
     @GetMapping("/editplace/{id}")
     public String showEditForm(@PathVariable("id") long id, Model model) {
         Place place = placesService.getPlaceById(id);
@@ -118,24 +124,26 @@ public class PlaceController {
         model.addAttribute("place", place);
         return "editplace";
     }
+
     @PostMapping("/editplace/{id}")
     public String editPlace(@PathVariable("id") long id, @Valid Place place,
-                              BindingResult result, Model model, Principal principal, RedirectAttributes redirectAttributes) {
+                            BindingResult result, Model model, Principal principal, RedirectAttributes redirectAttributes) {
         if (result.hasErrors()) {
             place.setId(id);
             return "editplace";
         }
 
-        placesService.updateUserPlace(place, appUserRepository.findByUserName(principal.getName()));
-        model.addAttribute("userPlaces", placesService.findPlaceByUser(appUserRepository.findByUserName(principal.getName())));
+        placesService.updateUserPlace(place, appUserServiceImp.findByUserName(principal.getName()));
+        model.addAttribute("userPlaces", placesService.findPlaceByUser(appUserServiceImp.findByUserName(principal.getName())));
         redirectAttributes.addFlashAttribute("message", "Place was updated");
-        logger.log(Level.INFO, "Updated place: ID "+id);
+        logger.log(Level.INFO, "Updated place: ID " + id);
         return "placemanager";
     }
 
     /**
      * Method used to delete a place, specific to a logged user, by using the ID
-     * @param id - place ID
+     *
+     * @param id                 - place ID
      * @param model
      * @param redirectAttributes
      * @param principal
@@ -147,9 +155,10 @@ public class PlaceController {
         Place place = placesService.getPlaceById(id);
         //   .orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
         placesService.deletePlace(id);
-        model.addAttribute("userPlaces", placesService.findPlaceByUser(appUserRepository.findByUserName(principal.getName())));
+        model.addAttribute("userPlaces", placesService.findPlaceByUser(appUserServiceImp.findByUserName(principal.getName())));
         redirectAttributes.addFlashAttribute("message", "Place was deleted");
-        logger.log(Level.INFO, "Deleted place: ID "+id);
+        logger.log(Level.INFO, "Deleted place: ID " + id);
         return "placemanager";
     }
+
 }

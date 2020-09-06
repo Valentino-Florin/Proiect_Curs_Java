@@ -10,6 +10,7 @@ import sci.travel_app.walkthebear.model.entities.AppUser;
 import sci.travel_app.walkthebear.repository.AppUserRepository;
 
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class AppUserServiceImp implements AppUserService {
@@ -31,6 +32,20 @@ public class AppUserServiceImp implements AppUserService {
     }
 
     @Override
+    public void update(AppUser user, long id){
+        AppUser updatedUser = new AppUser();
+        updatedUser.setId(id);
+        updatedUser.setUserName(user.getUserName());
+        updatedUser.setEmail(user.getEmail());
+        updatedUser.setCreated(user.getCreated());
+        updatedUser.setRole(user.getRole());
+        updatedUser.setPassword(passwordEncoder.encode(user.getPassword()));
+
+        appUserRepository.save(updatedUser);
+    }
+
+
+    @Override
     public AppUser findByEmail(String s) throws UsernameNotFoundException {
         AppUser appUser = appUserRepository.findByEmail(s);
         if (appUser == null) {
@@ -38,14 +53,25 @@ public class AppUserServiceImp implements AppUserService {
         }
         return appUser;
     }
-
+    @Override
     public AppUser findById(long id) {
         return appUserRepository.findById(id);
+    }
+
+    @Override
+    public List<AppUser> findAllUsers() {
+        return appUserRepository.findAll();
+    }
+
+    @Override
+    public List<AppUser> findUsersByKeyword(String keyword) {
+        return appUserRepository.findUsersByKeyword(keyword);
     }
 
     public AppUser findByUserName(String username) {
         return appUserRepository.findByUserName(username);
     }
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         AppUser user = appUserRepository.findByUserName(username);
@@ -57,5 +83,6 @@ public class AppUserServiceImp implements AppUserService {
         return new AppUserDetails(user);
 
     }
+
 
 }

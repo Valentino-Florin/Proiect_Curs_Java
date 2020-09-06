@@ -25,10 +25,9 @@
 
     <div class=container id=filter_container>
         <div id=filters>
-            <a th:href="@{/editprofile}">Edit profile</a><br>
+            <a th:href="@{/editprofile/{id}(id=${currentUser.id})}">Edit profile</a><br>
             <a th:href="@{/profilefav}">Profile favorites</a><br>
             <a th:href="@{/profileratings}">Profile ratings</a>
-
         </div>
     </div>
 

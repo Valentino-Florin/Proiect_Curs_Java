@@ -8,7 +8,6 @@ import sci.travel_app.walkthebear.model.entities.Place;
 import sci.travel_app.walkthebear.repository.AppUserRepository;
 import sci.travel_app.walkthebear.repository.FavoritesRepository;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -28,6 +27,11 @@ public class FavoritesServiceImpl implements FavoritesService{
     public void addFavorite(Favorite favorite) {
         favoritesRepository.save(favorite);
 
+    }
+    @Override
+    public Favorite findById(long id) {
+
+        return favoritesRepository.findById(id);
     }
 
     /**

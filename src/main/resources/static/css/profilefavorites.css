@@ -1,7 +1,14 @@
-body{padding: 15px;
+/*body{padding: 15px;
     font-family: serif;
-    /*background-image: url("https://images.hdqwalls.com/download/white-bear-artwork-8k-n4-1920x1080.jpg");*/
+    *//*background-image: url("https://images.hdqwalls.com/download/white-bear-artwork-8k-n4-1920x1080.jpg");*//*
+}*/
+
+body {
+    font-family: Helvetica, Arial, sans-serif;
+    /*    background: linear-gradient(#C9F0D9, white);*/
+    background-color: #F0F7FA;
 }
+
 * {box-sizing: border-box
 }
 
@@ -24,7 +31,7 @@ body{padding: 15px;
 .box{
     border-radius: 5px;
     border: 3px solid;
-    border-color: #F4D03F;
+    border-color: #B4F0C9;
     width: 250px;
     height: auto;
     margin-bottom: 20px;
@@ -74,6 +81,12 @@ body{padding: 15px;
     font-size: 20px;
 }
 
+.place_added{
+    padding-left: 10px;
+    font-weight: italic;
+    font-size: 15px;
+}
+
 
 .rating_text{
     padding-left: 10px;
@@ -102,13 +115,41 @@ label{
     text-align: left;
 }
 
-.button{
-    margin-top: 10px;
-    margin-right: 30px;
-    margin-bottom: 20px;
-    background-color: #f1f1f1;
+button {
+    height: 30px;
+    width: 80px;
     border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    border: none;
+}
 
+.submit {
+    background-color: #6CBA87;
+}
+
+.submit:hover {
+    background-color: #34BA63;
+}
+
+.cancelbtn:hover {
+    background-color: #DEEFFA;
+}
+
+
+.container {
+    padding: 16px 40px 30px 40px;
+    background-color: #1F6E3A;
+    color: #F0F7FA;
+}
+
+a:link, a:visited {
+    text-decoration: none;
+    color: #1F6E3A;
+}
+a:hover, a:active {
+    text-decoration: none;
+    color: #103B1F;
 }
 
 .passwordBox{

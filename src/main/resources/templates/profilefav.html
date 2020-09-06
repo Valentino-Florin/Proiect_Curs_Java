@@ -36,32 +36,25 @@ Authenticated user role:
 
         <div id="ratings_box">
             <div class="box" th:each="favorite : ${allFavorite}">
-                <p class="place_name" th:text="${favorite.dateAdded}"> Date added <br></p>
                 <p class="place_name" th:text="${favorite.place.getName()}"> Place name<br></p>
-                <p class="rating_text" th:text="${favorite.place.getDescription()}"></p>
-            </div>
+                <p class="rating_text" th:text="${favorite.place.getDescription()}"></p><br>
+                <p>  Added on: </p><p class="place_added" th:text="${favorite.dateAdded}"></p><br>
+                <div id=button>
+                    <button type="submit" class="submit"><a th:href="@{/profilefav/{id}/delete(id=${favorite.place.getId()})}">Remove</a></button>
+                    <button type="button" class="cancelbtn"><a href="placedetail.html" th:href="@{/placedetail/{id}(id=${favorite.place.getId()})}">Go to place</a>
+                    </button>
+                </div>
+
+             </div>
         </div>
 
-    <div>
-            <table>
-                <tr>
-                    <th class="padding-right-15px">Date added</th>
-                    <th class="padding-right-80px">User Name</th>
-                    <th class="padding-right-100px">Place Name</th>
-                    <th class="padding-right-15px">Place Description</th>
-                </tr>
+    <div th:insert="fragments :: alert"></div>
 
-                <tr th:each="favorite : ${allFavorite}">
-                    <td th:text="${favorite.dateAdded}"></td>
-                    <td th:text="${favorite.user.getUserName()}"></td>
-                    <td th:text="${favorite.place.getName()}"></td>
-                    <td th:text="${favorite.place.getDescription()}"></td>
-                </tr>
-            </table>
+    <div class="container" id=buttons>
+        <button type="submit" class="submit"><a th:href="@{/profileinfo}">Back</a></button>
+        <button type="button" class="cancelbtn"><a th:href="@{/home}">Home</a></button>
 
     </div>
-
-    <div th:insert="fragments :: alert"></div>
 
 </div>
 
