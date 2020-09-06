@@ -75,10 +75,13 @@
                     <div class=element th:each="place : ${userPlaces}">
                         <div class=card>
                             <h3 th:text="${place.name}">name</h3>
+                            <td>
+<!--                                <img th:src="@/{'/static/images/ +${place.name}+ .jpg}'}">-->
+                            </td>
                             <p th:text="${place.description}"> Description </p>
                             <p th:text="${place.workingHours}"> Working hours</p>
                         </div>
-                        <div class=links><a href="">View</a><a th:href="@{/editplace/{id}(id=${place.id})}">Edit</a><a th:href="@{/deleteplace/{id}(id=${place.id})}">Remove</a>
+                        <div class=links><a th:href="@{/placedetail/{id}(id=${place.id})}">View</a><a th:href="@{/editplace/{id}(id=${place.id})}">Edit</a><a th:href="@{/deleteplace/{id}(id=${place.id})}">Remove</a>
                         </div>
                     </div>
         <!--            <div class=element>-->

@@ -119,7 +119,7 @@ public class PlacesServiceImp implements PlacesService {
      * @param user
      */
     @Override
-    public void addUserPlace(Place place, AppUser user) {
+    public Place addUserPlace(Place place, AppUser user) {
         place.setUser(user);
         List<Place> list = (List<Place>) placesRepository.findByName(place.getName());
         if (list.size() > 0) {
@@ -127,6 +127,7 @@ public class PlacesServiceImp implements PlacesService {
         } else {
             placesRepository.save(place);
         }
+        return place;
     }
 
     /**
@@ -284,18 +285,10 @@ public class PlacesServiceImp implements PlacesService {
         return placesRepository.findAllByOrderByCreatedDesc();
     }
 
-    /**
-     *
-     * @return
-     */
     @Override
-    public List<Place> mostPopularPlaces() {
-        List<Long> placeId = favoritesRepository.getPlacesFromFav();
-        List<Place> popularityClub = new ArrayList<>();
-        for (long id : placeId){
-            popularityClub.add(placesRepository.findById(id));
-        }
-        return popularityClub;
+    public List<Place> findByKeyword(String keyword) {
+        return placesRepository.findByKeyword(keyword);
     }
+
 
 }

@@ -6,8 +6,8 @@
     <title>
         <!-- Insert your title here -->
     </title>
-  <!--  <link type="text/css" href="../static/css/addplace.css" th:href="@{/css/addplace.css}" rel="stylesheet">
-    <link rel="stylesheet" href="../static/css/fragments.css" th:href="@{/css/fragments.css}"> -->
+    <link type="text/css" href="../static/css/addplace.css" th:href="@{/css/addplace.css}" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/fragments.css" th:href="@{/css/fragments.css}">
 </head>
 
 <body>
@@ -22,33 +22,31 @@
     <div>
     <h2>Search for users</h2>
     </div>
-    <form action="#" th:action="@{/adminuser}" method="get" th:object="${user}">
-        <input type="text" name="userSearch" id="search" th:value="${userSearch}"/>
+    <form action="#" th:action="@{/adminuser}" method="get">
+        <input type="text" name="keyword" id="search" />
         <input type="submit" value="Search"/>
         <div>
-        <input type="submit" value="All users"/> </div>
-        <div id=button_text>
-            <a href="adduserdmin.html" th:href="@{http://localhost:8080/adduseradmin}">
-                <p>Add User</p>
-            </a>
-        </div>
-         <div th:if="${not #lists.isEmpty(userSearch)}">
+<!--        <div id=button_text>-->
+<!--            <a href="adduserdmin.html" th:href="@{http://localhost:8080/adduseradmin}">-->
+<!--                <p>Add User</p>-->
+<!--            </a>-->
+<!--        </div>-->
               <h2>Users List</h2>
               <table class="table table-striped">
                   <tr>
                       <th>User ID</th>
                       <th>Name</th>
-                      <th>Password</th>
+<!--                      <th>Password</th>-->
                       <th>Email</th>
                       <th>Role</th>
                       <th>Date</th>
 
 
                   </tr>
-                  <tr th:each="user : ${userSearch}">
+                  <tr th:each="user : ${users}">
                       <td th:text="${user.id}">id</td>
                       <td th:text="${user.userName}">name</td>
-                      <td th:text="${user.password}">password</td>
+<!--                      <td th:text="${user.password}">password</td>-->
                       <td th:text="${user.email}">email</td>
                       <td th:text="${user.role}">role</td>
                       <td th:text="${user.created}">created</td>
@@ -56,7 +54,7 @@
                       <td><a th:href="@{/deleteuseradmin/{id}(id=${user.id})}">Delete</a></td>
                   </tr>
               </table>
-          </div>
+        </div>
       </form>
   </div>
   </body>

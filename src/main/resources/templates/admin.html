@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../static/css/adminstyle.css" th:href="@{/css/adminstyle.css}">
+<script type="text/javascript" th:inline="javascript" th:src="@{/js/tabs.js}">
+</script>
+
+</head>
+<body>
+
+<h2>Admin</h2>
+<p>Click on the buttons inside the tabbed menu:</p>
+
+<div class="tab">
+  <button class="tablinks" onclick="openTab(event, 'Users')">Users</button>
+  <button class="tablinks" onclick="openTab(event, 'Places')">Places</button>
+</div>
+
+<div id="Users" class="tabcontent">
+  <h3>Users</h3>
+  <h2>Search for users</h2>
+    <form action="#" th:action="@{/admin}" method="get" th:object="${user}">
+        <input type="text" name="userSearch" id="searchUser" th:value="${userSearch}"/>
+        <input type="submit" value="Search"/>
+        <div>
+        <input type="submit" value="All users"/> </div>
+        <div id=user_button_text>
+            <a href="adduserdmin.html" th:href="@{http://localhost:8080/adduseradmin}">
+                <p>Add User</p>
+            </a>
+        </div>
+         <div th:if="${not #lists.isEmpty(userSearch)}">
+              <h2>Users List</h2>
+              <table class="table table-striped">
+                  <tr>
+                      <th>User ID</th>
+                      <th>Name</th>
+                      <th>Password</th>
+                      <th>Email</th>
+                      <th>Role</th>
+                      <th>Date</th>
+
+
+                  </tr>
+                  <tr th:each="user : ${userSearch}">
+                      <td th:text="${user.id}">id</td>
+                      <td th:text="${user.userName}">name</td>
+                      <td th:text="${user.password}">password</td>
+                      <td th:text="${user.email}">email</td>
+                      <td th:text="${user.role}">role</td>
+                      <td th:text="${user.created}">created</td>
+                      <td><a th:href="@{/edituseradmin/{id}(id=${user.id})}">Edit</a></td>
+                      <td><a th:href="@{/deleteuseradmin/{id}(id=${user.id})}">Delete</a></td>
+                  </tr>
+              </table>
+          </div>
+      </form>
+</div>
+
+<div id="Places" class="tabcontent">
+  <h3>Places</h3>
+  <h2>Search for places</h2>
+    <form action="#" th:action="@{/admin/**}" method="get" th:object="${place}">
+        <input type="text" name="placeSearch" id="searchPlace" th:value="${placeSearch}"/>
+        <input type="submit" value="Search"/>
+        <div>
+         <div>
+                <a href="adminallplaces.html" th:href="@{http://localhost:8080/adminallplaces}">
+                    <p>Add Place</p>
+                </a>
+        <div id=button_text>
+            <a href="addplaceadmin.html" th:href="@{http://localhost:8080/addplaceadmin}">
+                <p>Add Place</p>
+            </a>
+        </div>
+         <div th:if="${not #lists.isEmpty(placeSearch)}">
+              <h2>Places List</h2>
+              <table class="table table-striped">
+                  <tr>
+                      <th>Place ID</th>
+                      <th>Name</th>
+                      <th>County</th>
+                      <th>City</th>
+                      <th>Address</th>
+                      <th>Coordinates</th>
+                      <th>Phone Number</th>
+                      <th>Email</th>
+                      <th>Category</th>
+                      <th>Subcategory</th>
+                      <th>Work hours</th>
+                      <th>Description</th>
+                      <th>Date</th>
+                      <th>Created By</th>
+
+                  </tr>
+                  <tr th:each="place : ${placeSearch}">
+                      <td th:text="${place.id}">id</td>
+                      <td th:text="${place.name}">name</td>
+                      <td th:text="${place.county}">county</td>
+                      <td th:text="${place.city}">city</td>
+                      <td th:text="${place.address}">address</td>
+                      <td th:text="${place.coordinates}">coordinates</td>
+                      <td th:text="${place.phoneNumber}">phoneNumber</td>
+                      <td th:text="${place.email}">email</td>
+                      <td th:text="${place.category}">category</td>
+                      <td th:text="${place.subcategory}">subcategory</td>
+                      <td th:text="${place.workingHours}">workingHours</td>
+                      <td th:text="${place.description}">description</td>
+                      <td th:text="${place.created}">created</td>
+                      <td th:text="${place.user}">user</td>
+                      <td><a th:href="@{/editplaceadmin/{id}(id=${place.id})}">Edit</a></td>
+                      <td><a th:href="@{/deleteplaceadmin/{id}(id=${place.id})}">Delete</a></td>
+                  </tr>
+              </table>
+          </div>
+      </form>
+  </div>
+</div>
+
+
+</body>
+</html>

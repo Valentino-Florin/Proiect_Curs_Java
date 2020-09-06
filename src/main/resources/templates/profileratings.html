@@ -45,32 +45,22 @@ Authenticated user role:
                 <input type="number" class="rating" th:value="${ratings.starRating}"
                        readonly="true" data-show-clear="false" data-show-caption="false" data-size="xs"><br>
                 <p class="rating_text" th:text="${ratings.comment}"></p>
+                <div id=button>
+                    <button type="submit" class="submit"><a th:href="@{/profileratings/{id}/delete(id=${ratings.id})}">Remove</a></button>
+                    <button type="button" class="cancelbtn"><a href="placedetail.html" th:href="@{/placedetail/{id}(id=${ratings.place.getId()})}">Go to place</a>
+                    </button>
+                </div>
+
             </div>
         </div>
 
-
-     <div>
-         <table>
-             <tr>
-                 <th class="padding-right-15px">Rating</th>
-                 <th class="padding-right-80px">Comment</th>
-                 <th class="padding-right-100px">Place Name</th>
-                 <th class="padding-right-15px">Place Description</th>
-             </tr>
-
-             <tr th:each="ratings : ${allRated}">
-                 <td> <input type="number" class="rating" th:value="${ratings.starRating}"
-                             readonly="true" data-show-clear="false" data-show-caption="false" data-size="xs">
-                 </td>
-                 <td th:text="${ratings.comment}"></td>
-                 <td th:text="${ratings.place.getName()}"></td>
-                 <td th:text="${ratings.place.getDescription()}"></td>
-             </tr>
-         </table>
-
-     </div>
-
     <div th:insert="fragments :: alert"></div>
+
+    <div class="container" id=buttons>
+        <button type="submit" class="submit"><a th:href="@{/profileinfo}">Back</a></button>
+        <button type="button" class="cancelbtn"><a th:href="@{/home}">Home</a></button>
+
+    </div>
 
 </div>
 

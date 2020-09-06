@@ -68,6 +68,7 @@ public class RatingServiceImpl implements RatingService {
         ratingRepository.delete(findById(id));
     }
 
+
     /**
      *
      * @param id

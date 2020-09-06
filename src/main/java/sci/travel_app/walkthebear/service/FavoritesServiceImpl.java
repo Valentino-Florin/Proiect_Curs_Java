@@ -29,6 +29,11 @@ public class FavoritesServiceImpl implements FavoritesService{
         favoritesRepository.save(favorite);
 
     }
+    @Override
+    public Favorite findById(long id) {
+
+        return favoritesRepository.findById(id);
+    }
 
     /**
      * creates a new Favorite object and saves to repository

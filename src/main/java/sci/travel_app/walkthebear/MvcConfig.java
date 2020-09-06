@@ -40,6 +40,7 @@ public class MvcConfig implements WebMvcConfigurer {
         registry.addViewController("/deleteplaceadmin/{id}").setViewName("deleteplaceadmin");
         registry.addViewController("/adminallplaces").setViewName("adminallplaces");
         registry.addViewController("/editplace/{id}").setViewName("editplace");
+        registry.addViewController("/admin").setViewName("admin");
     }
 
     @Override

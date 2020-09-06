@@ -14,7 +14,7 @@ public interface PlacesService {
     List<Place>  getPlaceByName(String name);
     List<Place> getAllPlaces();
     List<Place> getAllUserPlaces(AppUser user);
-    public void addUserPlace(Place place, AppUser user);
+    public Place addUserPlace(Place place, AppUser user);
     List<Place> getPlaceByCategory(Category category);
     Place addPlace(Place place);
     void updatePlace(Place place);
@@ -26,4 +26,5 @@ public interface PlacesService {
     Page<Place> getPaginatedPlaceListByKeyword(int pageNum, String sortField, String sortDir, String keyword);
     List <Place> latestPlaces();
     List<Place> mostPopularPlaces();
+    List <Place> findByKeyword(String keyword);
 }
