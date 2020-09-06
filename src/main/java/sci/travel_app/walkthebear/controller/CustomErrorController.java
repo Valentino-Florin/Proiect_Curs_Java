@@ -1,4 +1,3 @@
-/*
 package sci.travel_app.walkthebear.controller;
 
 import org.springframework.boot.web.servlet.error.ErrorController;
@@ -18,4 +17,3 @@ public class CustomErrorController implements ErrorController {
         return "/error";
     }
 }
-*/

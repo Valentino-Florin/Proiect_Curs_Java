@@ -37,8 +37,8 @@ public class AppUserServiceImp implements AppUserService {
         updatedUser.setId(id);
         updatedUser.setUserName(user.getUserName());
         updatedUser.setEmail(user.getEmail());
-        updatedUser.setCreated(user.getCreated());
-        updatedUser.setRole(user.getRole());
+        updatedUser.setCreated(appUserRepository.findById(id).getCreated());
+        updatedUser.setRole(appUserRepository.findById(id).getRole());
         updatedUser.setPassword(passwordEncoder.encode(user.getPassword()));
 
         appUserRepository.save(updatedUser);

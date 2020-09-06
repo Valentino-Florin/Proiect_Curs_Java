@@ -15,6 +15,7 @@
   </script>
 </head>
 <body>
+    <div th:insert="fragments :: header"></div>
 <div>
   <h2>Edit Place</h2>
   <form action="#"
@@ -114,10 +115,11 @@
 </div> -->
 <div id=buttons>
   <button type="submit">Submit</button>
-  <button type="cancel">Cancel</button>
+  <button type="cancel"><a th:href="@{/placemanager}">Cancel</a></button>
 </div>
   </form>
 </div>
+    <div th:insert="fragments :: footer"></div>
 </body>
 </html>
 

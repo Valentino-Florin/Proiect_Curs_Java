@@ -170,6 +170,7 @@ public class PlacesServiceImp implements PlacesService {
         return placesRepository.findPlaceByUser(user);
     }
 
+    @Override
     public void updatePhotos (Place place, String thumbnail, String gallery1, String gallery2, String gallery3, String gallery4, String gallery5) {
         Place placeBis = new Place();
         placeBis.setId(place.getId());
@@ -285,9 +286,28 @@ public class PlacesServiceImp implements PlacesService {
         return placesRepository.findAllByOrderByCreatedDesc();
     }
 
+    /**
+     *
+     * @param keyword
+     * @return
+     */
     @Override
     public List<Place> findByKeyword(String keyword) {
         return placesRepository.findByKeyword(keyword);
+    }
+
+    /**
+     *
+     * @return
+     */
+    @Override
+    public List<Place> mostPopularPlaces() {
+        List<Long> placeId = favoritesRepository.getPlacesFromFav();
+        List<Place> popularityClub = new ArrayList<>();
+        for (long id : placeId){
+            popularityClub.add(placesRepository.findById(id));
+        }
+        return popularityClub;
     }
 
 

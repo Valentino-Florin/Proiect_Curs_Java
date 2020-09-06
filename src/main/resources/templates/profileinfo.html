@@ -6,8 +6,6 @@
     <title>Profile info</title>
 
     <link rel="stylesheet" href="../static/css/profileinfo.css" th:href="@{/css/profileinfo.css}">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css"
-          th:href="@{https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css}">
     <link rel="stylesheet" href="../static/css/fragments.css" th:href="@{/css/fragments.css}">
 
 </head>
@@ -21,9 +19,9 @@
 
 <!-- main content start -->
 
-<div class=container id=main_container>
+<div class=boxes id=main_container>
 
-    <div class=container id=filter_container>
+    <div class=boxes id=link_container>
         <div id=filters>
             <a th:href="@{/editprofile/{id}(id=${currentUser.id})}">Edit profile</a><br>
             <a th:href="@{/profilefav}">Profile favorites</a><br>
@@ -32,7 +30,7 @@
     </div>
 
 
-    <div class=containerz id=additional_content_column>
+    <div class=boxes id=additional_content_column>
         <div id=name>
             <p th:text="${currentUser.userName}">Username</p>
             <p th:text="${currentUser.email}">email</p>

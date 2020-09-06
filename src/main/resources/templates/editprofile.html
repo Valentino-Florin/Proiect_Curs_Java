@@ -13,12 +13,15 @@
 </head>
 <body>
 
-</div>
+<!--don't forget to remove!-->
+    
 Authenticated username:
 <div sec:authentication="name"></div>
 Authenticated user role:
 <div sec:authentication="principal.authorities"></div>
 
+    
+    
 <h1>EDIT PROFILE</h1>
 
 
@@ -54,7 +57,7 @@ Authenticated user role:
 
   <div id=buttons>
     <button type="submit">Submit</button>
-    <button type="cancel">Cancel</button>
+    <button type="cancel"><a th:href="@{/profileinfo}">Cancel</a></button>
   </div>
 
 <!--<div class="field is-grouped">
