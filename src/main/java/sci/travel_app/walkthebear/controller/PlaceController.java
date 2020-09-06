@@ -113,6 +113,12 @@ public class PlaceController {
     @GetMapping("/addphotos/{id}")
     public String showPhotosForm(@PathVariable("id") long id, Model model) {
         model.addAttribute("place", placesService.getPlaceById(id));
+        model.addAttribute("hasThumbnail", placesService.hasPic(placesService.getPlaceById(id).getThumbnailFileName()));
+        model.addAttribute("hasG1", placesService.hasPic(placesService.getPlaceById(id).getGalleryImage1FileName()));
+        model.addAttribute("hasG2", placesService.hasPic(placesService.getPlaceById(id).getGalleryImage2FileName()));
+        model.addAttribute("hasG3", placesService.hasPic(placesService.getPlaceById(id).getGalleryImage3FileName()));
+        model.addAttribute("hasG4", placesService.hasPic(placesService.getPlaceById(id).getGalleryImage4FileName()));
+        model.addAttribute("hasG5", placesService.hasPic(placesService.getPlaceById(id).getGalleryImage5FileName()));
         return "photos";
     }
 
@@ -155,6 +161,7 @@ public class PlaceController {
         }
 
         placesService.updatePhotos(savedPlace, fileNameT, fileNameG1, fileNameG2, fileNameG3, fileNameG4, fileNameG5);
+
         model.addAttribute("place", savedPlace);
 
         redirectAttributes.addFlashAttribute("message", "Photos saved!");

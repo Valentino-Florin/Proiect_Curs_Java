@@ -218,6 +218,14 @@ public class PlacesServiceImp implements PlacesService {
 
         placesRepository.save(placeBis);
     }
+      public Boolean hasPic (String s){
+        if (!"".equals(s)){
+            return true;
+        }
+        else {
+            return false;
+        }
+      }
 
     /**
      *
