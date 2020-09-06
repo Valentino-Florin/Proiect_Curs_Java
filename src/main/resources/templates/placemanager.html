@@ -82,6 +82,7 @@
                             <p th:text="${place.workingHours}"> Working hours</p>
                         </div>
                         <div class=links><a th:href="@{/placedetail/{id}(id=${place.id})}">View</a><a th:href="@{/editplace/{id}(id=${place.id})}">Edit</a><a th:href="@{/deleteplace/{id}(id=${place.id})}">Remove</a>
+                            <a th:href="@{/addphotos/{id}(id=${place.id})}">Add/edit photos</a>
                         </div>
                     </div>
         <!--            <div class=element>-->

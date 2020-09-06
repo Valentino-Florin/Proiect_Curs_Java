@@ -262,10 +262,9 @@ a:active {
 
 
 /* _______________________________ footer start _________________________________ */
-/*footer {
-    background-color: cadetblue;
-    height: 100px;
-}  */
+footer {
+  margin-top: 40px;
+}  
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,500,300,700);
 
 * {

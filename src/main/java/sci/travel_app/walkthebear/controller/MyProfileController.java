@@ -59,24 +59,23 @@ public class MyProfileController {
     }
 
     @GetMapping("/editprofile/{id}")
-    public String showEditProfileInfoForm(@PathVariable("id") long id, Model model, Principal principal) {
+    public String showEditProfileInfoForm(@PathVariable("id") long id, Model model) {
         model.addAttribute("appUser", appUserServiceImp.findById(id));
 
         return "editprofile";
     }
 
     @PostMapping("/editprofile/{id}/send")
-    public String changeProfileInfo(@PathVariable("id") long id, @Valid Principal principal, Model model, BindingResult result, RedirectAttributes redirectAttributes) {
+    public String changeProfileInfo(@PathVariable("id") long id, @Valid AppUser user, BindingResult result, Model model, RedirectAttributes redirectAttributes) {
         if (result.hasErrors()) {
             redirectAttributes.addFlashAttribute("message", "Could not update");
             return "editprofile";
         }
 
-        AppUser user = appUserServiceImp.findById(id);
-        model.addAttribute("appUser", user);
+        model.addAttribute("appUser", appUserServiceImp.findById(id));
         appUserServiceImp.update(user, id);
 
-        return "editprofile";
+        return "redirect:/profileinfo";
     }
 
     @GetMapping("/profileratings")

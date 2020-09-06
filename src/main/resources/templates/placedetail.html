@@ -86,7 +86,7 @@
         </div>
     </div>
     <div class=containerz id=rating_container>
-        <div class=box id=rating_box>
+        <div class=box id=rating_box sec:authorize="hasAuthority('Traveler')">
             <style scoped>
                 @import "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css";
 
@@ -121,7 +121,7 @@
             </div>
 
         </div>
-        <div class=box id=user_rating>
+        <div class=box id=user_rating >
             <h3>User reviews</h3>
             <div class=rating_list>
                 <table>

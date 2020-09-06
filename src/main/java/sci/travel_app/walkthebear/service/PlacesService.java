@@ -27,4 +27,5 @@ public interface PlacesService {
     List <Place> latestPlaces();
     List<Place> mostPopularPlaces();
     List <Place> findByKeyword(String keyword);
+    void updatePhotos (Place place, String thumbnail, String gallery1, String gallery2, String gallery3, String gallery4, String gallery5);
 }
