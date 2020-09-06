@@ -193,3 +193,8 @@ button {
     background-color: #DEEFFA;
 }
 
+
+.gallery {
+    height: 350px;
+    width: auto;
+}

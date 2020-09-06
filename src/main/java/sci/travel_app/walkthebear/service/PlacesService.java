@@ -25,5 +25,6 @@ public interface PlacesService {
     Page<Place> getPaginatedPlaceListByCategory(int pageNum, String sortField, String sortDir, Category category);
     Page<Place> getPaginatedPlaceListByKeyword(int pageNum, String sortField, String sortDir, String keyword);
     List <Place> latestPlaces();
+    List<Place> mostPopularPlaces();
     List <Place> findByKeyword(String keyword);
 }

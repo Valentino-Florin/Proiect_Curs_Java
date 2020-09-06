@@ -14,13 +14,8 @@ public interface FavoritesRepository extends JpaRepository<Favorite, Long > {
     Favorite findByPlaceAndUser(Place place, AppUser user);
     List<Favorite> findByUser(AppUser user);
     List<Favorite> findByPlace(Place place);
-//    @Query("SELECT       `fk_place_id`,\n" +
-//            "             COUNT(`fk_place_id`) AS `value_occurrence` \n" +
-//            "    FROM     `favorite`\n" +
-//            "    GROUP BY `fk_place_id`\n" +
-//            "    ORDER BY `value_occurrence` DESC\n" +
-//            "    LIMIT    2;")
-//    List<Integer> getPlacesFromFav();
+    @Query(value = "SELECT `fk_place_id`, COUNT(`fk_place_id`) AS `value_occurrence`  FROM  `favorite` GROUP BY `fk_place_id`  ORDER BY `value_occurrence` DESC;",  nativeQuery = true)
+    List<Long> getPlacesFromFav();
     
 }
 

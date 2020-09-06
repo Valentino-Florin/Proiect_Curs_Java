@@ -40,21 +40,18 @@ public class Place {
     @Column(name = "DESCRIPTION", length=1000, nullable = false)
     private String description;
 
-    @Column(name = "THUMBNAIL", nullable = true)
-    private String thumbnailPath;
-    @Transient
-    private MultipartFile thumbnail;
-
-    @Column (name = "GALLERY_IMAGE1", nullable = true)
-    private String galleryImage1;
-    @Column (name = "GALLERY_IMAGE2", nullable = true)
-    private String galleryImage2;
-    @Column (name = "GALLERY_IMAGE3", nullable = true)
-    private String galleryImage3;
-    @Column (name = "GALLERY_IMAGE4", nullable = true)
-    private String galleryImage4;
-    @Column (name = "GALLERY_IMAGE5", nullable = true)
-    private String galleryImage5;
+    @Column(name = "THUMBNAIL")
+    private String thumbnailFileName;
+    @Column (name = "GALLERY_IMAGE1")
+    private String galleryImage1FileName;
+    @Column (name = "GALLERY_IMAGE2")
+    private String galleryImage2FileName;
+    @Column (name = "GALLERY_IMAGE3")
+    private String galleryImage3FileName;
+    @Column (name = "GALLERY_IMAGE4")
+    private String galleryImage4FileName;
+    @Column (name = "GALLERY_IMAGE5")
+    private String galleryImage5FileName;
 
     @Temporal(TemporalType.TIMESTAMP)
     @DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
@@ -64,10 +61,14 @@ public class Place {
     @JoinColumn(name = "created_by")
     private AppUser user;
 
+//    @Transient
+//    private MultipartFile thumbnail;
+
+    //constructors
     public Place(){
     }
 
-    public Place(String name, String county, String city, String address, String phoneNumber, String email, Category category, SubCategory subcategory, String description, String galleryImage1, String galleryImage2, String galleryImage3, String galleryImage4, String galleryImage5, AppUser user) {
+    public Place(String name, String county, String city, String address, String phoneNumber, String email, Category category, SubCategory subcategory, String description, String galleryImage1FileName, String galleryImage2FileName, String galleryImage3FileName, String galleryImage4FileName, String galleryImage5FileName, AppUser user) {
         this.name = name;
         this.county = county;
         this.city = city;
@@ -77,15 +78,16 @@ public class Place {
         this.category = category;
         this.subcategory = subcategory;
         this.description = description;
-        this.galleryImage1 = galleryImage1;
-        this.galleryImage2 = galleryImage2;
-        this.galleryImage3 = galleryImage3;
-        this.galleryImage4 = galleryImage4;
-        this.galleryImage5 = galleryImage5;
+        this.galleryImage1FileName = galleryImage1FileName;
+        this.galleryImage2FileName = galleryImage2FileName;
+        this.galleryImage3FileName = galleryImage3FileName;
+        this.galleryImage4FileName = galleryImage4FileName;
+        this.galleryImage5FileName = galleryImage5FileName;
         this.created = new Date();
         this.user = user;
     }
 
+    //getters & setters
     public Category getCategory() {
         return category;
     }
@@ -187,81 +189,66 @@ public class Place {
         this.name = name;
     }
 
-    public String getThumbnailPath() {
-        return thumbnailPath;
+    public String getThumbnailFileName() {
+        return thumbnailFileName;
     }
 
-    public void setThumbnailPath(String thumbnailPath) {
-        this.thumbnailPath = thumbnailPath;
+    public void setThumbnailFileName(String thumbnailFileName) {
+        this.thumbnailFileName = thumbnailFileName;
     }
 
-    public MultipartFile getThumbnail() {
-        return thumbnail;
+    public String getGalleryImage1FileName() {
+        return galleryImage1FileName;
     }
 
-    public void setThumbnail(MultipartFile thumbnail) {
-        this.thumbnail = thumbnail;
+    public void setGalleryImage1FileName(String galleryImage1FileName) {
+        this.galleryImage1FileName = galleryImage1FileName;
     }
 
-    public String getGalleryImage1() {
-        return galleryImage1;
+    public String getGalleryImage2FileName() {
+        return galleryImage2FileName;
     }
 
-    public void setGalleryImage1(String galleryImage1) {
-        this.galleryImage1 = galleryImage1;
+    public void setGalleryImage2FileName(String galleryImage2FileName) {
+        this.galleryImage2FileName = galleryImage2FileName;
     }
 
-    public String getGalleryImage2() {
-        return galleryImage2;
+    public String getGalleryImage3FileName() {
+        return galleryImage3FileName;
     }
 
-    public void setGalleryImage2(String galleryImage2) {
-        this.galleryImage2 = galleryImage2;
+    public void setGalleryImage3FileName(String galleryImage3FileName) {
+        this.galleryImage3FileName = galleryImage3FileName;
     }
 
-    public String getGalleryImage3() {
-        return galleryImage3;
+    public String getGalleryImage4FileName() {
+        return galleryImage4FileName;
     }
 
-    public void setGalleryImage3(String galleryImage3) {
-        this.galleryImage3 = galleryImage3;
+    public void setGalleryImage4FileName(String galleryImage4FileName) {
+        this.galleryImage4FileName = galleryImage4FileName;
     }
 
-    public String getGalleryImage4() {
-        return galleryImage4;
+    public String getGalleryImage5FileName() {
+        return galleryImage5FileName;
     }
 
-    public void setGalleryImage4(String galleryImage4) {
-        this.galleryImage4 = galleryImage4;
+    public void setGalleryImage5FileName(String galleryImage5FileName) {
+        this.galleryImage5FileName = galleryImage5FileName;
     }
 
-    public String getGalleryImage5() {
-        return galleryImage5;
-    }
 
-    public void setGalleryImage5(String galleryImage5) {
-        this.galleryImage5 = galleryImage5;
-    }
-//    @Override
-//    public String toString() {
-//        return "Place{" +
-//                "id=" + id +
-//                ", name='" + name + '\'' +
-//                ", county='" + county + '\'' +
-//                ", city='" + city + '\'' +
-//                ", address='" + address + '\'' +
-//                ", coordinates='" + coordinates + '\'' +
-//                ", phoneNumber='" + phoneNumber + '\'' +
-//                ", email='" + email + '\'' +
-//                ", category=" + category +
-//                ", subcategory=" + subcategory +
-//                ", workingHours='" + workingHours + '\'' +
-//                ", description='" + description + '\'' +
-//                ", created=" + created +
-//                ", user=" + user +
-//                '}';
+    //getters & setters for transient field
+//    public MultipartFile getThumbnail() {
+//        return thumbnail;
 //    }
+//
+//    public void setThumbnail(MultipartFile thumbnail) {
+//        this.thumbnail = thumbnail;
+//    }
+//
 
+// methods
 
     @Override
     public String toString() {
@@ -270,7 +257,33 @@ public class Place {
 
     @Transient
     public String getThumbnailImagePath(){
-        if (thumbnailPath == null || id == 0) return null;
-        return "/user-images/" + id + "/" + thumbnailPath;
+        if (thumbnailFileName == null || id == 0) return null;
+        return "/user-images/" + id + "/" + thumbnailFileName;
     }
+    @Transient
+    public String getGalleryImage1Path(){
+        if (galleryImage1FileName == null || id == 0) return null;
+        return "/user-images/" + id + "/" + galleryImage1FileName;
+    }
+    @Transient
+    public String getGalleryImage2Path(){
+        if (galleryImage2FileName == null || id == 0) return null;
+        return "/user-images/" + id + "/" + galleryImage2FileName;
+    }
+    @Transient
+    public String getGalleryImage3Path(){
+        if (galleryImage3FileName == null || id == 0) return null;
+        return "/user-images/" + id + "/" + galleryImage3FileName;
+    }
+    @Transient
+    public String getGalleryImage4Path(){
+        if (galleryImage4FileName == null || id == 0) return null;
+        return "/user-images/" + id + "/" + galleryImage4FileName;
+    }
+    @Transient
+    public String getGalleryImage5Path(){
+        if (galleryImage5FileName == null || id == 0) return null;
+        return "/user-images/" + id + "/" + galleryImage5FileName;
+    }
+
 }

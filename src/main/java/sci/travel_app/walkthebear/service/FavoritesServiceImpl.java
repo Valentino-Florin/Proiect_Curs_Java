@@ -19,6 +19,7 @@ public class FavoritesServiceImpl implements FavoritesService{
     @Autowired
     private AppUserRepository userRepository;
 
+
     //not used
     public List<Favorite> getAllFavorites(){
         return favoritesRepository.findAll();
@@ -93,10 +94,6 @@ public class FavoritesServiceImpl implements FavoritesService{
         if(user == null) return false;
         else
           return favoritesRepository.findByPlaceAndUser(place, user) != null;
-    }
-    //not used
-    public boolean isAdded2(Place place){
-        return favoritesRepository.findByPlace(place).size() > 0;
     }
 
 }

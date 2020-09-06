@@ -22,7 +22,6 @@ import sci.travel_app.walkthebear.service.UploadService;
 import javax.validation.Valid;
 import java.io.IOException;
 import java.security.Principal;
-import java.io.IOException;
 import java.util.Objects;
 
 
@@ -39,19 +38,7 @@ public class PlaceController {
     @Autowired
     private UploadService uploadService;
     private static org.apache.logging.log4j.Logger logger = LogManager.getLogger(PlaceController.class);
-//    @Autowired
-//    private RatingServiceImpl ratingService;
 
-
-//    //path example: http://localhost:8080/places/1
-//    @GetMapping(value="/places/{id}")
-//    public String getPlace(@PathVariable("id") long id, Model model) {
-//        Place place = placesService.getPlaceById(id);
-//        List<Rating> ratingList = ratingService.getAllRatingsOfPlaceById(id);
-//        model.addAttribute("place", place);
-//        model.addAttribute("ratingList", ratingList);
-//        return "placedetail";
-//    }
 
     /**
      * Method used to populate "/placemanager" with the places specific to a logged user
@@ -73,43 +60,15 @@ public class PlaceController {
         return "addplace";
     }
 
-    //comment out request params
     @PostMapping("/addplace")
-    public String addNewPlace(@Valid Place place, BindingResult result, Model model, Principal principal, RedirectAttributes redirectAttributes,
-                              @RequestParam("thumbnail") MultipartFile multipartFile,
-                              @RequestParam("galleryImg") MultipartFile[] galleryImageFiles) throws IOException {
+    public String addNewPlace(@Valid Place place, BindingResult result, Model model, Principal principal, RedirectAttributes redirectAttributes)
+                              {
         if (result.hasErrors()) {
             return "addplace";
         }
-        String fileNameT = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
-        place.setThumbnailPath(fileNameT);
-        //comment  out from here
-        int count = 0;
-        for (MultipartFile galleryImage : galleryImageFiles) {
-            if (galleryImage != null) {
-                String fileNameG = StringUtils.cleanPath(galleryImage.getOriginalFilename());
-                if (count == 0) place.setGalleryImage1(fileNameG);
-                if (count == 1) place.setGalleryImage2(fileNameG);
-                if (count == 2) place.setGalleryImage3(fileNameG);
-                if (count == 3) place.setGalleryImage4(fileNameG);
-                if (count == 4) place.setGalleryImage5(fileNameG);
-                count++;
-            }
-        }
-//        to here
-        Place savedPlace = placesService.addUserPlace(place, appUserServiceImp.findByUserName(principal.getName()));
+        Place savedPlace = placesService.addPlace(place);
 
-
-        //comment  out from here
-        uploadService.uploadThumbnailFile(savedPlace, multipartFile, fileNameT);
-        for (MultipartFile galleryImage : galleryImageFiles) {
-            if (galleryImage != null) {
-                String fileNameG = StringUtils.cleanPath(galleryImage.getOriginalFilename());
-                uploadService.uploadGalleryImageFile(savedPlace, galleryImage, fileNameG);
-            }
-        }
-//        to here
-
+        placesService.addUserPlace(place, appUserRepository.findByUserName(principal.getName()));
         model.addAttribute("place", placesService.getAllPlaces());
         redirectAttributes.addFlashAttribute("message", "Place saved!");
         logger.log(Level.INFO, "Place added : " + place);
@@ -139,6 +98,103 @@ public class PlaceController {
         logger.log(Level.INFO, "Updated place: ID " + id);
         return "placemanager";
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    @GetMapping("/addphotos/{id}")
+    public String showPhotosForm(@PathVariable("id") long id, Model model) {
+        model.addAttribute("place", placesService.getPlaceById(id));
+        model.addAttribute("hasThumbnail", placesService.hasPic(placesService.getPlaceById(id).getThumbnailFileName()));
+        model.addAttribute("hasG1", placesService.hasPic(placesService.getPlaceById(id).getGalleryImage1FileName()));
+        model.addAttribute("hasG2", placesService.hasPic(placesService.getPlaceById(id).getGalleryImage2FileName()));
+        model.addAttribute("hasG3", placesService.hasPic(placesService.getPlaceById(id).getGalleryImage3FileName()));
+        model.addAttribute("hasG4", placesService.hasPic(placesService.getPlaceById(id).getGalleryImage4FileName()));
+        model.addAttribute("hasG5", placesService.hasPic(placesService.getPlaceById(id).getGalleryImage5FileName()));
+        return "photos";
+    }
+
+    @PostMapping("/addphotos/{id}")
+    public String addPhotos(@PathVariable("id") long id, @Valid Place place, BindingResult result, Model model, RedirectAttributes redirectAttributes,
+                              @RequestParam(value ="thumbnail", required = false) MultipartFile multipartFile,
+                              @RequestParam(value = "galleryImage1", required = false) MultipartFile galleryImageFiles1,
+                            @RequestParam(value = "galleryImage2", required = false) MultipartFile galleryImageFiles2,
+                            @RequestParam(value = "galleryImage3", required = false) MultipartFile galleryImageFiles3,
+                            @RequestParam(value = "galleryImage4", required = false) MultipartFile galleryImageFiles4,
+                            @RequestParam(value = "galleryImage5", required = false) MultipartFile galleryImageFiles5) throws IOException {
+        if (result.hasErrors()) {
+            redirectAttributes.addFlashAttribute("message", "Could not update");
+            return "photos/{id}";
+        }
+        Place savedPlace = placesService.getPlaceById(id);
+        String fileNameT = multipartFile.getOriginalFilename();
+        if (!"".equals(fileNameT)) {
+            uploadService.uploadImageFile(savedPlace, multipartFile, StringUtils.cleanPath(multipartFile.getOriginalFilename()));
+        }
+        String fileNameG1 = galleryImageFiles1.getOriginalFilename();
+        if (!"".equals(fileNameG1)){
+        uploadService.uploadImageFile(savedPlace, galleryImageFiles1, StringUtils.cleanPath(galleryImageFiles1.getOriginalFilename()));
+        }
+        String fileNameG2 = galleryImageFiles2.getOriginalFilename();
+        if (!"".equals(fileNameG2)) {
+            uploadService.uploadImageFile(savedPlace, galleryImageFiles2, StringUtils.cleanPath(galleryImageFiles2.getOriginalFilename()));
+        }
+        String fileNameG3 = galleryImageFiles3.getOriginalFilename();
+        if (!"".equals(fileNameG3)) {
+            uploadService.uploadImageFile(savedPlace, galleryImageFiles3, StringUtils.cleanPath(galleryImageFiles3.getOriginalFilename()));
+        }
+        String fileNameG4 = galleryImageFiles4.getOriginalFilename();
+        if (!"".equals(fileNameG4)) {
+            uploadService.uploadImageFile(savedPlace, galleryImageFiles4, StringUtils.cleanPath(galleryImageFiles4.getOriginalFilename()));
+        }
+        String fileNameG5 = galleryImageFiles5.getOriginalFilename();
+        if (!"".equals(fileNameG5)) {
+            uploadService.uploadImageFile(savedPlace, galleryImageFiles5, StringUtils.cleanPath(galleryImageFiles5.getOriginalFilename()));
+        }
+
+        placesService.updatePhotos(savedPlace, fileNameT, fileNameG1, fileNameG2, fileNameG3, fileNameG4, fileNameG5);
+
+        model.addAttribute("place", savedPlace);
+
+        redirectAttributes.addFlashAttribute("message", "Photos saved!");
+        logger.log(Level.INFO, "Photos added to : " + place );
+        return "redirect:/addphotos/{id}";
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     /**
      * Method used to delete a place, specific to a logged user, by using the ID

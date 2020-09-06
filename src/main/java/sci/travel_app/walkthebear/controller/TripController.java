@@ -1,25 +1,27 @@
 package sci.travel_app.walkthebear.controller;
 
-import com.google.gson.Gson;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import sci.travel_app.walkthebear.data_utils.FileService;
 import sci.travel_app.walkthebear.model.entities.*;
 import sci.travel_app.walkthebear.repository.AppUserRepository;
 import sci.travel_app.walkthebear.service.*;
 
 import javax.validation.Valid;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.security.Principal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 
 @Controller
 public class TripController {
@@ -38,20 +40,24 @@ public class TripController {
     private AppUserRepository appUserRepository;
     @Autowired
     private AppUserServiceImp appUserServiceImp;
+    @Autowired
+    private FileService fileService;
 
     private static org.apache.logging.log4j.Logger logger = LogManager.getLogger(TripController.class);
 
-//    public TripController() {
-//    }
+    public Map <String, List<HourMapping>> itineraryMap(List <DailySchedule> allDaysForItinerary){
+        Map<String, List<HourMapping>> timeTable = new HashMap<>();
+        for (DailySchedule day : allDaysForItinerary) {
+            timeTable.put(day.getName(),hourMappingService.getFullDay(day));
+        }
+        return timeTable;
+    }
 
-//Methods for trip manager page
-
-    //switch to find by user after user login is implemented
-
-    //show all itineraries
 
 
-    //add Principal principal to argument list
+//mappings for trip manager page
+
+
     @GetMapping("/tripmanager")
     public String getAllTrips(Model model, Principal principal) {
         model.addAttribute("allTrips", itineraryService.findByUser(appUserServiceImp.findByUserName(principal.getName())));
@@ -86,20 +92,19 @@ public class TripController {
     //save itinerary
     @PostMapping("/planner/save")
     public String saveTrip(@ModelAttribute("trip") Itinerary trip,  BindingResult result, RedirectAttributes redirectAttributes, Principal principal) {
-       AppUser currentUser = appUserServiceImp.findByUserName(principal.getName());
+        AppUser currentUser = appUserServiceImp.findByUserName(principal.getName());
         Itinerary savedItinerary = itineraryService.saveItinerary(trip, currentUser);
         logger.log(Level.INFO, "Created new itinerary: ID "+ savedItinerary.getItineraryId());
         redirectAttributes.addFlashAttribute("message", "Trip saved!");
         return "redirect:/planner/" + savedItinerary.getItineraryId();
     }
 
+
     //view + edit itinerary
     @GetMapping("/planner/{id}")
     public String editTrip(@PathVariable(value = "id") long id, Model model, Principal principal) {
         model.addAttribute("itinerary" , itineraryService.findById(id));
         model.addAttribute("allDaysForItinerary", dailyScheduleService.getAllDays(itineraryService.findById(id)));
-//        List<Place> unplannedPlaces = unplannedPlacesListService.findByUser(appUserServiceImp.findByUserName(principal.getName())).getUnplannedPlacesTemp();
-//        model.addAttribute("unplannedPlaces", unplannedPlaces);
         return "planneredit";
     }
 
@@ -112,20 +117,16 @@ public class TripController {
         model.addAttribute("itinerary" , itineraryService.findById(id));
         itineraryService.update(itinerary, id, appUserServiceImp.findByUserName(principal.getName()));
         redirectAttributes.addFlashAttribute("message", "Trip updated!");
-        return "redirect:/planner/"+id;
+        return "redirect:/planner/" + id;
     }
 
-    //view + print + download pdf
+    //view + print + download json
     @GetMapping("/planner/view/{id}")
     public String showTrip(@PathVariable(value = "id") long id, Model model) {
         model.addAttribute("itinerary" , itineraryService.findById(id));
         List<DailySchedule> allDaysForItinerary = dailyScheduleService.getAllDays(itineraryService.findById(id));
         model.addAttribute("allDaysForItinerary", allDaysForItinerary);
-        Map<String, List<HourMapping>> timeTable = new HashMap<>();
-        for (DailySchedule day : allDaysForItinerary) {
-            timeTable.put(day.getName(),hourMappingService.getFullDay(day));
-        }
-        model.addAttribute("timetable", timeTable);
+        model.addAttribute("timetable", itineraryMap(allDaysForItinerary));
         return "plannerview";
     }
 
@@ -135,26 +136,20 @@ public class TripController {
         model.addAttribute("itinerary" , itineraryService.findById(id));
         List<DailySchedule> allDaysForItinerary = dailyScheduleService.getAllDays(itineraryService.findById(id));
         model.addAttribute("allDaysForItinerary", allDaysForItinerary);
-        Map<String, List<HourMapping>> timeTable = new HashMap<>();
-        for (DailySchedule day : allDaysForItinerary) {
-            timeTable.put(day.getName(),hourMappingService.getFullDay(day));
-        }
-        model.addAttribute("timetable", timeTable);
+        model.addAttribute("timetable", itineraryMap(allDaysForItinerary));
         return "plannerview_print";
     }
 
 
     @GetMapping("/planner/view/{id}/json")
-    public String downloadJSON(@PathVariable(value = "id") long id, Model model) throws IOException {
+    public String downloadJSON(@PathVariable(value = "id") long id, Model model) {
         List<DailySchedule> allDaysForItinerary = dailyScheduleService.getAllDays(itineraryService.findById(id));
-        Map<String, List<HourMapping>> timeTable = new HashMap<>();
-        for (DailySchedule day : allDaysForItinerary) {
-            timeTable.put(day.getName(),hourMappingService.getFullDay(day));
-        }
-        Gson gson = new Gson();
-        String filePath= "src/main/resources/static/files/json/";
-        gson.toJson(timeTable, new FileWriter(filePath));
-        return "plannerview_print";
+        fileService.mapToJson(id, itineraryMap(allDaysForItinerary));
+
+
+
+
+        return "redirect:/planner/view/" + id;
     }
 
 //Methods for day page
@@ -167,7 +162,7 @@ public class TripController {
         List<DailySchedule> allDaysForItinerary = dailyScheduleService.getAllDays(itineraryService.findById(id));
         model.addAttribute("allDaysForItinerary", allDaysForItinerary);
         redirectAttributes.addFlashAttribute("message", "New day successfully added");
-        logger.log(Level.INFO, "Created new day: ID "+ newDay.getDayId());
+        logger.log(Level.INFO, "Created new day: ID " + newDay.getDayId());
         return "redirect:/planner/" + id;
     }
 
@@ -236,7 +231,7 @@ public class TripController {
         model.addAttribute("hour",hourMappingService.getHour(hourId));
         hourMappingService.updateMapping(hourMapping, dailyScheduleService.getDay(dayId), hourId);
         redirectAttributes.addFlashAttribute("message", "Day was successfully updated");
-        logger.log(Level.INFO, "Updated hourmapping: ID "+dayId);
+        logger.log(Level.INFO, "Updated hourmapping: ID " + dayId);
         return "redirect:/planner/"+itineraryID+"/day/"+ dayId;
     }
 
@@ -247,7 +242,7 @@ public class TripController {
         List<HourMapping> allHours= hourMappingService.getFullDay(dailyScheduleService.getDay(dayId));
         model.addAttribute("allHours", allHours);
         redirectAttributes.addFlashAttribute("message", "Objective removed");
-        logger.log(Level.INFO, "Deleted : ID "+hourId);
+        logger.log(Level.INFO, "Deleted : ID " + hourId);
 
         return "redirect:/planner/"+itineraryID+"/day/"+ dayId;
     }

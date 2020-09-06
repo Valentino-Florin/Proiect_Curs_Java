@@ -14,35 +14,26 @@ import java.nio.file.StandardCopyOption;
 @Service
 public class UploadService {
 
-    public void uploadThumbnailFile(Place savedPlace, MultipartFile multipartFile, String fileNameT) throws IOException {
-        String uploadDir = "./user-images/" + savedPlace.getId() + "thumbnail/";
-        Path uploadPath = Paths.get(uploadDir);
-        if (!Files.exists(uploadPath)){
-            Files.createDirectories(uploadPath);
-        }
+    /**
+     *
+     * @param savedPlace
+     * @param multipartFile
+     * @param fileNameT
+     * @throws IOException
+     */
+    public void uploadImageFile(Place savedPlace, MultipartFile multipartFile, String fileNameT) throws IOException {
+        String uploadDir = "src/main/resources/static/files/img/" +  savedPlace.getId() + "/";
+                Path uploadPath = Paths.get(uploadDir);
+            if (!Files.exists(uploadPath)) {
+                Files.createDirectories(uploadPath);
+            }
 
-        try (InputStream inputStream = multipartFile.getInputStream()){
-            Path filePath = uploadPath.resolve(fileNameT);
-            Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
-        } catch (IOException e) {
-            throw new IOException("Could not save uploaded file: " + fileNameT);
-        }
-
+            try (InputStream inputStream = multipartFile.getInputStream()) {
+                Path filePath = uploadPath.resolve(fileNameT);
+                Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
+            } catch (IOException e) {
+                throw new IOException("Could not save uploaded file: " + fileNameT);
+            }
     }
 
-    public void uploadGalleryImageFile(Place savedPlace, MultipartFile multipartFile, String fileNameG) throws IOException {
-        String uploadDir = "./user-images/" + savedPlace.getId() + "gallery/";
-        Path uploadPath = Paths.get(uploadDir);
-        if (!Files.exists(uploadPath)){
-            Files.createDirectories(uploadPath);
-        }
-
-        try (InputStream inputStream = multipartFile.getInputStream()){
-            Path filePath = uploadPath.resolve(fileNameG);
-            Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
-        } catch (IOException e) {
-            throw new IOException("Could not save uploaded file: " + fileNameG);
-        }
-
-    }
 }

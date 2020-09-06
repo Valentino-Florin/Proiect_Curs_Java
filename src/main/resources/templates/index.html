@@ -8,9 +8,8 @@
     </title>
     <link rel="stylesheet" href="../static/css/home.css" th:href="@{/css/home.css}">
     <link rel="stylesheet" href="../static/css/fragments.css" th:href="@{/css/fragments.css}">
-
-
-    <script></script>
+<script src="https://kit.fontawesome.com/4b9ba14b0f.js" crossorigin="anonymous">
+</script>
 
 </head>
 
@@ -59,7 +58,9 @@
                         <tr>
                             <td>
                                 <div class="list_item"><a href="placedetail.html" th:href="@{/placedetail/{id}(id=${placeone.id})}">
-                                        <div><img class="list_thumbnail" src="../static/images/placeholder.jpg" th:src="@{/images/placeholder.jpg}">
+                                        <div>
+                                           <img id=thumbnail_img src="../static/images/placeholder.jpg"
+                                               th:src="@{${placeone.thumbnailImagePath}}">
                                             <p th:text="${placeone.name}"></p>
                                             <p th:text="${placeone.description}"></p>
                                         </div>

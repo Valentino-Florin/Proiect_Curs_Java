@@ -22,6 +22,7 @@ public class MvcConfig implements WebMvcConfigurer {
         registry.addViewController("/placemanager").setViewName("placemanager");
         registry.addViewController("/placedetail/").setViewName("placedetail");
         registry.addViewController("/addplace").setViewName("addplace");
+        registry.addViewController("/addphotos/{id}").setViewName("addphotos");
         registry.addViewController("/addplaceadmin").setViewName("addplaceadmin");
         registry.addViewController("/planner").setViewName("planner");
         registry.addViewController("/placedetail").setViewName("placedetail");
@@ -44,9 +45,15 @@ public class MvcConfig implements WebMvcConfigurer {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        Path uploadedImagesDir = Paths.get("./user-images");
+//        Path uploadedImagesDir = Paths.get("./user-images");
+        Path uploadedImagesDir = Paths.get("src/main/resources/static/files/img");
         String uploadedImagesPath = uploadedImagesDir.toFile().getAbsolutePath();
+       registry.addResourceHandler("/user-images/**").addResourceLocations("file:/" + uploadedImagesPath + "/");
 
-        registry.addResourceHandler("/user-images/**").addResourceLocations("file:/" + uploadedImagesPath + "/");
+
+//        Path jsonFilesDir = Paths.get("./json-files");
+//        String jsonFilesPath = jsonFilesDir.toFile().getAbsolutePath();
+//        registry.addResourceHandler("/json-files/**").addResourceLocations("file:/" + jsonFilesPath + "/");
+
     }
 }

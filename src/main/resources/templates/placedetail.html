@@ -42,11 +42,19 @@
                     <h4><span th:text="${place.city}">oras</span> <span th:text="${place.county}">judet</span> <span th:text="${place.coordinates}">coordonate</span></h4>
                 </div>
             </div>
-            <div class=box id=gallery><img class=gallery src="../static/images/placeholder.jpg" th:src="@{/images/placeholder.jpg}"><img class=gallery src="../static/images/placeholder.jpg" th:src="@{/images/placeholder.jpg}"><img class=gallery src="../static/images/placeholder.jpg" th:src="@{/images/placeholder.jpg}"></div>
+            <div class=box id=gallery>
+<!--                <img class=gallery src="../static/images/placeholder.jpg" th:src="@{/images/placeholder.jpg}">-->
+                <img class=gallery src="../static/images/placeholder.jpg" th:src="@{${place.GalleryImage1Path}}">
+                <img class=gallery src="../static/images/placeholder.jpg" th:src="@{${place.GalleryImage2Path}}">
+                <img class=gallery src="../static/images/placeholder.jpg" th:src="@{${place.GalleryImage3Path}}">
+                <img class=gallery src="../static/images/placeholder.jpg" th:src="@{${place.GalleryImage4Path}}">
+                <img class=gallery src="../static/images/placeholder.jpg" th:src="@{${place.GalleryImage5Path}}">
+                
+                
+                
+            </div>
             <div class=box id=description>
                 <h3>Description</h3>
-                <!--<p th:text="${place.description}">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium.</p>
--->
                 <p th:text="${place.description}">Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean
                     leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra
                     quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean

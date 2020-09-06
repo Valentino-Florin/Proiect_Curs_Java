@@ -1,0 +1,256 @@
+{
+  "Day 1": [
+    {
+      "hourId": 977,
+      "dailySchedule": {
+        "dayId": 43,
+        "itinerary": {
+          "itineraryId": 2,
+          "name": "Trip 2",
+          "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis,",
+          "user": {
+            "id": 2,
+            "userName": "RoyalMan",
+            "password": "$2a$04$DMNryECWgThIMi.CKiCUVOk6rk3EcCRJaOeZe.n3.gWxep2LJhY1O",
+            "email": "augue.ut@sapien.net",
+            "role": "TRAVELER",
+            "created": "May 14, 2020, 3:00:00 AM"
+          },
+          "created": "Apr 25, 2020, 12:00:00 AM",
+          "startDate": "Mar 16, 2020"
+        },
+        "name": "Day 1"
+      },
+      "time": "16:00",
+      "place": {
+        "id": 2,
+        "name": "Turnul cu Ceas",
+        "county": "Mures",
+        "city": "Sighisoara",
+        "address": "Strada Turnului",
+        "coordinates": "46.219391, 24.793352",
+        "phoneNumber": "0265 771 108",
+        "category": "ATTRACTIONS",
+        "subcategory": "H_LANDMARKS",
+        "workingHours": "Monday\nClosed\nTuesday \u003e Friday\n9AM–4PM\nSaturday - Sunday\n10AM–5PM",
+        "description": "Built in the 14th century, this iconic clock tower served as the main gate to the city\u0027s citadel.",
+        "created": "Mar 16, 2020, 2:00:00 AM"
+      }
+    },
+    {
+      "hourId": 979,
+      "dailySchedule": {
+        "dayId": 43,
+        "itinerary": {
+          "itineraryId": 2,
+          "name": "Trip 2",
+          "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis,",
+          "user": {
+            "id": 2,
+            "userName": "RoyalMan",
+            "password": "$2a$04$DMNryECWgThIMi.CKiCUVOk6rk3EcCRJaOeZe.n3.gWxep2LJhY1O",
+            "email": "augue.ut@sapien.net",
+            "role": "TRAVELER",
+            "created": "May 14, 2020, 3:00:00 AM"
+          },
+          "created": "Apr 25, 2020, 12:00:00 AM",
+          "startDate": "Mar 16, 2020"
+        },
+        "name": "Day 1"
+      },
+      "time": "18:00",
+      "place": {
+        "id": 1,
+        "name": "Casa cu Cerb",
+        "county": "Mures",
+        "city": "Sighisoara",
+        "address": "Str. Scolii Nr. 1",
+        "coordinates": "46.219769, 24.792420",
+        "phoneNumber": "0265 774 625",
+        "email": "info@casacucerb.ro",
+        "category": "LODGING",
+        "subcategory": "GUEST_HOUSE",
+        "workingHours": "24/7",
+        "description": "Casa cu Cerb is set in one of the oldest buildings in Sighisoara, named after the mural of a stag adorning the facade. It is 111 m from the Clock Tower and 100 m from Museum Square.\n\nThe rooms are located on the 2nd floor or attic level, and they come with free WiFi, satellite TV, telephone, wooden floors, and a private bathroom.\n\nGuests can enjoy their meals in the on-site restaurant, serving traditional Romanian and international dishes. A cafe is 50 m away.\n\nSighisoara Train Station is 1.2 mi from Casa cu Cerb. Private parking is available in the lower town, outside the citadel, 500 m away, for a surcharge.",
+        "created": "Mar 14, 2020, 2:00:00 AM"
+      }
+    },
+    {
+      "hourId": 980,
+      "dailySchedule": {
+        "dayId": 43,
+        "itinerary": {
+          "itineraryId": 2,
+          "name": "Trip 2",
+          "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis,",
+          "user": {
+            "id": 2,
+            "userName": "RoyalMan",
+            "password": "$2a$04$DMNryECWgThIMi.CKiCUVOk6rk3EcCRJaOeZe.n3.gWxep2LJhY1O",
+            "email": "augue.ut@sapien.net",
+            "role": "TRAVELER",
+            "created": "May 14, 2020, 3:00:00 AM"
+          },
+          "created": "Apr 25, 2020, 12:00:00 AM",
+          "startDate": "Mar 16, 2020"
+        },
+        "name": "Day 1"
+      },
+      "time": "19:00",
+      "place": {
+        "id": 6,
+        "name": "Sandalandala",
+        "county": "Constanta",
+        "city": "Vama Veche",
+        "address": "Strada Delfinului nr. 9",
+        "coordinates": "43.749522, 28.576073",
+        "phoneNumber": "0754 071 131",
+        "email": "contact@sandalandala.ro",
+        "category": "LODGING",
+        "subcategory": "CAMPING",
+        "workingHours": "24/7",
+        "description": "If you have a tent, you\u0027re near the Black Sea, maybe in Romania, maybe not too far, Sandalandala Camping is the place you\u0027ll wanna be. Sandalandala is a brand new camping in Vama Veche, with enough room for 400 tents, free wi-fi, hot water showers 24/7, a bar that\u0027s open \u0027till the break of dawn, lovely music and an interesting terrace. And the beach is only 100 meters from the camping.",
+        "created": "Apr 26, 2020, 3:00:00 AM"
+      }
+    },
+    {
+      "hourId": 982,
+      "dailySchedule": {
+        "dayId": 43,
+        "itinerary": {
+          "itineraryId": 2,
+          "name": "Trip 2",
+          "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis,",
+          "user": {
+            "id": 2,
+            "userName": "RoyalMan",
+            "password": "$2a$04$DMNryECWgThIMi.CKiCUVOk6rk3EcCRJaOeZe.n3.gWxep2LJhY1O",
+            "email": "augue.ut@sapien.net",
+            "role": "TRAVELER",
+            "created": "May 14, 2020, 3:00:00 AM"
+          },
+          "created": "Apr 25, 2020, 12:00:00 AM",
+          "startDate": "Mar 16, 2020"
+        },
+        "name": "Day 1"
+      },
+      "time": "21:00",
+      "place": {
+        "id": 10,
+        "name": "Gyros Thessalonikis",
+        "county": "Bucharest",
+        "city": "Bucharest",
+        "address": "Strada Gabroveni 2",
+        "coordinates": "44.431625, 26.101009",
+        "phoneNumber": "0770 302 148",
+        "category": "FOODDRINK",
+        "subcategory": "FAST_FOOD",
+        "workingHours": "24/7",
+        "description": "Awesome food, always fresh. Opened at all hours, very nice ambiance and also live Greek music.",
+        "created": "Apr 26, 2020, 3:00:00 AM"
+      }
+    },
+    {
+      "hourId": 983,
+      "dailySchedule": {
+        "dayId": 43,
+        "itinerary": {
+          "itineraryId": 2,
+          "name": "Trip 2",
+          "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis,",
+          "user": {
+            "id": 2,
+            "userName": "RoyalMan",
+            "password": "$2a$04$DMNryECWgThIMi.CKiCUVOk6rk3EcCRJaOeZe.n3.gWxep2LJhY1O",
+            "email": "augue.ut@sapien.net",
+            "role": "TRAVELER",
+            "created": "May 14, 2020, 3:00:00 AM"
+          },
+          "created": "Apr 25, 2020, 12:00:00 AM",
+          "startDate": "Mar 16, 2020"
+        },
+        "name": "Day 1"
+      },
+      "time": "22:00"
+    }
+  ],
+  "Day 2": [
+    {
+      "hourId": 1029,
+      "dailySchedule": {
+        "dayId": 45,
+        "itinerary": {
+          "itineraryId": 2,
+          "name": "Trip 2",
+          "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis,",
+          "user": {
+            "id": 2,
+            "userName": "RoyalMan",
+            "password": "$2a$04$DMNryECWgThIMi.CKiCUVOk6rk3EcCRJaOeZe.n3.gWxep2LJhY1O",
+            "email": "augue.ut@sapien.net",
+            "role": "TRAVELER",
+            "created": "May 14, 2020, 3:00:00 AM"
+          },
+          "created": "Apr 25, 2020, 12:00:00 AM",
+          "startDate": "Mar 16, 2020"
+        },
+        "name": "Day 2"
+      },
+      "time": "20:00",
+      "place": {
+        "id": 2,
+        "name": "Turnul cu Ceas",
+        "county": "Mures",
+        "city": "Sighisoara",
+        "address": "Strada Turnului",
+        "coordinates": "46.219391, 24.793352",
+        "phoneNumber": "0265 771 108",
+        "category": "ATTRACTIONS",
+        "subcategory": "H_LANDMARKS",
+        "workingHours": "Monday\nClosed\nTuesday \u003e Friday\n9AM–4PM\nSaturday - Sunday\n10AM–5PM",
+        "description": "Built in the 14th century, this iconic clock tower served as the main gate to the city\u0027s citadel.",
+        "created": "Mar 16, 2020, 2:00:00 AM"
+      }
+    }
+  ],
+  "Day 3": [
+    {
+      "hourId": 1501,
+      "dailySchedule": {
+        "dayId": 67,
+        "itinerary": {
+          "itineraryId": 2,
+          "name": "Trip 2",
+          "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis,",
+          "user": {
+            "id": 2,
+            "userName": "RoyalMan",
+            "password": "$2a$04$DMNryECWgThIMi.CKiCUVOk6rk3EcCRJaOeZe.n3.gWxep2LJhY1O",
+            "email": "augue.ut@sapien.net",
+            "role": "TRAVELER",
+            "created": "May 14, 2020, 3:00:00 AM"
+          },
+          "created": "Apr 25, 2020, 12:00:00 AM",
+          "startDate": "Mar 16, 2020"
+        },
+        "name": "Day 3"
+      },
+      "time": "11:30",
+      "place": {
+        "id": 12,
+        "name": "Zoo Tîrgu Mureș",
+        "county": "Mures",
+        "city": "Târgu Mureș",
+        "address": "Strada Verii 57",
+        "coordinates": "46.551871, 24.593498",
+        "phoneNumber": "0265 236 408",
+        "email": "office@zootirgumures.ro",
+        "category": "ATTRACTIONS",
+        "subcategory": "ZOO",
+        "workingHours": "Monday - Sunday\n9AM– 4PM",
+        "description": "Sprawling zoo with a variety of animal exhibits, concessions \u0026 relaxed green areas.",
+        "created": "Apr 26, 2020, 1:00:00 PM"
+      }
+    }
+  ]
+}

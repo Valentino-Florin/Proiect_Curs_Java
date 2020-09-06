@@ -2,17 +2,20 @@
 <html lang="en" dir="ltr" xmlns:form="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="utf-8">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
   <title></title>
   <style>
+/*
     body {padding: 20px;}
     h1 {font-size:34px; color: #3374dc ;}
+*/
   </style>
-  <script type="text/javascript" th:inline="javascript" th:src="@{/js/dropdownmenu.js}">
+ <link type="text/css" href="../static/css/manager.css" th:href="@{/css/manager.css}" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/fragments.css" th:href="@{/css/fragments.css}">
+    <script type="text/javascript" th:inline="javascript" th:src="@{/js/dropdownmenu.js}">
   </script>
 </head>
 <body>
-<div align="center">
+<div>
   <h2>Edit Place</h2>
   <form action="#"
         th:action="@{/editplace/{id}(id=${place.id})}"
@@ -33,16 +36,16 @@
 <!--</div>-->
     <div class=form_element>
       <label>Category</label>
-    </div>
     <input type="radio" name="first" th:field="*{category}" th:value="${T(sci.travel_app.walkthebear.model.misc.Category).FOODDRINK}" th:onclick="choice(this)">Food and drink
     <input type="radio" name="first" th:field="*{category}" th:value="${T(sci.travel_app.walkthebear.model.misc.Category).ATTRACTIONS}" th:onclick="choice(this)">Tourist attractions
     <input type="radio" name="first" th:field="*{category}" th:value="${T(sci.travel_app.walkthebear.model.misc.Category).LODGING}" th:onclick="choice(this)">Lodging
-    <br>
-    <div>
+
+    </div>
 
       <div>
         <select id='dropdown' th:field="*{subcategory}" th:value="${subcategory}">
         </select>
+      </div>
 <div class=form_element>
   <input type= "hidden" name="created" id="created"
          th:value="${#dates.format(#dates.createNow() , 'dd/MM/yyyy HH:mm')}" />
