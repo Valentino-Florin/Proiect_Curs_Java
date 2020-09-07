@@ -6,7 +6,7 @@
     <title>
         <!-- Insert your title here -->
     </title>
-    <link type="text/css" href="../static/css/manager.css" th:href="@{/css/manager.css}" rel="stylesheet">
+    <link type="text/css" href="../static/css/photos.css" th:href="@{/css/photos.css}" rel="stylesheet">
     <link rel="stylesheet" href="../static/css/fragments.css" th:href="@{/css/fragments.css}">
     <script type="text/javascript" th:inline="javascript" th:src="@{/js/dropdownmenu.js}">
     </script>
@@ -40,62 +40,74 @@
                     <input type="file" name="thumbnail" id="thumbnail" accept="image/png, image/jpeg">
                 </div>
                 <div class=preview>
-                <div id="thumbnail_preview" th:if="${hasThumbnail}"><img id=thumbnail alt="Main image preview" src="../static/images/placeholder.jpg" th:src="@{${place.ThumbnailImagePath}}"></div>
-                <div id="emptyPicT" th:unless="${hasThumbnail}"></div>
+                    <div class=preview_img id="thumbnail_preview" th:if="${hasThumbnail}"><img id=thumbnail  src="../static/images/placeholder.jpg" th:src="@{${place.ThumbnailImagePath}}"></div>
+                    <div id="emptyPicT" th:unless="${hasThumbnail}">
+                        <p>Select an image</p>
+                    </div>
                 </div>
-                
-                
+
+
                 <div class=form_element>
                     <label>Upload gallery picture 1</label>
                     <input type="file" name="galleryImage1" id="galleryImage1" accept="image/png, image/jpeg">
                 </div>
-                 <div class=preview>
-                <div id="gallery_pic_1_preview" th:if="${hasG1}">
-                    <img id=galleryImage1 alt="Gallery picture 1" src="../static/images/placeholder.jpg" th:src="@{${place.GalleryImage1Path}}">
+                <div class=preview>
+                    <div class=preview_img id="gallery_pic_1_preview" th:if="${hasG1}">
+                        <img id=galleryImage1 src="../static/images/placeholder.jpg" th:src="@{${place.GalleryImage1Path}}">
+                    </div>
+                    <div id="emptyPic1" th:unless="${hasG1}">
+                        <p>Select an image</p>
+                    </div>
                 </div>
-                <div id="emptyPic1" th:unless="${hasG1}"></div>
-                </div>
-                
-                
+
+
                 <div class=form_element>
                     <label>Upload gallery picture 2</label>
                     <input type="file" name="galleryImage2" id="galleryImage2" accept="image/png, image/jpeg">
                 </div>
-                 <div class=preview>
-                <div id="gallery_pic_2_preview" th:if="${hasG2}">
-                    <img id=galleryImage2 alt="Gallery picture 2" src="../static/images/placeholder.jpg" th:src="@{${place.GalleryImage2Path}}">
-                </div>
-                <div id="emptyPic2" th:unless="${hasG2}"></div>
+                <div class=preview>
+                    <div class=preview_img id="gallery_pic_2_preview" th:if="${hasG2}">
+                        <img id=galleryImage2 src="../static/images/placeholder.jpg" th:src="@{${place.GalleryImage2Path}}">
+                    </div>
+                    <div id="emptyPic2" th:unless="${hasG2}">
+                        <p>Select an image</p>
+                    </div>
                 </div>
 
-                
+
                 <div class=form_element>
                     <label>Upload gallery picture 3</label>
                     <input type="file" name="galleryImage3" id="galleryImage3" accept="image/png, image/jpeg">
                 </div>
-                 <div class=preview>
-                <div id="gallery_pic_3_preview" th:if="${hasG3}"><img id=galleryImage3 alt="Gallery picture 3" src="../static/images/placeholder.jpg" th:src="@{${place.GalleryImage3Path}}"></div>
-                <div id="emptyPic3" th:unless="${hasG3}"></div>
+                <div class=preview>
+                    <div class=preview_img id="gallery_pic_3_preview" th:if="${hasG3}"><img id=galleryImage3 src="../static/images/placeholder.jpg" th:src="@{${place.GalleryImage3Path}}"></div>
+                    <div id="emptyPic3" th:unless="${hasG3}">
+                        <p>Select an image</p>
+                    </div>
 
-                <div class=form_element>
-                    <label>Upload gallery picture 4</label>
-                    <input type="file" name="galleryImage4" id="galleryImage4" accept="image/png, image/jpeg">
-                </div>
-                <div id="gallery_pic_4_preview" th:if="${hasG4}"><img id=galleryImage4 alt="Gallery picture 4" src="../static/images/placeholder.jpg" th:src="@{${place.GalleryImage4Path}}"></div>
-                <div id="emptyPic4" th:unless="${hasG4}"></div>
+                    <div class=form_element>
+                        <label>Upload gallery picture 4</label>
+                        <input type="file" name="galleryImage4" id="galleryImage4" accept="image/png, image/jpeg">
+                    </div>
+                    <div class=preview_img id="gallery_pic_4_preview" th:if="${hasG4}"><img id=galleryImage4 src="../static/images/placeholder.jpg" th:src="@{${place.GalleryImage4Path}}"></div>
+                    <div id="emptyPic4" th:unless="${hasG4}">
+                        <p>Select an image</p>
+                    </div>
 
-                <div class=form_element>
-                    <label>Upload gallery picture 5</label>
-                    <input type="file" name="galleryImage5" id="galleryImage5" accept="image/png, image/jpeg">
-                </div>
-                <div id="gallery_pic_5_preview" th:if="${hasG5}"><img id=galleryImage5 alt="Gallery picture 5" src="../static/images/placeholder.jpg" th:src="@{${place.GalleryImage5Path}}"></div>
-                <div id="emptyPic5" th:unless="${hasG5}"></div>
+                    <div class=form_element>
+                        <label>Upload gallery picture 5</label>
+                        <input type="file" name="galleryImage5" id="galleryImage5" accept="image/png, image/jpeg">
+                    </div>
+                    <div class=preview_img id="gallery_pic_5_preview" th:if="${hasG5}"><img id=galleryImage5 src="../static/images/placeholder.jpg" th:src="@{${place.GalleryImage5Path}}"></div>
+                    <div id="emptyPic5" th:unless="${hasG5}">
+                        <p>Select an image</p>
+                    </div>
                 </div>
 
 
                 <div id=buttons>
                     <button type="submit">Submit</button>
-                    <button type="cancel">Cancel</button>
+                    <button type="cancel"><a th:href="@{/placemanager}">Cancel</a></button>
                 </div>
             </form>
         </div>
@@ -108,6 +120,4 @@
     <!-- footer start -->
     <div th:insert="fragments :: footer"></div>
     <!-- footer end -->
-</body>
-
-</html>
+</body></html>

@@ -73,11 +73,16 @@ display: flex;
     border: 1px solid gray;
     padding: 20px;
     min-height: 200px;
+    overflow: hidden;
 }
 .card h3{
     
 }
-.card p{
+.card p{ 
+    width: 250px;
+    white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
     
 }
 .links{
