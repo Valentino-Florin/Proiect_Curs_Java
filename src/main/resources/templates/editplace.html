@@ -96,7 +96,7 @@
 
 <div class=form_element>
   <label>Description</label>
-  <textarea rows="5" cols="50" maxlength="250" th:field="*{description}" id="description"
+  <textarea rows="5" cols="50" maxlength="250" minlength="60" th:field="*{description}" id="description"
             placeholder="Description"></textarea>
   <span th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></span>
 </div>

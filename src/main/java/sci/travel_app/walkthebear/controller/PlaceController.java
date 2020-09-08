@@ -17,12 +17,11 @@ import sci.travel_app.walkthebear.model.entities.Place;
 import sci.travel_app.walkthebear.repository.AppUserRepository;
 import sci.travel_app.walkthebear.service.AppUserServiceImp;
 import sci.travel_app.walkthebear.service.PlacesServiceImp;
-import sci.travel_app.walkthebear.service.UploadService;
+import sci.travel_app.walkthebear.data_utils.UploadService;
 
 import javax.validation.Valid;
 import java.io.IOException;
 import java.security.Principal;
-import java.util.Objects;
 
 
 @Controller

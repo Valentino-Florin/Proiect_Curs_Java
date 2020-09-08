@@ -21,37 +21,52 @@ import java.util.Map;
 @Service
 public class FileService {
 
-    public void createPdfList(List<Place> placeList) throws DocumentException, FileNotFoundException {
+    /**
+     * uses a list of places to create a pdf
+     * @param placeList list of places to add to the pdf
+     * @param filename name of the pdf file
+     * @param title title on the first page of the pdf
+     * @throws DocumentException
+     * @throws FileNotFoundException
+     */
+    public void createPdfList(List<Place> placeList, String filename, String title) throws DocumentException, FileNotFoundException {
         Document document = new Document(PageSize.A4, 50, 50, 50, 50);
-        PdfWriter.getInstance(document, new FileOutputStream("result.pdf"));
-        // 3. Open document
+        PdfWriter.getInstance(document, new FileOutputStream("src/main/resources/static/files/pdf/" + filename));
+
         document.open();
-        // 4. Add content
-        document.add(new Paragraph("Create Pdf Document with iText in Java"));
-        document.addTitle("List");
+
+        document.add(new Paragraph(title));
+        document.add(new Paragraph("Name, County, City"));
         com.itextpdf.text.List list = new com.itextpdf.text.List();
         List<String> strings = stringify(placeList);
-        list.add(strings.get(0));
-        list.add(strings.get(1));
+        for (String s : strings){
+            list.add(s);
+        }
+        document.add(list);
 
-        // 5. Close document
         document.close();
     }
 
+    /**
+     * takes a list of places and
+     * @param placeList a list of places to convert
+     * @return list of strings
+     */
     public List<String> stringify(List<Place> placeList) {
         List<String> strings = new ArrayList<>();
-
+        int i = 1;
         for (Place place : placeList) {
-            strings.add(place.toString());
+            strings.add(i + ". " + place.toString());
+            i++;
         }
 
         return strings;
     }
 
     /**
-     *
-     * @param id
-     * @param map
+     * creates a json file based on a map
+     * @param id id of itinerary
+     * @param map map of objects to add to json file
      */
 //    public void mapToJson(long id, Map<String, List<HourMapping>> map) {
     public void mapToJson(long id, Map<String, List<HourMapping>> map) {
@@ -68,9 +83,9 @@ public class FileService {
     }
 
     /**
-     *
-     * @param name
-     * @param list
+     * creates a json file based on a list
+     * @param name name of the file
+     * @param list list of objects to add to json file
      */
     public void listToJson(String name, List<Place> list) {
 

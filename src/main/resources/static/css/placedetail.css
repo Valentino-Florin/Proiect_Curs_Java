@@ -23,10 +23,12 @@ a:active {
     color: #103B1F;
 }
 
-#main_container {
+#main_box_top {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
+    padding: 60px;
+
 }
 
 #info_and_pictures {
@@ -142,6 +144,7 @@ h3 {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content:space-between;
+    padding: 60px;
 }
 
 #rating_box {
@@ -176,7 +179,7 @@ h3 {}
     min-width: 300px;
     max-width: 400px;
     min-height: 300px;
-    margin-right: 30px;
+    margin-right: 20px;
     margin-left: 30px;
     padding-bottom: 20px;
     padding-left: 20px;

@@ -88,7 +88,7 @@
                 </div>
                 <div id=buttons_container>
                     <button onclick="window.print()">Print</button>
-                    <button type="">Download itinerary</button></div>
+                    <a th:href="@{/planner/view/{id}/json(id=${itinerary.itineraryId})}"><button type="">Download itinerary</button></a></div>
 
 
             </div>

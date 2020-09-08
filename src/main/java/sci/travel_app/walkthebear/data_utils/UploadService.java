@@ -1,4 +1,4 @@
-package sci.travel_app.walkthebear.service;
+package sci.travel_app.walkthebear.data_utils;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;

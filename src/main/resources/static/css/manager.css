@@ -1,6 +1,6 @@
 body {
     font-family: Helvetica, Arial, sans-serif;
-    background: linear-gradient(#C9F0D9, white);
+    background: linear-gradient(#E5F2F0, white);
 }
 
 /* _______________________________ header start _________________________________ */
@@ -50,9 +50,9 @@ h2 {
   width: 300px;
     max-height: 500px;
     margin: 30px;
-display: flex;
+    display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
 }
 
 #add_button{
@@ -64,13 +64,14 @@ display: flex;
 #button_text {
 display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-self: center;
 }
 #button_text p{
 
 }
 .card{
     border: 1px solid gray;
+    background: #B4F0C9;
     padding: 20px;
     min-height: 200px;
     overflow: hidden;

@@ -3,6 +3,11 @@ package sci.travel_app.walkthebear.controller;
 
 import com.itextpdf.text.DocumentException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +16,7 @@ import sci.travel_app.walkthebear.data_utils.FileService;
 import sci.travel_app.walkthebear.model.entities.Place;
 import sci.travel_app.walkthebear.service.PlacesServiceImp;
 
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
@@ -60,16 +66,44 @@ public class HomePageController {
         model.addAttribute("widget3", widget3);
         return "index";
     }
+
+
     @GetMapping(value = "/home/mostpopulardownload")
     @ResponseBody
-    public String mostPopularList( Model model) throws FileNotFoundException, DocumentException {
-        fileService.createPdfList(placeService.mostPopularPlaces());
-        return "index";
+    public ResponseEntity<Resource> mostPopularList() throws FileNotFoundException, DocumentException {
+
+        String file = "mostPopularList.pdf";
+        String filepath =  "src/main/resources/static/files/pdf/" + file;
+
+        fileService.createPdfList(placeService.mostPopularPlaces(), file, "Most popular places");
+
+            InputStreamResource resource = new InputStreamResource(new FileInputStream(filepath));
+            HttpHeaders headers = new HttpHeaders(); headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename="+file);
+
+            return ResponseEntity.ok()
+                    .headers(headers)
+                    .contentType(MediaType.APPLICATION_OCTET_STREAM)
+                    .body(resource);
+
+
     }
 
     @GetMapping(value = "/home/latestdownload")
-    public String latestPlacesList( Model model) {
+    @ResponseBody
+    public ResponseEntity<Resource> latestPlacesList() throws FileNotFoundException, DocumentException {
 
-        return "index";
+        String file = "latestPlacesList.pdf";
+        String filepath =  "src/main/resources/static/files/pdf/" + file;
+
+        fileService.createPdfList(placeService.latestPlaces(), file, "Our newest places");
+
+        InputStreamResource resource = new InputStreamResource(new FileInputStream(filepath));
+        HttpHeaders headers = new HttpHeaders(); headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename="+file);
+
+        return ResponseEntity.ok()
+                .headers(headers)
+                .contentType(MediaType.APPLICATION_OCTET_STREAM)
+                .body(resource);
+
     }
 }

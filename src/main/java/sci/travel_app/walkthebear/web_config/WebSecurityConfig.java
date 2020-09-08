@@ -51,6 +51,7 @@ protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         http
                 .authorizeRequests()
                 //available to all users
+                .antMatchers("/home/*").permitAll()
                 .antMatchers("/", "/index","/home").permitAll()
                 .antMatchers("/css/*","/js/*","/images/*").permitAll()
                 .antMatchers("/register/**").permitAll()
