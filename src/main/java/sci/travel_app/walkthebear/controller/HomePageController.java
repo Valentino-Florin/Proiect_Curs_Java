@@ -39,7 +39,7 @@ public class HomePageController {
         widget1.add(mostPopularPlaces.get(1));
         widget1.add(mostPopularPlaces.get(2));
         widget1.add(mostPopularPlaces.get(3));
-        widget1.add(mostPopularPlaces.get(4));
+        //widget1.add(mostPopularPlaces.get(4));
         model.addAttribute("widget1", widget1);
 
         List<Place> widget2 = new ArrayList<>();

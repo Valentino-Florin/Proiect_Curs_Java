@@ -93,4 +93,11 @@ public class RatingServiceImpl implements RatingService {
         return ratingRepository.findByUser(userRepository.findById(id));
     }
 
+    @Override
+    public boolean isAdded(Place place, AppUser user){
+        if(user == null) return false;
+        else
+            return ratingRepository.findByPlaceAndUser(place, user) != null;
+    }
+
 }

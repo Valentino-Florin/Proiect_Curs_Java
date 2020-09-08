@@ -24,9 +24,9 @@ body {
     color:  #4C3936;
 }
 
-.favTableHeadPadding{
+/*.favTableHeadPadding{
     padding-right: 30px;
-}
+}*/
 
 .box{
     padding: 20px;
@@ -43,7 +43,7 @@ body {
 
 }
 
-.tab {
+/*.tab {
     overflow: hidden;
     border: 1px solid #ccc;
     background-color: #f1f1f1;
@@ -65,16 +65,17 @@ body {
 
 .tab button.active {
     background-color: #ccc;
-}
+}*/
 
 .tabcontent {
     float: left;
     padding: 15px;
+    background-color: #F0F7FA;
 }
 
-.tablinks{
+/*.tablinks{
 
-}
+}*/
 
 .place_name{
     padding-left: 10px;
@@ -98,12 +99,14 @@ body {
     flex-wrap: wrap;
 }
 
+/*
 .form{
     margin-top:10px;
     margin-bottom: 10px;
 }
+*/
 
-label{
+/*label{
     display:inline-block;
     width:150px;
     margin-right:70px;
@@ -114,7 +117,7 @@ label{
     display:inline-block;
     margin-right:70px;
     text-align: left;
-}
+}*/
 
 button {
     height: 30px;
@@ -153,10 +156,10 @@ a:hover, a:active {
     color: #103B1F;
 }
 
-.passwordBox{
+/*.passwordBox{
     display:inline-block;
     margin-right: 30px;
-}
+}*/
 
 .padding-right-100px{
     padding-right: 100px;
