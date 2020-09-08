@@ -11,10 +11,7 @@ import org.springframework.stereotype.Service;
 import sci.travel_app.walkthebear.model.entities.HourMapping;
 import sci.travel_app.walkthebear.model.entities.Place;
 
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -56,8 +53,8 @@ public class FileService {
      * @param id
      * @param map
      */
+//    public void mapToJson(long id, Map<String, List<HourMapping>> map) {
     public void mapToJson(long id, Map<String, List<HourMapping>> map) {
-
         String filePath = "src/main/resources/static/files/json/" + "itinerary" + id + ".json";
         Path jsonPath = Paths.get(filePath);
         try (FileWriter writer = new FileWriter(String.valueOf(jsonPath))) {
@@ -68,7 +65,6 @@ public class FileService {
         catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     /**

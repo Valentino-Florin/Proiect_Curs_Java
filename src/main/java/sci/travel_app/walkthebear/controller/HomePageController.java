@@ -23,11 +23,11 @@ public class HomePageController {
     private FileService fileService;
 
     @GetMapping(value = "/")
-    public String slashRedirect( Model model){
+    public String slashRedirect(){
         return "redirect:/home";
     }
     @GetMapping(value = "/index")
-    public String indexRedirect( Model model){
+    public String indexRedirect(){
         return "redirect:/home";
     }
 

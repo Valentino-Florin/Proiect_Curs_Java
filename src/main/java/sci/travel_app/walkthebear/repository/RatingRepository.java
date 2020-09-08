@@ -19,5 +19,4 @@ public interface RatingRepository extends JpaRepository<Rating, Long> {
 
     List<Rating> findAll();
 
-   // List<Rating> findByUser(Optional<AppUser> byId);
 }

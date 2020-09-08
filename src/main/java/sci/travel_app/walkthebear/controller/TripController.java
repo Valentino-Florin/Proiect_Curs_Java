@@ -3,24 +3,35 @@ package sci.travel_app.walkthebear.controller;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ByteArrayResource;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import sci.travel_app.walkthebear.data_utils.FileService;
 import sci.travel_app.walkthebear.model.entities.*;
 import sci.travel_app.walkthebear.repository.AppUserRepository;
 import sci.travel_app.walkthebear.service.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.security.Principal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 
 @Controller
@@ -142,15 +153,48 @@ public class TripController {
 
 
     @GetMapping("/planner/view/{id}/json")
-    public String downloadJSON(@PathVariable(value = "id") long id, Model model) {
+//    public String downloadJSON(@PathVariable(value = "id") long id, Model model) {
+//        List<DailySchedule> allDaysForItinerary = dailyScheduleService.getAllDays(itineraryService.findById(id));
+//        fileService.mapToJson(id, itineraryMap(allDaysForItinerary));
+//
+//        return "redirect:/planner/view/" + id;
+//    @ResponseBody
+//    public void downloadJSON(HttpServletRequest request,
+//                             HttpServletResponse response, @PathVariable(value = "id") long id){
+//        List<DailySchedule> allDaysForItinerary = dailyScheduleService.getAllDays(itineraryService.findById(id));
+//        fileService.mapToJson(id, itineraryMap(allDaysForItinerary));
+//
+//
+//        String dataDirectory = request.getServletContext().getRealPath("src/main/resources/static/files/json/");
+//        String fileName = "itinerary" + id + ".json";
+//        Path file = Paths.get(dataDirectory, fileName);
+//        if (Files.exists(file))
+//        {
+//            response.setContentType("application/json");
+//            response.addHeader("Content-Disposition", "attachment; filename="+fileName);
+//            //                Files.copy(file, response.getOutputStream());
+////                response.getOutputStream().flush();
+//
+//        }
+//    }
+    public ResponseEntity<Resource> downloadJSON (@PathVariable(value = "id") long id) throws FileNotFoundException {
         List<DailySchedule> allDaysForItinerary = dailyScheduleService.getAllDays(itineraryService.findById(id));
         fileService.mapToJson(id, itineraryMap(allDaysForItinerary));
 
-
-
-
-        return "redirect:/planner/view/" + id;
+       String file = "itinerary" + id + ".json";
+        String filepath =  "src/main/resources/static/files/json/" + "itinerary" + id + ".json";
+        InputStreamResource resource = new InputStreamResource(new FileInputStream(filepath));
+        HttpHeaders headers = new HttpHeaders(); headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename="+file);
+//        byte[] data = Files.readAllBytes(path);
+//        ByteArrayResource resource = new ByteArrayResource(data);
+        return ResponseEntity.ok()
+                .headers(headers)
+                .contentLength(file.length())
+                .contentType(MediaType.APPLICATION_OCTET_STREAM)
+                .body(resource);
     }
+
+
 
 //Methods for day page
 

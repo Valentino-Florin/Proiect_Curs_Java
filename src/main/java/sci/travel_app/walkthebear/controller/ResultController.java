@@ -14,30 +14,9 @@ import sci.travel_app.walkthebear.service.PlacesServiceImp;
 import java.util.List;
 
 @Controller
-//@RequestMapping(value="/results")
 public class ResultController {
     @Autowired
     private PlacesServiceImp placesService;
-
-
-//    //remove after testing or move to admin panel
-//    @GetMapping("/results/{page}")
-//    public String allResults(@PathVariable("page") int page, Model model){
-//        PageRequest pageable = PageRequest.of(page - 1, 15);
-//        Page<Place> resultPage = placesService.getPaginatedPlaceList(pageable, Category.ATTRACTIONS);
-//        int totalPages = resultPage.getTotalPages();
-//        if(totalPages > 0) {
-//            List<Integer> pageNumbers = IntStream.rangeClosed(1,totalPages).boxed().collect(Collectors.toList());
-//            model.addAttribute("pageNumbers", pageNumbers);
-//        }
-//        model.addAttribute("activeResultList", true);
-//        model.addAttribute("resultList", resultPage.getContent());
-//
-//
-//        return "searchresults";
-//    }
-
-
 
     // ------------------------search------------------------------------//
 

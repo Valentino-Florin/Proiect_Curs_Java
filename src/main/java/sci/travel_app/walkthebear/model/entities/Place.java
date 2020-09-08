@@ -1,7 +1,6 @@
 package sci.travel_app.walkthebear.model.entities;
 
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.web.multipart.MultipartFile;
 import sci.travel_app.walkthebear.model.misc.Category;
 import sci.travel_app.walkthebear.model.misc.SubCategory;
 
@@ -61,8 +60,6 @@ public class Place {
     @JoinColumn(name = "created_by")
     private AppUser user;
 
-//    @Transient
-//    private MultipartFile thumbnail;
 
     //constructors
     public Place(){
@@ -238,15 +235,6 @@ public class Place {
     }
 
 
-    //getters & setters for transient field
-//    public MultipartFile getThumbnail() {
-//        return thumbnail;
-//    }
-//
-//    public void setThumbnail(MultipartFile thumbnail) {
-//        this.thumbnail = thumbnail;
-//    }
-//
 
 // methods
 

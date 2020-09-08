@@ -220,6 +220,7 @@ public class PlacesServiceImp implements PlacesService {
 
         placesRepository.save(placeBis);
     }
+    @Override
       public Boolean hasPic (String s){
         if (!"".equals(s)){
             return true;

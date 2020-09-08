@@ -15,11 +15,10 @@ import java.nio.file.StandardCopyOption;
 public class UploadService {
 
     /**
-     *
-     * @param savedPlace
-     * @param multipartFile
-     * @param fileNameT
-     * @throws IOException
+     * uploads image to a folder on disk
+     * @param savedPlace place for which the image is uploaded
+     * @param multipartFile the image file
+     * @param fileNameT name of the image file
      */
     public void uploadImageFile(Place savedPlace, MultipartFile multipartFile, String fileNameT) throws IOException {
         String uploadDir = "src/main/resources/static/files/img/" +  savedPlace.getId() + "/";
