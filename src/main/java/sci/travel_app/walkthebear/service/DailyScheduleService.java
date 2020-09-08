@@ -30,17 +30,11 @@ public class DailyScheduleService {
         List<DailySchedule> allDays = scheduleRepository.findByItinerary(itinerary);
          return allDays.size();
     }
-//    public String dayName(Itinerary itinerary){
-//        String nameA = "Day " + (getNumberOfDays(itinerary));
-//        while (scheduleRepository.findByNameAndItinerary(nameA, itinerary) != null){
-//
-//        }
-//    }
 
     /**
      * creates a new day for a certain itinerary
      * @param itinerary itinerary the day belongs to
-     * @return
+     * @return day saved to repository
      */
     public DailySchedule addNewDay(Itinerary itinerary) {
         DailySchedule timetable = new DailySchedule();

@@ -26,22 +26,11 @@ public interface PlacesRepository extends JpaRepository<Place, Long> {
 
      @Query(value = "SELECT * FROM travel_app.place p WHERE  p.NAME LIKE '%' :keyword '%'", nativeQuery=true)
      List<Place> findByKeyword(@Param("keyword") String keyword);
-//    p.PLACE_ID LIKE '%'  :keyword  '%'"
-//            + " OR
-//+ " OR c.COUNTY LIKE '%'  :keyword  '%'"
-//        + " OR p.CITY LIKE '%'  :keyword  '%'"
-//        + " OR c.ADDRESS LIKE '%'  :keyword  '%'"
-//        + " OR p.COORDINATES LIKE '%'  :keyword  '%'"
-//        + " OR c.PHONE_NUMBER LIKE '%'  :keyword  '%'"
-//        + " OR c.EMAIL LIKE '%'  :keyword  '%'"
-//        + " OR p.CATEGORY LIKE '%'  :keyword '%'"
-//        + " OR c.SUBCATEGORY LIKE '%'  :keyword  '%'"
 
     Page<Place> findByCategory(Category category, Pageable pageable);
     Page<Place> findBySubcategory(SubCategory subCategory, Pageable pageable);
     Page<Place> findByCounty(String county, Pageable pageable);
     Page<Place> findByCity(String city, Pageable pageable);
-//    Page<Place> findByCreated(Date created, Pageable pageable);
     Page<Place> findByNameContains(String keyword,Pageable pageable);
     Page<Place> findBySubcategoryAndCounty(SubCategory subCategory, String county, Pageable pageable);
     Page<Place> findBySubcategoryAndCity(SubCategory subCategory, String city, Pageable pageable);

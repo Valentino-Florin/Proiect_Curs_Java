@@ -29,6 +29,7 @@
 
         <div th:insert="fragments :: alert"></div>
 
+<!--
         <div sec:authorize="isAuthenticated()">
             This content is only shown to authenticated users.
             <span sec:authentication="principal.authorities">role</span>
@@ -39,6 +40,7 @@
         <div sec:authorize="hasRole('Host')">
             This content is only shown to users.
         </div>
+-->
 
 
         
@@ -72,7 +74,7 @@
                         </tr>
                     </table>
                 </div>
-                <a href="">Download</a>
+                <a href="" th:href="@{/home/mostpopulardownload}">Download list</a>
             </div>
             <div class="column">
                 <h2>Latest places</h2>
@@ -93,7 +95,7 @@
                         </tr>
                     </table>
                 </div>
-                <a href="">Download</a>
+                <a href="" th:href="@{/home/latestdownload}">Download list</a>
             </div>
             <div class="column">
                 <h2>Editor's choice</h2>

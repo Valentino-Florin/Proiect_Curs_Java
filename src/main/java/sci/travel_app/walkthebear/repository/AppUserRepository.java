@@ -5,7 +5,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import sci.travel_app.walkthebear.model.entities.AppUser;
-import sci.travel_app.walkthebear.model.entities.Place;
 
 import java.util.List;
 

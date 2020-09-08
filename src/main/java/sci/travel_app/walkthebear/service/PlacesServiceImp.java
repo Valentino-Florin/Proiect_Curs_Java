@@ -8,6 +8,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import sci.travel_app.walkthebear.data_utils.UploadService;
 import sci.travel_app.walkthebear.model.entities.AppUser;
 import sci.travel_app.walkthebear.model.entities.Place;
 import sci.travel_app.walkthebear.model.misc.Category;
@@ -220,6 +221,7 @@ public class PlacesServiceImp implements PlacesService {
 
         placesRepository.save(placeBis);
     }
+    @Override
       public Boolean hasPic (String s){
         if (!"".equals(s)){
             return true;

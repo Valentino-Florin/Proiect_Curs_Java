@@ -3,6 +3,11 @@ package sci.travel_app.walkthebear.controller;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -17,6 +22,8 @@ import sci.travel_app.walkthebear.repository.AppUserRepository;
 import sci.travel_app.walkthebear.service.*;
 
 import javax.validation.Valid;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.security.Principal;
 import java.util.HashMap;
 import java.util.List;
@@ -142,15 +149,22 @@ public class TripController {
 
 
     @GetMapping("/planner/view/{id}/json")
-    public String downloadJSON(@PathVariable(value = "id") long id, Model model) {
+    public ResponseEntity<Resource> downloadJSON (@PathVariable(value = "id") long id) throws FileNotFoundException {
         List<DailySchedule> allDaysForItinerary = dailyScheduleService.getAllDays(itineraryService.findById(id));
         fileService.mapToJson(id, itineraryMap(allDaysForItinerary));
 
+       String file = "itinerary" + id + ".json";
+        String filepath =  "src/main/resources/static/files/json/" + "itinerary" + id + ".json";
+        InputStreamResource resource = new InputStreamResource(new FileInputStream(filepath));
+        HttpHeaders headers = new HttpHeaders(); headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename="+file);
 
-
-
-        return "redirect:/planner/view/" + id;
+        return ResponseEntity.ok()
+                .headers(headers)
+                .contentType(MediaType.APPLICATION_OCTET_STREAM)
+                .body(resource);
     }
+
+
 
 //Methods for day page
 

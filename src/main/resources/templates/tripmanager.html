@@ -37,6 +37,8 @@
                 <div class=card>
                     <h3 th:text="${trip.name}">Trip number 1</h3>
                     <p th:text="${trip.description}">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis,</p>
+                    <p>Start date:</p>
+                    <p th:text="${trip.startDate}"></p>
                 </div>
                 <div class=links><a href="" th:href="@{/planner/view/{id}(id=${trip.itineraryId})}">View</a><a href="" th:href="@{/planner/{id}(id=${trip.itineraryId})}">Edit</a><a href="" th:href="@{/tripmanager/delete/{id}(id=${trip.itineraryId})}">Remove</a>
                 </div>

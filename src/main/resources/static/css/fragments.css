@@ -1,6 +1,8 @@
 
 /* _______________________________ all headers start _________________________________ */
-
+body{
+     font-family: Helvetica, Arial, sans-serif;
+}
 .header {
     /*background-color: #C9F0D9;*/
 
@@ -87,6 +89,7 @@ a:active {
 
 #main_title h1 {
     font-size: 80px;
+     font-weight: 700;
 }
 
 .main_navigation {
@@ -268,7 +271,7 @@ footer {
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,500,300,700);
 
 * {
-  font-family: Open Sans;
+/*  font-family: Open Sans;*/
 }
 
 section {
