@@ -12,11 +12,9 @@ import java.util.List;
 public interface RatingRepository extends JpaRepository<Rating, Long> {
 
     List<Rating> findByPlace(Place ratedPlace);
-
     List<Rating> findByUser(AppUser ratedUser);
-
+    Rating findByPlaceAndUser(Place place, AppUser user);
     Rating findById(long id);
-
     List<Rating> findAll();
 
 }

@@ -43,6 +43,12 @@ public class PlaceDetailController {
         rating.setPlace(place);
         model.addAttribute("rating", rating);
 
+        if (principal == null) {
+            model.addAttribute("isAddedToRating", ratingService.isAdded(placeService.getPlaceById(id), null));
+
+        } else {
+            model.addAttribute("isAddedToRating", ratingService.isAdded(placeService.getPlaceById(id), appUserServiceImp.findByUserName(principal.getName())));
+        }
         List<Rating> ratingList = ratingService.getAllRatingsOfPlaceById(id);
         model.addAttribute("ratingList", ratingList);
 

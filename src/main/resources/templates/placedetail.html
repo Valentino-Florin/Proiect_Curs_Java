@@ -101,21 +101,20 @@
             <div id=your_rating>
                 <p>Your rating</p>
                 <div id=star_rating_vote>
-                    <!--<p>****star placeholder</p>-->
-                    <form method="post" th:action="@{/placedetail/{pid}/sendReview(pid=${place.id})}" th:object="${rating}">
+                    <div th:if="${isAddedToRating}"><p> You rated this place</p></div>
+                    <a th:href="@{/profileratings}">Checkout you ratings</a>
 
-                        <input type="hidden" class="rating" data-min="0" data-max="5" data-step="1" th:field="*{starRating}">
-
-                        <textarea rows="5" cols="50" maxlength="250" th:field="*{comment}"></textarea>
-
-                        <div id=buttons>
-                            <button id=submit class="btn btn-primary" type="submit">Submit form</button>
-                            <button id=reset type="reset">Cancel</button>
-
-                        </div>
-                        <div th:insert="fragments :: alert"></div>
-
-                    </form>
+                    <div th:unless="${isAddedToRating}">
+                        <form method="post" th:action="@{/placedetail/{pid}/sendReview(pid=${place.id})}" th:object="${rating}">
+                            <input type="hidden" class="rating" data-min="0" data-max="5" data-step="1" th:field="*{starRating}">
+                            <textarea rows="5" cols="50" maxlength="250" th:field="*{comment}"></textarea>
+                            <div id=buttons>
+                                <button id=submit class="btn btn-primary" type="submit">Submit form</button>
+                                <button id=reset type="reset">Cancel</button>
+                                </div>
+                            <div th:insert="fragments :: alert"></div>
+                            </form>
+                    </div>
                 </div>
             </div>
 
@@ -128,6 +127,7 @@
                         <td> <input type="number" class="rating" th:value="${rating.starRating}" readonly="true" data-show-clear="false" data-show-caption="false" data-size="xs">
                         </td>
                         <td th:text="${rating.comment}"></td>
+                        <td th:text="${rating.user.getUserName()}"></td>
                     </tr>
                 </table>
             </div>
