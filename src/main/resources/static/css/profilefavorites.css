@@ -5,9 +5,11 @@
 
 body {
     font-family: Helvetica, Arial, sans-serif;
-    /*    background: linear-gradient(#C9F0D9, white);*/
-    background-color: #F0F7FA;
+     background: linear-gradient(#C9F0D9, white);
+    /*background-color: #F0F7FA; */
 }
+main_container {
+background-color: #C9F0D9;}
 
 * {box-sizing: border-box
 }
@@ -24,9 +26,9 @@ body {
     color:  #4C3936;
 }
 
-/*.favTableHeadPadding{
+.favTableHeadPadding{
     padding-right: 30px;
-}*/
+}
 
 .box{
     padding: 20px;
@@ -43,7 +45,7 @@ body {
 
 }
 
-/*.tab {
+.tab {
     overflow: hidden;
     border: 1px solid #ccc;
     background-color: #f1f1f1;
@@ -51,11 +53,11 @@ body {
 
 .tab button {
     background-color: inherit;
-    float: left;
+    float: center;
     border: none;
     outline: none;
     cursor: pointer;
-    padding: 14px 16px;
+  /*  padding: 14px 16px; */
     transition: 0.3s;
 }
 
@@ -65,17 +67,17 @@ body {
 
 .tab button.active {
     background-color: #ccc;
-}*/
+}
 
 .tabcontent {
-    float: left;
+    float: center;
     padding: 15px;
     background-color: #F0F7FA;
 }
 
-/*.tablinks{
+.tablinks{
 
-}*/
+}
 
 .place_name{
     padding-left: 10px;
@@ -99,14 +101,12 @@ body {
     flex-wrap: wrap;
 }
 
-/*
 .form{
     margin-top:10px;
     margin-bottom: 10px;
 }
-*/
 
-/*label{
+label{
     display:inline-block;
     width:150px;
     margin-right:70px;
@@ -117,17 +117,20 @@ body {
     display:inline-block;
     margin-right:70px;
     text-align: left;
-}*/
+}
 
 button {
+    color:black;
     height: 30px;
-    width: 80px;
+    width: 50%;
+    padding:5px;
+    margin:10px;
     border-radius: 5px;
     cursor: pointer;
     font-weight: bold;
     border: none;
+    align: center;
 }
-
 .submit {
     background-color: #6CBA87;
 }
@@ -138,14 +141,46 @@ button {
 
 .cancelbtn:hover {
     background-color: #DEEFFA;
+
 }
 
 
-.container {
-    padding: 16px 40px 30px 40px;
+container {
+    padding: 16px 40px 16px 40px;
     background-color: #1F6E3A;
-    color: #F0F7FA;
+    color: black;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 }
+.containerhome{
+    color:black;
+    margin:10px;
+    height:30px;
+    width:80px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+
+}
+.containerhome:hover{
+    background-color: #DEEFFA;
+}
+.containerback {
+    background-color: #6CBA87;
+    font-weight: bold;
+    color: #000000;
+    margin:10px;
+    height: 30px;
+    width: 80px;
+
+}
+
+.containerback:hover{
+    background-color: #34BA63;
+}
+
+
 
 a:link, a:visited {
     text-decoration: none;
@@ -156,10 +191,10 @@ a:hover, a:active {
     color: #103B1F;
 }
 
-/*.passwordBox{
+.passwordBox{
     display:inline-block;
     margin-right: 30px;
-}*/
+}
 
 .padding-right-100px{
     padding-right: 100px;

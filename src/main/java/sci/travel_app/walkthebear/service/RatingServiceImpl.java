@@ -23,8 +23,8 @@ public class RatingServiceImpl implements RatingService {
     private AppUserRepository userRepository;
 
     /**
-     *
-     * @return
+     * finds all the rating objects
+     * @return list of rating objects
      */
     @Override
     public List<Rating> findAll() {
@@ -33,9 +33,9 @@ public class RatingServiceImpl implements RatingService {
     }
 
     /**
-     *
-     * @param id
-     * @return
+     * finds a rating object by id
+     * @param id of a rating object
+     * @return a rating object
      */
     @Override
     public Rating findById(long id) {
@@ -44,11 +44,11 @@ public class RatingServiceImpl implements RatingService {
     }
 
     /**
-     *
-     * @param rating
-     * @param place
-     * @param user
-     * @return
+     * creates a new rating object
+     * @param rating a new rating object
+     * @param place place that is rated
+     * @param user logged-in user
+     * @return rating object and saves it to repository
      */
     @Override
     public Rating create(Rating rating, Place place, AppUser user) {
@@ -60,8 +60,8 @@ public class RatingServiceImpl implements RatingService {
     }
 
     /**
-     *
-     * @param id
+     * deletes one rating object
+     * @param id id of the rating object to be deleted
      */
     @Override
     public void deleteRating(long id) {
@@ -75,8 +75,8 @@ public class RatingServiceImpl implements RatingService {
 
 
     /**
-     *
-     * @param id
+     * updates an existing rating object
+     * @param id id of rating object to be updated
      */
     @Override
     public void updateRating(long id) {
@@ -93,10 +93,22 @@ public class RatingServiceImpl implements RatingService {
         return ratingRepository.findByPlace(placesRepository.findById(id));
     }
 
+    /**
+     * finds all the rating objects from a user
+     * @param id id of the logged-in user
+     * @return list of rating objects
+     */
     public List<Rating> findByUser(long id) {
 
         return ratingRepository.findByUser(userRepository.findById(id));
     }
+
+    /**
+     * checks if current user already rated a place
+     * @param place place to check if added
+     * @param user current user
+     * @return true if logged-in user has rated the place, false if place is not rated or user is null
+     */
 
     @Override
     public boolean isAdded(Place place, AppUser user){

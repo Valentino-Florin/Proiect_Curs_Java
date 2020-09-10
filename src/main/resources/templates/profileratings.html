@@ -25,10 +25,6 @@
 
 <div th:insert="fragments :: header"></div>
 
-Authenticated username:
-<div sec:authentication="name"></div>
-Authenticated user role:
-<div sec:authentication="principal.authorities"></div>
 
 <div class="tabcontent" id="ratings">
     <h2>RATINGS 📝</h2>
@@ -45,7 +41,7 @@ Authenticated user role:
                 <input type="number" class="rating" th:value="${ratings.starRating}"
                        readonly="true" data-show-clear="false" data-show-caption="false" data-size="xs"><br>
                 <p class="rating_text" th:text="${ratings.comment}"></p>
-                <div id=button>
+                <div >
                     <button type="submit" class="submit"><a th:href="@{/profileratings/{id}/delete(id=${ratings.id})}">Remove</a></button>
                     <button type="button" class="cancelbtn"><a href="placedetail.html" th:href="@{/placedetail/{id}(id=${ratings.place.getId()})}">Go to place</a>
                     </button>
@@ -56,14 +52,13 @@ Authenticated user role:
 
     <div th:insert="fragments :: alert"></div>
 
-    <div class="container" id=buttons>
-        <button type="submit" class="submit"><a th:href="@{/profileinfo}">Back</a></button>
-        <button type="button" class="cancelbtn"><a th:href="@{/home}">Go back to home</a></button>
+    <div class="container" id="container">
+        <button type="submit" class="containerback"><a th:href="@{/profileinfo}">Back</a></button>
+        <button type="button" class="containerhome"><a th:href="@{/home}">Home</a></button>
 
     </div>
 
 </div>
-
 <div th:insert="fragments :: footer"></div>
 </body>
 </html>

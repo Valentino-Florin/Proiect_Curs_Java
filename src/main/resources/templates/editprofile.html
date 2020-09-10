@@ -3,29 +3,20 @@
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
   <meta charset="utf-8">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+
+  <link rel="stylesheet" href="../static/css/editprofile.css" th:href="@{/css/editprofile.css}">
   <link rel="stylesheet" href="../static/css/fragments.css" th:href="@{/css/fragments.css}">
-  <title></title>
-  <style>
-    body {padding: 20px;}
-    h1 {font-size:34px; color: #3374dc ;}
-  </style>
+  <title>Edit profile</title>
+
 </head>
 <body>
 
 <!--don't forget to remove!-->
-    
-Authenticated username:
-<div sec:authentication="name"></div>
-Authenticated user role:
-<div sec:authentication="principal.authorities"></div>
 
-    
-    
-<h1>EDIT PROFILE</h1>
-
-
+<div class="form" >
 <form th:object="${appUser}" th:action="@{/editprofile/{id}/send(id=${appUser.id})}" method="post">
+  <div class="container" id=inputs>
+  <h1>EDIT PROFILE</h1>
 
   <div class="field">
     <label class="label" th:for="username"><b>Username</b></label>
@@ -44,7 +35,7 @@ Authenticated user role:
   <div class="field">
     <label class="label" th:for="password"><b>New password</b></label>
     <div class="control">
-      <input class="input" type="password" placeholder="New password" th:field="*{password}">
+      <input class="input" type="password" placeholder="Enter the password or add a new one" th:field="*{password}" required>
     </div>
   </div>
 
@@ -55,20 +46,15 @@ Authenticated user role:
     </div>
   </div>
 
-  <div id=buttons>
-    <button type="submit">Submit</button>
-    <button type="cancel"><a th:href="@{/profileinfo}">Cancel</a></button>
-  </div>
+    <div class="container" id=buttons>
+      <button type="submit" class="submit">Submit</button>
+      <button type="button" class="cancelbtn"><a th:href="@{/profileinfo}">Cancel</a></button>
+      <!--            <span class="psw">Forgot <a href="#">password?</a></span>-->
+    </div>
 
-<!--<div class="field is-grouped">
-  <div class="control">
-    <button class="button is-link">Apply</button>
   </div>
-  <div class="control">
-    <button class="button is-link is-light" onclick="window.location.href = '/profileinfo'">Cancel</button>
-  </div>
-</div>-->
 </form>
+</div>
 
 </body>
 </html>

@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 
 <head>
     <meta charset="utf-8">
     <title>Title</title>
     <link rel="stylesheet" href="../static/css/fragments.css" th:href="@{/css/fragments.css}">
-   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" type="text/css" />
-    <script src="https://kit.fontawesome.com/4b9ba14b0f.js" crossorigin="anonymous"></script>
+
 
 </head>
 
@@ -157,16 +156,16 @@
     <!-- main nav end -->
 
     <!-- footer start -->
-    <!-- footer start -->
-    <!-- https://codepen.io/slstudios/pen/XbzQVK -->
-    <footer  th:fragment="footer">
-    
+
+
+    <div id="footer"  th:fragment="footer">
+
         <div class="footer-distributed">
 
             <div class="footer-left">
                 <div id=companyLogo>
 
-                    <div class="company_logo"> <img id="walkthebear" src="../static/images/walkthebearlogo2.png" th:src="@{/images/walkthebearlogo2.png}"> </div>
+                    <div class="company_logo"> <img id="walkthebear" src="../static/images/walkthebearlogo3.png" th:src="@{/images/walkthebearlogo3.png}"> </div>
                 </div>
 
                 <!-- <h3>Company<span>logo</span></h3>  -->
@@ -178,55 +177,47 @@
 
                     <a href="register.html" th:href="@{/register}">Registration</a>
 
-                    <a href="#">About</a>
-
-                    <a href="#">Faq</a>
-
-                    <a href="#">Contact</a>
                 </p>
 
                 <p class="footer-company-name">Walk the Bear © 2020</p>
             </div>
 
             <div class="footer-center">
-
-                <div>
-                    <i class="fas fa-map-marker-alt"></i>
-                    <p><span></span> Cluj-Napoca, Romania</p>
+<div class=" many_divs">
+                <div  >
+                    <img  src="../static/images/location24.png" th:src="@{/images/location24.png}">
+                    <p > Cluj-Napoca, Romania  </p>
+                </div>
+<p></p>
+                <div >
+                    <img  src="../static/images/phone24.png" th:src="@{/images/phone24.png}"   >
+                    <p > +40745889963  </p>
                 </div>
 
-                <div>
-                    <i class="fa fa-phone"></i>
-                    <p>+40745889963</p>
-                </div>
+<p></p>
 
-                <div>
-                    <i class="fa fa-envelope"></i>
-                    <p><a href="mailto:support@company.com">support@walkthebear.com</a></p>
+                <div >
+                    <img  src="../static/images/mail24.png" th:src="@{/images/mail24.png}">
+                   <p ><a href="mailto:support@walkthebear.com">support@walkthebear.com</a></p>
                 </div>
 
             </div>
-
+            </div>
             <div class="footer-right">
 
                 <p class="footer-company-about">
                     <span>About the company</span>
-                    Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor lacus vehicula sit amet.
+                    We help you create transformative experiences that offer life changing moments and help fulfill that deep seated urge for connection and learning.
+
+                    Where will your wanderlust take you?
                 </p>
 
-                <div class="footer-icons">
 
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                    <a href="#"><i class="fa fa-twitter"></i></a>
-                    <a href="#"><i class="fa fa-linkedin"></i></a>
-                    <a href="#"><i class="fa fa-github"></i></a>
-
-                </div>
 
             </div>
 
         </div>
-    </footer>
+    </div>
     <!-- footer end -->
 
     <!-- footer end -->

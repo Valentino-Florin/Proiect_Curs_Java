@@ -267,7 +267,7 @@ a:active {
 /* _______________________________ footer start _________________________________ */
 footer {
   margin-top: 40px;
-}  
+}
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,500,300,700);
 
 * {
@@ -292,7 +292,8 @@ section {
 	width: 100%;
 	text-align: left;
 	font: bold 16px sans-serif;
-	padding: 55px 50px;
+	padding: 30px  50px 30px 50px;
+
 }
 
 .footer-distributed .footer-left,
@@ -332,7 +333,7 @@ section {
 .footer-distributed .footer-links a{
 	display:inline-block;
 	line-height: 1.8;
-  font-weight:400;
+    font-weight:400;
 	text-decoration: none;
 	color:  inherit;
 }
@@ -371,8 +372,8 @@ section {
 .footer-distributed .footer-center p{
 	display: inline-block;
 	color: #ffffff;
-  font-weight:400;
-	vertical-align: middle;
+    font-weight:400;
+	vertical-align: top;
 	margin:0;
 }
 
@@ -381,10 +382,11 @@ section {
 	font-weight: normal;
 	font-size:14px;
 	line-height:2;
+	vertical-align:middle;
 }
 
 .footer-distributed .footer-center p a{
-	color:  lightseagreen;
+	color:  #C9F0D9;
 	text-decoration: none;;
 }
 
@@ -445,7 +447,7 @@ section {
 	margin-bottom: 5px;
 }
 
-/* If you don't want the footer to be responsive, remove these media queries */
+
 
 @media (max-width: 880px) {
 

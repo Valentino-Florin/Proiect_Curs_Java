@@ -4,7 +4,7 @@
 <head>
 
     <meta charset="utf-8">
-    <title>Profile Ratings</title>
+    <title>Profile favorites</title>
     <link rel="stylesheet" href="../static/css/profilefavorites.css" th:href="@{/css/profilefavorites.css}">
     <link rel="stylesheet" href="../static/css/fragments.css" th:href="@{/css/fragments.css}">
 
@@ -17,7 +17,7 @@
 <!-- Tab contents -->
 
 <div th:insert="fragments :: header"></div>
-
+<main>
 <div class="tabcontent" id="ratings">
     <h2>FAVORITE 📝</h2>
 
@@ -33,7 +33,7 @@
                 <p class="place_name" th:text="${favorite.place.getName()}"> Place name<br></p>
                 <p class="rating_text" th:text="${favorite.place.getDescription()}"></p><br>
                 <p>  Added on: </p><p class="place_added" th:text="${favorite.dateAdded}"></p><br>
-                <div id=button>
+                <div id="button">
                     <button type="submit" class="submit"><a th:href="@{/profilefav/{id}/delete(id=${favorite.place.getId()})}">Remove</a></button>
                     <button type="button" class="cancelbtn"><a href="placedetail.html" th:href="@{/placedetail/{id}(id=${favorite.place.getId()})}">Go to place</a>
                     </button>
@@ -44,15 +44,16 @@
 
     <div th:insert="fragments :: alert"></div>
 
-    <div class="container" id=buttons>
-        <button type="submit" class="submit"><a th:href="@{/profileinfo}">Back</a></button>
-        <button type="button" class="cancelbtn"><a th:href="@{/home}">Go to home</a></button>
+    <div class="container" id="container">
+        <button type="submit" class="containerback" ><a  id="backlink" th:href="@{/profileinfo}">Back</a></button>
+        <button type="button" class="containerhome"><a id="homelink" th:href="@{/home}">Home</a></button>
 
     </div>
 
 </div>
+</main>
 
 <div th:insert="fragments :: footer"></div>
-</body>
 
+</body>
 </html>

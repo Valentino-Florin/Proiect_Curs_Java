@@ -1,6 +1,6 @@
 body {
     font-family: Helvetica, Arial, sans-serif;
-    background: linear-gradient(#E5F2F0, white);
+    background: linear-gradient(#C9F0D9, white);
 }
 
 /* _______________________________ header start _________________________________ */
@@ -79,7 +79,7 @@ display: flex;
 .card h3{
     
 }
-.card p{ 
+.card p{
     width: 250px;
     white-space: nowrap;
   overflow: hidden;
