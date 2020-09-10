@@ -39,8 +39,11 @@ public class FileService {
         document.add(new Paragraph("Name, County, City"));
         com.itextpdf.text.List list = new com.itextpdf.text.List();
         List<String> strings = stringify(placeList);
-        for (String s : strings){
-            list.add(s);
+//        for (String s : strings){
+//            list.add(s);
+//        }
+        for (int index=0; index<15; index++){
+            list.add(strings.get(index));
         }
         document.add(list);
 

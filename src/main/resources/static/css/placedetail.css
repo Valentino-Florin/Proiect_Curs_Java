@@ -241,3 +241,7 @@ button {
     height: 350px;
     width: auto;
 }
+
+.display_rating {
+    padding-right: 10px;
+}

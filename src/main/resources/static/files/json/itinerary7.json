@@ -1,1 +1,86 @@
-{}
+{
+  "Day 1": [
+    {
+      "hourId": 1502,
+      "dailySchedule": {
+        "dayId": 68,
+        "itinerary": {
+          "itineraryId": 7,
+          "name": "Trip4v2",
+          "description": "Negative, bossy meat creature! Hi, I\u0027m a naughty nurse, and I really need someone to talk to. $9.95 a minute. Hey, whatcha watching? Tell her she looks thin. Soon enough. Who said that? SURE you can die! You want to die?! jlkjljljlkj",
+          "user": {
+            "id": 2,
+            "userName": "RoyalMan",
+            "password": "$2a$10$zHfE7VxYFgrqRHTOIlKpo.nrsbHUR723EtTf4Fy8FxDFt4Zqe9HyK",
+            "email": "augue.ut@sapien.net",
+            "role": "TRAVELER",
+            "created": "May 14, 2020, 3:00:00 AM"
+          },
+          "created": "Apr 26, 2020, 12:00:00 AM",
+          "startDate": "Mar 13, 2020"
+        },
+        "name": "Day 1"
+      },
+      "time": "11:00",
+      "place": {
+        "id": 3,
+        "name": "Rezervatia de Bujori de Stepa",
+        "county": "Mures",
+        "city": "Zau de Campie",
+        "address": "Zau de Campie",
+        "coordinates": "46.651301, 24.101911",
+        "category": "ATTRACTIONS",
+        "subcategory": "N_LANDMARKS",
+        "workingHours": "24/7",
+        "description": "3,2 kilometers upward on rocky road to the Zau de campie peony botanical garden and nature reserve. It has the size of a large garden. The blooming between 15 april and 2 mai. The Paeonia tenuifolia L. can be located only in couple of places in eastern Europe.",
+        "thumbnailFileName": "bujorii-de-stepa-de-la-Zau-de-Campie.jpg",
+        "created": "Mar 17, 2020, 2:00:00 AM",
+        "user": {
+          "id": 7,
+          "userName": "testhost",
+          "password": "$2a$10$2eyHC.q/giaScw/eIhif1eSR/9I5TJEETLDYGoZS4r0832/mDCBb2",
+          "email": "testhost@gmail.com",
+          "role": "HOST",
+          "created": "Jun 7, 2020, 10:19:16 PM"
+        }
+      }
+    },
+    {
+      "hourId": 1503,
+      "dailySchedule": {
+        "dayId": 68,
+        "itinerary": {
+          "itineraryId": 7,
+          "name": "Trip4v2",
+          "description": "Negative, bossy meat creature! Hi, I\u0027m a naughty nurse, and I really need someone to talk to. $9.95 a minute. Hey, whatcha watching? Tell her she looks thin. Soon enough. Who said that? SURE you can die! You want to die?! jlkjljljlkj",
+          "user": {
+            "id": 2,
+            "userName": "RoyalMan",
+            "password": "$2a$10$zHfE7VxYFgrqRHTOIlKpo.nrsbHUR723EtTf4Fy8FxDFt4Zqe9HyK",
+            "email": "augue.ut@sapien.net",
+            "role": "TRAVELER",
+            "created": "May 14, 2020, 3:00:00 AM"
+          },
+          "created": "Apr 26, 2020, 12:00:00 AM",
+          "startDate": "Mar 13, 2020"
+        },
+        "name": "Day 1"
+      },
+      "time": "13:30",
+      "place": {
+        "id": 13,
+        "name": "Copou Park",
+        "county": "Iași",
+        "city": "Iași",
+        "address": "Bulevardul Carol I",
+        "coordinates": "47.179166, 27.567525",
+        "category": "ATTRACTIONS",
+        "subcategory": "PARK",
+        "workingHours": "24/7",
+        "description": "Longtime public garden featuring an obelisk that is Romania\u0027s oldest monument \u0026 a 500-year-old tree.",
+        "thumbnailFileName": "copou.jpg",
+        "created": "Apr 26, 2020, 2:00:00 PM"
+      }
+    }
+  ]
+}
