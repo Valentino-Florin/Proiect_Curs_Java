@@ -66,9 +66,10 @@
                             <td th:text="${place.workingHours}">workingHours</td>
                             <td th:text="${place.description}">description</td>
                             <td th:text="${place.created}">created</td>
-                            <td th:text="${place.user}">user</td>
+                            <td th:text="${place.user. getUserName()}">user</td>
+                            <td><a th:href="@{/editratings/{id}(id=${place.id})}">Ratings</a></td>
                             <td><a th:href="@{/editplaceadmin/{id}(id=${place.id})}">Edit</a></td>
-                            <td><a th:href="@{/deleteplaceadmin/{id}(id=${place.id})}">Delete</a></td>
+                            <td><a th:href="@{/deleteplaceadmin/{id}(id=${place.id})}"onclick="return confirm('Are you sure you want to delete place?')" >Delete</a></td>
                         </tr>
                     </table>
                 </div>

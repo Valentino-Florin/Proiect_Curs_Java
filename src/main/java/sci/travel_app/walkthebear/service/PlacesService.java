@@ -18,7 +18,8 @@ public interface PlacesService {
     List<Place> getPlaceByCategory(Category category);
     Place addPlace(Place place);
     void updatePlace(Place place);
-    void updateUserPlace(Place place, AppUser user);
+    public void updateUserPlace(Place place, AppUser user, String thumbnail, String gallery1,
+                                String gallery2, String gallery3, String gallery4, String gallery5);
     void deletePlace(long placeId);
     public List<Place> findPlaceByUser(AppUser user);
 

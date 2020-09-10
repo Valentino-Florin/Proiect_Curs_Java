@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <title>
         <!-- Insert your title here -->
     </title>
@@ -12,7 +12,7 @@
 
 <body>
 <!-- header start -->
- <div th:insert="fragments :: header"></div> 
+<div th:insert="fragments :: header"></div>
 <!-- header end -->
 
 
@@ -20,42 +20,43 @@
 
 <div class=container id=main_container>
     <div>
-    <h2>Search for users</h2>
+        <h2>Search for users</h2>
     </div>
     <form action="#" th:action="@{/adminuser}" method="get">
-        <input type="text" name="keyword" id="search" />
+        <input type="text" name="keyword" id="search"/>
         <input type="submit" value="Search"/>
         <div>
-<!--        <div id=button_text>-->
-<!--            <a href="adduserdmin.html" th:href="@{http://localhost:8080/adduseradmin}">-->
-<!--                <p>Add User</p>-->
-<!--            </a>-->
-<!--        </div>-->
-              <h2>Users List</h2>
-              <table class="table table-striped">
-                  <tr>
-                      <th>User ID</th>
-                      <th>Name</th>
-<!--                      <th>Password</th>-->
-                      <th>Email</th>
-                      <th>Role</th>
-                      <th>Date</th>
+            <!--        <div id=button_text>-->
+            <!--            <a href="adduserdmin.html" th:href="@{http://localhost:8080/adduseradmin}">-->
+            <!--                <p>Add User</p>-->
+            <!--            </a>-->
+            <!--        </div>-->
+            <h2>Users List</h2>
+            <table class="table table-striped">
+                <tr>
+                    <th>User ID</th>
+                    <th>Name</th>
+                    <!--                      <th>Password</th>-->
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Date</th>
 
 
-                  </tr>
-                  <tr th:each="user : ${users}">
-                      <td th:text="${user.id}">id</td>
-                      <td th:text="${user.userName}">name</td>
-<!--                      <td th:text="${user.password}">password</td>-->
-                      <td th:text="${user.email}">email</td>
-                      <td th:text="${user.role}">role</td>
-                      <td th:text="${user.created}">created</td>
-                      <td><a th:href="@{/edituseradmin/{id}(id=${user.id})}">Edit</a></td>
-                      <td><a th:href="@{/deleteuseradmin/{id}(id=${user.id})}">Delete</a></td>
-                  </tr>
-              </table>
+                </tr>
+                <tr th:each="user : ${users}">
+                    <td th:text="${user.id}">id</td>
+                    <td th:text="${user.userName}">name</td>
+                    <td th:text="${user.email}">email</td>
+                    <td th:text="${user.role}">role</td>
+                    <td th:text="${user.created}">created</td>
+                    <td><a th:href="@{/edituseradmin/{id}(id=${user.id})}">Edit</a></td>
+                    <td><a th:href="@{/deleteuseradmin/{id}(id=${user.id})}"
+                           onclick="return confirm('Are you sure you want to delete user?')">Delete</a></td>
+
+                </tr>
+            </table>
         </div>
-      </form>
-  </div>
-  </body>
-  </html>
+    </form>
+</div>
+</body>
+</html>

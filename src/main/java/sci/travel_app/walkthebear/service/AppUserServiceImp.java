@@ -31,6 +31,13 @@ public class AppUserServiceImp implements AppUserService {
         return appUserRepository.save(user);
     }
 
+    public AppUser saveNewPassoword(AppUser user) {
+        String passwordEncrypted = passwordEncoder.encode(user.getPassword());
+        user.setPassword(passwordEncrypted);
+
+        return appUserRepository.save(user);
+    }
+
     @Override
     public void update(AppUser user, long id){
         AppUser updatedUser = new AppUser();
@@ -43,7 +50,6 @@ public class AppUserServiceImp implements AppUserService {
 
         appUserRepository.save(updatedUser);
     }
-
 
     @Override
     public AppUser findByEmail(String s) throws UsernameNotFoundException {
@@ -67,6 +73,10 @@ public class AppUserServiceImp implements AppUserService {
     public List<AppUser> findUsersByKeyword(String keyword) {
         return appUserRepository.findUsersByKeyword(keyword);
     }
+
+    @Override
+    public void deleteUser(AppUser user) { appUserRepository.delete(user); }
+
 
     public AppUser findByUserName(String username) {
         return appUserRepository.findByUserName(username);

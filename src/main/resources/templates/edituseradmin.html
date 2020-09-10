@@ -8,7 +8,28 @@
     body {padding: 20px;}
     h2 {font-size:34px; color: #3374dc ;}
 
+
+
+
     </style>
+    <script type="text/javascript">
+<!-- function dynInput(cbox) {-->
+<!--  if (cbox.checked) {-->
+<!--    var input = document.createElement("input");-->
+<!--    input.type = "text";-->
+<!--    var div = document.createElement("div");-->
+<!--    div.id = cbox.name;-->
+<!--    div.innerHTML = "New Password" + cbox.name;-->
+<!--    div.appendChild(input);-->
+<!--    document.getElementById("insertinputs").appendChild(div);-->
+<!--  } else {-->
+<!--    document.getElementById(cbox.name).remove();-->
+<!--  }-->
+<!--}-->
+
+
+
+    </script>
 </head>
 <body>
 <div align="center">
@@ -19,26 +40,38 @@
           method="post">
         <div>
             <label for="name">Name</label>
-            <input type="text" th:field="*{userName}" id="name" placeholder="Name">
+            <input type="text" th:field="*{userName}" id="name" placeholder="Name" required>
             <span th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}"></span>
         </div>
-        <div >
-            <label class="label" th:for="password">New password</label>
-            <div class="control">
-                <input class="input" type="password" placeholder="New password" name="password">
-            </div>
+        <!--        <div>-->
+        <!--&lt;!&ndash;            <input type="checkbox" name="check1" onclick="dynInput(this);"/>&ndash;&gt;-->
+        <!--            &lt;!&ndash;            <p id="insertinputs"></p>&ndash;&gt;-->
+        <!--            <label class="label"  th:field="*{password"}>Password</label>-->
+        <!--            <div class="control">-->
+        <!--                <input class="input"  type="password" placeholder="Password" name="password">-->
+        <!--            </div>-->
+        <!--        </div>-->
+        <div>
+            <label for="password">Password</label>
+            <input type="password" th:field="*{password}" id="password" placeholder="Password" >
+            <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
         </div>
+
         <div>
             <label for="email">Email</label>
-            <input type="text" th:field="*{email}" id="email" placeholder="Email">
+            <input type="text" th:field="*{email}" id="email" placeholder="Email" required>
             <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
         </div>
         <div>
-            <label for="role">Role</label>
-            <select id=role name=role>
-                <option th:each="role : ${T(sci.travel_app.walkthebear.model.misc.AppUserRole).values()}"
-                        th:value="${role}" th:text="${role.displayRole}"></option>
-            </select>
+            <label>Role</label>
+            <!--            <select id=role name=role>-->
+            <!--                <option th:each="role : ${T(sci.travel_app.walkthebear.model.misc.AppUserRole).values()}"-->
+            <!--                        th:value="${role}" th:text="${role.displayRole}"></option>-->
+            <!--            </select>-->
+            <div th:each="role : ${T(sci.travel_app.walkthebear.model.misc.AppUserRole).values()}">
+                <input type="radio" th:field="*{role}" th:value="${role}">
+                <label th:for="${#ids.prev('role')}" th:text="${role.displayRole}">Role</label>
+            </div>
         </div>
         <div>
             <input type="hidden" name="created" id="created"
@@ -46,7 +79,7 @@
         </div>
         <div id=buttons>
             <button type="submit">Submit</button>
-            <button type="cancel">Cancel</button>
+            <button type="cancel"><a th:href="@{/adminuser}">Cancel</a></button>
         </div>
     </form>
 </div>

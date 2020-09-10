@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8"/>
+    <title>
+        Admin
+    </title>
+    <link type="text/css" href="../static/css/addplace.css" th:href="@{/css/addplace.css}" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/fragments.css" th:href="@{/css/fragments.css}">
+</head>
+
+<body>
+<!-- header start -->
+<div th:insert="fragments :: header"></div>
+<!-- header end -->
+
+
+<!-- main content start -->
+
+<div class=container id=main_container>
+    <div>
+        <h3>Place ratings</h3>
+    </div>
+    <div class="top_nav">
+        <form action="#"
+              th:action="@{/editratings/{id}(id=${place.id})}" method="get"
+              th:object="${place}">
+            <div>
+                <div id=place_rating>
+                    <div id=star_rating_aggregated>
+                        <!--<p>****star placeholder</p>-->
+                        <input type="number" class="rating" th:value="${placeAverageRating}" readonly="true"
+                               data-show-clear="false" data-size="sm">
+                        <p>Rating</p>
+                    </div>
+                </div>
+                <div>
+                    <div class=box id=user_rating>
+                        <h3>User reviews</h3>
+                        <div class=rating_list>
+                            <table>
+                                <tr th:each="rating : ${ratingList}">
+                                    <td><input type="number" class="rating" th:value="${rating.starRating}"
+                                               readonly="true" data-show-clear="false" data-show-caption="false"
+                                               data-size="xs">
+                                    </td>
+                                    <td th:text="${rating.comment}"></td>
+                                    <td th:text="${rating.user.getUserName()}"></td>
+                                    <td><a th:href="@{/editratings/delete/{id}(id=${rating.id})}" onclick="return confirm('Are you sure you want to delete rating?')" >Delete</a></td>
+<!--                                    <a href="" th:href="@{/planner/{id}/day/{dayID}/edit/{hourId}(id=${itinerary.itineraryId},dayID=${day.dayId},hourId=${hour.hourId})}">Edit</a>-->
+
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

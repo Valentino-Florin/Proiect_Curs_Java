@@ -68,6 +68,11 @@ public class RatingServiceImpl implements RatingService {
         ratingRepository.delete(findById(id));
     }
 
+    @Override
+    public void deleteRatingAdmin(Rating rating) {
+        ratingRepository.delete(rating);
+    }
+
 
     /**
      *

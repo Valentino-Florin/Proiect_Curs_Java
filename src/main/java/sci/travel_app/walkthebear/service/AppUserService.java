@@ -18,6 +18,10 @@ public interface AppUserService extends UserDetailsService {
 
     List<AppUser> findUsersByKeyword( String keyword);
 
+    public void deleteUser(AppUser user);
+
+
+//    AppUser findByUsername(String userName);
 
 
 }
