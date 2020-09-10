@@ -1,0 +1,213 @@
+@startuml
+
+title __CONTROLLER's Class Diagram__\n
+
+  namespace  {
+    namespace ci.travel_app.walkthebear {
+      namespace controller {
+        class sci.travel_app.walkthebear.controller.AppUserController {
+            {static} - logger : Logger
+            - modelMapper : ModelMapper
+            + login()
+            + registerUserAccount()
+            + showRegistrationForm()
+            + wrongLogin()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace ci.travel_app.walkthebear {
+      namespace controller {
+        class sci.travel_app.walkthebear.controller.CustomErrorController {
+            + getErrorPath()
+            + handleError()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace ci.travel_app.walkthebear {
+      namespace controller {
+        class sci.travel_app.walkthebear.controller.FavoritesController {
+            + favorites()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace ci.travel_app.walkthebear {
+      namespace controller {
+        class sci.travel_app.walkthebear.controller.HomePageController {
+            {static} - logger : Logger
+            + home()
+            + indexRedirect()
+            + latestPlacesList()
+            + mostPopularList()
+            + slashRedirect()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace ci.travel_app.walkthebear {
+      namespace controller {
+        class sci.travel_app.walkthebear.controller.MyProfileController {
+            {static} - logger : Logger
+            + addNewPlaceAdmin()
+            + changePlace()
+            + changeProfileInfo()
+            + changeUser()
+            + deleteAdminRatings()
+            + deleteAdminUser()
+            + deleteFav()
+            + deleteRatings()
+            + erasePlace()
+            + getAllFavorites()
+            + getAllRated()
+            + newRating()
+            + showAdminPlace()
+            + showAdminUser()
+            + showEditProfileInfoForm()
+            + showNewPlaceFormAdmin()
+            + showUpdateForm()
+            + showUpdateUserForm()
+            + userprofile()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace ci.travel_app.walkthebear {
+      namespace controller {
+        class sci.travel_app.walkthebear.controller.PlaceController {
+            {static} - logger : Logger
+            + addNewPlace()
+            + addPhotos()
+            + editPlace()
+            + erasePlace()
+            + showEditForm()
+            + showNewPlaceForm()
+            + showPhotosForm()
+            + showPlaceManager()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace ci.travel_app.walkthebear {
+      namespace controller {
+        class sci.travel_app.walkthebear.controller.PlaceDetailController {
+            {static} - logger : Logger
+            + addToFavorites()
+            + addToUnplannedPlaces()
+            + newRating()
+            + removeFromFavorites()
+            + removeFromUnplannedPlaces()
+            + sendRating()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace ci.travel_app.walkthebear {
+      namespace controller {
+        class sci.travel_app.walkthebear.controller.ResultController {
+            + categoryAttractions()
+            + categoryAttractionsPage1()
+            + categoryFood()
+            + categoryFoodAndDrinkPage1()
+            + categoryLodging()
+            + categoryLodgingPage1()
+            + searchResults()
+            + searchResultsFiltered()
+            + searchResultsPage1()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace ci.travel_app.walkthebear {
+      namespace controller {
+        class sci.travel_app.walkthebear.controller.TripController {
+            {static} - logger : Logger
+            + addNewDay()
+            + createTrip()
+            + deleteObjective()
+            + deleteTrip()
+            + displayDay()
+            + downloadJSON()
+            + editObjective()
+            + editTrip()
+            + getAllTrips()
+            + itineraryMap()
+            + removeDay()
+            + saveDay()
+            + saveTrip()
+            + showAndPrintTrip()
+            + showTrip()
+            + updateHour()
+            + updateTrip()
+        }
+      }
+    }
+  }
+  
+
+  sci.travel_app.walkthebear.controller.AppUserController o-- sci.travel_app.walkthebear.repository.AppUserRepository : appUserRepository
+  sci.travel_app.walkthebear.controller.AppUserController o-- sci.travel_app.walkthebear.service.AppUserServiceImp : appUserServiceImp
+  sci.travel_app.walkthebear.controller.CustomErrorController .up.|> org.springframework.boot.web.servlet.error.ErrorController
+  sci.travel_app.walkthebear.controller.FavoritesController o-- sci.travel_app.walkthebear.service.AppUserServiceImp : appUserServiceImp
+  sci.travel_app.walkthebear.controller.FavoritesController o-- sci.travel_app.walkthebear.service.FavoritesServiceImpl : favoritesServiceImpl
+  sci.travel_app.walkthebear.controller.HomePageController o-- sci.travel_app.walkthebear.data_utils.FileService : fileService
+  sci.travel_app.walkthebear.controller.HomePageController o-- sci.travel_app.walkthebear.service.PlacesServiceImp : placeService
+  sci.travel_app.walkthebear.controller.MyProfileController o-- sci.travel_app.walkthebear.repository.AppUserRepository : appUserRepository
+  sci.travel_app.walkthebear.controller.MyProfileController o-- sci.travel_app.walkthebear.service.AppUserServiceImp : appUserServiceImp
+  sci.travel_app.walkthebear.controller.MyProfileController o-- sci.travel_app.walkthebear.service.FavoritesServiceImpl : favoritesService
+  sci.travel_app.walkthebear.controller.MyProfileController o-- sci.travel_app.walkthebear.service.PlacesServiceImp : placesService
+  sci.travel_app.walkthebear.controller.MyProfileController o-- sci.travel_app.walkthebear.service.RatingServiceImpl : ratingService
+  sci.travel_app.walkthebear.controller.MyProfileController o-- sci.travel_app.walkthebear.repository.AppUserRepository : userRepository
+  sci.travel_app.walkthebear.controller.PlaceController o-- sci.travel_app.walkthebear.repository.AppUserRepository : appUserRepository
+  sci.travel_app.walkthebear.controller.PlaceController o-- sci.travel_app.walkthebear.service.AppUserServiceImp : appUserServiceImp
+  sci.travel_app.walkthebear.controller.PlaceController o-- sci.travel_app.walkthebear.service.PlacesServiceImp : placesService
+  sci.travel_app.walkthebear.controller.PlaceController o-- sci.travel_app.walkthebear.data_utils.UploadService : uploadService
+  sci.travel_app.walkthebear.controller.PlaceDetailController o-- sci.travel_app.walkthebear.service.AppUserServiceImp : appUserServiceImp
+  sci.travel_app.walkthebear.controller.PlaceDetailController o-- sci.travel_app.walkthebear.service.FavoritesServiceImpl : favoritesService
+  sci.travel_app.walkthebear.controller.PlaceDetailController o-- sci.travel_app.walkthebear.service.PlacesServiceImp : placeService
+  sci.travel_app.walkthebear.controller.PlaceDetailController o-- sci.travel_app.walkthebear.service.RatingServiceImpl : ratingService
+  sci.travel_app.walkthebear.controller.PlaceDetailController o-- sci.travel_app.walkthebear.service.UnplannedPlacesListService : unplannedPlacesListService
+  sci.travel_app.walkthebear.controller.ResultController o-- sci.travel_app.walkthebear.service.PlacesServiceImp : placesService
+  sci.travel_app.walkthebear.controller.TripController o-- sci.travel_app.walkthebear.repository.AppUserRepository : appUserRepository
+  sci.travel_app.walkthebear.controller.TripController o-- sci.travel_app.walkthebear.service.AppUserServiceImp : appUserServiceImp
+  sci.travel_app.walkthebear.controller.TripController o-- sci.travel_app.walkthebear.service.DailyScheduleService : dailyScheduleService
+  sci.travel_app.walkthebear.controller.TripController o-- sci.travel_app.walkthebear.data_utils.FileService : fileService
+  sci.travel_app.walkthebear.controller.TripController o-- sci.travel_app.walkthebear.service.HourMappingService : hourMappingService
+  sci.travel_app.walkthebear.controller.TripController o-- sci.travel_app.walkthebear.service.ItineraryService : itineraryService
+  sci.travel_app.walkthebear.controller.TripController o-- sci.travel_app.walkthebear.service.PlacesServiceImp : placesService
+  sci.travel_app.walkthebear.controller.TripController o-- sci.travel_app.walkthebear.service.UnplannedPlacesListService : unplannedPlacesListService
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

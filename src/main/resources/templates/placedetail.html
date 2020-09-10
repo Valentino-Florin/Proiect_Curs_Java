@@ -124,10 +124,10 @@
             <div class=rating_list>
                 <table>
                     <tr th:each="rating : ${ratingList}">
-                        <td> <input type="number" class="rating" th:value="${rating.starRating}" readonly="true" data-show-clear="false" data-show-caption="false" data-size="xs">
+                        <td class=display_rating> <input type="number" class="rating" th:value="${rating.starRating}" readonly="true" data-show-clear="false" data-show-caption="false" data-size="xs">
                         </td>
-                        <td th:text="${rating.comment}"></td>
-                        <td th:text="${rating.user.getUserName()}"></td>
+                        <td class=display_rating th:text="${rating.comment}"></td>
+                        <td class=display_rating th:text="${rating.user.getUserName()}"></td>
                     </tr>
                 </table>
             </div>

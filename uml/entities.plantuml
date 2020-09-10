@@ -1,0 +1,281 @@
+@startuml
+
+title __ENTITIES's Class Diagram__\n
+
+
+    namespace ci.travel_app.walkthebear {
+      namespace model.entities {
+        class sci.travel_app.walkthebear.model.entities.AppUser {
+            ~ id : long
+            - created : Date
+            - email : String
+            - password : String
+            - passwordConfirm : String
+            - userName : String
+            + AppUser()
+            + AppUser()
+            + getCreated()
+            + getEmail()
+            + getId()
+            + getPassword()
+            + getPasswordConfirm()
+            + getRole()
+            + getUserName()
+            + setCreated()
+            + setEmail()
+            + setId()
+            + setPassword()
+            + setRole()
+            + setUserName()
+        }
+      }
+    }
+
+  
+
+
+    namespace ci.travel_app.walkthebear {
+      namespace model.entities {
+        class sci.travel_app.walkthebear.model.entities.DailySchedule {
+            ~ dayId : long
+            - name : String
+            + DailySchedule()
+            + DailySchedule()
+            + DailySchedule()
+            + equals()
+            + getDayId()
+            + getItinerary()
+            + getName()
+            + hashCode()
+            + setDayId()
+            + setItinerary()
+            + setName()
+        }
+      }
+    }
+
+  
+
+
+    namespace ci.travel_app.walkthebear {
+      namespace model.entities {
+        class sci.travel_app.walkthebear.model.entities.Favorite {
+            ~ id : long
+            - dateAdded : Date
+            + Favorite()
+            + Favorite()
+            + getDateAdded()
+            + getId()
+            + getPlace()
+            + getUser()
+            + setDateAdded()
+            + setId()
+            + setPlace()
+            + setUser()
+            + toString()
+        }
+      }
+    }
+
+  
+
+
+    namespace ci.travel_app.walkthebear {
+      namespace model.entities {
+        class sci.travel_app.walkthebear.model.entities.HourMapping {
+            - hourId : long
+            - time : String
+            + HourMapping()
+            + HourMapping()
+            + equals()
+            + getDailySchedule()
+            + getHourId()
+            + getPlace()
+            + getTime()
+            + hashCode()
+            + setDailySchedule()
+            + setHourId()
+            + setPlace()
+            + setTime()
+        }
+      }
+    }
+
+  
+
+
+    namespace ci.travel_app.walkthebear {
+      namespace model.entities {
+        class sci.travel_app.walkthebear.model.entities.Itinerary {
+            ~ itineraryId : long
+            - created : Date
+            - description : String
+            - name : String
+            - startDate : Date
+            + Itinerary()
+            + Itinerary()
+            + Itinerary()
+            + equals()
+            + getCreated()
+            + getDescription()
+            + getItineraryId()
+            + getName()
+            + getStartDate()
+            + getUser()
+            + hashCode()
+            + setCreated()
+            + setDescription()
+            + setItineraryId()
+            + setName()
+            + setStartDate()
+            + setUser()
+        }
+      }
+    }
+
+  
+
+
+    namespace ci.travel_app.walkthebear {
+      namespace model.entities {
+        class sci.travel_app.walkthebear.model.entities.Place {
+            ~ id : long
+            - address : String
+            - city : String
+            - coordinates : String
+            - county : String
+            - created : Date
+            - description : String
+            - email : String
+            - galleryImage1FileName : String
+            - galleryImage2FileName : String
+            - galleryImage3FileName : String
+            - galleryImage4FileName : String
+            - galleryImage5FileName : String
+            - name : String
+            - phoneNumber : String
+            - thumbnailFileName : String
+            - workingHours : String
+            + Place()
+            + Place()
+            + getAddress()
+            + getCategory()
+            + getCity()
+            + getCoordinates()
+            + getCounty()
+            + getCreated()
+            + getDescription()
+            + getEmail()
+            + getGalleryImage1FileName()
+            + getGalleryImage1Path()
+            + getGalleryImage2FileName()
+            + getGalleryImage2Path()
+            + getGalleryImage3FileName()
+            + getGalleryImage3Path()
+            + getGalleryImage4FileName()
+            + getGalleryImage4Path()
+            + getGalleryImage5FileName()
+            + getGalleryImage5Path()
+            + getId()
+            + getName()
+            + getPhoneNumber()
+            + getSubcategory()
+            + getThumbnailFileName()
+            + getThumbnailImagePath()
+            + getUser()
+            + getWorkingHours()
+            + setAddress()
+            + setCategory()
+            + setCity()
+            + setCoordinates()
+            + setCounty()
+            + setCreated()
+            + setDescription()
+            + setEmail()
+            + setGalleryImage1FileName()
+            + setGalleryImage2FileName()
+            + setGalleryImage3FileName()
+            + setGalleryImage4FileName()
+            + setGalleryImage5FileName()
+            + setId()
+            + setName()
+            + setPhoneNumber()
+            + setSubcategory()
+            + setThumbnailFileName()
+            + setUser()
+            + setWorkingHours()
+            + toString()
+        }
+      }
+    }
+
+  
+
+
+    namespace ci.travel_app.walkthebear {
+      namespace model.entities {
+        class sci.travel_app.walkthebear.model.entities.Rating {
+            ~ id : long
+            - comment : String
+            - created : Date
+            - starRating : int
+            + Rating()
+            + Rating()
+            + getComment()
+            + getCreated()
+            + getId()
+            + getPlace()
+            + getStarRating()
+            + getUser()
+            + setComment()
+            + setCreated()
+            + setId()
+            + setPlace()
+            + setStarRating()
+            + setUser()
+        }
+      }
+    }
+
+
+
+    namespace ci.travel_app.walkthebear {
+      namespace model.entities {
+        class sci.travel_app.walkthebear.model.entities.UnplannedPlacesList {
+            - listId : long
+            - unplannedPlacesTemp : List<Place>
+            + getListId()
+            + getUnplannedPlacesTemp()
+            + getUser()
+            + setListId()
+            + setUnplannedPlacesTemp()
+            + setUser()
+        }
+      }
+    }
+
+  
+
+  sci.travel_app.walkthebear.model.entities.AppUser o-- sci.travel_app.walkthebear.model.misc.AppUserRole : role
+  sci.travel_app.walkthebear.model.entities.DailySchedule o-- sci.travel_app.walkthebear.model.entities.Itinerary : itinerary
+  sci.travel_app.walkthebear.model.entities.Favorite o-- sci.travel_app.walkthebear.model.entities.Place : place
+  sci.travel_app.walkthebear.model.entities.Favorite o-- sci.travel_app.walkthebear.model.entities.AppUser : user
+  sci.travel_app.walkthebear.model.entities.HourMapping o-- sci.travel_app.walkthebear.model.entities.DailySchedule : dailySchedule
+  sci.travel_app.walkthebear.model.entities.HourMapping o-- sci.travel_app.walkthebear.model.entities.Place : place
+  sci.travel_app.walkthebear.model.entities.Itinerary o-- sci.travel_app.walkthebear.model.entities.AppUser : user
+  sci.travel_app.walkthebear.model.entities.Place o-- sci.travel_app.walkthebear.model.misc.Category : category
+  sci.travel_app.walkthebear.model.entities.Place o-- sci.travel_app.walkthebear.model.misc.SubCategory : subcategory
+  sci.travel_app.walkthebear.model.entities.Place o-- sci.travel_app.walkthebear.model.entities.AppUser : user
+  sci.travel_app.walkthebear.model.entities.Rating o-- sci.travel_app.walkthebear.model.entities.Place : place
+  sci.travel_app.walkthebear.model.entities.Rating o-- sci.travel_app.walkthebear.model.entities.AppUser : user
+  sci.travel_app.walkthebear.model.entities.UnplannedPlacesList o-- sci.travel_app.walkthebear.model.entities.AppUser : user
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

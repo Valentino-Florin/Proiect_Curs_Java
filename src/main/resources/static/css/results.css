@@ -23,6 +23,7 @@ a:active {
 #main_container {
     display: flex;
     flex-wrap: wrap;
+    padding: 40px;
 }
 
 #main_content_column {
