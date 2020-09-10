@@ -15,6 +15,7 @@ public interface RatingService {
     void updateRating(long id);
 
     void deleteRating(long id);
+    void deleteRatingAdmin(Rating rating);
     boolean isAdded(Place place, AppUser user);
 
     List<Rating> findAll();

@@ -1,5 +1,6 @@
 package sci.travel_app.walkthebear.controller;
 
+import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -29,6 +30,7 @@ import sci.travel_app.walkthebear.service.RatingServiceImpl;
 import javax.validation.Valid;
 import java.security.Principal;
 import java.util.List;
+
 @Controller
 public class MyProfileController {
 
@@ -48,7 +50,7 @@ public class MyProfileController {
 
 
     @GetMapping(value = "/profileinfo")
-    public String userprofile(@AuthenticationPrincipal AppUserDetails currentUser, Model model){
+    public String userprofile(@AuthenticationPrincipal AppUserDetails currentUser, Model model) {
         AppUser user = appUserServiceImp.findById(appUserServiceImp.findByUserName(currentUser.getUsername()).getId());
         model.addAttribute("currentUser", user);
 
@@ -111,6 +113,7 @@ public class MyProfileController {
         model.addAttribute("allFavorite", allFavorite);
         return "profilefav";
     }
+
     //delete place from favorite
     @GetMapping("/profilefav/{id}/delete")
     public String deleteFav(@PathVariable(value = "id") long id, RedirectAttributes redirectAttributes, Model model, Principal principal) {
@@ -126,11 +129,13 @@ public class MyProfileController {
 
 
     @GetMapping("/adminplace")
-    public String showAdminPlace(Model model, String keyword){
-        if(keyword!=null) {
+    public String showAdminPlace(Model model, String keyword) {
+        if (keyword != null) {
             model.addAttribute("places", placesService.findByKeyword(keyword));
+//            model.addAttribute("users", appUserServiceImp.findById(id));
         } else {
             model.addAttribute("places", placesService.getAllPlaces());
+//            model.addAttribute("users", appUserServiceImp.findById(id));
         }
         return "adminplace";
     }
@@ -161,6 +166,7 @@ public class MyProfileController {
         model.addAttribute("place", place);
         return "editplaceadmin";
     }
+
     @PostMapping("/editplaceadmin/{id}")
     public String changePlace(@PathVariable("id") long id, @Valid Place place,
                               BindingResult result, Model model) {
@@ -176,7 +182,8 @@ public class MyProfileController {
 
     /**
      * Method used to delete a place from the database
-     * @param id - place ID
+     *
+     * @param id    - place ID
      * @param model
      * @return
      * @throws IllegalArgumentException
@@ -186,13 +193,13 @@ public class MyProfileController {
         Place place = placesService.getPlaceById(id);
         //   .orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
         placesService.deletePlace(id);
-        model.addAttribute("place", placesService.getAllPlaces());
+        model.addAttribute("places", placesService.getAllPlaces());
         return "adminplace";
     }
 
     @GetMapping("/adminuser")
-    public String showAdminUser(Model model, String keyword){
-        if(keyword!=null) {
+    public String showAdminUser(Model model, String keyword) {
+        if (keyword != null) {
             model.addAttribute("users", appUserServiceImp.findUsersByKeyword(keyword));
         } else {
             model.addAttribute("users", appUserServiceImp.findAllUsers());
@@ -214,6 +221,7 @@ public class MyProfileController {
     public String changeUser(@PathVariable("id") long id, @Valid AppUser user,
                              BindingResult result, Model model) {
         if (result.hasErrors()) {
+
             user.setId(id);
             return "edituseradmin";
         }
@@ -223,4 +231,34 @@ public class MyProfileController {
         return "adminuser";
     }
 
+    @GetMapping("/deleteuseradmin/{id}")
+    public String deleteAdminUser(@PathVariable("id") long id, Model model) {
+        AppUser user = appUserServiceImp.findById(id);
+          //orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
+        appUserServiceImp.deleteUser(user);
+        model.addAttribute("users", appUserServiceImp.findAllUsers());
+        return "adminuser";
+    }
+
+    @GetMapping("/editratings/{id}")
+    public String newRating(@PathVariable("id") long id, Model model, RedirectAttributes redirectAttributes) {
+        Place place = placesService.getPlaceById(id);
+        Rating rating = new Rating();
+        rating.setPlace(place);
+        model.addAttribute("place", place);
+//        model.addAttribute("rating", rating);
+        List<Rating> ratingList = ratingService.getAllRatingsOfPlaceById(id);
+        model.addAttribute("ratingList", ratingList);
+        double placeAverageRating = (ratingList.stream().mapToDouble(Rating::getStarRating).sum() / ratingList.stream().count());
+        model.addAttribute("placeAverageRating", placeAverageRating);
+        return "editratings";
+    }
+
+    @GetMapping("/editratings/delete/{id}")
+    public String deleteAdminRatings(@PathVariable("id") long id, RedirectAttributes redirectAttributes, Model model) throws IllegalArgumentException {
+
+        long placeId = ratingService.findById(id).getPlace().getId();
+        ratingService.deleteRating(id);
+        return "redirect:/editratings/" +placeId;
+    }
 }

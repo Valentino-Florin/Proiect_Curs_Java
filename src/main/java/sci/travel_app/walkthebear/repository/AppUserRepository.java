@@ -15,7 +15,6 @@ public interface AppUserRepository extends JpaRepository<AppUser, Long> {
     AppUser findById(long id);
     AppUser findByEmail(String email);
     AppUser findByUserNameAndPassword(String userName, String password);
-
     @Query(value = "SELECT * FROM travel_app.user u WHERE  u.USER_NAME LIKE '%' :keyword '%'", nativeQuery=true)
     List<AppUser> findUsersByKeyword(@Param("keyword") String keyword);
 

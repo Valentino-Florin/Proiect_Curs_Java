@@ -75,13 +75,14 @@
                     <div class=element th:each="place : ${userPlaces}">
                         <div class=card>
                             <h3 th:text="${place.name}">name</h3>
-                            <td>
-<!--                                <img th:src="@/{'/static/images/ +${place.name}+ .jpg}'}">-->
-                            </td>
+                            <div id=thumbnail>
+<!--                                <img id=thumbnail_img src="../static/images/placeholder.jpg" th:src="@{${place.ThumbnailImagePath}}">-->
+                            </div>
                             <p th:text="${place.description}"> Description </p>
                             <p th:text="${place.workingHours}"> Working hours</p>
                         </div>
-                        <div class=links><a th:href="@{/placedetail/{id}(id=${place.id})}">View</a><a th:href="@{/editplace/{id}(id=${place.id})}">Edit</a><a th:href="@{/deleteplace/{id}(id=${place.id})}">Remove</a>
+                        <div class=links><a th:href="@{/placedetail/{id}(id=${place.id})}">View</a><a th:href="@{/editplace/{id}(id=${place.id})}">Edit</a>
+                            <a th:href="@{/deleteplace/{id}(id=${place.id})}" onclick="return confirm('Are you sure you want to remove place?')">Remove</a>
                             <a th:href="@{/addphotos/{id}(id=${place.id})}">Add/edit photos</a>
                         </div>
                     </div>

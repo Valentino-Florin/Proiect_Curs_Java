@@ -44,7 +44,7 @@
     </div>
 
       <div>
-        <select id='dropdown' th:field="*{subcategory}" th:value="${subcategory}">
+        <select id='dropdown' th:field="*{subcategory}" th:value="${subcategory}" required>
         </select>
       </div>
 <div class=form_element>
@@ -53,22 +53,22 @@
 </div>
 <div class=form_element>
   <label>Name</label>
-  <input type="text" maxlength="50" th:field="*{name}" id="name" placeholder="Name">
+  <input type="text" maxlength="50" th:field="*{name}" id="name" placeholder="Name" required>
   <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
 </div>
 <div class=form_element>
   <label>County</label>
-  <input type="text" maxlength="50" th:field="*{county}" id="county" placeholder="County">
+  <input type="text" maxlength="50" th:field="*{county}" id="county" placeholder="County" required>
   <span th:if="${#fields.hasErrors('county')}" th:errors="*{county}"></span>
 </div>
 <div class=form_element>
   <label>City</label>
-  <input type="text" maxlength="250" th:field="*{city}" id="city" placeholder="City">
+  <input type="text" maxlength="250" th:field="*{city}" id="city" placeholder="City" required>
   <span th:if="${#fields.hasErrors('city')}" th:errors="*{city}"> </span>
 </div>
 <div class=form_element>
   <label>Address</label>
-  <input type="text" maxlength="250" th:field="*{address}" id="address" placeholder="Address">
+  <input type="text" maxlength="250" th:field="*{address}" id="address" placeholder="Address" required>
   <span th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></span>
 </div>
 <div class=form_element>
@@ -97,7 +97,7 @@
 <div class=form_element>
   <label>Description</label>
   <textarea rows="5" cols="50" maxlength="250" minlength="60" th:field="*{description}" id="description"
-            placeholder="Description"></textarea>
+            placeholder="Description" required></textarea>
   <span th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></span>
 </div>
 <!--<div class=form_element>-->
