@@ -22,23 +22,30 @@
 <div class=boxes id=main_container>
 
     <div class=boxes id=link_container>
-        <div id=filters>
-            <a th:href="@{/editprofile/{id}(id=${currentUser.id})}">Edit profile</a><br>
-            <a th:href="@{/profilefav}">Profile favorites</a><br>
-            <a th:href="@{/profileratings}">Profile ratings</a>
+        <div id=button>
+            <button type="submit" class="submit"><a th:href="@{/editprofile/{id}(id=${currentUser.id})}">Edit profile</a></button>
+            <button type="submit" class="submit"> <a th:href="@{/profilefav}">Profile favorites</a></button>
+            <button type="submit" class="submit"><a th:href="@{/profileratings}">Profile ratings</a></button>
         </div>
     </div>
 
 
-    <div class=boxes id=additional_content_column>
-        <div id=name>
+  <!--  <div class=boxes id=additional_content_column>
+        <div id=name>-->
+            <div class="form">
+                <div class="container" id=inputs>
+                <h2> My profile</h2>
+                    <label class="profileinfo"> Username</label>
             <p th:text="${currentUser.userName}">Username</p>
+            <label class="profileinfo">E-mail</label>
             <p th:text="${currentUser.email}">email</p>
+            <label class="profileinfo">Role</label>
             <p th:text="${currentUser.role}">Role</p>
             <p th:text="${currentUser.created}">Date created</p>
+                    </fieldset>
+                </form>
             </div>
-    </div>
-
+            </div>
 
 <!-- main content end -->
 </div>

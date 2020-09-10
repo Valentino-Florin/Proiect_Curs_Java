@@ -1,6 +1,8 @@
+
+
 body{padding: 15px;
   font-family: serif;
-  /*background-image: url("https://images.hdqwalls.com/download/white-bear-artwork-8k-n4-1920x1080.jpg");*/
+     background: linear-gradient(#C9F0D9, white);
 }
 * {box-sizing: border-box
 }
@@ -17,6 +19,7 @@ body{padding: 15px;
   color:  #4C3936;
 }
 
+
 .box{
   border-radius: 5px;
   border: 3px solid;
@@ -29,6 +32,18 @@ body{padding: 15px;
 
 .box p{
 
+}
+button {
+    color:black;
+    height: 40px;
+    width: 50%;
+    padding:5px;
+    margin:10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    align: center;
+    border-color:  #1F6E3A;
 }
 
 .tab {
@@ -78,10 +93,6 @@ body{padding: 15px;
   flex-wrap: wrap;
 }
 
-.form{
-  margin-top:10px;
-  margin-bottom: 10px;
-}
 
 label{
   display:inline-block;
@@ -115,12 +126,14 @@ label{
     flex-direction: row;
 }
 
-.container {
-    
-}
+
 
 #link_container {
     width: 30%;
+    margin-left:10 px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 }
 
 
@@ -128,3 +141,86 @@ label{
 .boxes {
     margin-left: 60px;
 }
+
+.form {
+    margin-top: 50px;
+    margin-left: 10px;
+    margin-right: auto;
+    margin-bottom: 10px;
+    max-width: 15em;
+    border-radius: 5px;
+    border: 3px solid;
+    border-color: #B4F0C9;
+}
+
+hr {
+    border: 1px solid #F06F6A;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+input {
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    padding: 6px 10px;
+    display: inline-block;
+
+}
+
+input[type=text],
+[type=password] {
+    width: 20em;
+}
+
+input:focus {
+    border: 2px solid #797BBD;
+}
+
+
+
+.submit:hover {
+    background-color: #34BA63;
+}
+
+.cancelbtn:hover {
+    background-color: #DEEFFA;
+}
+
+
+.container {
+    padding: 16px 40px 16px 40px;
+
+}
+
+.profileinfo{
+    border-radius: 5px;
+    border: 3px solid;
+    border-color:  #1F6E3A;
+    text-align:center;
+}
+
+
+.container p{
+color: #1F6E3A;
+}
+a:link, a:visited {
+    text-decoration: none;
+    color: #1F6E3A;
+}
+a:hover, a:active {
+    text-decoration: none;
+    color: #103B1F;
+}
+
+span.psw {
+    float: right;
+    padding-top: 16px;
+}
+
+
+
+

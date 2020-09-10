@@ -13,7 +13,7 @@
 <body>
 <div align="center">
     <h2>Edit Place</h2>
-    <form action="#" th:action="@{/editplaceadmin/{id}(id=${place.id})}" th:object="${place}" method="post">
+    <div action="#" th:action="@{/editplaceadmin/{id}(id=${place.id})}" th:object="${place}" method="post">
         <div class=form_element>
             <label>Category</label>
         </div>
@@ -115,9 +115,10 @@
   <button type="submit">Submit</button>
   <button type="cancel">Cancel</button>
 </div>
-    
-  </form>
-</div>
 
+  </div>
+</div>
+    </div>
+</div>
 </body>
 </html>
