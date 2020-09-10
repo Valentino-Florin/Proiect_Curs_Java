@@ -1,0 +1,553 @@
+@startuml
+
+title __WALKTHEBEAR's Class Diagram__\n
+
+  namespace  {
+    class MavenWrapperDownloader {
+    }
+  }
+  
+
+  namespace  {
+    namespace ci.travel_app.walkthebear {
+      class sci.travel_app.walkthebear.MvcConfig {
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace ci.travel_app.walkthebear {
+      class sci.travel_app.walkthebear.WalkTheBearApplication {
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace ci.travel_app.walkthebear {
+      namespace controller {
+        class sci.travel_app.walkthebear.controller.AppUserController {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace ci.travel_app.walkthebear {
+      namespace controller {
+        class sci.travel_app.walkthebear.controller.CustomErrorController {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace ci.travel_app.walkthebear {
+      namespace controller {
+        class sci.travel_app.walkthebear.controller.FavoritesController {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace ci.travel_app.walkthebear {
+      namespace controller {
+        class sci.travel_app.walkthebear.controller.HomePageController {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace ci.travel_app.walkthebear {
+      namespace controller {
+        class sci.travel_app.walkthebear.controller.MyProfileController {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace ci.travel_app.walkthebear {
+      namespace controller {
+        class sci.travel_app.walkthebear.controller.PlaceController {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace ci.travel_app.walkthebear {
+      namespace controller {
+        class sci.travel_app.walkthebear.controller.PlaceDetailController {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace ci.travel_app.walkthebear {
+      namespace controller {
+        class sci.travel_app.walkthebear.controller.ResultController {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace ci.travel_app.walkthebear {
+      namespace controller {
+        class sci.travel_app.walkthebear.controller.TripController {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace ci.travel_app.walkthebear {
+      namespace data_utils {
+        class sci.travel_app.walkthebear.data_utils.AppUserDetails {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace ci.travel_app.walkthebear {
+      namespace data_utils {
+        class sci.travel_app.walkthebear.data_utils.FileService {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace ci.travel_app.walkthebear {
+      namespace data_utils {
+        class sci.travel_app.walkthebear.data_utils.UploadService {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace ci.travel_app.walkthebear {
+      namespace model.entities {
+        class sci.travel_app.walkthebear.model.entities.AppUser {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace ci.travel_app.walkthebear {
+      namespace model.entities {
+        class sci.travel_app.walkthebear.model.entities.DailySchedule {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace ci.travel_app.walkthebear {
+      namespace model.entities {
+        class sci.travel_app.walkthebear.model.entities.Favorite {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace ci.travel_app.walkthebear {
+      namespace model.entities {
+        class sci.travel_app.walkthebear.model.entities.HourMapping {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace ci.travel_app.walkthebear {
+      namespace model.entities {
+        class sci.travel_app.walkthebear.model.entities.Itinerary {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace ci.travel_app.walkthebear {
+      namespace model.entities {
+        class sci.travel_app.walkthebear.model.entities.Place {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace ci.travel_app.walkthebear {
+      namespace model.entities {
+        class sci.travel_app.walkthebear.model.entities.Rating {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace ci.travel_app.walkthebear {
+      namespace model.entities {
+        class sci.travel_app.walkthebear.model.entities.UnplannedPlacesList {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace ci.travel_app.walkthebear {
+      namespace model.misc {
+        enum AppUserRole {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace ci.travel_app.walkthebear {
+      namespace model.misc {
+        enum Category {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace ci.travel_app.walkthebear {
+      namespace model.misc {
+        enum SubCategory {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace ci.travel_app.walkthebear {
+      namespace repository {
+        interface sci.travel_app.walkthebear.repository.AppUserRepository {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace ci.travel_app.walkthebear {
+      namespace repository {
+        interface sci.travel_app.walkthebear.repository.DailyScheduleRepository {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace ci.travel_app.walkthebear {
+      namespace repository {
+        interface sci.travel_app.walkthebear.repository.FavoritesRepository {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace ci.travel_app.walkthebear {
+      namespace repository {
+        interface sci.travel_app.walkthebear.repository.HourMappingRepository {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace ci.travel_app.walkthebear {
+      namespace repository {
+        interface sci.travel_app.walkthebear.repository.ItineraryRepository {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace ci.travel_app.walkthebear {
+      namespace repository {
+        interface sci.travel_app.walkthebear.repository.PlacesRepository {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace ci.travel_app.walkthebear {
+      namespace repository {
+        interface sci.travel_app.walkthebear.repository.RatingRepository {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace ci.travel_app.walkthebear {
+      namespace repository {
+        interface sci.travel_app.walkthebear.repository.UnplannedPlacesListRepository {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace ci.travel_app.walkthebear {
+      namespace service {
+        interface sci.travel_app.walkthebear.service.AppUserService {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace ci.travel_app.walkthebear {
+      namespace service {
+        class sci.travel_app.walkthebear.service.AppUserServiceImp {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace ci.travel_app.walkthebear {
+      namespace service {
+        class sci.travel_app.walkthebear.service.AppUserValidator {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace ci.travel_app.walkthebear {
+      namespace service {
+        class sci.travel_app.walkthebear.service.DailyScheduleService {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace ci.travel_app.walkthebear {
+      namespace service {
+        interface sci.travel_app.walkthebear.service.FavoritesService {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace ci.travel_app.walkthebear {
+      namespace service {
+        class sci.travel_app.walkthebear.service.FavoritesServiceImpl {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace ci.travel_app.walkthebear {
+      namespace service {
+        class sci.travel_app.walkthebear.service.HourMappingService {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace ci.travel_app.walkthebear {
+      namespace service {
+        class sci.travel_app.walkthebear.service.ItineraryService {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace ci.travel_app.walkthebear {
+      namespace service {
+        interface sci.travel_app.walkthebear.service.PlacesService {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace ci.travel_app.walkthebear {
+      namespace service {
+        class sci.travel_app.walkthebear.service.PlacesServiceImp {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace ci.travel_app.walkthebear {
+      namespace service {
+        interface sci.travel_app.walkthebear.service.RatingService {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace ci.travel_app.walkthebear {
+      namespace service {
+        class sci.travel_app.walkthebear.service.RatingServiceImpl {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace ci.travel_app.walkthebear {
+      namespace service {
+        class sci.travel_app.walkthebear.service.UnplannedPlacesListService {
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace ci.travel_app.walkthebear {
+      namespace web_config {
+        class sci.travel_app.walkthebear.web_config.WebSecurityConfig {
+        }
+      }
+    }
+  }
+  
+
+  sci.travel_app.walkthebear.MvcConfig .up.|> org.springframework.web.servlet.config.annotation.WebMvcConfigurer
+  sci.travel_app.walkthebear.controller.AppUserController o-- sci.travel_app.walkthebear.repository.AppUserRepository : appUserRepository
+  sci.travel_app.walkthebear.controller.AppUserController o-- sci.travel_app.walkthebear.service.AppUserServiceImp : appUserServiceImp
+  sci.travel_app.walkthebear.controller.CustomErrorController .up.|> org.springframework.boot.web.servlet.error.ErrorController
+  sci.travel_app.walkthebear.controller.FavoritesController o-- sci.travel_app.walkthebear.service.AppUserServiceImp : appUserServiceImp
+  sci.travel_app.walkthebear.controller.FavoritesController o-- sci.travel_app.walkthebear.service.FavoritesServiceImpl : favoritesServiceImpl
+  sci.travel_app.walkthebear.controller.HomePageController o-- sci.travel_app.walkthebear.data_utils.FileService : fileService
+  sci.travel_app.walkthebear.controller.HomePageController o-- sci.travel_app.walkthebear.service.PlacesServiceImp : placeService
+  sci.travel_app.walkthebear.controller.MyProfileController o-- sci.travel_app.walkthebear.repository.AppUserRepository : appUserRepository
+  sci.travel_app.walkthebear.controller.MyProfileController o-- sci.travel_app.walkthebear.service.AppUserServiceImp : appUserServiceImp
+  sci.travel_app.walkthebear.controller.MyProfileController o-- sci.travel_app.walkthebear.service.FavoritesServiceImpl : favoritesService
+  sci.travel_app.walkthebear.controller.MyProfileController o-- sci.travel_app.walkthebear.service.PlacesServiceImp : placesService
+  sci.travel_app.walkthebear.controller.MyProfileController o-- sci.travel_app.walkthebear.service.RatingServiceImpl : ratingService
+  sci.travel_app.walkthebear.controller.MyProfileController o-- sci.travel_app.walkthebear.repository.AppUserRepository : userRepository
+  sci.travel_app.walkthebear.controller.PlaceController o-- sci.travel_app.walkthebear.repository.AppUserRepository : appUserRepository
+  sci.travel_app.walkthebear.controller.PlaceController o-- sci.travel_app.walkthebear.service.AppUserServiceImp : appUserServiceImp
+  sci.travel_app.walkthebear.controller.PlaceController o-- sci.travel_app.walkthebear.service.PlacesServiceImp : placesService
+  sci.travel_app.walkthebear.controller.PlaceController o-- sci.travel_app.walkthebear.data_utils.UploadService : uploadService
+  sci.travel_app.walkthebear.controller.PlaceDetailController o-- sci.travel_app.walkthebear.service.AppUserServiceImp : appUserServiceImp
+  sci.travel_app.walkthebear.controller.PlaceDetailController o-- sci.travel_app.walkthebear.service.FavoritesServiceImpl : favoritesService
+  sci.travel_app.walkthebear.controller.PlaceDetailController o-- sci.travel_app.walkthebear.service.PlacesServiceImp : placeService
+  sci.travel_app.walkthebear.controller.PlaceDetailController o-- sci.travel_app.walkthebear.service.RatingServiceImpl : ratingService
+  sci.travel_app.walkthebear.controller.PlaceDetailController o-- sci.travel_app.walkthebear.service.UnplannedPlacesListService : unplannedPlacesListService
+  sci.travel_app.walkthebear.controller.ResultController o-- sci.travel_app.walkthebear.service.PlacesServiceImp : placesService
+  sci.travel_app.walkthebear.controller.TripController o-- sci.travel_app.walkthebear.repository.AppUserRepository : appUserRepository
+  sci.travel_app.walkthebear.controller.TripController o-- sci.travel_app.walkthebear.service.AppUserServiceImp : appUserServiceImp
+  sci.travel_app.walkthebear.controller.TripController o-- sci.travel_app.walkthebear.service.DailyScheduleService : dailyScheduleService
+  sci.travel_app.walkthebear.controller.TripController o-- sci.travel_app.walkthebear.data_utils.FileService : fileService
+  sci.travel_app.walkthebear.controller.TripController o-- sci.travel_app.walkthebear.service.HourMappingService : hourMappingService
+  sci.travel_app.walkthebear.controller.TripController o-- sci.travel_app.walkthebear.service.ItineraryService : itineraryService
+  sci.travel_app.walkthebear.controller.TripController o-- sci.travel_app.walkthebear.service.PlacesServiceImp : placesService
+  sci.travel_app.walkthebear.controller.TripController o-- sci.travel_app.walkthebear.service.UnplannedPlacesListService : unplannedPlacesListService
+  sci.travel_app.walkthebear.data_utils.AppUserDetails .up.|> org.springframework.security.core.userdetails.UserDetails
+  sci.travel_app.walkthebear.data_utils.AppUserDetails o-- sci.travel_app.walkthebear.model.entities.AppUser : user
+  sci.travel_app.walkthebear.model.entities.AppUser o-- sci.travel_app.walkthebear.model.misc.AppUserRole : role
+  sci.travel_app.walkthebear.model.entities.DailySchedule o-- sci.travel_app.walkthebear.model.entities.Itinerary : itinerary
+  sci.travel_app.walkthebear.model.entities.Favorite o-- sci.travel_app.walkthebear.model.entities.Place : place
+  sci.travel_app.walkthebear.model.entities.Favorite o-- sci.travel_app.walkthebear.model.entities.AppUser : user
+  sci.travel_app.walkthebear.model.entities.HourMapping o-- sci.travel_app.walkthebear.model.entities.DailySchedule : dailySchedule
+  sci.travel_app.walkthebear.model.entities.HourMapping o-- sci.travel_app.walkthebear.model.entities.Place : place
+  sci.travel_app.walkthebear.model.entities.Itinerary o-- sci.travel_app.walkthebear.model.entities.AppUser : user
+  sci.travel_app.walkthebear.model.entities.Place o-- sci.travel_app.walkthebear.model.misc.Category : category
+  sci.travel_app.walkthebear.model.entities.Place o-- sci.travel_app.walkthebear.model.misc.SubCategory : subcategory
+  sci.travel_app.walkthebear.model.entities.Place o-- sci.travel_app.walkthebear.model.entities.AppUser : user
+  sci.travel_app.walkthebear.model.entities.Rating o-- sci.travel_app.walkthebear.model.entities.Place : place
+  sci.travel_app.walkthebear.model.entities.Rating o-- sci.travel_app.walkthebear.model.entities.AppUser : user
+  sci.travel_app.walkthebear.model.entities.UnplannedPlacesList o-- sci.travel_app.walkthebear.model.entities.AppUser : user
+  sci.travel_app.walkthebear.service.AppUserServiceImp .up.|> sci.travel_app.walkthebear.service.AppUserService
+  sci.travel_app.walkthebear.service.AppUserServiceImp o-- sci.travel_app.walkthebear.repository.AppUserRepository : appUserRepository
+  sci.travel_app.walkthebear.service.AppUserValidator .up.|> org.springframework.validation.Validator
+  sci.travel_app.walkthebear.service.DailyScheduleService o-- sci.travel_app.walkthebear.repository.DailyScheduleRepository : scheduleRepository
+  sci.travel_app.walkthebear.service.FavoritesServiceImpl .up.|> sci.travel_app.walkthebear.service.FavoritesService
+  sci.travel_app.walkthebear.service.FavoritesServiceImpl o-- sci.travel_app.walkthebear.repository.FavoritesRepository : favoritesRepository
+  sci.travel_app.walkthebear.service.FavoritesServiceImpl o-- sci.travel_app.walkthebear.repository.AppUserRepository : userRepository
+  sci.travel_app.walkthebear.service.HourMappingService o-- sci.travel_app.walkthebear.repository.HourMappingRepository : hourMappingRepository
+  sci.travel_app.walkthebear.service.ItineraryService o-- sci.travel_app.walkthebear.repository.ItineraryRepository : tripRepository
+  sci.travel_app.walkthebear.service.PlacesServiceImp .up.|> sci.travel_app.walkthebear.service.PlacesService
+  sci.travel_app.walkthebear.service.PlacesServiceImp o-- sci.travel_app.walkthebear.repository.FavoritesRepository : favoritesRepository
+  sci.travel_app.walkthebear.service.PlacesServiceImp o-- sci.travel_app.walkthebear.repository.PlacesRepository : placesRepository
+  sci.travel_app.walkthebear.service.PlacesServiceImp o-- sci.travel_app.walkthebear.data_utils.UploadService : uploadService
+  sci.travel_app.walkthebear.service.RatingServiceImpl .up.|> sci.travel_app.walkthebear.service.RatingService
+  sci.travel_app.walkthebear.service.RatingServiceImpl o-- sci.travel_app.walkthebear.repository.PlacesRepository : placesRepository
+  sci.travel_app.walkthebear.service.RatingServiceImpl o-- sci.travel_app.walkthebear.repository.RatingRepository : ratingRepository
+  sci.travel_app.walkthebear.service.RatingServiceImpl o-- sci.travel_app.walkthebear.repository.AppUserRepository : userRepository
+  sci.travel_app.walkthebear.service.UnplannedPlacesListService o-- sci.travel_app.walkthebear.repository.UnplannedPlacesListRepository : unplannedPlacesListRepository
+  sci.travel_app.walkthebear.web_config.WebSecurityConfig -up-|> org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter
+  sci.travel_app.walkthebear.web_config.WebSecurityConfig o-- sci.travel_app.walkthebear.service.AppUserService : appUserService
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

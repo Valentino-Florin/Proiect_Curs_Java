@@ -1,0 +1,284 @@
+@startuml
+
+title __SERVICE's Class Diagram__\n
+
+  namespace  {
+    namespace ci.travel_app.walkthebear {
+      namespace service {
+        interface sci.travel_app.walkthebear.service.AppUserService {
+            {abstract} + deleteUser()
+            {abstract} + findAllUsers()
+            {abstract} + findByEmail()
+            {abstract} + findById()
+            {abstract} + findUsersByKeyword()
+            {abstract} + save()
+            {abstract} + update()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace ci.travel_app.walkthebear {
+      namespace service {
+        class sci.travel_app.walkthebear.service.AppUserServiceImp {
+            - passwordEncoder : BCryptPasswordEncoder
+            + deleteUser()
+            + findAllUsers()
+            + findByEmail()
+            + findById()
+            + findByUserName()
+            + findUsersByKeyword()
+            + loadUserByUsername()
+            + save()
+            + saveNewPassoword()
+            + update()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace ci.travel_app.walkthebear {
+      namespace service {
+        class sci.travel_app.walkthebear.service.AppUserValidator {
+            + supports()
+            + validate()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace ci.travel_app.walkthebear {
+      namespace service {
+        class sci.travel_app.walkthebear.service.DailyScheduleService {
+            + addNewDay()
+            + deleteAll()
+            + getAllDays()
+            + getDay()
+            + getNumberOfDays()
+            + removeDay()
+            + saveDay()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace ci.travel_app.walkthebear {
+      namespace service {
+        interface sci.travel_app.walkthebear.service.FavoritesService {
+            {abstract} + addToFavorites()
+            {abstract} + findById()
+            {abstract} + getFavsForPlace()
+            {abstract} + isAdded()
+            {abstract} + placePopularity()
+            {abstract} + removeFavorite()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace ci.travel_app.walkthebear {
+      namespace service {
+        class sci.travel_app.walkthebear.service.FavoritesServiceImpl {
+            + addFavorite()
+            + addToFavorites()
+            + findById()
+            + findByUser()
+            + getAllFavorites()
+            + getFavsForPlace()
+            + isAdded()
+            + placePopularity()
+            + removeFavorite()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace ci.travel_app.walkthebear {
+      namespace service {
+        class sci.travel_app.walkthebear.service.HourMappingService {
+            + deleteAll()
+            + deleteOne()
+            + getFullDay()
+            + getHour()
+            + saveMapping()
+            + updateMapping()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace ci.travel_app.walkthebear {
+      namespace service {
+        class sci.travel_app.walkthebear.service.ItineraryService {
+            + createItinerary()
+            + deleteItinerary()
+            + findAll()
+            + findById()
+            + findByUser()
+            + saveItinerary()
+            + update()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace ci.travel_app.walkthebear {
+      namespace service {
+        interface sci.travel_app.walkthebear.service.PlacesService {
+            {abstract} + addPlace()
+            {abstract} + addUserPlace()
+            {abstract} + deletePlace()
+            {abstract} + findByKeyword()
+            {abstract} + findPlaceByUser()
+            {abstract} + getAllPlaces()
+            {abstract} + getAllUserPlaces()
+            {abstract} + getPaginatedPlaceList()
+            {abstract} + getPaginatedPlaceListByCategory()
+            {abstract} + getPaginatedPlaceListByKeyword()
+            {abstract} + getPlaceByCategory()
+            {abstract} + getPlaceById()
+            {abstract} + getPlaceByName()
+            {abstract} + getUserPlaceById()
+            {abstract} + hasPic()
+            {abstract} + latestPlaces()
+            {abstract} + mostPopularPlaces()
+            {abstract} + updatePhotos()
+            {abstract} + updatePlace()
+            {abstract} + updateUserPlace()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace ci.travel_app.walkthebear {
+      namespace service {
+        class sci.travel_app.walkthebear.service.PlacesServiceImp {
+            {static} - logger : Logger
+            + addPlace()
+            + addUserPlace()
+            + deletePlace()
+            + findByKeyword()
+            + findPlaceByUser()
+            + getAllPlaces()
+            + getAllUserPlaces()
+            + getPaginatedPlaceList()
+            + getPaginatedPlaceListByCategory()
+            + getPaginatedPlaceListByKeyword()
+            + getPlaceByCategory()
+            + getPlaceById()
+            + getPlaceByName()
+            + getUserPlaceById()
+            + hasPic()
+            + latestPlaces()
+            + mostPopularPlaces()
+            + updatePhotos()
+            + updatePlace()
+            + updateUserPlace()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace ci.travel_app.walkthebear {
+      namespace service {
+        interface sci.travel_app.walkthebear.service.RatingService {
+            {abstract} + create()
+            {abstract} + deleteRating()
+            {abstract} + deleteRatingAdmin()
+            {abstract} + findAll()
+            {abstract} + findById()
+            {abstract} + getAllRatingsOfPlace()
+            {abstract} + getAllRatingsOfPlaceById()
+            {abstract} + isAdded()
+            {abstract} + updateRating()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace ci.travel_app.walkthebear {
+      namespace service {
+        class sci.travel_app.walkthebear.service.RatingServiceImpl {
+            + create()
+            + deleteRating()
+            + deleteRatingAdmin()
+            + findAll()
+            + findById()
+            + findByUser()
+            + getAllRatingsOfPlace()
+            + getAllRatingsOfPlaceById()
+            + isAdded()
+            + updateRating()
+        }
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace ci.travel_app.walkthebear {
+      namespace service {
+        class sci.travel_app.walkthebear.service.UnplannedPlacesListService {
+            + addToList()
+            + createList()
+            + findByUser()
+            + getAll()
+            + hasList()
+            + isAdded()
+            + removeFromList()
+        }
+      }
+    }
+  }
+  
+
+  sci.travel_app.walkthebear.service.AppUserServiceImp .up.|> sci.travel_app.walkthebear.service.AppUserService
+  sci.travel_app.walkthebear.service.AppUserServiceImp o-- sci.travel_app.walkthebear.repository.AppUserRepository : appUserRepository
+  sci.travel_app.walkthebear.service.AppUserValidator .up.|> org.springframework.validation.Validator
+  sci.travel_app.walkthebear.service.DailyScheduleService o-- sci.travel_app.walkthebear.repository.DailyScheduleRepository : scheduleRepository
+  sci.travel_app.walkthebear.service.FavoritesServiceImpl .up.|> sci.travel_app.walkthebear.service.FavoritesService
+  sci.travel_app.walkthebear.service.FavoritesServiceImpl o-- sci.travel_app.walkthebear.repository.FavoritesRepository : favoritesRepository
+  sci.travel_app.walkthebear.service.FavoritesServiceImpl o-- sci.travel_app.walkthebear.repository.AppUserRepository : userRepository
+  sci.travel_app.walkthebear.service.HourMappingService o-- sci.travel_app.walkthebear.repository.HourMappingRepository : hourMappingRepository
+  sci.travel_app.walkthebear.service.ItineraryService o-- sci.travel_app.walkthebear.repository.ItineraryRepository : tripRepository
+  sci.travel_app.walkthebear.service.PlacesServiceImp .up.|> sci.travel_app.walkthebear.service.PlacesService
+  sci.travel_app.walkthebear.service.PlacesServiceImp o-- sci.travel_app.walkthebear.repository.FavoritesRepository : favoritesRepository
+  sci.travel_app.walkthebear.service.PlacesServiceImp o-- sci.travel_app.walkthebear.repository.PlacesRepository : placesRepository
+  sci.travel_app.walkthebear.service.PlacesServiceImp o-- sci.travel_app.walkthebear.data_utils.UploadService : uploadService
+  sci.travel_app.walkthebear.service.RatingServiceImpl .up.|> sci.travel_app.walkthebear.service.RatingService
+  sci.travel_app.walkthebear.service.RatingServiceImpl o-- sci.travel_app.walkthebear.repository.PlacesRepository : placesRepository
+  sci.travel_app.walkthebear.service.RatingServiceImpl o-- sci.travel_app.walkthebear.repository.RatingRepository : ratingRepository
+  sci.travel_app.walkthebear.service.RatingServiceImpl o-- sci.travel_app.walkthebear.repository.AppUserRepository : userRepository
+  sci.travel_app.walkthebear.service.UnplannedPlacesListService o-- sci.travel_app.walkthebear.repository.UnplannedPlacesListRepository : unplannedPlacesListRepository
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

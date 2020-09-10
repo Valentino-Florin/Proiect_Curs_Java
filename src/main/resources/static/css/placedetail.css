@@ -82,17 +82,20 @@ h3 {
     padding: 0;
     display: flex;
     flex-direction: row;
+/*    overflow: hidden;*/
 }
 
 .gallery_bear {
     width: 20%;
     height: auto;
+
 }
 
 .gallery_bear img {
     /*max-height: inherit;*/
     width: 100%;
     height: auto;
+     max-height: 400px;
      margin-bottom: 30;
 }
 

@@ -146,39 +146,31 @@ public class PlacesServiceImp implements PlacesService {
      * @param user
      */
     @Override
-    public void updateUserPlace(Place place, AppUser user, String thumbnail, String gallery1, String gallery2, String gallery3, String gallery4, String gallery5) {
-        place.setUser(user);
-        if (!"".equals(thumbnail)) {
-            place.setThumbnailFileName(thumbnail);
-        } else {
-            place.setThumbnailFileName(place.getThumbnailFileName());
-        }
-        if (!"".equals(gallery1)) {
-            place.setGalleryImage1FileName(gallery1);
-        } else {
-            place.setGalleryImage1FileName(place.getGalleryImage1FileName());
-        }
-        if (!"".equals(gallery2)) {
-            place.setGalleryImage2FileName(gallery2);
-        } else {
-            place.setGalleryImage2FileName(place.getGalleryImage2FileName());
-        }
-        if (!"".equals(gallery3)) {
-            place.setGalleryImage3FileName(gallery3);
-        } else {
-            place.setGalleryImage3FileName(place.getGalleryImage3FileName());
-        }
-        if (!"".equals(gallery4)) {
-            place.setGalleryImage4FileName(gallery4);
-        } else {
-            place.setGalleryImage4FileName(place.getGalleryImage4FileName());
-        }
-        if (!"".equals(gallery5)) {
-            place.setGalleryImage5FileName(gallery5);
-        } else {
-            place.setGalleryImage5FileName(place.getGalleryImage5FileName());
-        }
-        placesRepository.save(place);
+    public void updateUserPlace(Place place, AppUser user, long id) {
+        Place saveMe = new Place();
+        saveMe.setUser(user);
+        saveMe.setId(place.getId());
+        saveMe.setName(place.getName());
+        saveMe.setCounty(place.getCounty());
+        saveMe.setCity(place.getCity());
+        saveMe.setAddress(place.getAddress());
+        saveMe.setCoordinates(place.getCoordinates());
+        saveMe.setPhoneNumber(place.getPhoneNumber());
+        saveMe.setEmail(place.getEmail());
+        saveMe.setCategory(place.getCategory());
+        saveMe.setSubcategory(place.getSubcategory());
+        saveMe.setWorkingHours(place.getWorkingHours());
+        saveMe.setDescription(place.getDescription());
+        saveMe.setCreated(place.getCreated());
+        saveMe.setThumbnailFileName(placesRepository.findById(id).getThumbnailFileName());
+        saveMe.setGalleryImage1FileName(placesRepository.findById(id).getThumbnailFileName());
+        saveMe.setGalleryImage2FileName(placesRepository.findById(id).getGalleryImage1FileName());
+        saveMe.setGalleryImage3FileName(placesRepository.findById(id).getGalleryImage2FileName());
+        saveMe.setGalleryImage4FileName(placesRepository.findById(id).getGalleryImage3FileName());
+        saveMe.setGalleryImage5FileName(placesRepository.findById(id).getGalleryImage4FileName());
+        saveMe.setGalleryImage5FileName(placesRepository.findById(id).getGalleryImage5FileName());
+
+        placesRepository.save(saveMe);
     }
 
     /**
