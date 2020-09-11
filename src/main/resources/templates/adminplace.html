@@ -64,7 +64,7 @@
                             <td th:text="${place.category}">category</td>
                             <td th:text="${place.subcategory}">subcategory</td>
                             <td th:text="${place.workingHours}">workingHours</td>
-                            <td th:text="${place.description}">description</td>
+                            <td id="description_display" th:text="${place.description}">description</td>
                             <td th:text="${place.created}">created</td>
                             <td th:text="${place.user. getUserName()}">user</td>
                             <td><a th:href="@{/editratings/{id}(id=${place.id})}">Ratings</a></td>

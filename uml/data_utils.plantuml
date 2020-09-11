@@ -2,7 +2,7 @@
 
 title __DATA_UTILS's Class Diagram__\n
 
-  namespace  {
+
     namespace ci.travel_app.walkthebear {
       namespace data_utils {
         class sci.travel_app.walkthebear.data_utils.AppUserDetails {
@@ -17,10 +17,10 @@ title __DATA_UTILS's Class Diagram__\n
         }
       }
     }
-  }
+
   
 
-  namespace  {
+
     namespace ci.travel_app.walkthebear {
       namespace data_utils {
         class sci.travel_app.walkthebear.data_utils.FileService {
@@ -31,7 +31,7 @@ title __DATA_UTILS's Class Diagram__\n
         }
       }
     }
-  }
+
   
 
   namespace  {

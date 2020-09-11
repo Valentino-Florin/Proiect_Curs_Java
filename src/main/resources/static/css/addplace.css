@@ -121,3 +121,12 @@ footer {
 */
 
 /* _______________________________ footer end _________________________________ */
+
+#description_display {
+    overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+td {
+     overflow: hidden;
+}

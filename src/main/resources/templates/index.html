@@ -27,27 +27,10 @@
 
         <div th:insert="fragments :: alert"></div>
 
-        <div sec:authorize="isAuthenticated()">
-            This content is only shown to authenticated users.
-            <span sec:authentication="principal.authorities">role</span>
-        </div>
-        <div sec:authorize="hasAuthority('Admin')">
-            This content is only shown to administrators.
-        </div>
-        <div sec:authorize="hasRole('Host')">
-            This content is only shown to users.
-        </div>
-
-
-        
 
         <div class="instructions">
             <h2>Welcome</h2>
-            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.</p>
-        </div>
-        <div class="instructions">
-            <h2>Instructions</h2>
-            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.</p>
+            <p>We help you create transformative experiences that offer life changing moments and help fulfill that deep seated urge for connection and learning. Where will your wanderlust take you?</p>
         </div>
 
         <div class="column_layout">

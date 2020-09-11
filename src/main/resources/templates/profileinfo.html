@@ -24,8 +24,8 @@
     <div class=boxes id=link_container>
         <div id=button>
             <button type="submit" class="submit"><a th:href="@{/editprofile/{id}(id=${currentUser.id})}">Edit profile</a></button>
-            <button type="submit" class="submit"> <a th:href="@{/profilefav}">Profile favorites</a></button>
-            <button type="submit" class="submit"><a th:href="@{/profileratings}">Profile ratings</a></button>
+            <button type="submit" class="submit" sec:authorize="hasAuthority('Traveler')"> <a th:href="@{/profilefav}">Profile favorites</a></button>
+            <button type="submit" class="submit" sec:authorize="hasAuthority('Traveler')"><a th:href="@{/profileratings}">Profile ratings</a></button>
         </div>
     </div>
 
