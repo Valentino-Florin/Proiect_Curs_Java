@@ -109,6 +109,33 @@ a:active {
     text-decoration: none;
     color: #103B1F;
 }
+<!--}-->
+<!--.table_place {-->
+<!--  width: 300px;-->
+<!--    max-height: 500px;-->
+<!--    margin: 30px;-->
+<!--    display: flex;-->
+<!--    flex-direction: column;-->
+<!--    justify-content: space-around;-->
+<!--}-->
+.table_place{
+    border: 1px solid gray;
+    background: #B4F0C9;
+    padding: 20px;
+    min-height: 200px;
+    overflow: hidden;
+    width: 100px;
+    white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.table_place th:nth-child(12), td:nth-child(12) {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display:block;
+    width : 500px;
+}
 
 /* _______________________________ main end _________________________________ */
 

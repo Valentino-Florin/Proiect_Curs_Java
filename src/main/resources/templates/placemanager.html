@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8"/>
     <title>
-        PLace manager
+        Place manager
     </title>
     <link type="text/css" href="../static/css/manager.css" th:href="@{/css/manager.css}" rel="stylesheet">
     <link rel="stylesheet" href="../static/css/fragments.css" th:href="@{/css/fragments.css}">
@@ -31,111 +31,33 @@
                     <img src="../static/images/button.png" th:src="@{/images/button.png}"
                          alt="add button" height="100px" width="100px">
                 </a>
-<!--            </div>-->
-<!--                <h2>Places List</h2>-->
-<!--                <table class="table table-striped">-->
-<!--                    <tr>-->
-<!--                        <th>Place ID</th>-->
-<!--                        <th>Name</th>-->
-<!--&lt;!&ndash;                        <th>County</th>&ndash;&gt;-->
-<!--&lt;!&ndash;                        <th>City</th>&ndash;&gt;-->
-<!--&lt;!&ndash;                        <th>Address</th>&ndash;&gt;-->
-<!--&lt;!&ndash;                        <th>Coordinates</th>&ndash;&gt;-->
-<!--&lt;!&ndash;                        <th>Phone Number</th>&ndash;&gt;-->
-<!--&lt;!&ndash;                        <th>Email</th>&ndash;&gt;-->
-<!--&lt;!&ndash;                        <th>Category</th>&ndash;&gt;-->
-<!--&lt;!&ndash;                        <th>Subcategory</th>&ndash;&gt;-->
-<!--&lt;!&ndash;                        <th>Work hours</th>&ndash;&gt;-->
-<!--                        <th>Description</th>-->
-<!--&lt;!&ndash;                        <th>Date</th>&ndash;&gt;-->
-<!--&lt;!&ndash;                        <th>Created By</th>&ndash;&gt;-->
 
-<!--                    </tr>-->
-<!--                    <tr th:each="place : ${userPlaces}">-->
-<!--&lt;!&ndash;                        <td th:text="${place.id}">id</td>&ndash;&gt;-->
-<!--                        <td th:text="${place.name}">name</td>-->
-<!--&lt;!&ndash;                        <td th:text="${place.county}">county</td>&ndash;&gt;-->
-<!--&lt;!&ndash;                        <td th:text="${place.city}">city</td>&ndash;&gt;-->
-<!--&lt;!&ndash;                        <td th:text="${place.address}">address</td>&ndash;&gt;-->
-<!--&lt;!&ndash;                        <td th:text="${place.coordinates}">coordinates</td>&ndash;&gt;-->
-<!--&lt;!&ndash;                        <td th:text="${place.phoneNumber}">phoneNumber</td>&ndash;&gt;-->
-<!--&lt;!&ndash;                        <td th:text="${place.email}">email</td>&ndash;&gt;-->
-<!--&lt;!&ndash;                        <td th:text="${place.category}">category</td>&ndash;&gt;-->
-<!--&lt;!&ndash;                        <td th:text="${place.subcategory}">subcategory</td>&ndash;&gt;-->
-<!--&lt;!&ndash;                        <td th:text="${place.workingHours}">workingHours</td>&ndash;&gt;-->
-<!--                        <td th:text="${place.description}">description</td>-->
-<!--&lt;!&ndash;                        <td th:text="${place.created}">created</td>&ndash;&gt;-->
-<!--&lt;!&ndash;                        <td th:text="${place.user}">user</td>&ndash;&gt;-->
-<!--                        <td><a th:href="@{/editplace/{id}(id=${place.id})}">Edit</a></td>-->
-<!--                        <td><a th:href="@{/deleteplace/{id}(id=${place.id})}">Delete</a></td>-->
-<!--                    </tr>-->
-<!--                </table>-->
             </div>
         </div>
-                    <div class=element th:each="place : ${userPlaces}">
-                        <div class=card>
-                            <h3 th:text="${place.name}">name</h3>
-                            <div id=thumbnail>
-<!--                                <img id=thumbnail_img src="../static/images/placeholder.jpg" th:src="@{${place.ThumbnailImagePath}}">-->
-                            </div>
-                            <p th:text="${place.description}"> Description </p>
-                            <p th:text="${place.workingHours}"> Working hours</p>
-                        </div>
-                        <div class=links><a th:href="@{/placedetail/{id}(id=${place.id})}">View</a><a th:href="@{/editplace/{id}(id=${place.id})}">Edit</a>
-                            <a th:href="@{/deleteplace/{id}(id=${place.id})}" onclick="return confirm('Are you sure you want to remove place?')">Remove</a>
-                            <a th:href="@{/addphotos/{id}(id=${place.id})}">Add/edit photos</a>
-                        </div>
-                    </div>
-        <!--            <div class=element>-->
-        <!--                <div class=card>-->
-        <!--                    <h3>Place number 1 </h3>-->
-        <!--                    <p>Description text</p>-->
-        <!--                </div>-->
-        <!--                <div class=links><a href="">View</a><a href="">Edit</a><a href="">Remove</a>-->
-        <!--                </div>-->
-        <!--            </div>-->
-        <!--        </div>-->
-        <!--        <div class=row>-->
-        <!--            <div class=element>-->
-        <!--                <div class=card>-->
-        <!--                    <h3>Place number 1</h3>-->
-        <!--                    <p>Description text</p>-->
-        <!--                </div>-->
-        <!--                <div class=links><a href="">View</a><a href="">Edit</a><a href="">Remove</a>-->
-        <!--                </div>-->
-        <!--            </div>-->
-        <!--            <div class=element>-->
-        <!--                <div class=card>-->
-        <!--                    <h3>Place number 1</h3>-->
-        <!--                    <p>Description text</p>-->
-        <!--                </div>-->
-        <!--                <div class=links><a href="">View</a><a href="">Edit</a><a href="">Remove</a>-->
-        <!--                </div>-->
-        <!--            </div>-->
-        <!--            <div class=element>-->
-        <!--                <div class=card>-->
-        <!--                    <h3>Place number 1 </h3>-->
-        <!--                    <p>Description text</p>-->
-        <!--                </div>-->
-        <!--                <div class=links><a href="">View</a><a href="">Edit</a><a href="">Remove</a>-->
-        <!--                </div>-->
-        <!--            </div>-->
-        <!--            <div class=element>-->
-        <!--                <div class=card>-->
-        <!--                    <h3>Place number 1 </h3>-->
-        <!--                    <p>Description text</p>-->
-        <!--                </div>-->
-        <!--                <div class=links><a href="">View</a><a href="">Edit</a><a href="">Remove</a>-->
-        <!--                </div>-->
-        <!--            </div>-->
+        <div class=element th:each="place : ${userPlaces}">
+            <div class=card>
+                <h3 th:text="${place.name}">name</h3>
+                <div id=thumbnail>
+                    <!--                                <img id=thumbnail_img src="../static/images/placeholder.jpg" th:src="@{${place.ThumbnailImagePath}}">-->
+                </div>
+                <p th:text="${place.description}"> Description </p>
+                <p th:text="${place.workingHours}"> Working hours</p>
+            </div>
+            <div class=links><a th:href="@{/placedetail/{id}(id=${place.id})}">View</a><a
+                    th:href="@{/editplace/{id}(id=${place.id})}">Edit</a>
+                <a th:href="@{/deleteplace/{id}(id=${place.id})}"
+                   onclick="return confirm('Are you sure you want to remove place?')">Remove</a>
+                <a th:href="@{/addphotos/{id}(id=${place.id})}">Photos</a>
+            </div>
+        </div>
+
     </div>
-    </div>
-    <!-- main content end -->
+</div>
 
 
-    <!-- footer start -->
-    <div th:insert="fragments :: footer"></div>
-    <!-- footer end -->
+<!-- footer start -->
+<div th:insert="fragments :: footer"></div>
+<!-- footer end -->
 </body>
 
 </html>

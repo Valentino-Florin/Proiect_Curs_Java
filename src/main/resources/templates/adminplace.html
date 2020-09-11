@@ -8,11 +8,18 @@
     </title>
     <link type="text/css" href="../static/css/addplace.css" th:href="@{/css/addplace.css}" rel="stylesheet">
     <link rel="stylesheet" href="../static/css/fragments.css" th:href="@{/css/fragments.css}">
+    <style>
+
+
+
+    </style>
+
 </head>
+
 
 <body>
 <!-- header start -->
- <div th:insert="fragments :: header"></div>
+<div th:insert="fragments :: header"></div>
 <!-- header end -->
 
 
@@ -28,14 +35,9 @@
             <input type="submit" value="Search"/>
             <div>
                 <div>
-                    <!--                <div id=button_text>-->
-                    <!--                    <a href="addplaceadmin.html" th:href="@{http://localhost:8080/addplaceadmin}">-->
-                    <!--                        <p>Add Place</p>-->
-                    <!--                    </a>-->
-                    <!--                </div>-->
                     <h2>Places List</h2>
                     <table class="table table-striped">
-                        <tr>
+                        <tr class="table_place" >
                             <th>Place ID</th>
                             <th>Name</th>
                             <th>County</th>
@@ -52,7 +54,7 @@
                             <th>Created By</th>
 
                         </tr>
-                        <tr th:each="place : ${places}">
+                        <tr class="table_place" th:each="place : ${places}">
                             <td th:text="${place.id}">id</td>
                             <td th:text="${place.name}">name</td>
                             <td th:text="${place.county}">county</td>
@@ -66,10 +68,12 @@
                             <td th:text="${place.workingHours}">workingHours</td>
                             <td th:text="${place.description}">description</td>
                             <td th:text="${place.created}">created</td>
-                            <td th:text="${place.user. getUserName()}">user</td>
+                            <td  th:text="${place.user. getUserName()}">user</td>
                             <td><a th:href="@{/editratings/{id}(id=${place.id})}">Ratings</a></td>
                             <td><a th:href="@{/editplaceadmin/{id}(id=${place.id})}">Edit</a></td>
-                            <td><a th:href="@{/deleteplaceadmin/{id}(id=${place.id})}"onclick="return confirm('Are you sure you want to delete place?')" >Delete</a></td>
+                            <td><a th:href="@{/addphotos/{id}(id=${place.id})}">Photos</a></td>
+                            <td><a th:href="@{/deleteplaceadmin/{id}(id=${place.id})}"
+                                   onclick="return confirm('Are you sure you want to delete place?')">Delete</a></td>
                         </tr>
                     </table>
                 </div>

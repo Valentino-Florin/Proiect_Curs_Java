@@ -67,7 +67,7 @@ protected void configure(AuthenticationManagerBuilder auth) throws Exception {
                 .antMatchers("/placemanager").hasAuthority("Host")
                 .antMatchers("/addplace").hasAuthority("Host")
                 .antMatchers("/editplace/**").hasAuthority("Host")
-                .antMatchers("/addphotos/**").hasAuthority("Host")
+                .antMatchers("/addphotos/**").hasAnyAuthority("Host", "Admin")
                 .antMatchers("/editprofile/**").hasAuthority("Host")
                 .antMatchers("/profileinfo").hasAnyAuthority("Host","Traveler")
                 .antMatchers("/profilefavorites").hasAuthority("Traveler")
