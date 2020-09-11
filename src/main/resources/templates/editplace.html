@@ -17,107 +17,82 @@
 <body>
     <div th:insert="fragments :: header"></div>
 <div>
-  <h2>Edit Place</h2>
-  <form action="#"
-        th:action="@{/editplace/{id}(id=${place.id})}"
-        th:object="${place}"
-        method="post">
-<!--    <select id=category name=category>-->
-<!--      &lt;!&ndash;                        <select id=category th:field="*{category}">&ndash;&gt;-->
-<!--      <option th:each="categoryOpt : ${T(sci.travel_app.walkthebear.model.misc.Category).values()}"-->
-<!--              th:value="${categoryOpt}" th:text="${categoryOpt.displayValue}"></option>-->
-<!--    </select>-->
-<!--<div class=form_element>-->
-<!--  <label>Sub-Category</label>-->
-<!--  <select id=subcategory name=subcategory>-->
-<!--    &lt;!&ndash;                        <select id=category th:field="*{category}">&ndash;&gt;-->
-<!--    <option th:each="categoryOpt : ${T(sci.travel_app.walkthebear.model.misc.SubCategory).values()}"-->
-<!--            th:value="${categoryOpt}" th:text="${categoryOpt.displayValue}"></option>-->
-<!--  </select>-->
-<!--</div>-->
-    <div class=form_element>
-      <label>Category</label>
-    <input type="radio" name="first" th:field="*{category}" th:value="${T(sci.travel_app.walkthebear.model.misc.Category).FOODDRINK}" th:onclick="choice(this)">Food and drink
-    <input type="radio" name="first" th:field="*{category}" th:value="${T(sci.travel_app.walkthebear.model.misc.Category).ATTRACTIONS}" th:onclick="choice(this)">Tourist attractions
-    <input type="radio" name="first" th:field="*{category}" th:value="${T(sci.travel_app.walkthebear.model.misc.Category).LODGING}" th:onclick="choice(this)">Lodging
+    <h2>Edit Place</h2>
+    <form action="#"
+          th:action="@{/editplace/{id}(id=${place.id})}"
+          th:object="${place}"
+          method="post" enctype="multipart/form-data">
+        <div class=form_element>
+            <label>Category</label>
+            <input type="radio" name="first" th:field="*{category}" th:value="${T(sci.travel_app.walkthebear.model.misc.Category).FOODDRINK}" th:onclick="choice(this)">Food and drink
+            <input type="radio" name="first" th:field="*{category}" th:value="${T(sci.travel_app.walkthebear.model.misc.Category).ATTRACTIONS}" th:onclick="choice(this)">Tourist attractions
+            <input type="radio" name="first" th:field="*{category}" th:value="${T(sci.travel_app.walkthebear.model.misc.Category).LODGING}" th:onclick="choice(this)">Lodging
 
-    </div>
+        </div>
 
-      <div>
-        <select id='dropdown' th:field="*{subcategory}" th:value="${subcategory}" required>
-        </select>
-      </div>
-<div class=form_element>
-  <input type= "hidden" name="created" id="created"
-         th:value="${#dates.format(#dates.createNow() , 'dd/MM/yyyy HH:mm')}" />
-</div>
-<div class=form_element>
-  <label>Name</label>
-  <input type="text" maxlength="50" th:field="*{name}" id="name" placeholder="Name" required>
-  <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
-</div>
-<div class=form_element>
-  <label>County</label>
-  <input type="text" maxlength="50" th:field="*{county}" id="county" placeholder="County" required>
-  <span th:if="${#fields.hasErrors('county')}" th:errors="*{county}"></span>
-</div>
-<div class=form_element>
-  <label>City</label>
-  <input type="text" maxlength="250" th:field="*{city}" id="city" placeholder="City" required>
-  <span th:if="${#fields.hasErrors('city')}" th:errors="*{city}"> </span>
-</div>
-<div class=form_element>
-  <label>Address</label>
-  <input type="text" maxlength="250" th:field="*{address}" id="address" placeholder="Address" required>
-  <span th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></span>
-</div>
-<div class=form_element>
-  <label>GPS coordinates</label>
-  <input type="text" maxlength="250" th:field="*{coordinates}" id="coordinates"
-         placeholder="GPS coordinates">
-  <span th:if="${#fields.hasErrors('coordinates')}" th:errors="*{coordinates}"></span>
-</div>
-<div class=form_element>
-  <label>Working hours</label>
-  <input type="text" maxlength="250" th:field="*{workingHours}" id="workingHours"
-         placeholder="Working hours">
-  <span th:if="${#fields.hasErrors('workingHours')}" th:errors="*{workingHours}"></span>
-</div>
-<div class=form_element>
-  <label>Email</label>
-  <input type="text" maxlength="250" th:field="*{email}" id="email" placeholder="Email">
-  <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
-</div>
-<div class=form_element>
-  <label>Telephone</label>
-  <input type="text" maxlength="250" th:field="*{phoneNumber}" id="phoneNumber" placeholder="Telephone">
-  <span th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></span>
-</div>
+        <div>
+            <select id='dropdown' th:field="*{subcategory}" th:value="${subcategory}" required>
+            </select>
+        </div>
+        <div class=form_element>
+            <input type= "hidden" name="created" id="created"
+                   th:value="${#dates.format(#dates.createNow() , 'dd/MM/yyyy HH:mm')}" />
+        </div>
+        <div class=form_element>
+            <label>Name</label>
+            <input type="text" maxlength="50" th:field="*{name}" id="name" placeholder="Name" required>
+            <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+        </div>
+        <div class=form_element>
+            <label>County</label>
+            <input type="text" maxlength="50" th:field="*{county}" id="county" placeholder="County" required>
+            <span th:if="${#fields.hasErrors('county')}" th:errors="*{county}"></span>
+        </div>
+        <div class=form_element>
+            <label>City</label>
+            <input type="text" maxlength="250" th:field="*{city}" id="city" placeholder="City" required>
+            <span th:if="${#fields.hasErrors('city')}" th:errors="*{city}"> </span>
+        </div>
+        <div class=form_element>
+            <label>Address</label>
+            <input type="text" maxlength="250" th:field="*{address}" id="address" placeholder="Address" required>
+            <span th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></span>
+        </div>
+        <div class=form_element>
+            <label>GPS coordinates</label>
+            <input type="text" maxlength="250" th:field="*{coordinates}" id="coordinates"
+                   placeholder="GPS coordinates">
+            <span th:if="${#fields.hasErrors('coordinates')}" th:errors="*{coordinates}"></span>
+        </div>
+        <div class=form_element>
+            <label>Working hours</label>
+            <input type="text" maxlength="250" th:field="*{workingHours}" id="workingHours"
+                   placeholder="Working hours">
+            <span th:if="${#fields.hasErrors('workingHours')}" th:errors="*{workingHours}"></span>
+        </div>
+        <div class=form_element>
+            <label>Email</label>
+            <input type="text" maxlength="250" th:field="*{email}" id="email" placeholder="Email">
+            <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+        </div>
+        <div class=form_element>
+            <label>Telephone</label>
+            <input type="text" maxlength="250" th:field="*{phoneNumber}" id="phoneNumber" placeholder="Telephone">
+            <span th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></span>
+        </div>
 
-<div class=form_element>
-  <label>Description</label>
-  <textarea rows="5" cols="50" maxlength="250" minlength="60" th:field="*{description}" id="description"
-            placeholder="Description" required></textarea>
-  <span th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></span>
-</div>
-<!--<div class=form_element>-->
-<!--  <label>Created By</label>-->
-<!--  <input type="text" maxlength="250" th:field="*{user}" id="created_by" placeholder="CreatedBy" >-->
-<!--  <span th:if="${#fields.hasErrors('user')}" th:errors="*{user}"></span>-->
-<!--</div>-->
-<!--<div class=form_element>
-  <label>Upload main picture</label>
-  <input type="file">
-</div>
-<div class=form_element>
-  <label>Upload gallery picture</label>
-  <input type="file">
-</div> -->
-<div id=buttons>
-  <button type="submit">Submit</button>
-  <button type="cancel"><a th:href="@{/placemanager}">Cancel</a></button>
-</div>
-  </form>
+        <div class=form_element>
+            <label>Description</label>
+            <textarea rows="5" cols="50" maxlength="250" th:field="*{description}" id="description"
+                      placeholder="Description" required></textarea>
+            <span th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></span>
+        </div>
+
+        <div id=buttons>
+            <button type="submit">Submit</button>
+            <button type="cancel"><a th:href="@{/placemanager}">Cancel</a></button>
+        </div>
+    </form>
 </div>
     <div th:insert="fragments :: footer"></div>
 </body>

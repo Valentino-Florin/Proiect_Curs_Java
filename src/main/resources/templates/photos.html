@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <title>
         <!-- Insert your title here -->
     </title>
@@ -13,26 +13,30 @@
 </head>
 
 <body>
-    <!-- header start -->
-    <div th:insert="fragments :: header"></div>
+<!-- header start -->
+<div th:insert="fragments :: header"></div>
 
 
-    <!-- main content start -->
+<!-- main content start -->
 
-    <div class=container id=main_container>
-        <div>
-            <h2>Add photos for place: "[[${place.name}]]"</h2>
-        </div>
-        <div class=container id=form_container>
+<div class=container id=main_container>
+    <div>
+        <h2>Add photos for place: "[[${place.name}]]"</h2>
+    </div>
+    <div class=container id=form_container>
 
-            <div th:insert="fragments :: alert"></div>
-            <div id=return_links>
-                <a href="placedetail.html" th:href="@{/placedetail/{id}(id=${place.id})}">Return to "[[${place.name}]]"</a>
-                <a href="placemanager.html" th:href="@{/placemanager}">Return to Place Manager</a>
-
-            </div>
+        <div th:insert="fragments :: alert"></div>
+        <div id=return_links>
+            <a href="placedetail.html" th:href="@{/placedetail/{id}(id=${place.id})}"
+               sec:authorize="hasAuthority('Host')">Return to
+                "[[${place.name}]]"</a>
+            <a href="placemanager.html" th:href="@{/placemanager}" sec:authorize="hasAuthority('Host')">Return to Place
+                Manager</a>
+            <a href="adminplace.html" th:href="@{/adminplace}" sec:authorize="hasAuthority('Admin')">Return to Admin
+                Place</a>
             <!--<form id=addplace > -->
-            <form action="#" th:action="@{/addphotos/{id}(id=${place.id})}" method="post" th:object="${place}" enctype="multipart/form-data">
+            <form action="#" th:action="@{/addphotos/{id}(id=${place.id})}" method="post" th:object="${place}"
+                  enctype="multipart/form-data">
 
 
                 <div class=form_element>
@@ -40,7 +44,10 @@
                     <input type="file" name="thumbnail" id="thumbnail" accept="image/png, image/jpeg">
                 </div>
                 <div class=preview>
-                    <div class=preview_img id="thumbnail_preview" th:if="${hasThumbnail}"><img id=thumbnail  src="../static/images/placeholder.jpg" th:src="@{${place.ThumbnailImagePath}}"></div>
+                    <div class=preview_img id="thumbnail_preview" th:if="${hasThumbnail}"><img id=thumbnail
+                                                                                               src="../static/images/placeholder.jpg"
+                                                                                               th:src="@{${place.ThumbnailImagePath}}">
+                    </div>
                     <div id="emptyPicT" th:unless="${hasThumbnail}">
                         <p>Select an image</p>
                     </div>
@@ -53,7 +60,8 @@
                 </div>
                 <div class=preview>
                     <div class=preview_img id="gallery_pic_1_preview" th:if="${hasG1}">
-                        <img id=galleryImage1 src="../static/images/placeholder.jpg" th:src="@{${place.GalleryImage1Path}}">
+                        <img id=galleryImage1 src="../static/images/placeholder.jpg"
+                             th:src="@{${place.GalleryImage1Path}}">
                     </div>
                     <div id="emptyPic1" th:unless="${hasG1}">
                         <p>Select an image</p>
@@ -67,7 +75,8 @@
                 </div>
                 <div class=preview>
                     <div class=preview_img id="gallery_pic_2_preview" th:if="${hasG2}">
-                        <img id=galleryImage2 src="../static/images/placeholder.jpg" th:src="@{${place.GalleryImage2Path}}">
+                        <img id=galleryImage2 src="../static/images/placeholder.jpg"
+                             th:src="@{${place.GalleryImage2Path}}">
                     </div>
                     <div id="emptyPic2" th:unless="${hasG2}">
                         <p>Select an image</p>
@@ -80,7 +89,10 @@
                     <input type="file" name="galleryImage3" id="galleryImage3" accept="image/png, image/jpeg">
                 </div>
                 <div class=preview>
-                    <div class=preview_img id="gallery_pic_3_preview" th:if="${hasG3}"><img id=galleryImage3 src="../static/images/placeholder.jpg" th:src="@{${place.GalleryImage3Path}}"></div>
+                    <div class=preview_img id="gallery_pic_3_preview" th:if="${hasG3}"><img id=galleryImage3
+                                                                                            src="../static/images/placeholder.jpg"
+                                                                                            th:src="@{${place.GalleryImage3Path}}">
+                    </div>
                     <div id="emptyPic3" th:unless="${hasG3}">
                         <p>Select an image</p>
                     </div>
@@ -89,7 +101,10 @@
                         <label>Upload gallery picture 4</label>
                         <input type="file" name="galleryImage4" id="galleryImage4" accept="image/png, image/jpeg">
                     </div>
-                    <div class=preview_img id="gallery_pic_4_preview" th:if="${hasG4}"><img id=galleryImage4 src="../static/images/placeholder.jpg" th:src="@{${place.GalleryImage4Path}}"></div>
+                    <div class=preview_img id="gallery_pic_4_preview" th:if="${hasG4}"><img id=galleryImage4
+                                                                                            src="../static/images/placeholder.jpg"
+                                                                                            th:src="@{${place.GalleryImage4Path}}">
+                    </div>
                     <div id="emptyPic4" th:unless="${hasG4}">
                         <p>Select an image</p>
                     </div>
@@ -98,7 +113,10 @@
                         <label>Upload gallery picture 5</label>
                         <input type="file" name="galleryImage5" id="galleryImage5" accept="image/png, image/jpeg">
                     </div>
-                    <div class=preview_img id="gallery_pic_5_preview" th:if="${hasG5}"><img id=galleryImage5 src="../static/images/placeholder.jpg" th:src="@{${place.GalleryImage5Path}}"></div>
+                    <div class=preview_img id="gallery_pic_5_preview" th:if="${hasG5}"><img id=galleryImage5
+                                                                                            src="../static/images/placeholder.jpg"
+                                                                                            th:src="@{${place.GalleryImage5Path}}">
+                    </div>
                     <div id="emptyPic5" th:unless="${hasG5}">
                         <p>Select an image</p>
                     </div>
@@ -107,17 +125,22 @@
 
                 <div id=buttons>
                     <button type="submit">Submit</button>
-                    <button type="cancel"><a th:href="@{/placemanager}">Cancel</a></button>
+                    <button type="cancel" sec:authorize="hasAuthority('Host')"><a
+                            th:href="@{/placemanager}">Cancel</a></button>
+
+                    <button type="cancel" sec:authorize="hasAuthority('Admin')"><a
+                            th:href="@{/adminplace}">Cancel</a></button>
                 </div>
             </form>
         </div>
-
     </div>
+</div>
 
-    <!-- main content end -->
+<!-- main content end -->
 
 
-    <!-- footer start -->
-    <div th:insert="fragments :: footer"></div>
-    <!-- footer end -->
-</body></html>
+<!-- footer start -->
+<div th:insert="fragments :: footer"></div>
+<!-- footer end -->
+</body>
+</html>
